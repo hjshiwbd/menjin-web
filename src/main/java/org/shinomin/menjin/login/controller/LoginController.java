@@ -36,16 +36,13 @@ public class LoginController
 	}
 
 	@RequestMapping("do_login")
-	public ModelAndView doLogin(HttpServletRequest request) throws Exception
+	public ModelAndView doLogin(HttpServletRequest request, UserBean user) throws Exception
 	{
 		ModelAndView model = new ModelAndView();
 
-		UserBean user = new UserBean();
 		user.setId("1");
-		user.setUsername("测试用户");
-		loginSession.setLoginUser(user);
-		loginService.afterLoginSuccess(request,user);
-		
+		loginService.afterLoginSuccess(request, user);
+
 		model.setViewName("redirect:/");
 		return model;
 	}

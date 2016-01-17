@@ -2,6 +2,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <!-- JQUERY -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery/jquery-2.0.3.min.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/js/zTree_v3/js/jquery-1.4.4.min.js"></script> --%>
 <!-- JQUERY UI-->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
 <!-- BOOTSTRAP -->
@@ -46,6 +47,7 @@
 <!-- CUSTOM SCRIPT -->
 <script src="${pageContext.request.contextPath}/resources/js/script.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/menjin/common/common.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/menjin/common/common_eu.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/menjin/common/global.js"></script>
 <!-- /JAVASCRIPTS -->
 

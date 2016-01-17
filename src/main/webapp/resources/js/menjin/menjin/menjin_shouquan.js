@@ -1,8 +1,6 @@
 var dg = $('#dg');
 jQuery(document).ready(function() {
-	App.setPage("forms"); // Set current page
-	App.init(); // Initialise plugins and elements
-
+	page_init("forms");
 	initDg();
 
 });
@@ -41,6 +39,7 @@ function initDg() {
 	} ];
 	var cols = [ col ];
 	var set = dgSetting1(url, cols);
+	set['height'] = 450;
 	set['onLoadSuccess'] = function() {
 		// 鼠标划过显示title
 		$('.datagrid-cell').each(function(i, o) {
@@ -49,8 +48,10 @@ function initDg() {
 		});
 	};
 	set['toolbar'] = [ {
-		text:'添加人员到列表',
-		handler:function(){alert('add')}
+		text : '添加人员到列表',
+		handler : function() {
+			alert('add')
+		}
 	} ];
 
 	dg.datagrid(set);

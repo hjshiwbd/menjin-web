@@ -30,6 +30,10 @@ public class LoginServiceImpl implements ILoginService
 	@Override
 	public void afterLoginSuccess(HttpServletRequest request, UserBean user)
 	{
+		loginSession.setLoginUser(user);
+		
+		request.getSession().setAttribute("session_user", user);
+		
 		List<MenuBean> list = menuService.selectList(null);
 		loginSession.setFlatMenuList(list);
 

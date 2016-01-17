@@ -44,7 +44,7 @@
 							<div class="divide-40"></div>
 							<form action="<%=path%>/login/do_login.html" role="form">
 								<div class="form-group">
-									<label for="exampleInputEmail1">登录名</label> <i class="fa fa-user"></i> <input type="text" class="form-control" id="exampleInputEmail1">
+									<label for="exampleInputEmail1">登录名</label> <i class="fa fa-user"></i> <input type="text" class="form-control" value="admin" name="username" id="exampleInputEmail1">
 								</div>
 								<div class="form-group">
 									<label for="exampleInputPassword1">密码</label> <i class="fa fa-lock"></i> <input type="password" class="form-control" id="exampleInputPassword1">

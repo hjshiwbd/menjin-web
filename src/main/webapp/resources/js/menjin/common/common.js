@@ -1,25 +1,3 @@
-function dgSetting1(url, cols) {
-	var loadCount = 0;
-	var o = {
-		url : url,
-		height : 270,
-		fitColumns : true,
-		autoRowHeight : true,
-		striped : true,
-		nowrap : true,
-		checkOnSelect : true,
-		pageSize : 20,
-		pageList : [ 3000, 5000, 10000 ],
-		columns : cols,
-		onBeforeLoad : function() {
-//			if (loadCount++ == 0) {
-//				return false;
-//			}
-		}
-	};
-	return o;
-}
-
 $.ajaxSetup({
 	cache : false
 });

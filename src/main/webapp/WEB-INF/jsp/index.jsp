@@ -30,7 +30,7 @@
 									<!-- STYLER -->
 									<!-- /STYLER -->
 									<div class="clearfix">
-										<h3 class="content-title pull-left">欢迎登录</h3>
+										<h3 class="content-title pull-left">${session_user.username}，你好。欢迎使用本系统。</h3>
 									</div>
 									<div class="description"></div>
 								</div>
