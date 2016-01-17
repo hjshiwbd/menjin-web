@@ -15,4 +15,6 @@
 <!-- GRITTER -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/js/gritter/css/jquery.gritter.css" />
 <!-- FONTS -->
-<link href='http://fonts.useso.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+<link href='${pageContext.request.contextPath}/resources/css/external/font/login-font-css.css' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/js/jquery-easyui-1.4.4/themes/bootstrap/easyui.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/js/jquery-easyui-1.4.4/themes/icon.css">

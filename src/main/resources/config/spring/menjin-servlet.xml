@@ -53,59 +53,55 @@
 	</bean>
 
 	<!-- 自定义multipartUpload.继承自org.springframework.web.multipart.commons.CommonsMultipartResolver -->
-<!--	<bean id="multipartResolver" class="com.synjones.base.servlet.MultipartResolver">-->
-		<!-- one of the properties available; the maximum file size in bytes -->
-		<!-- <property name="maxUploadSize" value="100000"/> -->
-	<!--</bean>-->
+	<!-- <bean id="multipartResolver" class="com.synjones.base.servlet.MultipartResolver"> -->
+	<!-- one of the properties available; the maximum file size in bytes -->
+	<!-- <property name="maxUploadSize" value="100000"/> -->
+	<!--</bean> -->
 
 	<!--拦截器 -->
-<!-- 	<mvc:interceptors> -->
+	<mvc:interceptors>
 		<!-- login interceptor -->
-<!-- 		<mvc:interceptor> -->
-<!-- 			<mvc:mapping path="/**/*.html" /> -->
-<!-- 			<bean class="com.synjones.yingxin.interceptor.ManLoginInterceptor"> -->
-<!-- 				<property name="doNotIntercept"> -->
-<!-- 					<list> -->
-<!-- 						<value><![CDATA[ManLoginController.*]]></value> -->
-<!-- 						<value><![CDATA[ManIndexController.header2]]></value> -->
-<!-- 						<value><![CDATA[ManIndexController.footer]]></value> -->
-<!-- 						<value><![CDATA[aaa]]></value> -->
-<!-- 					</list> -->
-<!-- 				</property> -->
-<!-- 			</bean> -->
-<!-- 		</mvc:interceptor> -->
+		<mvc:interceptor>
+			<mvc:mapping path="/**/*.html" />
+			<bean class="org.shinomin.menjin.interceptor.LoginInterceptor">
+				<property name="doNotIntercept">
+					<list>
+						<value><![CDATA[LoginController.login]]></value>
+						<value><![CDATA[LoginController.doLogin]]></value>
+					</list>
+				</property>
+			</bean>
+		</mvc:interceptor>
 		<!-- access interceptor -->
-<!-- 		<mvc:interceptor> -->
-<!-- 			<mvc:mapping path="/**/*.html" /> -->
-<!-- 			<bean class="com.synjones.yingxin.interceptor.AccessInterceptor"> -->
-<!-- 				<property name="freeUrl"> -->
-<!-- 					<list> -->
-<!-- 						<value><![CDATA[/manage/ht/footer.html]]></value> -->
-<!-- 						<value><![CDATA[/manage/ht/header.html]]></value> -->
-<!-- 						<value><![CDATA[/manage/ht/index.html]]></value> -->
-<!-- 					</list> -->
-<!-- 				</property> -->
-<!-- 			</bean> -->
-<!-- 		</mvc:interceptor> -->
+		<mvc:interceptor>
+			<mvc:mapping path="/**/*.html" />
+			<bean class="org.shinomin.menjin.interceptor.MenuInterceptor">
+				<property name="doNotIntercept">
+					<list>
+						<value><![CDATA[MiscpageController.left]]></value>
+					</list>
+				</property>
+			</bean>
+		</mvc:interceptor>
 		<!-- accesslog interceptor -->
-<!-- 		<mvc:interceptor> -->
-<!-- 			<mvc:mapping path="/**/*.html" /> -->
-<!-- 			<bean class="com.synjones.base.interceptor.AccessLogInterceptor"> -->
-<!-- 				<property name="notWriteLogCutpoint"> -->
-<!-- 					<list> -->
-<!-- 						<value><![CDATA[ManIndexController.footer]]></value> -->
-<!-- 						<value><![CDATA[ManIndexController.header]]></value> -->
-<!-- 						<value><![CDATA[ManIndexController.menu]]></value> -->
-<!-- 						<value><![CDATA[ManSfController.listEuCombobox]]></value> -->
-<!-- 						<value><![CDATA[ManZyController.listEuCombobox]]></value> -->
-<!-- 						<value><![CDATA[ManBjController.listEuCombobox]]></value> -->
-<!-- 						<value><![CDATA[ManBmController.listEuCombobox]]></value> -->
-<!-- 						<value><![CDATA[ManBmController.syListEuCombobox]]></value> -->
-<!-- 						<value><![CDATA[ManXqxxController.listEuCombobox]]></value> -->
-<!-- 					</list> -->
-<!-- 				</property> -->
-<!-- 			</bean> -->
-<!-- 		</mvc:interceptor> -->
-<!-- 	</mvc:interceptors> -->
+		<!-- <mvc:interceptor> -->
+		<!-- <mvc:mapping path="/**/*.html" /> -->
+		<!-- <bean class="com.synjones.base.interceptor.AccessLogInterceptor"> -->
+		<!-- <property name="notWriteLogCutpoint"> -->
+		<!-- <list> -->
+		<!-- <value><![CDATA[ManIndexController.footer]]></value> -->
+		<!-- <value><![CDATA[ManIndexController.header]]></value> -->
+		<!-- <value><![CDATA[ManIndexController.menu]]></value> -->
+		<!-- <value><![CDATA[ManSfController.listEuCombobox]]></value> -->
+		<!-- <value><![CDATA[ManZyController.listEuCombobox]]></value> -->
+		<!-- <value><![CDATA[ManBjController.listEuCombobox]]></value> -->
+		<!-- <value><![CDATA[ManBmController.listEuCombobox]]></value> -->
+		<!-- <value><![CDATA[ManBmController.syListEuCombobox]]></value> -->
+		<!-- <value><![CDATA[ManXqxxController.listEuCombobox]]></value> -->
+		<!-- </list> -->
+		<!-- </property> -->
+		<!-- </bean> -->
+		<!-- </mvc:interceptor> -->
+	</mvc:interceptors>
 
 </beans>

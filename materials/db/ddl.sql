@@ -10,3 +10,11 @@ CREATE TABLE system_config (
 	confstatus VARCHAR (5)
 );
 ------------------------------------------------------------
+drop table mjsq_menu;
+create table mjsq_menu (
+	id varchar(20) primary key,
+	name varchar(50),
+	url varchar(50),
+	opentype varchar(50),
+	pid varchar(50)
+)
