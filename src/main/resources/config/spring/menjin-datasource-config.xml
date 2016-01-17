@@ -1,0 +1,110 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.1.xsd  
+		">
+
+	<!-- jdbc数据源 -->
+	<bean id="dataSource_config" class="com.alibaba.druid.pool.DruidDataSource">
+		<property name="driverClassName">
+			<value>${database.1.driver}</value>
+		</property>
+		<property name="url">
+			<value>${database.1.url}</value>
+		</property>
+		<property name="username">
+			<value>${database.1.username}</value>
+		</property>
+		<property name="password">
+			<value>${database.1.password}</value>
+		</property>
+	</bean>
+
+	<!-- 事务 -->
+	<bean id="transactionManager_config"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource_config" />
+	</bean>
+	<!-- 声明使用注解式事务,与配置型事务二选一 -->
+	<!-- <tx:annotation-driven transaction-manager="transactionManager"/> -->
+
+	<!-- 配置型定义事务通知 -->
+	<tx:advice id="txAdvice_config" transaction-manager="transactionManager_config">
+		<!-- 定义方法的过滤规则 -->
+		<tx:attributes>
+			<tx:method name="do*" propagation="REQUIRED" rollback-for="Throwable" />
+			<tx:method name="add*" propagation="REQUIRED" rollback-for="Throwable" />
+			<tx:method name="edit*" propagation="REQUIRED"
+				rollback-for="Throwable" />
+			<tx:method name="remove*" propagation="REQUIRED"
+				rollback-for="Throwable" />
+			<tx:method name="save*" propagation="REQUIRED"
+				rollback-for="Throwable" />
+			<tx:method name="insert*" propagation="REQUIRED"
+				rollback-for="Throwable" />
+			<tx:method name="delete*" propagation="REQUIRED"
+				rollback-for="Throwable" />
+			<tx:method name="update*" propagation="REQUIRED"
+				rollback-for="Throwable" />
+			<tx:method name="handle*" propagation="REQUIRED"
+				rollback-for="Throwable" />
+			<!-- 当抛出Exception时事务回滚 -->
+			<!-- <tx:method name="*" read-only="true" rollback-for="Exception" /> -->
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 定义AOP配置 -->
+	<!-- 定义一个切入点 -->
+	<!-- 对切入点和事务的通知，进行适配 -->
+	<aop:config>
+		<aop:pointcut
+			expression="execution (* org.shinomin.*.service.impl.*.*(..)) || 
+			execution (* org.shinomin.*.*.service.impl.*.*(..)) || 
+			execution (* org.shinomin.*.*.*.service.impl.*.*(..))"
+			id="services_config" />
+		<aop:advisor advice-ref="txAdvice_config" pointcut-ref="services_config" />
+	</aop:config>
+	<!-- 配置型定义事务通知 end -->
+
+	<!-- MyBatis配置 -->
+	<bean id="sqlSessionFactory_config" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 数据源 -->
+		<property name="dataSource" ref="dataSource_config" />
+		<!-- 基础配置 -->
+		<property name="configLocation" value="classpath:config/mybatis/mybatis-config.xml" />
+		<!-- mapper配置 -->
+		<property name="mapperLocations" value="classpath:config/mybatis/mapper-*.xml" />
+		<!-- 映射包 -->
+		<property name="typeAliasesPackage" value="org.shinomin.menjin.bean" />
+	</bean>
+
+	<!-- mybatis -->
+	<bean id="sqlSessionTemplate_config" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory_config" />
+	</bean>
+
+	<!-- jdbcTemplate -->
+	<bean id="jdbcTemplate_config" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource_config">
+		</property>
+	</bean>
+
+	<!-- "daoSupport" is strict -->
+	<bean id="daoSupport"
+		class="org.shinomin.commons.db.mybatis.impl.CommonDAOSuportImpl">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate_config">
+		</property>
+		<property name="jdbcTemplate" ref="jdbcTemplate_config">
+		</property>
+	</bean>
+
+	<!-- MyBatis配置 end -->
+</beans>
