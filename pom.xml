@@ -80,6 +80,22 @@
 		</dependency>
 
 	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>test</id>
+			<properties>
+				<folder.name>test</folder.name>
+			</properties>
+		</profile>
+		<profile>
+			<id>production</id>
+			<properties>
+				<folder.name>production</folder.name>
+			</properties>
+		</profile>
+	</profiles>
+
 	<build>
 		<finalName>menjin</finalName>
 
@@ -102,7 +118,20 @@
 					<skip>true</skip>
 				</configuration>
 			</plugin>
-
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<webResources>
+						<webResource>
+							<directory>src/main/resources_${folder.name}</directory>
+							<targetPath>WEB-INF/classes</targetPath>
+						</webResource>
+					</webResources>
+					<includeEmptyDirectories>true</includeEmptyDirectories>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>
