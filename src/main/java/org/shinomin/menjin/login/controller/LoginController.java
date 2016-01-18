@@ -46,4 +46,15 @@ public class LoginController
 		model.setViewName("redirect:/");
 		return model;
 	}
+
+	@RequestMapping("/logout")
+	public ModelAndView logout(HttpServletRequest request) throws Exception
+	{
+		ModelAndView model = new ModelAndView();
+		request.getSession().invalidate();
+		
+		model.setViewName("redirect:/");
+		return model;
+	}
+
 }

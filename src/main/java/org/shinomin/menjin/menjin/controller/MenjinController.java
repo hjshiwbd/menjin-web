@@ -16,12 +16,48 @@ public class MenjinController
 	@Autowired
 	private RequestScope requestScope;
 
+	/**
+	 * 授权页面
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping("/shouquan")
 	public ModelAndView shouquan() throws Exception
 	{
 		ModelAndView model = new ModelAndView();
 
 		model.setViewName("menjin/menjin_shouquan");
+		return model;
+	}
+
+	/**
+	 * 设置页面
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/shezhi")
+	public ModelAndView shezhi() throws Exception
+	{
+		ModelAndView model = new ModelAndView();
+
+		model.setViewName("menjin/menjin_shezhi");
+		return model;
+	}
+
+	/**
+	 * 远程控制
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/yckz")
+	public ModelAndView yckz() throws Exception
+	{
+		ModelAndView model = new ModelAndView();
+
+		model.setViewName("menjin/menjin_yckz");
 		return model;
 	}
 }

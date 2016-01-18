@@ -15,7 +15,7 @@
 					</c:forEach>
 				</ul></li>
 		</c:forEach>
-		<li class=""><a href="index.html"> <i class="fa fa-power-off fa-fw"></i> <span class="menu-text">退出</span> <span class="selected"></span>
+		<li class=""><a href="/menjin/login/logout.html"> <i class="fa fa-power-off fa-fw"></i> <span class="menu-text">退出</span> <span class="selected"></span>
 		</a></li>
 	</ul>
 	<input type="hidden" id="left_menuid1" value="${menu1}"> <input type="hidden" id="left_menuid2" value="${menu2}">
