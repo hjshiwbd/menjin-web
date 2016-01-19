@@ -31,10 +31,12 @@ public class LoginServiceImpl implements ILoginService
 	public void afterLoginSuccess(HttpServletRequest request, UserBean user)
 	{
 		loginSession.setLoginUser(user);
-		
+
 		request.getSession().setAttribute("session_user", user);
-		
-		List<MenuBean> list = menuService.selectList(null);
+
+		MenuBean search = new MenuBean();
+		search.setStatus("1");
+		List<MenuBean> list = menuService.selectList(search);
 		loginSession.setFlatMenuList(list);
 
 		List<MenuBean> lv1List = treeFormat(list);
@@ -42,12 +44,18 @@ public class LoginServiceImpl implements ILoginService
 		request.getSession().setAttribute("user_menus", lv1List);
 	}
 
+	/**
+	 * menulist递归成树结构
+	 * 
+	 * @param list
+	 * @return
+	 */
 	private List<MenuBean> treeFormat(List<MenuBean> list)
 	{
 		List<MenuBean> roots = new ArrayList<>();
 		for (MenuBean menu1 : list)
 		{
-			if ("root".equals(menu1.getPid()))
+			if ("1".equals(menu1.getStatus()) && "root".equals(menu1.getPid()))
 			{
 				roots.add(recursive(list, menu1));
 			}
@@ -56,6 +64,13 @@ public class LoginServiceImpl implements ILoginService
 		return roots;
 	}
 
+	/**
+	 * 递归
+	 * 
+	 * @param list
+	 * @param menu1
+	 * @return
+	 */
 	private MenuBean recursive(List<MenuBean> list, MenuBean menu1)
 	{
 		List<MenuBean> children = new ArrayList<>();

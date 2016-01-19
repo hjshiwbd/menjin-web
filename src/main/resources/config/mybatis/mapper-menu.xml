@@ -34,6 +34,9 @@
 			<if test="pid != null and pid != ''">
 				and t.pid = #{pid,jdbcType=VARCHAR}
 			</if>
+			<if test="status != null and status != ''">
+				and t.status = #{status,jdbcType=VARCHAR}
+			</if>
 		</where>
 		order by t.sortorder
 	</select>

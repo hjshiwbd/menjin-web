@@ -35,10 +35,10 @@
 									<!-- STYLER -->
 									<!-- /STYLER -->
 									<div class="clearfix">
-										<h3 class="content-title pull-left">门禁授权</h3>
+										<h3 class="content-title pull-left">卡片新增</h3>
 									</div>
 									<div class="divide-20"></div>
-									<div class="description">设置或者收回员工访问门禁的权限</div>
+									<div class="description">添加卡片，和人员进行绑定</div>
 								</div>
 							</div>
 						</div>
@@ -49,7 +49,7 @@
 								<div class="box border primary">
 									<div class="box-title">
 										<h4>
-											<i class="fa fa-bars"></i>门禁设置
+											<i class="fa fa-bars"></i>卡片新增
 										</h4>
 										<div class="tools hidden-xs">
 											<a href="#box-config" data-toggle="modal" class="config"> <i class="fa fa-cog"></i>
@@ -61,20 +61,24 @@
 									</div>
 									<div class="row">
 										<div class="col-md-12">
-											<!-- BOX -->
-											<div class=" col-xs-4">
-												<ul id="treeDemo" class="ztree" style="height: 250px;"></ul>
-											</div>
-
 											<div class=" col-xs-8">
 												<div class="form-group">
-													<label class="">名称</label><input type="text" class="form-control" value="门禁 1-1-1">
+													<label class="">人员名称</label><input type="text" class="form-control" value="">
 												</div>
 												<div class="form-group">
-													<label class="">级别</label><input type="text" class="form-control" value="1级">
+													<label class="">卡片物理号</label><input type="text" class="form-control" value="">
 												</div>
 												<div class="form-group">
-													<label class="">类型</label><input type="text" class="form-control" value="门禁">
+													<label class="">卡号</label><input type="text" class="form-control" value="">
+												</div>
+												<div class="form-group">
+													<label class="">公司</label><input type="text" class="form-control" value="">
+												</div>
+												<div class="form-group">
+													<label class="">部门</label><input type="text" class="form-control" value="">
+												</div>
+												<div class="form-group">
+													<label class="">工号</label><input type="text" class="form-control" value="">
 												</div>
 												<div class="form-group">
 													<button id="sq" class="btn btn-primary">保存</button>
@@ -106,6 +110,6 @@
 	<script type="text/javascript" src="<%=path%>/resources/js/uniform/jquery.uniform.min.js"></script>
 	<script type="text/javascript" src="<%=path%>/resources/js/zTree_v3/js/jquery.ztree.core-3.5.js"></script>
 	<script type="text/javascript" src="<%=path%>/resources/js/zTree_v3/js/jquery.ztree.excheck-3.5.js"></script>
-	<script type="text/javascript" src="<%=path%>/resources/js/menjin/menjin/menjin_shezhi.js"></script>
+	<script type="text/javascript" src="<%=path%>/resources/js/menjin/kapian/kapian_xinzeng.js"></script>
 </body>
 </html>

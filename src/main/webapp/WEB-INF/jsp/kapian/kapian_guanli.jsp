@@ -62,23 +62,8 @@
 									<div class="row">
 										<div class="col-md-12">
 											<!-- BOX -->
-											<div class=" col-xs-4">
-												<ul id="treeDemo" class="ztree" style="height: 250px;"></ul>
-											</div>
-
-											<div class=" col-xs-8">
-												<div class="form-group">
-													<label class="">名称</label><input type="text" class="form-control" value="门禁 1-1-1">
-												</div>
-												<div class="form-group">
-													<label class="">级别</label><input type="text" class="form-control" value="1级">
-												</div>
-												<div class="form-group">
-													<label class="">类型</label><input type="text" class="form-control" value="门禁">
-												</div>
-												<div class="form-group">
-													<button id="sq" class="btn btn-primary">保存</button>
-												</div>
+											<div class=" col-xs-12">
+												<table id="dg"></table>
 											</div>
 										</div>
 									</div>
@@ -106,6 +91,6 @@
 	<script type="text/javascript" src="<%=path%>/resources/js/uniform/jquery.uniform.min.js"></script>
 	<script type="text/javascript" src="<%=path%>/resources/js/zTree_v3/js/jquery.ztree.core-3.5.js"></script>
 	<script type="text/javascript" src="<%=path%>/resources/js/zTree_v3/js/jquery.ztree.excheck-3.5.js"></script>
-	<script type="text/javascript" src="<%=path%>/resources/js/menjin/menjin/menjin_shezhi.js"></script>
+	<script type="text/javascript" src="<%=path%>/resources/js/menjin/kapian/kapian_guanli.js"></script>
 </body>
 </html>

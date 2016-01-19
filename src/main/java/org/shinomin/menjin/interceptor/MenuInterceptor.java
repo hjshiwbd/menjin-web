@@ -31,7 +31,6 @@ public class MenuInterceptor extends HandlerInterceptorAdapter
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception
 	{
-
 		if (!(handler instanceof HandlerMethod))
 		{
 			// 非常规请求
