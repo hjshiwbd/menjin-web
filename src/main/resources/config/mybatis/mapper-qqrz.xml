@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.shinomin.menjin.mapper.Qqrz">
+
+	<!-- resultMap -->
+	<resultMap id="QqrzMap" type="QqrzBean">
+		<result property="id" column="id" />
+		<result property="rybh" column="rybh" />
+		<result property="lm" column="lm" />
+		<result property="ffm" column="ffm" />
+		<result property="qqdz" column="qqdz" />
+		<result property="qqcs" column="qqcs" />
+		<result property="qqbh" column="qqbh" />
+		<result property="qqmc" column="qqmc" />
+		<result property="qqms" column="qqms" />
+		<result property="ip" column="ip" />
+		<result property="qqsj" column="qqsj" />
+		<result property="sessionid" column="sessionid" />
+		<result property="header" column="header" />
+	</resultMap>
+
+	<!-- select -->
+	<select id="select" parameterType="QqrzBean" resultType="QqrzBean">
+		select t.id, t.rybh, t.lm, t.ffm, t.qqdz, t.qqcs, t.qqbh, t.qqmc,
+		t.qqms, t.ip, t.qqsj, t.sessionid, t.header from mjsq_qqrz t
+		<where>
+			<if test="id!=null">
+				and t.id = #{id,jdbcType=INT}
+			</if>
+			<if test="rybh != null and rybh != ''">
+				and t.rybh = #{rybh,jdbcType=VARCHAR}
+			</if>
+			<if test="lm != null and lm != ''">
+				and t.lm = #{lm,jdbcType=VARCHAR}
+			</if>
+			<if test="ffm != null and ffm != ''">
+				and t.ffm = #{ffm,jdbcType=VARCHAR}
+			</if>
+			<if test="qqdz != null and qqdz != ''">
+				and t.qqdz = #{qqdz,jdbcType=VARCHAR}
+			</if>
+			<if test="qqcs != null and qqcs != ''">
+				and t.qqcs = #{qqcs,jdbcType=VARCHAR}
+			</if>
+			<if test="qqbh != null and qqbh != ''">
+				and t.qqbh = #{qqbh,jdbcType=VARCHAR}
+			</if>
+			<if test="qqmc != null and qqmc != ''">
+				and t.qqmc = #{qqmc,jdbcType=VARCHAR}
+			</if>
+			<if test="qqms!=null">
+				and t.qqms = #{qqms,jdbcType=VARCHAR}
+			</if>
+			<if test="ip != null and ip != ''">
+				and t.ip = #{ip,jdbcType=VARCHAR}
+			</if>
+			<if test="qqsj != null and qqsj != ''">
+				and t.qqsj = #{qqsj,jdbcType=VARCHAR}
+			</if>
+			<if test="sessionid != null and sessionid != ''">
+				and t.sessionid = #{sessionid,jdbcType=VARCHAR}
+			</if>
+			<if test="header != null and header != ''">
+				and t.header = #{header,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<!-- insert -->
+	<insert id="insert" parameterType="QqrzBean">
+		insert into mjsq_qqrz (rybh, lm, ffm, qqdz, qqcs, qqbh, qqmc, qqms, ip,
+		qqsj, sessionid, header)
+		values (#{rybh,jdbcType=VARCHAR},
+		#{lm,jdbcType=VARCHAR}, #{ffm,jdbcType=VARCHAR},
+		#{qqdz,jdbcType=VARCHAR}, #{qqcs,jdbcType=VARCHAR},
+		#{qqbh,jdbcType=VARCHAR}, #{qqmc,jdbcType=VARCHAR},
+		#{qqms,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR},
+		#{qqsj,jdbcType=VARCHAR}, #{sessionid,jdbcType=VARCHAR},
+		#{header,jdbcType=VARCHAR})
+	</insert>
+
+	<!-- update -->
+	<update id="update" parameterType="QqrzBean">
+		update mjsq_qqrz
+		<set>
+			<if test="rybh != null">
+				rybh = #{rybh,jdbcType=VARCHAR},
+			</if>
+			<if test="lm != null">
+				lm = #{lm,jdbcType=VARCHAR},
+			</if>
+			<if test="ffm != null">
+				ffm = #{ffm,jdbcType=VARCHAR},
+			</if>
+			<if test="qqdz != null">
+				qqdz = #{qqdz,jdbcType=VARCHAR},
+			</if>
+			<if test="qqcs != null">
+				qqcs = #{qqcs,jdbcType=VARCHAR},
+			</if>
+			<if test="qqbh != null">
+				qqbh = #{qqbh,jdbcType=VARCHAR},
+			</if>
+			<if test="qqmc != null">
+				qqmc = #{qqmc,jdbcType=VARCHAR},
+			</if>
+			<if test="qqms != null">
+				qqms = #{qqms,jdbcType=VARCHAR},
+			</if>
+			<if test="ip != null">
+				ip = #{ip,jdbcType=VARCHAR},
+			</if>
+			<if test="qqsj != null">
+				qqsj = #{qqsj,jdbcType=VARCHAR},
+			</if>
+			<if test="sessionid != null">
+				sessionid = #{sessionid,jdbcType=VARCHAR},
+			</if>
+			<if test="header != null">
+				header = #{header,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<!-- delete -->
+	<delete id="delete" parameterType="QqrzBean">
+		delete from mjsq_qqrz where id = #{id,jdbcType=NUMERIC}
+	</delete>
+</mapper>

@@ -17,4 +17,24 @@ create table mjsq_menu (
 	url varchar(50),
 	opentype varchar(50),
 	pid varchar(50)
+);
+------------------------------------------------------------
+CREATE TABLE [dbo].[mjsq_qqrz] (
+[id] int NOT NULL IDENTITY(1,1) ,
+[rybh] varchar(50) COLLATE Chinese_PRC_CI_AS NULL ,
+[lm] varchar(50) COLLATE Chinese_PRC_CI_AS NULL ,
+[ffm] varchar(50) COLLATE Chinese_PRC_CI_AS NULL ,
+[qqdz] varchar(50) COLLATE Chinese_PRC_CI_AS NULL ,
+[qqcs] text COLLATE Chinese_PRC_CI_AS NULL ,
+[qqbh] varchar(50) COLLATE Chinese_PRC_CI_AS NULL ,
+[qqmc] varchar(50) COLLATE Chinese_PRC_CI_AS NULL ,
+[qqms] text COLLATE Chinese_PRC_CI_AS NULL ,
+[ip] varchar(50) COLLATE Chinese_PRC_CI_AS NULL ,
+[qqsj] varchar(50) COLLATE Chinese_PRC_CI_AS NULL ,
+[sessionid] varchar(50) COLLATE Chinese_PRC_CI_AS NULL ,
+[header] text COLLATE Chinese_PRC_CI_AS NULL ,
+CONSTRAINT [PK__mjsq_qqr__3213E83F25869641] PRIMARY KEY ([id])
 )
+ON [PRIMARY]
+TEXTIMAGE_ON [PRIMARY]
+GO

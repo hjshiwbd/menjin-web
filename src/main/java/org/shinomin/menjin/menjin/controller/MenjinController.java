@@ -1,5 +1,6 @@
 package org.shinomin.menjin.menjin.controller;
 
+import org.shinomin.menjin.qqrz.service.IQqrzService;
 import org.shinomin.menjin.spring.request.RequestScope;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,8 @@ public class MenjinController
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	@Autowired
 	private RequestScope requestScope;
+	@Autowired
+	private IQqrzService qqrzService;
 
 	/**
 	 * 授权页面
@@ -26,7 +29,7 @@ public class MenjinController
 	public ModelAndView shouquan() throws Exception
 	{
 		ModelAndView model = new ModelAndView();
-
+		
 		model.setViewName("menjin/menjin_shouquan");
 		return model;
 	}

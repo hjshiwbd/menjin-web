@@ -4,6 +4,7 @@ jQuery(document).ready(function() {
 	initDg();
 	initTree();
 	sq();
+	qxsq();
 });
 
 /**
@@ -18,8 +19,8 @@ function sq() {
 /**
  * 取消授权
  */
-function xqsq() {
-	$('#sq').on('click', function() {
+function qxsq() {
+	$('#qxsq').on('click', function() {
 		alert('取消授权');
 	});
 }

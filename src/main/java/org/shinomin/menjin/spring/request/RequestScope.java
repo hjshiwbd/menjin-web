@@ -12,6 +12,13 @@ public class RequestScope
 	private String menuid1;
 	private String menuid2;
 
+	private String logContent;
+
+	/**
+	 * logout时的用户名,session取不到
+	 */
+	private String username;
+
 	public String getMenuid1()
 	{
 		return menuid1;
@@ -30,5 +37,25 @@ public class RequestScope
 	public void setMenuid2(String menuid2)
 	{
 		this.menuid2 = menuid2;
+	}
+
+	public String getLogContent()
+	{
+		return logContent;
+	}
+
+	public void setLogContent(String logContent)
+	{
+		this.logContent = logContent;
+	}
+
+	public String getUsername()
+	{
+		return username;
+	}
+
+	public void setUsername(String username)
+	{
+		this.username = username;
 	}
 }

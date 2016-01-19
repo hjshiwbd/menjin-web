@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.shinomin.menjin.bean.MenuBean;
 import org.shinomin.menjin.bean.UserBean;
+import org.shinomin.menjin.constant.MenjinSessionConstant;
 import org.shinomin.menjin.login.service.ILoginService;
 import org.shinomin.menjin.menu.service.IMenuService;
 import org.shinomin.menjin.spring.session.LoginSessionScope;
@@ -32,7 +33,7 @@ public class LoginServiceImpl implements ILoginService
 	{
 		loginSession.setLoginUser(user);
 
-		request.getSession().setAttribute("session_user", user);
+		request.getSession().setAttribute(MenjinSessionConstant.SESSION_USER, user);
 
 		MenuBean search = new MenuBean();
 		search.setStatus("1");
