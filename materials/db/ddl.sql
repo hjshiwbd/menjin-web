@@ -1,3 +1,7 @@
+10.157.4.11
+sa/Das123
+
+
 DROP TABLE system_config;
 
 CREATE TABLE system_config (
