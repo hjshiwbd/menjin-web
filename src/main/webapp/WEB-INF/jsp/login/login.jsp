@@ -26,7 +26,7 @@
 				<div class="row">
 					<div class="col-md-4 col-md-offset-4">
 						<div id="logo" class="">
-<%-- 							<a href="index.html"><img src="<%=path%>/resources/img/logo/logo-alt.png" height="40" alt="logo name" /></a> --%>
+							<%-- 							<a href="index.html"><img src="<%=path%>/resources/img/logo/logo-alt.png" height="40" alt="logo name" /></a> --%>
 						</div>
 					</div>
 				</div>
@@ -42,12 +42,13 @@
 						<div class="login-box-plain">
 							<h2 class="bigintro">门禁权限管理系统</h2>
 							<div class="divide-40"></div>
-							<form action="<%=path%>/login/do_login.html" role="form">
+							<form action="<%=path%>/login/do_login.html" role="form" method="post">
 								<div class="form-group">
-									<label for="exampleInputEmail1">登录名</label> <i class="fa fa-user"></i> <input type="text" class="form-control" value="admin" name="username" id="exampleInputEmail1">
+									<label for="exampleInputEmail1">登录名</label> <i class="fa fa-user"></i> <input type="text" class="form-control" value="admin" name="username"
+										id="username">
 								</div>
 								<div class="form-group">
-									<label for="exampleInputPassword1">密码</label> <i class="fa fa-lock"></i> <input type="password" class="form-control" id="exampleInputPassword1">
+									<label for="exampleInputPassword1">密码</label> <i class="fa fa-lock"></i> <input type="password" class="form-control" name="password" id="password">
 								</div>
 								<div class="form-actions">
 									<button type="submit" class="btn btn-danger">登&nbsp;&nbsp;&nbsp;&nbsp;录</button>
@@ -55,7 +56,7 @@
 							</form>
 							<!-- SOCIAL LOGIN -->
 							<div class="divide-20"></div>
-							
+
 							<!-- /SOCIAL LOGIN -->
 							<div class="login-helpers">
 								<a href="#" onclick_donothing="swapScreen('forgot');return false;">忘记密码?</a>
@@ -150,6 +151,7 @@
 	<%@ include file="/WEB-INF/jsp/inc/inc_js.jsp"%>
 	<!-- UNIFORM -->
 	<script type="text/javascript" src="<%=path%>/resources/js/uniform/jquery.uniform.min.js"></script>
+	<script type="text/javascript" src="<%=path%>/resources/js/menjin/login/login.js"></script>
 	<script>
 		jQuery(document).ready(function() {
 			App.setPage("login"); //Set current page

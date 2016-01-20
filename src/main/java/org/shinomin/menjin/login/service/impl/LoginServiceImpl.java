@@ -5,12 +5,14 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
 import org.shinomin.menjin.bean.MenuBean;
 import org.shinomin.menjin.bean.UserBean;
 import org.shinomin.menjin.constant.MenjinSessionConstant;
 import org.shinomin.menjin.login.service.ILoginService;
 import org.shinomin.menjin.menu.service.IMenuService;
 import org.shinomin.menjin.spring.session.LoginSessionScope;
+import org.shinomin.menjin.user.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,8 @@ public class LoginServiceImpl implements ILoginService
 	private LoginSessionScope loginSession;
 	@Autowired
 	private IMenuService menuService;
+	@Autowired
+	private IUserService userService;
 
 	@Override
 	public boolean isLogined()
@@ -85,6 +89,19 @@ public class LoginServiceImpl implements ILoginService
 		}
 		menu1.setChildren(children);
 		return menu1;
+	}
+
+	@Override
+	public UserBean queryLoginUser(UserBean user)
+	{
+		if (user == null || StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getPassword()))
+		{
+			throw new IllegalArgumentException("invalid param");
+		}
+
+		UserBean search = new UserBean();
+		search.setUsername(user.getUsername());
+		return userService.selectOne(search);
 	}
 
 }

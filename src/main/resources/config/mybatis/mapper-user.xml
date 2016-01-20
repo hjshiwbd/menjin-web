@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.shinomin.menjin.mapper.User">
+
+	<!-- resultMap -->
+	<resultMap id="UserMap" type="UserBean">
+		<result property="id" column="id" />
+		<result property="username" column="username" />
+		<result property="password" column="password" />
+	</resultMap>
+
+	<!-- select -->
+	<select id="select" parameterType="UserBean" resultType="UserBean">
+		select t.id, t.username, t.password from mjsq_user t
+		<where>
+			<if test="id!=null">
+				and t.id = #{id,jdbcType=NUMERIC}
+			</if>
+			<if test="username != null and username != ''">
+				and t.username = #{username,jdbcType=VARCHAR}
+			</if>
+			<if test="password != null and password != ''">
+				and t.password = #{password,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<!-- insert -->
+	<insert id="insert" parameterType="UserBean">
+		insert into mjsq_user (id, username, password)
+		values (#{id,jdbcType=NUMERIC}, #{username,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR})
+	</insert>
+
+	<!-- update -->
+	<update id="update" parameterType="UserBean">
+		update mjsq_user
+		<set>
+			<if test="username != null">
+				username = #{username,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<!-- delete -->
+	<delete id="delete" parameterType="UserBean">
+		delete from mjsq_user where id = #{id,jdbcType=NUMERIC}
+	</delete>
+</mapper>

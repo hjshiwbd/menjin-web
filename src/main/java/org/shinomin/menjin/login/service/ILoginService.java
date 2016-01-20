@@ -15,4 +15,6 @@ public interface ILoginService
 
 	void afterLoginSuccess(HttpServletRequest request, UserBean user);
 
+	UserBean queryLoginUser(UserBean user);
+
 }
