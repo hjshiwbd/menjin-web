@@ -26,7 +26,7 @@
 				<div class="row">
 					<div class="col-md-4 col-md-offset-4">
 						<div id="logo" class="">
-							<%-- 							<a href="index.html"><img src="<%=path%>/resources/img/logo/logo-alt.png" height="40" alt="logo name" /></a> --%>
+							<%-- <a href="index.html"><img src="<%=path%>/resources/img/logo/logo-alt.png" height="40" alt="logo name" /></a> --%>
 						</div>
 					</div>
 				</div>
@@ -44,7 +44,7 @@
 							<div class="divide-40"></div>
 							<form action="<%=path%>/login/do_login.html" role="form" method="post">
 								<div class="form-group">
-									<label for="exampleInputEmail1">登录名</label> <i class="fa fa-user"></i> <input type="text" class="form-control" value="admin" name="username"
+									<label for="exampleInputEmail1">登录名</label> <i class="fa fa-user"></i> <input type="text" class="form-control" value="${user.username}" name="username"
 										id="username">
 								</div>
 								<div class="form-group">
@@ -165,5 +165,7 @@
 		}
 	</script>
 	<!-- /JAVASCRIPTS -->
+	
+	<input type="hidden" value="${errMsg}" id="errMsg" />
 </body>
 </html>

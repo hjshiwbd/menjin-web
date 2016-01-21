@@ -15,7 +15,8 @@ function dgSetting1(url, cols) {
 		striped : true,
 		nowrap : true,
 		checkOnSelect : true,
-		pageSize : 20,
+		pagination : true,
+		pageSize : 3000,
 		pageList : [ 3000, 5000, 10000 ],
 		columns : cols,
 		onBeforeLoad : function() {

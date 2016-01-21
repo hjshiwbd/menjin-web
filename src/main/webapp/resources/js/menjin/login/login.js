@@ -1,6 +1,7 @@
 $(function() {
 	validate();
 	login();
+	showLoginError();
 });
 
 function validate() {
@@ -11,9 +12,15 @@ function validate() {
 
 function login() {
 	$('form').submit(function() {
-		var flag = true;
 		if ($('form').form('validate') == false) {
 			return false;
 		}
 	});
+}
+
+function showLoginError() {
+	var v = $('#errMsg').val();
+	if (v != '') {
+		eualert(v);
+	}
 }

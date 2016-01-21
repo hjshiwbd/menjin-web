@@ -2,7 +2,6 @@ package org.shinomin.menjin.login.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.shinomin.commons.utils.CryptogramUtil;
 import org.shinomin.menjin.bean.UserBean;
 import org.shinomin.menjin.login.service.ILoginService;
 import org.shinomin.menjin.spring.session.LoginSessionScope;
@@ -37,16 +36,10 @@ public class LoginController
 	}
 
 	@RequestMapping("do_login")
-	public ModelAndView doLogin(HttpServletRequest request, UserBean user) throws Exception
+	public ModelAndView doLogin(HttpServletRequest request, UserBean user)
 	{
-		ModelAndView model = new ModelAndView();
-
-		UserBean loginedUser = loginService.queryLoginUser(user);
-		user.setId("1");
-		loginService.afterLoginSuccess(request, user);
-
-		model.setViewName("redirect:/");
-		return model;
+		return loginService.doLogin(request,user);
+		
 	}
 
 	@RequestMapping("/logout")
@@ -54,7 +47,7 @@ public class LoginController
 	{
 		ModelAndView model = new ModelAndView();
 		request.getSession().invalidate();
-		
+
 		model.setViewName("redirect:/");
 		return model;
 	}

@@ -61,4 +61,14 @@ public interface IUserService
 	 */
 	public int delete(UserBean user);
 
+	/**
+	 * 改密码
+	 * 
+	 * @param oldPassword
+	 * @param newPassword
+	 * @param newPassword2
+	 * @return
+	 */
+	public String changeMima(String oldPassword, String newPassword, String newPassword2);
+
 }

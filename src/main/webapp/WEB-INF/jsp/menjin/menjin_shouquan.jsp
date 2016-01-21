@@ -109,7 +109,7 @@
 														<div class="tools"></div>
 													</div>
 													<div class="box-body">
-														<ul id="treeDemo" class="ztree" style="height: 450px;"></ul>
+														<ul id="tree" class="ztree"></ul>
 													</div>
 												</div>
 												<!-- <h3>已选择：12人</h3> -->

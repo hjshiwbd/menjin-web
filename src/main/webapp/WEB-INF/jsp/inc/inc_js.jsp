@@ -43,8 +43,9 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jQuery-Cookie/jquery.cookie.min.js"></script>
 <!-- GRITTER -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/gritter/js/jquery.gritter.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-easyui-1.4.4/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/menjin/common/easyui-ex-validate.js"></script>
 <!-- CUSTOM SCRIPT -->
 <script src="${pageContext.request.contextPath}/resources/js/script.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/menjin/common/common.js"></script>

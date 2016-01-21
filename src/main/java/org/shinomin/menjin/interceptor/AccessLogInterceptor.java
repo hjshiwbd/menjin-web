@@ -65,7 +65,7 @@ public class AccessLogInterceptor extends HandlerInterceptorAdapter
 			super.afterCompletion(request, response, handler, ex);
 			return;
 		}
-		saveAccessLog(request, response, clzName, methodName);
+//		saveAccessLog(request, response, clzName, methodName);
 		super.afterCompletion(request, response, handler, ex);
 	}
 

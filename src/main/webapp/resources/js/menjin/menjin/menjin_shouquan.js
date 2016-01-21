@@ -1,4 +1,6 @@
 var dg = $('#dg');
+var dgHeight = 450;
+
 jQuery(document).ready(function() {
 	page_init("forms");
 	initDg();
@@ -26,7 +28,8 @@ function qxsq() {
 }
 
 function initTree() {
-	$.fn.zTree.init($("#treeDemo"), treeSetting, zNodes);
+	$("#tree").css('height', dgHeight + 'px');
+	$.fn.zTree.init($("#tree"), treeSetting, zNodes);
 }
 
 function initDg() {
@@ -43,10 +46,6 @@ function initDg() {
 	}, {
 		field : 'itemid',
 		title : '姓名',
-		width : 100
-	}, {
-		field : 'productid',
-		title : '公司',
 		width : 100
 	}, {
 		field : 'listprice',

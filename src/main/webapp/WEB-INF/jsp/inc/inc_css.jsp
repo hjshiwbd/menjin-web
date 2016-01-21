@@ -16,5 +16,5 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/js/gritter/css/jquery.gritter.css" />
 <!-- FONTS -->
 <link href='${pageContext.request.contextPath}/resources/css/external/font/login-font-css.css' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/js/jquery-easyui-1.4.4/themes/bootstrap/easyui.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/js/jquery-easyui-1.4.4/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/js/jquery-easyui-1.4.2/themes/bootstrap/easyui.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/js/jquery-easyui-1.4.2/themes/icon.css">
