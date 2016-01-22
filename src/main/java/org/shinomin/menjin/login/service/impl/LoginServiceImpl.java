@@ -23,8 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 @Service
-public class LoginServiceImpl implements ILoginService
-{
+public class LoginServiceImpl implements ILoginService {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Autowired
@@ -35,14 +34,12 @@ public class LoginServiceImpl implements ILoginService
 	private IUserService userService;
 
 	@Override
-	public boolean isLogined()
-	{
+	public boolean isLogined() {
 		return loginSession.getLoginUser() != null;
 	}
 
 	@Override
-	public void afterLoginSuccess(HttpServletRequest request, UserBean user)
-	{
+	public void afterLoginSuccess(HttpServletRequest request, UserBean user) {
 		loginSession.setLoginUser(user);
 
 		request.getSession().setAttribute(MenjinSessionConstant.SESSION_USER, user);
@@ -63,13 +60,10 @@ public class LoginServiceImpl implements ILoginService
 	 * @param list
 	 * @return
 	 */
-	private List<MenuBean> treeFormat(List<MenuBean> list)
-	{
+	private List<MenuBean> treeFormat(List<MenuBean> list) {
 		List<MenuBean> roots = new ArrayList<>();
-		for (MenuBean menu1 : list)
-		{
-			if ("1".equals(menu1.getStatus()) && "root".equals(menu1.getPid()))
-			{
+		for (MenuBean menu1 : list) {
+			if ("1".equals(menu1.getStatus()) && "root".equals(menu1.getPid())) {
 				roots.add(recursive(list, menu1));
 			}
 		}
@@ -84,13 +78,10 @@ public class LoginServiceImpl implements ILoginService
 	 * @param menu1
 	 * @return
 	 */
-	private MenuBean recursive(List<MenuBean> list, MenuBean menu1)
-	{
+	private MenuBean recursive(List<MenuBean> list, MenuBean menu1) {
 		List<MenuBean> children = new ArrayList<>();
-		for (MenuBean menu2 : list)
-		{
-			if (menu1.getId().equals(menu2.getPid()))
-			{
+		for (MenuBean menu2 : list) {
+			if (menu1.getId().equals(menu2.getPid())) {
 				recursive(list, menu2);
 				children.add(menu2);
 			}
@@ -100,36 +91,26 @@ public class LoginServiceImpl implements ILoginService
 	}
 
 	@Override
-	public UserBean queryLoginUser(UserBean user) throws UserNotFoundException
-	{
-		if (user == null || StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getPassword()))
-		{
+	public UserBean queryLoginUser(UserBean user) throws UserNotFoundException {
+		if (user == null || StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getPassword())) {
 			throw new IllegalArgumentException("invalid param");
 		}
 
 		UserBean search = new UserBean();
 		search.setUsername(user.getUsername());
 		List<UserBean> list = userService.selectList(search);
-		if (list.size() == 1)
-		{
+		if (list.size() == 1) {
 			UserBean dbuser = list.get(0);
 			String encryptedPass = CryptogramUtil.encryptHexStr(user.getPassword());
-			if (dbuser.getPassword().equals(encryptedPass))
-			{
+			if (dbuser.getPassword().equals(encryptedPass)) {
 				return dbuser;
-			}
-			else
-			{
+			} else {
 				logger.info("user login password error:{}", user.getUsername());
 				throw new UserNotFoundException("登录信息有误，请重新登录");
 			}
-		}
-		else if (list.size() > 1)
-		{
+		} else if (list.size() > 1) {
 			// 暂不处理,数据库username字段唯一
-		}
-		else
-		{
+		} else {
 			// not exists
 			logger.info("user not exists:{}", user.getUsername());
 			throw new UserNotFoundException("登录信息有误，请重新登录");
@@ -138,32 +119,22 @@ public class LoginServiceImpl implements ILoginService
 	}
 
 	@Override
-	public ModelAndView doLogin(HttpServletRequest request, UserBean user)
-	{
+	public ModelAndView doLogin(HttpServletRequest request, UserBean user) {
 		ModelAndView model = new ModelAndView();
-
 		String errMsg = "";
-
-		try
-		{
-			if (checkParam(user))
-			{
-				UserBean loginedUser = queryLoginUser(user);
+		try {
+			if (checkParam(user)) {
+				UserBean loginedUser = new UserBean(); //queryLoginUser(user);
+				loginedUser.setUsername(user.getUsername());
 				afterLoginSuccess(request, loginedUser);
 				model.setViewName("redirect:/");
 				return model;
 			}
-		}
-		catch (ValidationException e)
-		{
+		} catch (ValidationException e) {
 			errMsg = e.getMessage();
-		}
-		catch (UserNotFoundException e)
-		{
-			errMsg = e.getMessage();
-		}
-		catch (Exception e)
-		{
+//		} catch (UserNotFoundException e) {
+//			errMsg = e.getMessage();
+		} catch (Exception e) {
 			errMsg = "系统异常，请稍候再试";
 		}
 		model.addObject("errMsg", errMsg);
@@ -172,15 +143,12 @@ public class LoginServiceImpl implements ILoginService
 		return model;
 	}
 
-	private boolean checkParam(UserBean user) throws ValidationException
-	{
-		if (StringUtils.isBlank(user.getUsername()))
-		{
+	private boolean checkParam(UserBean user) throws ValidationException {
+		if (StringUtils.isBlank(user.getUsername())) {
 			logger.info("username is empty");
 			throw new ValidationException("登录名不能为空");
 		}
-		if (StringUtils.isBlank(user.getPassword()))
-		{
+		if (StringUtils.isBlank(user.getPassword())) {
 			logger.info("password is empty");
 			throw new ValidationException("密码不能为空");
 		}

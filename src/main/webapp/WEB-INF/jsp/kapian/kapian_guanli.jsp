@@ -35,10 +35,10 @@
 									<!-- STYLER -->
 									<!-- /STYLER -->
 									<div class="clearfix">
-										<h3 class="content-title pull-left">门禁授权</h3>
+										<h3 class="content-title pull-left">卡片管理</h3>
 									</div>
 									<div class="divide-20"></div>
-									<div class="description">设置或者收回员工访问门禁的权限</div>
+									<div class="description">修改卡片信息。冻结解冻卡片</div>
 								</div>
 							</div>
 						</div>

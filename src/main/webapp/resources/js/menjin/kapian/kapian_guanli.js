@@ -17,6 +17,10 @@ function initDg() {
 		field : '',
 		checkbox : true
 	}, {
+		field : 'attr1',
+		title : '卡号',
+		width : 100
+	}, {
 		field : 'itemid',
 		title : '姓名',
 		width : 100
@@ -33,9 +37,12 @@ function initDg() {
 		title : '工号',
 		width : 100
 	}, {
-		field : 'attr1',
-		title : '卡号',
-		width : 100
+		field : 'gl',
+		title : '管理',
+		width : 100,
+		formatter : function() {
+			return '<a href="#">删除</a> <a href="#">冻结</a> <a href="#">解冻</a>';
+		}
 	} ];
 	var cols = [ col ];
 	var set = dgSetting1(url, cols);
