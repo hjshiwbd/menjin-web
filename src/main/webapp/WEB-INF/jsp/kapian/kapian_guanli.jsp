@@ -49,7 +49,7 @@
 								<div class="box border primary">
 									<div class="box-title">
 										<h4>
-											<i class="fa fa-bars"></i>门禁设置
+											<i class="fa fa-bars"></i>卡片管理
 										</h4>
 										<div class="tools hidden-xs">
 											<a href="#box-config" data-toggle="modal" class="config"> <i class="fa fa-cog"></i>
