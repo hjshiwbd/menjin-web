@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>anonymous complex typeµÄ Java Àà¡£
+ * <p>anonymous complex typeçš„ Java ç±»ã€‚
  * 
- * <p>ÒÔÏÂÄ£Ê½Æ¬¶ÎÖ¸¶¨°üº¬ÔÚ´ËÀàÖĞµÄÔ¤ÆÚÄÚÈİ¡£
+ * <p>ä»¥ä¸‹æ¨¡å¼ç‰‡æ®µæŒ‡å®šåŒ…å«åœ¨æ­¤ç±»ä¸­çš„é¢„æœŸå†…å®¹ã€‚
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -55,7 +55,7 @@ public class AddReaderToCard {
     protected JAXBElement<String> inStrTEMPACCESSSTARTTIME;
 
     /**
-     * »ñÈ¡inStrCardNOÊôĞÔµÄÖµ¡£
+     * è·å–inStrCardNOå±æ€§çš„å€¼ã€‚
      * 
      * @return
      *     possible object is
@@ -67,7 +67,7 @@ public class AddReaderToCard {
     }
 
     /**
-     * ÉèÖÃinStrCardNOÊôĞÔµÄÖµ¡£
+     * è®¾ç½®inStrCardNOå±æ€§çš„å€¼ã€‚
      * 
      * @param value
      *     allowed object is
@@ -79,7 +79,7 @@ public class AddReaderToCard {
     }
 
     /**
-     * »ñÈ¡inStrReaderIDÊôĞÔµÄÖµ¡£
+     * è·å–inStrReaderIDå±æ€§çš„å€¼ã€‚
      * 
      * @return
      *     possible object is
@@ -91,7 +91,7 @@ public class AddReaderToCard {
     }
 
     /**
-     * ÉèÖÃinStrReaderIDÊôĞÔµÄÖµ¡£
+     * è®¾ç½®inStrReaderIDå±æ€§çš„å€¼ã€‚
      * 
      * @param value
      *     allowed object is
@@ -103,7 +103,7 @@ public class AddReaderToCard {
     }
 
     /**
-     * »ñÈ¡inStrTimeZoneIDÊôĞÔµÄÖµ¡£
+     * è·å–inStrTimeZoneIDå±æ€§çš„å€¼ã€‚
      * 
      * @return
      *     possible object is
@@ -115,7 +115,7 @@ public class AddReaderToCard {
     }
 
     /**
-     * ÉèÖÃinStrTimeZoneIDÊôĞÔµÄÖµ¡£
+     * è®¾ç½®inStrTimeZoneIDå±æ€§çš„å€¼ã€‚
      * 
      * @param value
      *     allowed object is
@@ -127,7 +127,7 @@ public class AddReaderToCard {
     }
 
     /**
-     * »ñÈ¡inStrTEMPACCESSÊôĞÔµÄÖµ¡£
+     * è·å–inStrTEMPACCESSå±æ€§çš„å€¼ã€‚
      * 
      * @return
      *     possible object is
@@ -139,7 +139,7 @@ public class AddReaderToCard {
     }
 
     /**
-     * ÉèÖÃinStrTEMPACCESSÊôĞÔµÄÖµ¡£
+     * è®¾ç½®inStrTEMPACCESSå±æ€§çš„å€¼ã€‚
      * 
      * @param value
      *     allowed object is
@@ -151,7 +151,7 @@ public class AddReaderToCard {
     }
 
     /**
-     * »ñÈ¡inStrTEMPACCESSSTARTTIMEÊôĞÔµÄÖµ¡£
+     * è·å–inStrTEMPACCESSSTARTTIMEå±æ€§çš„å€¼ã€‚
      * 
      * @return
      *     possible object is
@@ -163,7 +163,7 @@ public class AddReaderToCard {
     }
 
     /**
-     * ÉèÖÃinStrTEMPACCESSSTARTTIMEÊôĞÔµÄÖµ¡£
+     * è®¾ç½®inStrTEMPACCESSSTARTTIMEå±æ€§çš„å€¼ã€‚
      * 
      * @param value
      *     allowed object is

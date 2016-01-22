@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>anonymous complex typeµÄ Java Àà¡£
+ * <p>anonymous complex typeçš„ Java ç±»ã€‚
  * 
- * <p>ÒÔÏÂÄ£Ê½Æ¬¶ÎÖ¸¶¨°üº¬ÔÚ´ËÀàÖĞµÄÔ¤ÆÚÄÚÈİ¡£
+ * <p>ä»¥ä¸‹æ¨¡å¼ç‰‡æ®µæŒ‡å®šåŒ…å«åœ¨æ­¤ç±»ä¸­çš„é¢„æœŸå†…å®¹ã€‚
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -39,7 +39,7 @@ public class GetAllCompanysResponse {
     protected JAXBElement<String> outStructCompanys;
 
     /**
-     * »ñÈ¡outStructCompanysÊôĞÔµÄÖµ¡£
+     * è·å–outStructCompanyså±æ€§çš„å€¼ã€‚
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class GetAllCompanysResponse {
     }
 
     /**
-     * ÉèÖÃoutStructCompanysÊôĞÔµÄÖµ¡£
+     * è®¾ç½®outStructCompanyså±æ€§çš„å€¼ã€‚
      * 
      * @param value
      *     allowed object is

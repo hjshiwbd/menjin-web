@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>anonymous complex typeµÄ Java Àà¡£
+ * <p>anonymous complex typeçš„ Java ç±»ã€‚
  * 
- * <p>ÒÔÏÂÄ£Ê½Æ¬¶ÎÖ¸¶¨°üº¬ÔÚ´ËÀàÖĞµÄÔ¤ÆÚÄÚÈİ¡£
+ * <p>ä»¥ä¸‹æ¨¡å¼ç‰‡æ®µæŒ‡å®šåŒ…å«åœ¨æ­¤ç±»ä¸­çš„é¢„æœŸå†…å®¹ã€‚
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -47,7 +47,7 @@ public class QueryCards {
     protected JAXBElement<String> inStrValue;
 
     /**
-     * »ñÈ¡inStrFieldÊôĞÔµÄÖµ¡£
+     * è·å–inStrFieldå±æ€§çš„å€¼ã€‚
      * 
      * @return
      *     possible object is
@@ -59,7 +59,7 @@ public class QueryCards {
     }
 
     /**
-     * ÉèÖÃinStrFieldÊôĞÔµÄÖµ¡£
+     * è®¾ç½®inStrFieldå±æ€§çš„å€¼ã€‚
      * 
      * @param value
      *     allowed object is
@@ -71,7 +71,7 @@ public class QueryCards {
     }
 
     /**
-     * »ñÈ¡inStrOperÊôĞÔµÄÖµ¡£
+     * è·å–inStrOperå±æ€§çš„å€¼ã€‚
      * 
      * @return
      *     possible object is
@@ -83,7 +83,7 @@ public class QueryCards {
     }
 
     /**
-     * ÉèÖÃinStrOperÊôĞÔµÄÖµ¡£
+     * è®¾ç½®inStrOperå±æ€§çš„å€¼ã€‚
      * 
      * @param value
      *     allowed object is
@@ -95,7 +95,7 @@ public class QueryCards {
     }
 
     /**
-     * »ñÈ¡inStrValueÊôĞÔµÄÖµ¡£
+     * è·å–inStrValueå±æ€§çš„å€¼ã€‚
      * 
      * @return
      *     possible object is
@@ -107,7 +107,7 @@ public class QueryCards {
     }
 
     /**
-     * ÉèÖÃinStrValueÊôĞÔµÄÖµ¡£
+     * è®¾ç½®inStrValueå±æ€§çš„å€¼ã€‚
      * 
      * @param value
      *     allowed object is

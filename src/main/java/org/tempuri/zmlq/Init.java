@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>anonymous complex typeµÄ Java Àà¡£
+ * <p>anonymous complex typeçš„ Java ç±»ã€‚
  * 
- * <p>ÒÔÏÂÄ£Ê½Æ¬¶ÎÖ¸¶¨°üº¬ÔÚ´ËÀàÖĞµÄÔ¤ÆÚÄÚÈİ¡£
+ * <p>ä»¥ä¸‹æ¨¡å¼ç‰‡æ®µæŒ‡å®šåŒ…å«åœ¨æ­¤ç±»ä¸­çš„é¢„æœŸå†…å®¹ã€‚
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -59,7 +59,7 @@ public class Init {
     protected JAXBElement<String> inStrPCUser;
 
     /**
-     * »ñÈ¡inStrDBAddrÊôĞÔµÄÖµ¡£
+     * è·å–inStrDBAddrå±æ€§çš„å€¼ã€‚
      * 
      * @return
      *     possible object is
@@ -71,7 +71,7 @@ public class Init {
     }
 
     /**
-     * ÉèÖÃinStrDBAddrÊôĞÔµÄÖµ¡£
+     * è®¾ç½®inStrDBAddrå±æ€§çš„å€¼ã€‚
      * 
      * @param value
      *     allowed object is
@@ -83,7 +83,7 @@ public class Init {
     }
 
     /**
-     * »ñÈ¡inStrDBNameÊôĞÔµÄÖµ¡£
+     * è·å–inStrDBNameå±æ€§çš„å€¼ã€‚
      * 
      * @return
      *     possible object is
@@ -95,7 +95,7 @@ public class Init {
     }
 
     /**
-     * ÉèÖÃinStrDBNameÊôĞÔµÄÖµ¡£
+     * è®¾ç½®inStrDBNameå±æ€§çš„å€¼ã€‚
      * 
      * @param value
      *     allowed object is
@@ -107,7 +107,7 @@ public class Init {
     }
 
     /**
-     * »ñÈ¡inStrDBUserÊôĞÔµÄÖµ¡£
+     * è·å–inStrDBUserå±æ€§çš„å€¼ã€‚
      * 
      * @return
      *     possible object is
@@ -119,7 +119,7 @@ public class Init {
     }
 
     /**
-     * ÉèÖÃinStrDBUserÊôĞÔµÄÖµ¡£
+     * è®¾ç½®inStrDBUserå±æ€§çš„å€¼ã€‚
      * 
      * @param value
      *     allowed object is
@@ -131,7 +131,7 @@ public class Init {
     }
 
     /**
-     * »ñÈ¡inStrDBPasswordÊôĞÔµÄÖµ¡£
+     * è·å–inStrDBPasswordå±æ€§çš„å€¼ã€‚
      * 
      * @return
      *     possible object is
@@ -143,7 +143,7 @@ public class Init {
     }
 
     /**
-     * ÉèÖÃinStrDBPasswordÊôĞÔµÄÖµ¡£
+     * è®¾ç½®inStrDBPasswordå±æ€§çš„å€¼ã€‚
      * 
      * @param value
      *     allowed object is
@@ -155,7 +155,7 @@ public class Init {
     }
 
     /**
-     * »ñÈ¡inStrPCAddrÊôĞÔµÄÖµ¡£
+     * è·å–inStrPCAddrå±æ€§çš„å€¼ã€‚
      * 
      * @return
      *     possible object is
@@ -167,7 +167,7 @@ public class Init {
     }
 
     /**
-     * ÉèÖÃinStrPCAddrÊôĞÔµÄÖµ¡£
+     * è®¾ç½®inStrPCAddrå±æ€§çš„å€¼ã€‚
      * 
      * @param value
      *     allowed object is
@@ -179,7 +179,7 @@ public class Init {
     }
 
     /**
-     * »ñÈ¡inStrPCUserÊôĞÔµÄÖµ¡£
+     * è·å–inStrPCUserå±æ€§çš„å€¼ã€‚
      * 
      * @return
      *     possible object is
@@ -191,7 +191,7 @@ public class Init {
     }
 
     /**
-     * ÉèÖÃinStrPCUserÊôĞÔµÄÖµ¡£
+     * è®¾ç½®inStrPCUserå±æ€§çš„å€¼ã€‚
      * 
      * @param value
      *     allowed object is
