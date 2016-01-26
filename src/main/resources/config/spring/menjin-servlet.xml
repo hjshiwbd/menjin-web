@@ -68,6 +68,7 @@
 					<list>
 						<value><![CDATA[LoginController.login]]></value>
 						<value><![CDATA[LoginController.doLogin]]></value>
+						<value><![CDATA[NotifyController.*]]></value>
 					</list>
 				</property>
 			</bean>
