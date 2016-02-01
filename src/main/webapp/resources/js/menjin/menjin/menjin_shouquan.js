@@ -5,9 +5,40 @@ jQuery(document).ready(function() {
 	page_init("forms");
 	initDg();
 	initTree();
+	// 授权
 	sq();
+	// 取消授权
 	qxsq();
+
+	// 日期
+	initRq();
+	
+	//查询人员
+	search();
 });
+
+/**
+ * 查询功能
+ */
+function search() {
+	var option = {
+		form : '#searchform',
+		isdatagrid : true,
+		validation : function() {
+			return $('#searchform').form('validate');
+		},
+		dg : dg
+	};
+//	$('#cx').tjbd(option);
+}
+
+function initRq() {
+	$('.issue_date').datebox({
+//		editable : false,
+		width : 235,
+		height : 34
+	});
+}
 
 /**
  * 授权
@@ -39,25 +70,26 @@ function initDg() {
 	// method : 'get'
 	// });
 
-	var url = '/menjin/data/datagrid_data1.json';
+	// var url = '/menjin/data/datagrid_data1.json';
+	var url = cu('/menjin/query_hw_person_dg');
 	var col = [ {
 		field : '',
 		checkbox : true
 	}, {
-		field : 'itemid',
-		title : '姓名',
+		field : 'lname',
+		title : '编号',
 		width : 100
 	}, {
-		field : 'listprice',
-		title : '部门',
+		field : 'fname',
+		title : '姓名/名称',
 		width : 100
 	}, {
-		field : 'unitcost',
-		title : '工号',
+		field : 'issue_date',
+		title : '生效日期',
 		width : 100
 	}, {
-		field : 'attr1',
-		title : '卡号',
+		field : 'expire_date',
+		title : '失效日期',
 		width : 100
 	} ];
 	var cols = [ col ];

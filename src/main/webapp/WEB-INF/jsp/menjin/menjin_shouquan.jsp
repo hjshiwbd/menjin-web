@@ -61,25 +61,24 @@
 									</div>
 									<div class="box-body big">
 										<div class="row">
-											<form class="" action="">
+											<form id="searchForm" class="" action="">
+												<div class="form-group col-xs-2">
+													<label class="col-xs-6">编号</label><input type="text" class="form-control">
+												</div>
 												<div class="form-group col-xs-2">
 													<label class="col-xs-6">姓名</label><input type="text" class="form-control">
 												</div>
-												<div class="form-group col-xs-2">
-													<label class="col-xs-6">公司</label><input type="text" class="form-control">
-												</div>
-												<div class="form-group col-xs-2">
-													<label class="col-xs-6">部门</label><input type="text" class="form-control">
-												</div>
-												<div class="form-group col-xs-2">
-													<label class="col-xs-6">工号</label><input type="text" class="form-control">
-												</div>
-												<div class="form-group col-xs-2">
-													<label class="col-xs-6">卡号</label><input type="text" class="form-control">
-												</div>
+<!-- 												<div class="form-group col-xs-2"> -->
+<!-- 													<label class="col-xs-6">生效日期</label><input type="text" name="issue_date1" class="issue_date form-control"> 到 <input type="text" -->
+<!-- 														id="issue_date2" name="issue_date2" class="form-control issue_date"> -->
+<!-- 												</div> -->
+<!-- 												<div class="form-group col-xs-2"> -->
+<!-- 													<label class="col-xs-6">失效日期</label><input type="text" name="issue_date1" class="issue_date form-control"> 到 <input type="text" -->
+<!-- 														name="issue_date2" class="issue_date form-control"> -->
+<!-- 												</div> -->
 												<div class="clearfix"></div>
 												<div class="form-group col-xs-2">
-													<button type="button" class="btn btn-primary">查询人员</button>
+													<button id="cx" type="button" class="btn btn-primary">查询人员</button>
 												</div>
 											</form>
 										</div>

@@ -49,6 +49,7 @@
 <!-- CUSTOM SCRIPT -->
 <script src="${pageContext.request.contextPath}/resources/js/script.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/menjin/common/common.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/menjin/common/tjbd.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/menjin/common/common_eu.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/menjin/common/global.js"></script>
 <!-- /JAVASCRIPTS -->

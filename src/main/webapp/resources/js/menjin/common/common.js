@@ -98,3 +98,20 @@ function arrayAppend(arr) {
 	}
 	return arr;
 }
+
+/**
+ * short for console.log
+ * 
+ * @param msg
+ * @returns {Boolean}
+ */
+function clog() {
+	if (window.console && window.console.log && arguments.length > 0) {
+		var s = '';
+		for (var i = 0; i < arguments.length; i++) {
+			s += ',arguments[' + i + ']';
+		}
+		s = s.substring(1);
+		eval('console.log(' + s + ')');
+	}
+}

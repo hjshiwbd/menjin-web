@@ -9,6 +9,7 @@
 
 	<properties>
 		<spring-version>4.2.1.RELEASE</spring-version>
+		<cxf.version>3.1.4</cxf.version>
 	</properties>
 
 	<dependencies>
@@ -79,6 +80,16 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
 	</dependencies>
 
 	<profiles>
