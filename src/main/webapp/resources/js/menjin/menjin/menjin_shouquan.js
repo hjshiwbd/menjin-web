@@ -15,7 +15,7 @@ jQuery(document).ready(function() {
 	initRq();
 
 	// 查询人员
-	// search();
+	search();
 });
 
 /**
@@ -23,14 +23,14 @@ jQuery(document).ready(function() {
  */
 function search() {
 	var option = {
-		form : '#searchform',
+		form : '#searchForm',
 		isdatagrid : true,
 		validation : function() {
 			return $('#searchform').form('validate');
 		},
 		dg : dg
 	};
-	// $('#cx').tjbd(option);
+	$('#cx').tjbd(option);
 }
 
 function initRq() {

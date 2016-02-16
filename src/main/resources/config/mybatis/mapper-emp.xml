@@ -90,7 +90,7 @@
 				and t.empsex = #{empsex,jdbcType=VARCHAR}
 			</if>
 			<if test="empname != null and empname != ''">
-				and t.empname = #{empname,jdbcType=VARCHAR}
+				and t.empname like '%'+#{empname,jdbcType=VARCHAR}+'%'
 			</if>
 			<if test="empbirthday!=null">
 				and t.empbirthday = #{empbirthday,jdbcType=TIMESTAMP}

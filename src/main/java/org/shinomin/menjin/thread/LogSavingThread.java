@@ -33,7 +33,7 @@ public class LogSavingThread implements Runnable
 			Serializable log = accessLogService.initAccessLog(request,
 			        clzName, methodName, userid, logContent);
 			accessLogService.insertAccessLog(log);
-			logger.info("accesslog saved");
+			logger.debug("accesslog saved");
 		}
 	}
 
