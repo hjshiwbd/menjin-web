@@ -74,7 +74,7 @@
 		<appender-ref ref="file" />
 		<appender-ref ref="stdout" />
 	</logger>
-	<logger name="commons.tool.utils" additivity="false">
+	<logger name="org.shinomin.commons" additivity="false">
 		<level value="error" />
 		<appender-ref ref="file" />
 		<appender-ref ref="stdout" />

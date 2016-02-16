@@ -1,5 +1,6 @@
 var dg = $('#dg');
 var dgHeight = 450;
+var treeObj;
 
 jQuery(document).ready(function() {
 	page_init("forms");
@@ -12,9 +13,9 @@ jQuery(document).ready(function() {
 
 	// 日期
 	initRq();
-	
-	//查询人员
-	search();
+
+	// 查询人员
+	// search();
 });
 
 /**
@@ -29,12 +30,12 @@ function search() {
 		},
 		dg : dg
 	};
-//	$('#cx').tjbd(option);
+	// $('#cx').tjbd(option);
 }
 
 function initRq() {
 	$('.issue_date').datebox({
-//		editable : false,
+		// editable : false,
 		width : 235,
 		height : 34
 	});
@@ -60,7 +61,8 @@ function qxsq() {
 
 function initTree() {
 	$("#tree").css('height', dgHeight + 'px');
-	$.fn.zTree.init($("#tree"), treeSetting, zNodes);
+	$.fn.zTree.init($("#tree"), treeSetting, acccodeList);
+	treeObj = $.fn.zTree.getZTreeObj("tree");
 }
 
 function initDg() {
@@ -76,31 +78,59 @@ function initDg() {
 		field : '',
 		checkbox : true
 	}, {
-		field : 'lname',
+		field : 'empno',
 		title : '编号',
 		width : 100
 	}, {
-		field : 'fname',
+		field : 'empname',
 		title : '姓名/名称',
 		width : 100
-	}, {
-		field : 'issue_date',
-		title : '生效日期',
-		width : 100
-	}, {
-		field : 'expire_date',
-		title : '失效日期',
-		width : 100
-	} ];
+	}
+	// ,{
+	// field : 'issue_date',
+	// title : '生效日期',
+	// width : 100
+	// }, {
+	// field : 'expire_date',
+	// title : '失效日期',
+	// width : 100
+	// }
+	];
 	var cols = [ col ];
 	var set = dgSetting1(url, cols);
 	set['height'] = 450;
+	set['singleSelect'] = true;
 	set['onLoadSuccess'] = function() {
 		// 鼠标划过显示title
 		$('.datagrid-cell').each(function(i, o) {
 			var txt = $(o).text();
 			$(o).attr('title', txt);
 		});
+	};
+	// 点击行,显示人员访问码权限
+	set['onClickRow'] = function(index, row) {
+		treeObj.checkAllNodes(false);// 取消所有已勾选
+		var url = cu('/menjin/person_acccode');
+		var options = {
+			url : url,
+			param : {
+				empno : row.empno,
+				empcardno : row.empcardno
+			},
+			callback : function(resp) {
+				if (resp.result == '1') {
+					var acclist = resp.object;
+					for ( var key in acclist) {
+						var acc = acclist[key];
+						var node = treeObj.getNodeByParam("id", acc.id, null);
+						treeObj.checkNode(node, true, true);
+					}
+				} else {
+					eualert('此人尚无任何权限');
+				}
+			}
+		};
+		commonAjax(options);
 	};
 	// set['toolbar'] = [ {
 	// text : '添加人员到列表',
@@ -122,69 +152,14 @@ var treeSetting = {
 		}
 	},
 	data : {
+		key : {
+			name : 'descrp'
+		},
 		simpleData : {
-			enable : true
+			enable : true,
+			idKey : "id",
+			pIdKey : "",
+			rootPId : null
 		}
 	}
 };
-
-var zNodes = [ {
-	id : 1,
-	pId : 0,
-	name : "门禁 1",
-	open : true
-}, {
-	id : 11,
-	pId : 1,
-	name : "门禁 1-1",
-	open : true
-}, {
-	id : 111,
-	pId : 11,
-	name : "门禁 1-1-1"
-}, {
-	id : 112,
-	pId : 11,
-	name : "门禁 1-1-2"
-}, {
-	id : 12,
-	pId : 1,
-	name : "门禁 1-2",
-	open : true
-}, {
-	id : 121,
-	pId : 12,
-	name : "门禁 1-2-1"
-}, {
-	id : 122,
-	pId : 12,
-	name : "门禁 1-2-2"
-}, {
-	id : 2,
-	pId : 0,
-	name : "门禁 2",
-	checked : true,
-	open : true
-}, {
-	id : 21,
-	pId : 2,
-	name : "门禁 2-1"
-}, {
-	id : 22,
-	pId : 2,
-	name : "门禁 2-2",
-	open : true
-}, {
-	id : 221,
-	pId : 22,
-	name : "门禁 2-2-1",
-	checked : true
-}, {
-	id : 222,
-	pId : 22,
-	name : "门禁 2-2-2"
-}, {
-	id : 23,
-	pId : 2,
-	name : "门禁 2-3"
-} ];

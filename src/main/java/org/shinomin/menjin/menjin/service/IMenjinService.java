@@ -1,6 +1,6 @@
 package org.shinomin.menjin.menjin.service;
 
-import org.shinomin.menjin.bean.HwPersonBean;
+import org.shinomin.menjin.bean.EmpBean;
 import org.springframework.web.servlet.ModelAndView;
 
 public interface IMenjinService {
@@ -14,6 +14,8 @@ public interface IMenjinService {
 	 * @param rows
 	 * @return
 	 */
-	String queryHwPersonEudg(Integer page, Integer rows, HwPersonBean person);
+	String queryHwPersonEudg(Integer page, Integer rows, EmpBean emp);
+
+	String queryPersonAcccode(EmpBean emp);
 
 }

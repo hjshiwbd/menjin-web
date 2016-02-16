@@ -15,6 +15,9 @@
 <!-- SELECT2 -->
 <link rel="stylesheet" type="text/css" href="<%=path%>/resources/js/select2/select2.min.css" />
 <link rel="stylesheet" href="<%=path%>/resources/js/zTree_v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+<style type="text/css">
+.ztree-wrap {height:470px; overflow:auto;}
+</style>
 </head>
 <body>
 	<!-- HEADER -->
@@ -60,14 +63,14 @@
 										</div>
 									</div>
 									<div class="box-body big">
-										<div class="row">
-											<form id="searchForm" class="" action="">
-												<div class="form-group col-xs-2">
-													<label class="col-xs-6">编号</label><input type="text" class="form-control">
-												</div>
-												<div class="form-group col-xs-2">
-													<label class="col-xs-6">姓名</label><input type="text" class="form-control">
-												</div>
+<!-- 										<div class="row"> -->
+<!-- 											<form id="searchForm" class="" action=""> -->
+<!-- 												<div class="form-group col-xs-2"> -->
+<!-- 													<label class="col-xs-6">编号</label><input type="text" class="form-control"> -->
+<!-- 												</div> -->
+<!-- 												<div class="form-group col-xs-2"> -->
+<!-- 													<label class="col-xs-6">姓名</label><input type="text" class="form-control"> -->
+<!-- 												</div> -->
 <!-- 												<div class="form-group col-xs-2"> -->
 <!-- 													<label class="col-xs-6">生效日期</label><input type="text" name="issue_date1" class="issue_date form-control"> 到 <input type="text" -->
 <!-- 														id="issue_date2" name="issue_date2" class="form-control issue_date"> -->
@@ -76,12 +79,12 @@
 <!-- 													<label class="col-xs-6">失效日期</label><input type="text" name="issue_date1" class="issue_date form-control"> 到 <input type="text" -->
 <!-- 														name="issue_date2" class="issue_date form-control"> -->
 <!-- 												</div> -->
-												<div class="clearfix"></div>
-												<div class="form-group col-xs-2">
-													<button id="cx" type="button" class="btn btn-primary">查询人员</button>
-												</div>
-											</form>
-										</div>
+<!-- 												<div class="clearfix"></div> -->
+<!-- 												<div class="form-group col-xs-2"> -->
+<!-- 													<button id="cx" type="button" class="btn btn-primary">查询人员</button> -->
+<!-- 												</div> -->
+<!-- 											</form> -->
+<!-- 										</div> -->
 										<div class="row">
 											<div class="col-md-8">
 												<!-- BOX -->
@@ -107,7 +110,7 @@
 														</h4>
 														<div class="tools"></div>
 													</div>
-													<div class="box-body">
+													<div class="box-body ztree-wrap">
 														<ul id="tree" class="ztree"></ul>
 													</div>
 												</div>
@@ -147,5 +150,6 @@
 	<script type="text/javascript" src="<%=path%>/resources/js/zTree_v3/js/jquery.ztree.core-3.5.js"></script>
 	<script type="text/javascript" src="<%=path%>/resources/js/zTree_v3/js/jquery.ztree.excheck-3.5.js"></script>
 	<script type="text/javascript" src="<%=path%>/resources/js/menjin/menjin/menjin_shouquan.js"></script>
+	${json_script}
 </body>
 </html>

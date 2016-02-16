@@ -26,6 +26,9 @@
 		<property name="password">
 			<value>${database.1.password}</value>
 		</property>
+		<property name="testWhileIdle">
+			<value>false</value>
+		</property>
 	</bean>
 
 	<!-- 事务 -->

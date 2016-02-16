@@ -1,6 +1,6 @@
 package org.shinomin.menjin.menjin.controller;
 
-import org.shinomin.menjin.bean.HwPersonBean;
+import org.shinomin.menjin.bean.EmpBean;
 import org.shinomin.menjin.menjin.service.IMenjinService;
 import org.shinomin.menjin.qqrz.service.IQqrzService;
 import org.shinomin.menjin.spring.request.RequestScope;
@@ -33,8 +33,8 @@ public class MenjinController {
 
 	@ResponseBody
 	@RequestMapping("/query_hw_person_dg")
-	public String queryHwPersonDg(Integer page, Integer rows, HwPersonBean person) throws Exception {
-		return menjinService.queryHwPersonEudg(page, rows, person);
+	public String queryHwPersonDg(Integer page, Integer rows, EmpBean emp) throws Exception {
+		return menjinService.queryHwPersonEudg(page, rows, emp);
 	}
 
 	/**
@@ -63,5 +63,17 @@ public class MenjinController {
 
 		model.setViewName("menjin/menjin_yckz");
 		return model;
+	}
+
+	/**
+	 * 查询人员访问码
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	@ResponseBody
+	@RequestMapping("/person_acccode")
+	public String personAcccode(EmpBean emp) throws Exception {
+		return menjinService.queryPersonAcccode(emp);
 	}
 }

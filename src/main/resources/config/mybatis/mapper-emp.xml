@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.shinomin.menjin.mapper.Emp">
+
+	<!-- resultMap -->
+	<resultMap id="EmpMap" type="EmpBean">
+		<result property="empid" column="empid" />
+		<result property="dptid" column="dptid" />
+		<result property="tdptid" column="tdptid" />
+		<result property="empno" column="empno" />
+		<result property="empcardno" column="empcardno" />
+		<result property="empsex" column="empsex" />
+		<result property="empname" column="empname" />
+		<result property="empbirthday" column="empbirthday" />
+		<result property="nationid" column="nationid" />
+		<result property="empidno" column="empidno" />
+		<result property="empstatusid" column="empstatusid" />
+		<result property="emptypeid" column="emptypeid" />
+		<result property="empcardtid" column="empcardtid" />
+		<result property="emppwd" column="emppwd" />
+		<result property="empbankno" column="empbankno" />
+		<result property="grdid" column="grdid" />
+		<result property="eduid" column="eduid" />
+		<result property="prfid" column="prfid" />
+		<result property="titid" column="titid" />
+		<result property="empgrpid" column="empgrpid" />
+		<result property="empphoto" column="empphoto" />
+		<result property="empchr1" column="empchr1" />
+		<result property="empchr2" column="empchr2" />
+		<result property="empchr3" column="empchr3" />
+		<result property="empnum1" column="empnum1" />
+		<result property="empnum2" column="empnum2" />
+		<result property="empnum3" column="empnum3" />
+		<result property="empbit1" column="empbit1" />
+		<result property="empbit2" column="empbit2" />
+		<result property="empbit3" column="empbit3" />
+		<result property="empcrtdby" column="empcrtdby" />
+		<result property="empcrtdday" column="empcrtdday" />
+		<result property="empmdby" column="empmdby" />
+		<result property="empmdday" column="empmdday" />
+		<result property="nationordno" column="nationordno" />
+		<result property="grdordno" column="grdordno" />
+		<result property="eduordno" column="eduordno" />
+		<result property="prfordno" column="prfordno" />
+		<result property="titordno" column="titordno" />
+		<result property="dptno" column="dptno" />
+		<result property="tdptno" column="tdptno" />
+		<result property="empmarrystatus" column="empmarrystatus" />
+		<result property="empmemo" column="empmemo" />
+		<result property="emplname" column="emplname" />
+		<result property="empename" column="empename" />
+		<result property="isdeleted" column="isdeleted" />
+		<result property="deletedday" column="deletedday" />
+		<result property="carcode" column="carcode" />
+		<result property="runcardcode" column="runcardcode" />
+		<result property="empicid" column="empicid" />
+		<result property="empname_spell" column="empname_spell" />
+	</resultMap>
+
+	<!-- select -->
+	<select id="select" parameterType="EmpBean" resultType="EmpBean">
+		select t.empid, t.dptid, t.tdptid, t.empno, t.empcardno, t.empsex,
+		t.empname, t.empbirthday, t.nationid, t.empidno, t.empstatusid,
+		t.emptypeid, t.empcardtid, t.emppwd, t.empbankno, t.grdid, t.eduid,
+		t.prfid, t.titid, t.empgrpid, t.empphoto, t.empchr1, t.empchr2,
+		t.empchr3, t.empnum1, t.empnum2, t.empnum3, t.empbit1, t.empbit2,
+		t.empbit3, t.empcrtdby, t.empcrtdday, t.empmdby, t.empmdday,
+		t.nationordno, t.grdordno, t.eduordno, t.prfordno, t.titordno,
+		t.dptno, t.tdptno, t.empmarrystatus, t.empmemo, t.emplname,
+		t.empename, t.isdeleted, t.deletedday, t.carcode, t.runcardcode,
+		t.empicid, t.empname_spell from Hrms_Emp t
+		<where>
+			<if test="empid!=null">
+				and t.empid = #{empid,jdbcType=NUMERIC}
+			</if>
+			<if test="dptid!=null">
+				and t.dptid = #{dptid,jdbcType=NUMERIC}
+			</if>
+			<if test="tdptid!=null">
+				and t.tdptid = #{tdptid,jdbcType=NUMERIC}
+			</if>
+			<if test="empno != null and empno != ''">
+				and t.empno = #{empno,jdbcType=VARCHAR}
+			</if>
+			<if test="empcardno != null and empcardno != ''">
+				and t.empcardno = #{empcardno,jdbcType=VARCHAR}
+			</if>
+			<if test="empsex != null and empsex != ''">
+				and t.empsex = #{empsex,jdbcType=VARCHAR}
+			</if>
+			<if test="empname != null and empname != ''">
+				and t.empname = #{empname,jdbcType=VARCHAR}
+			</if>
+			<if test="empbirthday!=null">
+				and t.empbirthday = #{empbirthday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="nationid!=null">
+				and t.nationid = #{nationid,jdbcType=NUMERIC}
+			</if>
+			<if test="empidno != null and empidno != ''">
+				and t.empidno = #{empidno,jdbcType=VARCHAR}
+			</if>
+			<if test="empstatusid!=null">
+				and t.empstatusid = #{empstatusid,jdbcType=NUMERIC}
+			</if>
+			<if test="emptypeid!=null">
+				and t.emptypeid = #{emptypeid,jdbcType=NUMERIC}
+			</if>
+			<if test="empcardtid!=null">
+				and t.empcardtid = #{empcardtid,jdbcType=NUMERIC}
+			</if>
+			<if test="emppwd != null and emppwd != ''">
+				and t.emppwd = #{emppwd,jdbcType=VARCHAR}
+			</if>
+			<if test="empbankno != null and empbankno != ''">
+				and t.empbankno = #{empbankno,jdbcType=VARCHAR}
+			</if>
+			<if test="grdid!=null">
+				and t.grdid = #{grdid,jdbcType=NUMERIC}
+			</if>
+			<if test="eduid!=null">
+				and t.eduid = #{eduid,jdbcType=NUMERIC}
+			</if>
+			<if test="prfid!=null">
+				and t.prfid = #{prfid,jdbcType=NUMERIC}
+			</if>
+			<if test="titid!=null">
+				and t.titid = #{titid,jdbcType=NUMERIC}
+			</if>
+			<if test="empgrpid!=null">
+				and t.empgrpid = #{empgrpid,jdbcType=NUMERIC}
+			</if>
+			<if test="empphoto != null and empphoto != ''">
+				and t.empphoto = #{empphoto,jdbcType=VARCHAR}
+			</if>
+			<if test="empchr1 != null and empchr1 != ''">
+				and t.empchr1 = #{empchr1,jdbcType=VARCHAR}
+			</if>
+			<if test="empchr2 != null and empchr2 != ''">
+				and t.empchr2 = #{empchr2,jdbcType=VARCHAR}
+			</if>
+			<if test="empchr3 != null and empchr3 != ''">
+				and t.empchr3 = #{empchr3,jdbcType=VARCHAR}
+			</if>
+			<if test="empnum1!=null">
+				and t.empnum1 = #{empnum1,jdbcType=NUMERIC}
+			</if>
+			<if test="empnum2!=null">
+				and t.empnum2 = #{empnum2,jdbcType=NUMERIC}
+			</if>
+			<if test="empnum3!=null">
+				and t.empnum3 = #{empnum3,jdbcType=NUMERIC}
+			</if>
+			<if test="empbit1!=null">
+				and t.empbit1 = #{empbit1,jdbcType=BIT}
+			</if>
+			<if test="empbit2!=null">
+				and t.empbit2 = #{empbit2,jdbcType=BIT}
+			</if>
+			<if test="empbit3!=null">
+				and t.empbit3 = #{empbit3,jdbcType=BIT}
+			</if>
+			<if test="empcrtdby != null and empcrtdby != ''">
+				and t.empcrtdby = #{empcrtdby,jdbcType=VARCHAR}
+			</if>
+			<if test="empcrtdday!=null">
+				and t.empcrtdday = #{empcrtdday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="empmdby != null and empmdby != ''">
+				and t.empmdby = #{empmdby,jdbcType=VARCHAR}
+			</if>
+			<if test="empmdday!=null">
+				and t.empmdday = #{empmdday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="nationordno!=null">
+				and t.nationordno = #{nationordno,jdbcType=NUMERIC}
+			</if>
+			<if test="grdordno!=null">
+				and t.grdordno = #{grdordno,jdbcType=NUMERIC}
+			</if>
+			<if test="eduordno!=null">
+				and t.eduordno = #{eduordno,jdbcType=NUMERIC}
+			</if>
+			<if test="prfordno!=null">
+				and t.prfordno = #{prfordno,jdbcType=NUMERIC}
+			</if>
+			<if test="titordno!=null">
+				and t.titordno = #{titordno,jdbcType=NUMERIC}
+			</if>
+			<if test="dptno != null and dptno != ''">
+				and t.dptno = #{dptno,jdbcType=VARCHAR}
+			</if>
+			<if test="tdptno != null and tdptno != ''">
+				and t.tdptno = #{tdptno,jdbcType=VARCHAR}
+			</if>
+			<if test="empmarrystatus!=null">
+				and t.empmarrystatus = #{empmarrystatus,jdbcType=NUMERIC}
+			</if>
+			<if test="empmemo != null and empmemo != ''">
+				and t.empmemo = #{empmemo,jdbcType=VARCHAR}
+			</if>
+			<if test="emplname != null and emplname != ''">
+				and t.emplname = #{emplname,jdbcType=VARCHAR}
+			</if>
+			<if test="empename != null and empename != ''">
+				and t.empename = #{empename,jdbcType=VARCHAR}
+			</if>
+			<if test="isdeleted != null and isdeleted != ''">
+				and t.isdeleted = #{isdeleted,jdbcType=VARCHAR}
+			</if>
+			<if test="deletedday!=null">
+				and t.deletedday = #{deletedday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="carcode != null and carcode != ''">
+				and t.carcode = #{carcode,jdbcType=VARCHAR}
+			</if>
+			<if test="runcardcode != null and runcardcode != ''">
+				and t.runcardcode = #{runcardcode,jdbcType=VARCHAR}
+			</if>
+			<if test="empicid != null and empicid != ''">
+				and t.empicid = #{empicid,jdbcType=VARCHAR}
+			</if>
+			<if test="empname_spell != null and empname_spell != ''">
+				and t.empname_spell = #{empname_spell,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<!-- insert -->
+	<insert id="insert" parameterType="EmpBean">
+		insert into Hrms_Emp (empid, dptid, tdptid, empno, empcardno, empsex,
+		empname, empbirthday, nationid, empidno, empstatusid, emptypeid,
+		empcardtid, emppwd, empbankno, grdid, eduid, prfid, titid, empgrpid,
+		empphoto, empchr1, empchr2, empchr3, empnum1, empnum2, empnum3,
+		empbit1, empbit2, empbit3, empcrtdby, empcrtdday, empmdby, empmdday,
+		nationordno, grdordno, eduordno, prfordno, titordno, dptno, tdptno,
+		empmarrystatus, empmemo, emplname, empename, isdeleted, deletedday,
+		carcode, runcardcode, empicid, empname_spell)
+		values (#{empid,jdbcType=NUMERIC}, #{dptid,jdbcType=NUMERIC},
+		#{tdptid,jdbcType=NUMERIC}, #{empno,jdbcType=VARCHAR},
+		#{empcardno,jdbcType=VARCHAR}, #{empsex,jdbcType=VARCHAR},
+		#{empname,jdbcType=VARCHAR}, #{empbirthday,jdbcType=TIMESTAMP},
+		#{nationid,jdbcType=NUMERIC}, #{empidno,jdbcType=VARCHAR},
+		#{empstatusid,jdbcType=NUMERIC}, #{emptypeid,jdbcType=NUMERIC},
+		#{empcardtid,jdbcType=NUMERIC}, #{emppwd,jdbcType=VARCHAR},
+		#{empbankno,jdbcType=VARCHAR}, #{grdid,jdbcType=NUMERIC},
+		#{eduid,jdbcType=NUMERIC}, #{prfid,jdbcType=NUMERIC},
+		#{titid,jdbcType=NUMERIC}, #{empgrpid,jdbcType=NUMERIC},
+		#{empphoto,jdbcType=VARCHAR}, #{empchr1,jdbcType=VARCHAR},
+		#{empchr2,jdbcType=VARCHAR}, #{empchr3,jdbcType=VARCHAR},
+		#{empnum1,jdbcType=NUMERIC}, #{empnum2,jdbcType=NUMERIC},
+		#{empnum3,jdbcType=NUMERIC}, #{empbit1,jdbcType=BIT},
+		#{empbit2,jdbcType=BIT}, #{empbit3,jdbcType=BIT},
+		#{empcrtdby,jdbcType=VARCHAR}, #{empcrtdday,jdbcType=TIMESTAMP},
+		#{empmdby,jdbcType=VARCHAR}, #{empmdday,jdbcType=TIMESTAMP},
+		#{nationordno,jdbcType=NUMERIC}, #{grdordno,jdbcType=NUMERIC},
+		#{eduordno,jdbcType=NUMERIC}, #{prfordno,jdbcType=NUMERIC},
+		#{titordno,jdbcType=NUMERIC}, #{dptno,jdbcType=VARCHAR},
+		#{tdptno,jdbcType=VARCHAR}, #{empmarrystatus,jdbcType=NUMERIC},
+		#{empmemo,jdbcType=VARCHAR}, #{emplname,jdbcType=VARCHAR},
+		#{empename,jdbcType=VARCHAR}, #{isdeleted,jdbcType=VARCHAR},
+		#{deletedday,jdbcType=TIMESTAMP}, #{carcode,jdbcType=VARCHAR},
+		#{runcardcode,jdbcType=VARCHAR}, #{empicid,jdbcType=VARCHAR},
+		#{empname_spell,jdbcType=VARCHAR})
+	</insert>
+
+	<!-- update -->
+	<update id="update" parameterType="EmpBean">
+		update Hrms_Emp
+		<set>
+			<if test="dptid != null">
+				dptid = #{dptid,jdbcType=NUMERIC},
+			</if>
+			<if test="tdptid != null">
+				tdptid = #{tdptid,jdbcType=NUMERIC},
+			</if>
+			<if test="empno != null">
+				empno = #{empno,jdbcType=VARCHAR},
+			</if>
+			<if test="empcardno != null">
+				empcardno = #{empcardno,jdbcType=VARCHAR},
+			</if>
+			<if test="empsex != null">
+				empsex = #{empsex,jdbcType=VARCHAR},
+			</if>
+			<if test="empname != null">
+				empname = #{empname,jdbcType=VARCHAR},
+			</if>
+			<if test="empbirthday != null">
+				empbirthday = #{empbirthday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="nationid != null">
+				nationid = #{nationid,jdbcType=NUMERIC},
+			</if>
+			<if test="empidno != null">
+				empidno = #{empidno,jdbcType=VARCHAR},
+			</if>
+			<if test="empstatusid != null">
+				empstatusid = #{empstatusid,jdbcType=NUMERIC},
+			</if>
+			<if test="emptypeid != null">
+				emptypeid = #{emptypeid,jdbcType=NUMERIC},
+			</if>
+			<if test="empcardtid != null">
+				empcardtid = #{empcardtid,jdbcType=NUMERIC},
+			</if>
+			<if test="emppwd != null">
+				emppwd = #{emppwd,jdbcType=VARCHAR},
+			</if>
+			<if test="empbankno != null">
+				empbankno = #{empbankno,jdbcType=VARCHAR},
+			</if>
+			<if test="grdid != null">
+				grdid = #{grdid,jdbcType=NUMERIC},
+			</if>
+			<if test="eduid != null">
+				eduid = #{eduid,jdbcType=NUMERIC},
+			</if>
+			<if test="prfid != null">
+				prfid = #{prfid,jdbcType=NUMERIC},
+			</if>
+			<if test="titid != null">
+				titid = #{titid,jdbcType=NUMERIC},
+			</if>
+			<if test="empgrpid != null">
+				empgrpid = #{empgrpid,jdbcType=NUMERIC},
+			</if>
+			<if test="empphoto != null">
+				empphoto = #{empphoto,jdbcType=VARCHAR},
+			</if>
+			<if test="empchr1 != null">
+				empchr1 = #{empchr1,jdbcType=VARCHAR},
+			</if>
+			<if test="empchr2 != null">
+				empchr2 = #{empchr2,jdbcType=VARCHAR},
+			</if>
+			<if test="empchr3 != null">
+				empchr3 = #{empchr3,jdbcType=VARCHAR},
+			</if>
+			<if test="empnum1 != null">
+				empnum1 = #{empnum1,jdbcType=NUMERIC},
+			</if>
+			<if test="empnum2 != null">
+				empnum2 = #{empnum2,jdbcType=NUMERIC},
+			</if>
+			<if test="empnum3 != null">
+				empnum3 = #{empnum3,jdbcType=NUMERIC},
+			</if>
+			<if test="empbit1 != null">
+				empbit1 = #{empbit1,jdbcType=BIT},
+			</if>
+			<if test="empbit2 != null">
+				empbit2 = #{empbit2,jdbcType=BIT},
+			</if>
+			<if test="empbit3 != null">
+				empbit3 = #{empbit3,jdbcType=BIT},
+			</if>
+			<if test="empcrtdby != null">
+				empcrtdby = #{empcrtdby,jdbcType=VARCHAR},
+			</if>
+			<if test="empcrtdday != null">
+				empcrtdday = #{empcrtdday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="empmdby != null">
+				empmdby = #{empmdby,jdbcType=VARCHAR},
+			</if>
+			<if test="empmdday != null">
+				empmdday = #{empmdday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="nationordno != null">
+				nationordno = #{nationordno,jdbcType=NUMERIC},
+			</if>
+			<if test="grdordno != null">
+				grdordno = #{grdordno,jdbcType=NUMERIC},
+			</if>
+			<if test="eduordno != null">
+				eduordno = #{eduordno,jdbcType=NUMERIC},
+			</if>
+			<if test="prfordno != null">
+				prfordno = #{prfordno,jdbcType=NUMERIC},
+			</if>
+			<if test="titordno != null">
+				titordno = #{titordno,jdbcType=NUMERIC},
+			</if>
+			<if test="dptno != null">
+				dptno = #{dptno,jdbcType=VARCHAR},
+			</if>
+			<if test="tdptno != null">
+				tdptno = #{tdptno,jdbcType=VARCHAR},
+			</if>
+			<if test="empmarrystatus != null">
+				empmarrystatus = #{empmarrystatus,jdbcType=NUMERIC},
+			</if>
+			<if test="empmemo != null">
+				empmemo = #{empmemo,jdbcType=VARCHAR},
+			</if>
+			<if test="emplname != null">
+				emplname = #{emplname,jdbcType=VARCHAR},
+			</if>
+			<if test="empename != null">
+				empename = #{empename,jdbcType=VARCHAR},
+			</if>
+			<if test="isdeleted != null">
+				isdeleted = #{isdeleted,jdbcType=VARCHAR},
+			</if>
+			<if test="deletedday != null">
+				deletedday = #{deletedday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="carcode != null">
+				carcode = #{carcode,jdbcType=VARCHAR},
+			</if>
+			<if test="runcardcode != null">
+				runcardcode = #{runcardcode,jdbcType=VARCHAR},
+			</if>
+			<if test="empicid != null">
+				empicid = #{empicid,jdbcType=VARCHAR},
+			</if>
+			<if test="empname_spell != null">
+				empname_spell = #{empname_spell,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where empid = #{empid}
+	</update>
+
+	<!-- delete -->
+	<delete id="delete" parameterType="EmpBean">
+		delete from Hrms_Emp where empid = #{empid,jdbcType=NUMERIC}
+	</delete>
+</mapper>

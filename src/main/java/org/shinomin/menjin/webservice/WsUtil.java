@@ -32,4 +32,21 @@ public class WsUtil {
 		return result;
 	}
 
+	public static String getAllReaders(String acCodeID) {
+		String result = getWsType().getAllReaders(acCodeID);
+		try {
+			result = new String(result.getBytes("iso-8859-1"), "gbk");
+		} catch (UnsupportedEncodingException e) {
+		}
+		return result;
+	}
+
+	public static String getAllACCodes(String personid, String cardno) {
+		String result = getWsType().getAllACCodes(personid, cardno);
+		try {
+			result = new String(result.getBytes("iso-8859-1"), "gbk");
+		} catch (UnsupportedEncodingException e) {
+		}
+		return result;
+	}
 }

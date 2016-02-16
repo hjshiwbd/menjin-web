@@ -16,13 +16,13 @@ function dgSetting1(url, cols) {
 		nowrap : true,
 		checkOnSelect : true,
 		pagination : true,
-		pageSize : 3000,
-		pageList : [ 3000, 5000, 10000 ],
+		pageSize : 100,
+		pageList : [ 100, 300, 500 ],
 		columns : cols,
 		onBeforeLoad : function() {
-			if (loadCount++ == 0) {
-				return false;
-			}
+			// if (loadCount++ == 0) {
+			// return false;
+			// }
 		}
 	};
 	return o;
@@ -142,7 +142,7 @@ function xscol() {
 	} ];
 	return xscol;
 }
-//业务办理  zone3 学生信息
+// 业务办理 zone3 学生信息
 function xscol_yw() {
 	var xscol = [ {
 		field : 'xs_sf',
@@ -150,182 +150,182 @@ function xscol_yw() {
 		width : 50,
 		formatter : function(value, row, index) {
 			if (row['sfBean']) {
-					return row['sfBean']['mc'];
-				} else {
-					return value;
-				}
+				return row['sfBean']['mc'];
+			} else {
+				return value;
 			}
-		}, {
-			field : 'xs_xq',
-			title : '校区',
-			width : 130,
-			formatter : function(value, row, index) {
-				if (row['xsBean']) {
-					return row['xsBean']['xq'];
-				} else {
-					return value;
-				}
+		}
+	}, {
+		field : 'xs_xq',
+		title : '校区',
+		width : 130,
+		formatter : function(value, row, index) {
+			if (row['xsBean']) {
+				return row['xsBean']['xq'];
+			} else {
+				return value;
 			}
-		}, {
-			field : 'xs_xy',
-			title : '学院',
-			width : 180,
-			formatter : function(value, row, index) {
-				if (row['xsBean']) {
-					return row['xsBean']['xy'];
-				} else {
-					return value;
-				}
+		}
+	}, {
+		field : 'xs_xy',
+		title : '学院',
+		width : 180,
+		formatter : function(value, row, index) {
+			if (row['xsBean']) {
+				return row['xsBean']['xy'];
+			} else {
+				return value;
 			}
-		}, {
-			field : 'xs_sy',
-			title : '书院',
-			width : 100,
-			formatter : function(value, row, index) {
-				if (row['xsBean']) {
-					return row['xsBean']['sy'];
-				} else {
-					return value;
-				}
+		}
+	}, {
+		field : 'xs_sy',
+		title : '书院',
+		width : 100,
+		formatter : function(value, row, index) {
+			if (row['xsBean']) {
+				return row['xsBean']['sy'];
+			} else {
+				return value;
 			}
-		}, {
-			field : 'xs_zy',
-			title : '专业',
-			width : 100,
-			formatter : function(value, row, index) {
-				if (row['xsBean']) {
-					return row['xsBean']['zy'];
-				} else {
-					return value;
-				}
+		}
+	}, {
+		field : 'xs_zy',
+		title : '专业',
+		width : 100,
+		formatter : function(value, row, index) {
+			if (row['xsBean']) {
+				return row['xsBean']['zy'];
+			} else {
+				return value;
 			}
-		}, {
-			field : 'xs_nj',
-			title : '年级',
-			width : 100,
-			formatter : function(value, row, index) {
-				if (row['xsBean']) {
-					return row['xsBean']['nj'];
-				} else {
-					return value;
-				}
+		}
+	}, {
+		field : 'xs_nj',
+		title : '年级',
+		width : 100,
+		formatter : function(value, row, index) {
+			if (row['xsBean']) {
+				return row['xsBean']['nj'];
+			} else {
+				return value;
 			}
-		}, {
-			field : 'xs_bj',
-			title : '班级',
-			width : 100,
-			formatter : function(value, row, index) {
-				if (row['xsBean']) {
-					return row['xsBean']['bj'];
-				} else {
-					return value;
-				}
+		}
+	}, {
+		field : 'xs_bj',
+		title : '班级',
+		width : 100,
+		formatter : function(value, row, index) {
+			if (row['xsBean']) {
+				return row['xsBean']['bj'];
+			} else {
+				return value;
 			}
-		}, {
-			field : 'xs_bzr',
-			title : '导师',
-			width : 80,
-			formatter : function(value, row, index) {
-				if (row['xsBean']) {
-					return row['xsBean']['bzr'];
-				} else {
-					return value;
-				}
+		}
+	}, {
+		field : 'xs_bzr',
+		title : '导师',
+		width : 80,
+		formatter : function(value, row, index) {
+			if (row['xsBean']) {
+				return row['xsBean']['bzr'];
+			} else {
+				return value;
 			}
-		}];
+		}
+	} ];
 	return xscol;
 }
-//业务办理  zone3 学生信息  xs的bean 是==xs
+// 业务办理 zone3 学生信息 xs的bean 是==xs
 function xscol_yw2() {
 	var xscol = [ {
 		field : 'xs_sf',
 		title : '身份',
 		width : 50,
 		formatter : function(value, row, index) {
-				if (row['xs'] && row['xs']['sf']) {
-					return row['xs']['sf']['mc'];
-				} else {
-					return value;
-				}
+			if (row['xs'] && row['xs']['sf']) {
+				return row['xs']['sf']['mc'];
+			} else {
+				return value;
 			}
-		}, {
-			field : 'xs_xq',
-			title : '校区',
-			width : 130,
-			formatter : function(value, row, index) {
-				if (row['xs']) {
-					return row['xs']['xq'];
-				} else {
-					return value;
-				}
+		}
+	}, {
+		field : 'xs_xq',
+		title : '校区',
+		width : 130,
+		formatter : function(value, row, index) {
+			if (row['xs']) {
+				return row['xs']['xq'];
+			} else {
+				return value;
 			}
-		}, {
-			field : 'xs_xy',
-			title : '学院',
-			width : 180,
-			formatter : function(value, row, index) {
-				if (row['xs']) {
-					return row['xs']['xy'];
-				} else {
-					return value;
-				}
+		}
+	}, {
+		field : 'xs_xy',
+		title : '学院',
+		width : 180,
+		formatter : function(value, row, index) {
+			if (row['xs']) {
+				return row['xs']['xy'];
+			} else {
+				return value;
 			}
-		}, {
-			field : 'xs_sy',
-			title : '书院',
-			width : 100,
-			formatter : function(value, row, index) {
-				if (row['xs']) {
-					return row['xs']['sy'];
-				} else {
-					return value;
-				}
+		}
+	}, {
+		field : 'xs_sy',
+		title : '书院',
+		width : 100,
+		formatter : function(value, row, index) {
+			if (row['xs']) {
+				return row['xs']['sy'];
+			} else {
+				return value;
 			}
-		}, {
-			field : 'xs_zy',
-			title : '专业',
-			width : 100,
-			formatter : function(value, row, index) {
-				if (row['xs']) {
-					return row['xs']['zy'];
-				} else {
-					return value;
-				}
+		}
+	}, {
+		field : 'xs_zy',
+		title : '专业',
+		width : 100,
+		formatter : function(value, row, index) {
+			if (row['xs']) {
+				return row['xs']['zy'];
+			} else {
+				return value;
 			}
-		}, {
-			field : 'xs_nj',
-			title : '年级',
-			width : 100,
-			formatter : function(value, row, index) {
-				if (row['xs']) {
-					return row['xs']['nj'];
-				} else {
-					return value;
-				}
+		}
+	}, {
+		field : 'xs_nj',
+		title : '年级',
+		width : 100,
+		formatter : function(value, row, index) {
+			if (row['xs']) {
+				return row['xs']['nj'];
+			} else {
+				return value;
 			}
-		}, {
-			field : 'xs_bj',
-			title : '班级',
-			width : 100,
-			formatter : function(value, row, index) {
-				if (row['xs']) {
-					return row['xs']['bj'];
-				} else {
-					return value;
-				}
+		}
+	}, {
+		field : 'xs_bj',
+		title : '班级',
+		width : 100,
+		formatter : function(value, row, index) {
+			if (row['xs']) {
+				return row['xs']['bj'];
+			} else {
+				return value;
 			}
-		}, {
-			field : 'xs_bzr',
-			title : '导师',
-			width : 80,
-			formatter : function(value, row, index) {
-				if (row['xs']) {
-					return row['xs']['bzr'];
-				} else {
-					return value;
-				}
+		}
+	}, {
+		field : 'xs_bzr',
+		title : '导师',
+		width : 80,
+		formatter : function(value, row, index) {
+			if (row['xs']) {
+				return row['xs']['bzr'];
+			} else {
+				return value;
 			}
-		}];
+		}
+	} ];
 	return xscol;
 }
 
@@ -442,7 +442,7 @@ function removetxt() {
 			if ($(e.data.target).hasClass('combobox-f')) {
 				$(e.data.target).combobox('clear');
 			} else {
-				$(e.data.target).textbox('reset');				
+				$(e.data.target).textbox('reset');
 			}
 		}
 	} ];

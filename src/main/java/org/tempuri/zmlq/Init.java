@@ -19,12 +19,14 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
+ *         &lt;element name="bAutoLogin" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *         &lt;element name="in-strDBAddr" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="in-strDBName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="in-strDBUser" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="in-strDBPassword" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="in-strPCAddr" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="in-strPCUser" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="in-strPCPassword" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -35,16 +37,19 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
+    "bAutoLogin",
     "inStrDBAddr",
     "inStrDBName",
     "inStrDBUser",
     "inStrDBPassword",
     "inStrPCAddr",
-    "inStrPCUser"
+    "inStrPCUser",
+    "inStrPCPassword"
 })
 @XmlRootElement(name = "Init")
 public class Init {
 
+    protected boolean bAutoLogin;
     @XmlElementRef(name = "in-strDBAddr", type = JAXBElement.class, required = false)
     protected JAXBElement<String> inStrDBAddr;
     @XmlElementRef(name = "in-strDBName", type = JAXBElement.class, required = false)
@@ -57,6 +62,24 @@ public class Init {
     protected JAXBElement<String> inStrPCAddr;
     @XmlElementRef(name = "in-strPCUser", type = JAXBElement.class, required = false)
     protected JAXBElement<String> inStrPCUser;
+    @XmlElementRef(name = "in-strPCPassword", type = JAXBElement.class, required = false)
+    protected JAXBElement<String> inStrPCPassword;
+
+    /**
+     * 获取bAutoLogin属性的值。
+     * 
+     */
+    public boolean isBAutoLogin() {
+        return bAutoLogin;
+    }
+
+    /**
+     * 设置bAutoLogin属性的值。
+     * 
+     */
+    public void setBAutoLogin(boolean value) {
+        this.bAutoLogin = value;
+    }
 
     /**
      * 获取inStrDBAddr属性的值。
@@ -200,6 +223,30 @@ public class Init {
      */
     public void setInStrPCUser(JAXBElement<String> value) {
         this.inStrPCUser = value;
+    }
+
+    /**
+     * 获取inStrPCPassword属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public JAXBElement<String> getInStrPCPassword() {
+        return inStrPCPassword;
+    }
+
+    /**
+     * 设置inStrPCPassword属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public void setInStrPCPassword(JAXBElement<String> value) {
+        this.inStrPCPassword = value;
     }
 
 }

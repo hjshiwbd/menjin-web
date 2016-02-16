@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="in-strPersonID" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="out-structEvents" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -30,36 +30,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "inStrPersonID"
+    "outStructEvents"
 })
-@XmlRootElement(name = "AddPersonResponse")
-public class AddPersonResponse {
+@XmlRootElement(name = "GetHistoryEventResponse")
+public class GetHistoryEventResponse {
 
-    @XmlElementRef(name = "in-strPersonID", type = JAXBElement.class, required = false)
-    protected JAXBElement<String> inStrPersonID;
+    @XmlElementRef(name = "out-structEvents", type = JAXBElement.class, required = false)
+    protected JAXBElement<String> outStructEvents;
 
     /**
-     * 获取inStrPersonID属性的值。
+     * 获取outStructEvents属性的值。
      * 
      * @return
      *     possible object is
      *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public JAXBElement<String> getInStrPersonID() {
-        return inStrPersonID;
+    public JAXBElement<String> getOutStructEvents() {
+        return outStructEvents;
     }
 
     /**
-     * 设置inStrPersonID属性的值。
+     * 设置outStructEvents属性的值。
      * 
      * @param value
      *     allowed object is
      *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setInStrPersonID(JAXBElement<String> value) {
-        this.inStrPersonID = value;
+    public void setOutStructEvents(JAXBElement<String> value) {
+        this.outStructEvents = value;
     }
 
 }

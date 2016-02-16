@@ -7,10 +7,18 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.shinomin.commons.utils.ConvertUtil;
 import org.shinomin.commons.utils.JsonUtil;
+import org.shinomin.menjin.bean.HwAcccodeBean;
 import org.shinomin.menjin.bean.HwPersonBean;
+import org.shinomin.menjin.bean.HwReaderBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * web service查询
+ * 
+ * @author hjin
+ * 
+ */
 public class WsQuery {
 	private static Logger logger = LoggerFactory.getLogger(WsQuery.class);
 
@@ -42,9 +50,13 @@ public class WsQuery {
 		if ("0".equals(result)) {
 			Object obj = map.get(OBJECT);
 			return obj;
-		} else {
+		} else if ("1".equals(result)) {
 			String msg = map.get(MESSAGE).toString();
-			throw new RuntimeException("ws execute failed:" + msg);
+			logger.info("ws failed msg:{}", msg);
+			return null;
+		} else {
+			logger.info("ws returns nothing");
+			return null;
 		}
 	}
 
@@ -55,10 +67,26 @@ public class WsQuery {
 		return list;
 	}
 
+	public static List<HwPersonBean> queryPersons(String field, String oper, String value) {
+		String json = WsUtil.queryPersons(field, oper, value);
+		if (StringUtils.isNotBlank(json)) {
+			List<HwPersonBean> list = convertList(getWsObject(json), HwPersonBean.class);
+			return list;
+		} else {
+			return null;
+		}
+	}
+
 	public static List<HwPersonBean> queryPersons(HwPersonBean person) {
 		String[] arr = getQueryPersonParam(person);
 		String json = WsUtil.queryPersons(arr[0], arr[1], arr[2]);
 		List<HwPersonBean> list = convertList(getWsObject(json), HwPersonBean.class);
+		return list;
+	}
+
+	public static List<HwReaderBean> getAllReaders(String acCodeID) {
+		String json = WsUtil.getAllReaders(acCodeID);
+		List<HwReaderBean> list = convertList(getWsObject(json), HwReaderBean.class);
 		return list;
 	}
 
@@ -98,5 +126,16 @@ public class WsQuery {
 		arr[1] = oper;
 		arr[2] = value;
 		return arr;
+	}
+
+	public static List<HwAcccodeBean> getAllACCodes(String personid, String cardno) {
+		String json = WsUtil.getAllACCodes(personid, cardno);
+		if (StringUtils.isNotBlank(json)) {
+			List<HwAcccodeBean> list = convertList(getWsObject(json), HwAcccodeBean.class);
+			logger.info("person size:{}", list.size());
+			return list;
+		} else {
+			return null;
+		}
 	}
 }

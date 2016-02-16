@@ -30,7 +30,8 @@ public class ObjectFactory {
     private final static QName _InitInStrDBPassword_QNAME = new QName("", "in-strDBPassword");
     private final static QName _InitInStrPCAddr_QNAME = new QName("", "in-strPCAddr");
     private final static QName _InitInStrPCUser_QNAME = new QName("", "in-strPCUser");
-    private final static QName _InitResponseInStrPCPassword_QNAME = new QName("", "in-strPCPassword");
+    private final static QName _InitInStrPCPassword_QNAME = new QName("", "in-strPCPassword");
+    private final static QName _InitResponseOutInitResult_QNAME = new QName("", "out-initResult");
     private final static QName _GetAllPersonsResponseOutStructPersons_QNAME = new QName("", "out-structPersons");
     private final static QName _GetAllBadgeTypesInSPersonID_QNAME = new QName("", "in-sPersonID");
     private final static QName _GetAllBadgeTypesResponseOutStructBadgeTypes_QNAME = new QName("", "out-structBadgeTypes");
@@ -51,13 +52,13 @@ public class ObjectFactory {
     private final static QName _QueryPersonsInStrValue_QNAME = new QName("", "in-strValue");
     private final static QName _AddPersonInStructPerson_QNAME = new QName("", "in-structPerson");
     private final static QName _AddPersonInStrBadgeTypeID_QNAME = new QName("", "in-strBadgeTypeID");
-    private final static QName _AddPersonResponseSPersonID_QNAME = new QName("", "sPersonID");
     private final static QName _AddCardInStructCard_QNAME = new QName("", "in-structCard");
     private final static QName _AddReaderToACCodeResponseInStrTimeZoneID_QNAME = new QName("", "in-strTimeZoneID");
     private final static QName _AddReaderToCardInStrTEMPACCESS_QNAME = new QName("", "in-strTEMPACCESS");
     private final static QName _AddReaderToCardInStrTEMPACCESSSTARTTIME_QNAME = new QName("", "in-strTEMPACCESS-START-TIME");
     private final static QName _AddReaderToCardResponseInStrTEMPACCESSENDTIME_QNAME = new QName("", "in-strTEMPACCESS-END-TIME");
     private final static QName _GetReaderStatusResponseInStrStatus_QNAME = new QName("", "in-strStatus");
+    private final static QName _GetHistoryEventResponseOutStructEvents_QNAME = new QName("", "out-structEvents");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.tempuri.zmlq
@@ -547,6 +548,38 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link StartRecvRealEvent }
+     * 
+     */
+    public StartRecvRealEvent createStartRecvRealEvent() {
+        return new StartRecvRealEvent();
+    }
+
+    /**
+     * Create an instance of {@link StopRecvRealEvent }
+     * 
+     */
+    public StopRecvRealEvent createStopRecvRealEvent() {
+        return new StopRecvRealEvent();
+    }
+
+    /**
+     * Create an instance of {@link GetHistoryEvent }
+     * 
+     */
+    public GetHistoryEvent createGetHistoryEvent() {
+        return new GetHistoryEvent();
+    }
+
+    /**
+     * Create an instance of {@link GetHistoryEventResponse }
+     * 
+     */
+    public GetHistoryEventResponse createGetHistoryEventResponse() {
+        return new GetHistoryEventResponse();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
@@ -604,9 +637,18 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "in-strPCPassword", scope = InitResponse.class)
-    public JAXBElement<String> createInitResponseInStrPCPassword(String value) {
-        return new JAXBElement<String>(_InitResponseInStrPCPassword_QNAME, String.class, InitResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "in-strPCPassword", scope = Init.class)
+    public JAXBElement<String> createInitInStrPCPassword(String value) {
+        return new JAXBElement<String>(_InitInStrPCPassword_QNAME, String.class, Init.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "out-initResult", scope = InitResponse.class)
+    public JAXBElement<String> createInitResponseOutInitResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutInitResult_QNAME, String.class, InitResponse.class, value);
     }
 
     /**
@@ -874,9 +916,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "sPersonID", scope = AddPersonResponse.class)
-    public JAXBElement<String> createAddPersonResponseSPersonID(String value) {
-        return new JAXBElement<String>(_AddPersonResponseSPersonID_QNAME, String.class, AddPersonResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "in-strPersonID", scope = AddPersonResponse.class)
+    public JAXBElement<String> createAddPersonResponseInStrPersonID(String value) {
+        return new JAXBElement<String>(_GetAllACCodesInStrPersonID_QNAME, String.class, AddPersonResponse.class, value);
     }
 
     /**
@@ -1246,6 +1288,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "in-strStatus", scope = GetReaderStatusResponse.class)
     public JAXBElement<String> createGetReaderStatusResponseInStrStatus(String value) {
         return new JAXBElement<String>(_GetReaderStatusResponseInStrStatus_QNAME, String.class, GetReaderStatusResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "out-structEvents", scope = GetHistoryEventResponse.class)
+    public JAXBElement<String> createGetHistoryEventResponseOutStructEvents(String value) {
+        return new JAXBElement<String>(_GetHistoryEventResponseOutStructEvents_QNAME, String.class, GetHistoryEventResponse.class, value);
     }
 
 }
