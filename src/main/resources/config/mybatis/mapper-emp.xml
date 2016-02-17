@@ -227,42 +227,39 @@
 		</where>
 	</select>
 
+	<select id="selectMaxID" resultType="int">
+		select max(t.empid)+1 from
+		hrms_emp t
+	</select>
+
 	<!-- insert -->
 	<insert id="insert" parameterType="EmpBean">
-		insert into Hrms_Emp (empid, dptid, tdptid, empno, empcardno, empsex,
-		empname, empbirthday, nationid, empidno, empstatusid, emptypeid,
-		empcardtid, emppwd, empbankno, grdid, eduid, prfid, titid, empgrpid,
-		empphoto, empchr1, empchr2, empchr3, empnum1, empnum2, empnum3,
-		empbit1, empbit2, empbit3, empcrtdby, empcrtdday, empmdby, empmdday,
-		nationordno, grdordno, eduordno, prfordno, titordno, dptno, tdptno,
-		empmarrystatus, empmemo, emplname, empename, isdeleted, deletedday,
-		carcode, runcardcode, empicid, empname_spell)
-		values (#{empid,jdbcType=NUMERIC}, #{dptid,jdbcType=NUMERIC},
+		insert into Hrms_Emp (empid,
+		dptid, tdptid, empno, empcardno, empsex, empname, empbirthday,
+		nationid, empidno, emppwd, empbankno, grdid, eduid, prfid, titid,
+		empgrpid, empphoto, empcrtdby, empmdby, nationordno, grdordno,
+		eduordno, prfordno, titordno, dptno, tdptno, empmarrystatus, empmemo,
+		emplname, empename, deletedday, carcode, runcardcode,
+		empicid) values
+		(#{empid,jdbcType=NUMERIC}, #{dptid,jdbcType=NUMERIC},
 		#{tdptid,jdbcType=NUMERIC}, #{empno,jdbcType=VARCHAR},
 		#{empcardno,jdbcType=VARCHAR}, #{empsex,jdbcType=VARCHAR},
 		#{empname,jdbcType=VARCHAR}, #{empbirthday,jdbcType=TIMESTAMP},
 		#{nationid,jdbcType=NUMERIC}, #{empidno,jdbcType=VARCHAR},
-		#{empstatusid,jdbcType=NUMERIC}, #{emptypeid,jdbcType=NUMERIC},
-		#{empcardtid,jdbcType=NUMERIC}, #{emppwd,jdbcType=VARCHAR},
-		#{empbankno,jdbcType=VARCHAR}, #{grdid,jdbcType=NUMERIC},
-		#{eduid,jdbcType=NUMERIC}, #{prfid,jdbcType=NUMERIC},
-		#{titid,jdbcType=NUMERIC}, #{empgrpid,jdbcType=NUMERIC},
-		#{empphoto,jdbcType=VARCHAR}, #{empchr1,jdbcType=VARCHAR},
-		#{empchr2,jdbcType=VARCHAR}, #{empchr3,jdbcType=VARCHAR},
-		#{empnum1,jdbcType=NUMERIC}, #{empnum2,jdbcType=NUMERIC},
-		#{empnum3,jdbcType=NUMERIC}, #{empbit1,jdbcType=BIT},
-		#{empbit2,jdbcType=BIT}, #{empbit3,jdbcType=BIT},
-		#{empcrtdby,jdbcType=VARCHAR}, #{empcrtdday,jdbcType=TIMESTAMP},
-		#{empmdby,jdbcType=VARCHAR}, #{empmdday,jdbcType=TIMESTAMP},
+		#{emppwd,jdbcType=VARCHAR}, #{empbankno,jdbcType=VARCHAR},
+		#{grdid,jdbcType=NUMERIC}, #{eduid,jdbcType=NUMERIC},
+		#{prfid,jdbcType=NUMERIC}, #{titid,jdbcType=NUMERIC},
+		#{empgrpid,jdbcType=NUMERIC}, #{empphoto,jdbcType=VARCHAR},
+		#{empcrtdby,jdbcType=VARCHAR}, #{empmdby,jdbcType=VARCHAR},
 		#{nationordno,jdbcType=NUMERIC}, #{grdordno,jdbcType=NUMERIC},
 		#{eduordno,jdbcType=NUMERIC}, #{prfordno,jdbcType=NUMERIC},
 		#{titordno,jdbcType=NUMERIC}, #{dptno,jdbcType=VARCHAR},
 		#{tdptno,jdbcType=VARCHAR}, #{empmarrystatus,jdbcType=NUMERIC},
 		#{empmemo,jdbcType=VARCHAR}, #{emplname,jdbcType=VARCHAR},
-		#{empename,jdbcType=VARCHAR}, #{isdeleted,jdbcType=VARCHAR},
+		#{empename,jdbcType=VARCHAR},
 		#{deletedday,jdbcType=TIMESTAMP}, #{carcode,jdbcType=VARCHAR},
-		#{runcardcode,jdbcType=VARCHAR}, #{empicid,jdbcType=VARCHAR},
-		#{empname_spell,jdbcType=VARCHAR})
+		#{runcardcode,jdbcType=VARCHAR},
+		#{empicid,jdbcType=VARCHAR})
 	</insert>
 
 	<!-- update -->
@@ -425,6 +422,7 @@
 
 	<!-- delete -->
 	<delete id="delete" parameterType="EmpBean">
-		delete from Hrms_Emp where empid = #{empid,jdbcType=NUMERIC}
+		delete from Hrms_Emp where
+		empid = #{empid,jdbcType=NUMERIC}
 	</delete>
 </mapper>

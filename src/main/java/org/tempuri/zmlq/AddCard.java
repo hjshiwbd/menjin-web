@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="in-structCard" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="in-strCompanyID" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -30,13 +31,16 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "inStructCard"
+    "inStructCard",
+    "inStrCompanyID"
 })
 @XmlRootElement(name = "AddCard")
 public class AddCard {
 
     @XmlElementRef(name = "in-structCard", type = JAXBElement.class, required = false)
     protected JAXBElement<String> inStructCard;
+    @XmlElementRef(name = "in-strCompanyID", type = JAXBElement.class, required = false)
+    protected JAXBElement<String> inStrCompanyID;
 
     /**
      * 获取inStructCard属性的值。
@@ -60,6 +64,30 @@ public class AddCard {
      */
     public void setInStructCard(JAXBElement<String> value) {
         this.inStructCard = value;
+    }
+
+    /**
+     * 获取inStrCompanyID属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public JAXBElement<String> getInStrCompanyID() {
+        return inStrCompanyID;
+    }
+
+    /**
+     * 设置inStrCompanyID属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public void setInStrCompanyID(JAXBElement<String> value) {
+        this.inStrCompanyID = value;
     }
 
 }

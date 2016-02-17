@@ -57,13 +57,6 @@
 										<h4>
 											<i class="fa fa-bars"></i>门禁授权
 										</h4>
-										<div class="tools hidden-xs">
-											<a href="#box-config" data-toggle="modal" class="config"> <i class="fa fa-cog"></i>
-											</a> <a href="javascript:;" class="reload"> <i class="fa fa-refresh"></i>
-											</a> <a href="javascript:;" class="collapse"> <i class="fa fa-chevron-up"></i>
-											</a> <a href="javascript:;" class="remove"> <i class="fa fa-times"></i>
-											</a>
-										</div>
 									</div>
 									<div class="box-body big">
 										<div class="row">
@@ -114,6 +107,7 @@
 														<div class="tools"></div>
 													</div>
 													<div class="box-body ztree-wrap">
+														<p><a id="quanxuan" href="javascript:;">全选</a>&nbsp;&nbsp;&nbsp;&nbsp;<a id="quanbuxuan" href="javascript:;">全不选</a></p>
 														<ul id="tree" class="ztree"></ul>
 													</div>
 												</div>
@@ -124,7 +118,6 @@
 										<div class="row">
 											<div class="col-md-12">
 												<button id="sq" class="btn btn-danger">授权</button>
-												<button id="qxsq" class="btn btn-danger">取消授权</button>
 											</div>
 										</div>
 									</div>

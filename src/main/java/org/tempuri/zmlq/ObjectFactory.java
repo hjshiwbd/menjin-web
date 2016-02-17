@@ -52,6 +52,7 @@ public class ObjectFactory {
     private final static QName _QueryPersonsInStrValue_QNAME = new QName("", "in-strValue");
     private final static QName _AddPersonInStructPerson_QNAME = new QName("", "in-structPerson");
     private final static QName _AddPersonInStrBadgeTypeID_QNAME = new QName("", "in-strBadgeTypeID");
+    private final static QName _AddPersonResponseOutResult_QNAME = new QName("", "out-result");
     private final static QName _AddCardInStructCard_QNAME = new QName("", "in-structCard");
     private final static QName _AddReaderToACCodeResponseInStrTimeZoneID_QNAME = new QName("", "in-strTimeZoneID");
     private final static QName _AddReaderToCardInStrTEMPACCESS_QNAME = new QName("", "in-strTEMPACCESS");
@@ -916,9 +917,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "in-strPersonID", scope = AddPersonResponse.class)
-    public JAXBElement<String> createAddPersonResponseInStrPersonID(String value) {
-        return new JAXBElement<String>(_GetAllACCodesInStrPersonID_QNAME, String.class, AddPersonResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "out-result", scope = AddPersonResponse.class)
+    public JAXBElement<String> createAddPersonResponseOutResult(String value) {
+        return new JAXBElement<String>(_AddPersonResponseOutResult_QNAME, String.class, AddPersonResponse.class, value);
     }
 
     /**
@@ -943,9 +944,18 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "in-strCompanyID", scope = AddCardResponse.class)
-    public JAXBElement<String> createAddCardResponseInStrCompanyID(String value) {
-        return new JAXBElement<String>(_GetCompanyACCodesInStrCompanyID_QNAME, String.class, AddCardResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "in-strCompanyID", scope = AddCard.class)
+    public JAXBElement<String> createAddCardInStrCompanyID(String value) {
+        return new JAXBElement<String>(_GetCompanyACCodesInStrCompanyID_QNAME, String.class, AddCard.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "out-result", scope = AddCardResponse.class)
+    public JAXBElement<String> createAddCardResponseOutResult(String value) {
+        return new JAXBElement<String>(_AddPersonResponseOutResult_QNAME, String.class, AddCardResponse.class, value);
     }
 
     /**

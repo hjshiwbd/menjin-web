@@ -16,6 +16,9 @@ jQuery(document).ready(function() {
 
 	// 查询人员
 	search();
+	
+	// 全选&全不选
+	selectAll();
 });
 
 /**
@@ -58,6 +61,27 @@ function qxsq() {
 		alert('取消授权');
 	});
 }
+
+var treeSetting = {
+	check : {
+		enable : true,
+		chkboxType : {
+			"Y" : "s",
+			"N" : "s"
+		}
+	},
+	data : {
+		key : {
+			name : 'descrp'
+		},
+		simpleData : {
+			enable : true,
+			idKey : "id",
+			pIdKey : "",
+			rootPId : null
+		}
+	}
+};
 
 function initTree() {
 	$("#tree").css('height', dgHeight + 'px');
@@ -143,23 +167,11 @@ function initDg() {
 
 }
 
-var treeSetting = {
-	check : {
-		enable : true,
-		chkboxType : {
-			"Y" : "s",
-			"N" : "s"
-		}
-	},
-	data : {
-		key : {
-			name : 'descrp'
-		},
-		simpleData : {
-			enable : true,
-			idKey : "id",
-			pIdKey : "",
-			rootPId : null
-		}
-	}
-};
+function selectAll() {
+	$('#quanxuan').on('click',function() {
+		treeObj.checkAllNodes(true);
+	});
+	$('#quanbuxuan').on('click',function() {
+		treeObj.checkAllNodes(false);
+	});
+}

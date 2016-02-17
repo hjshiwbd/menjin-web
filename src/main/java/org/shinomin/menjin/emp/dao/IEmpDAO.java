@@ -11,4 +11,6 @@ import org.shinomin.commons.db.mybatis.ICommonDAO;
 public interface IEmpDAO extends ICommonDAO
 {
 
+	int selectMaxID();
+
 }

@@ -8,7 +8,7 @@ $(function() {
 	$('#sidebar').load(cu('/left'), function() {
 		// 加载完成
 		isLeftLoaded = true;
-		// 高亮当前
+		// 高亮当前menu
 		$('#menu1_'+$('#left_menuid1').val()).addClass('active');
 		$('#menu2_'+$('#left_menuid2').val()).addClass('current');
 	});

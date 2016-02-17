@@ -10,7 +10,6 @@ import org.shinomin.commons.web.util.PageUtil;
 import org.shinomin.menjin.bean.EmpBean;
 import org.shinomin.menjin.bean.HwAcccodeBean;
 import org.shinomin.menjin.bean.HwPersonBean;
-import org.shinomin.menjin.bean.HwReaderBean;
 import org.shinomin.menjin.constant.ErrorConstant;
 import org.shinomin.menjin.emp.service.IEmpService;
 import org.shinomin.menjin.menjin.service.IMenjinService;

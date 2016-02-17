@@ -61,4 +61,6 @@ public interface IEmpService
 	 */
 	public int delete(EmpBean emp);
 
+	public String doXinzeng(EmpBean emp);
+
 }

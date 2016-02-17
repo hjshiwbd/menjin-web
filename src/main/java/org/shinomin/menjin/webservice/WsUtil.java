@@ -3,15 +3,37 @@ package org.shinomin.menjin.webservice;
 import java.io.UnsupportedEncodingException;
 
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.tempuri.zmlq_xsd.service_wsdl.ServicePortType;
 
 public class WsUtil {
+	private static Logger logger = LoggerFactory.getLogger(WsUtil.class);
+	private static int initCount = 0;
+
 	private static ServicePortType getWsType() {
 		JaxWsProxyFactoryBean factoryBean = new JaxWsProxyFactoryBean();
 		factoryBean.setServiceClass(ServicePortType.class);
 		factoryBean.setAddress("http://10.157.12.40:9977/");
 		ServicePortType type = (ServicePortType) factoryBean.create();
+		if (initCount++ == 0) {
+			init(type);
+		}
 		return type;
+	}
+
+	private static void init(ServicePortType type) {
+		boolean bAutoLogin = true;
+		String inStrDBAddr = "";
+		String inStrDBName = "";
+		String inStrDBUser = "";
+		String inStrDBPassword = "";
+		String inStrPCAddr = "";
+		String inStrPCUser = "";
+		String inStrPCPassword = "";
+		type.init(bAutoLogin, inStrDBAddr, inStrDBName, inStrDBUser, inStrDBPassword, inStrPCAddr, inStrPCUser,
+				inStrPCPassword);
+		logger.info("web service init finish");
 	}
 
 	public static String getAllPersons() {

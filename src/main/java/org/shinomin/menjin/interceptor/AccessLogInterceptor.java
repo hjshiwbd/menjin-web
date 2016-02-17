@@ -49,6 +49,7 @@ public class AccessLogInterceptor extends HandlerInterceptorAdapter
 			// 非常规请求
 			logger.info("unexpected handler:" + handler.toString());
 			super.afterCompletion(request, response, handler, ex);
+			return;
 		}
 
 		HandlerMethod c = (HandlerMethod) handler;
@@ -65,7 +66,7 @@ public class AccessLogInterceptor extends HandlerInterceptorAdapter
 			super.afterCompletion(request, response, handler, ex);
 			return;
 		}
-		saveAccessLog(request, response, clzName, methodName);
+//		saveAccessLog(request, response, clzName, methodName);
 		super.afterCompletion(request, response, handler, ex);
 	}
 
