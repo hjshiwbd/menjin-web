@@ -69,6 +69,7 @@ public class EmpServiceImpl implements IEmpService {
 		} catch (Exception ex) {
 			e.setResult("0");
 			e.setMessage(ex.getMessage());
+			return JsonUtil.toJson(e);
 		}
 
 		try {

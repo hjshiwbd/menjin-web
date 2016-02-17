@@ -23,7 +23,8 @@ function formSubmit() {
 			}
 		},
 		success : function(data) {
-			alert(data);
+			data=JSON.parse(data);
+			eualert(data.message);
 		}
 	});
 }
