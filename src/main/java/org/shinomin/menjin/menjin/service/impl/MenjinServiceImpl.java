@@ -1,15 +1,20 @@
 package org.shinomin.menjin.menjin.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.shinomin.commons.bean.ExecuteResult;
 import org.shinomin.commons.db.mybatis.Pager;
 import org.shinomin.commons.utils.JsonUtil;
 import org.shinomin.commons.utils.StringUtil;
 import org.shinomin.commons.web.util.PageUtil;
+import org.shinomin.menjin.bean.CardaccodeBean;
 import org.shinomin.menjin.bean.EmpBean;
 import org.shinomin.menjin.bean.HwAcccodeBean;
 import org.shinomin.menjin.bean.HwPersonBean;
+import org.shinomin.menjin.bean.HwReaderBean;
+import org.shinomin.menjin.card.service.ICardaccodeService;
 import org.shinomin.menjin.constant.ErrorConstant;
 import org.shinomin.menjin.emp.service.IEmpService;
 import org.shinomin.menjin.menjin.service.IMenjinService;
@@ -27,6 +32,8 @@ public class MenjinServiceImpl implements IMenjinService {
 
 	@Autowired
 	private IEmpService empService;
+	@Autowired
+	private ICardaccodeService cardaccodeService;
 
 	@Override
 	public ModelAndView showShouquan() {
@@ -43,14 +50,6 @@ public class MenjinServiceImpl implements IMenjinService {
 	@Override
 	public String queryHwPersonEudg(Integer page, Integer rows, EmpBean emp) {
 		logger.info("emp:{}", JsonUtil.toJson(emp));
-		// if (person.getFname() == null) {
-		// List<HwPersonBean> persons = WsQuery.getAllPersons();
-		// return EasyuiUtil.parseDatagrid(persons);
-		// } else {
-		// List<HwPersonBean> psersons = WsQuery.queryPersons(person);
-		//
-		// return "";
-		// }
 
 		Pager<EmpBean> pager = new Pager<>();
 		pager.setCurtPage(page);
@@ -72,6 +71,82 @@ public class MenjinServiceImpl implements IMenjinService {
 				e.setResult("1");
 				e.setMessage("ok");
 				e.setObject(acccodeList);
+			}
+		}
+		return JsonUtil.toJson(e);
+	}
+
+	@Override
+	public ModelAndView showYckz() {
+		ModelAndView model = new ModelAndView();
+
+		List<HwReaderBean> readers = WsQuery.getAllReaders("");
+		model.addObject("readers", readers);
+		model.addObject("json_script", PageUtil.create_SCRIPT_PARSE_JSON(model.getModelMap()));
+
+		model.setViewName("menjin/menjin_yckz");
+		return model;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public String saveShouquan(String json) {
+		logger.info("json:{}", json);
+		ExecuteResult e = new ExecuteResult("0", "设置失败，请稍候再试");
+
+		Map<String, Object> map = (Map<String, Object>) JsonUtil.toObj(json);
+		List<String> cards = (List<String>) map.get("cards");// 卡
+		List<String> accodeIds = (List<String>) map.get("accodeIds");// 访问码
+
+		if (cards.size() == 0) {
+			e.setMessage("请求参数有误");
+			return JsonUtil.toJson(e);
+		}
+
+		// 移除老的绑定
+		for (String cardid : cards) {
+			List<HwAcccodeBean> acccodeBeans = WsQuery.getAllACCodes("", cardid);
+			for (HwAcccodeBean hwAcccodeBean : acccodeBeans) {
+				WsQuery.removeACCodeFromCard(cardid, hwAcccodeBean.getId());
+			}
+			e.setResult("1");
+			e.setMessage("设置成功");
+		}
+
+		if (accodeIds.size() > 0) {
+			e.setResult("0");
+			e.setMessage("设置失败，请稍候再试");
+
+			int addCount = 0;
+			// 新的绑定
+			for (String cardid : cards) {
+				for (String accodeid : accodeIds) {
+					if (WsQuery.addACCodeToCard(cardid, accodeid)) {
+						CardaccodeBean ca = new CardaccodeBean();
+						ca.setCardno(cardid);
+						ca.setAccodeid(accodeid);
+						addCount += cardaccodeService.insert(ca);
+					}
+				}
+			}
+			if (cards.size() * accodeIds.size() == addCount) {
+				e.setResult("1");
+				e.setMessage("设置成功");
+			}
+		}
+		return JsonUtil.toJson(e);
+	}
+
+	@Override
+	public String readerControl(String readerid, int cmd) {
+		logger.info("reader:{}, cmd:{}", readerid, cmd);
+		ExecuteResult e = new ExecuteResult("0", "请求有误");
+		if (StringUtils.isNotBlank(readerid) && cmd >= 1 && cmd <= 4) {
+			if (WsQuery.readerControl(readerid, cmd)) {
+				e.setResult("1");
+				e.setMessage("操作成功");
+			} else {
+				e.setMessage("操作失败");
 			}
 		}
 		return JsonUtil.toJson(e);

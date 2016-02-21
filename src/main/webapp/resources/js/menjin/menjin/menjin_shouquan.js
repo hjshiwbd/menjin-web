@@ -16,7 +16,7 @@ jQuery(document).ready(function() {
 
 	// 查询人员
 	search();
-	
+
 	// 全选&全不选
 	selectAll();
 });
@@ -49,7 +49,35 @@ function initRq() {
  */
 function sq() {
 	$('#sq').on('click', function() {
-		alert('授权');
+		var persons = dg.datagrid('getChecked');
+		clog(persons);
+
+		var cards = [];
+		$.each(persons, function(i, o) {
+			cards.push($.trim(o['empcardno']));
+		});
+
+		// clog(accodes);
+		var accodeIds = [];
+		var accodes = treeObj.getCheckedNodes(true);
+		$.each(accodes, function(i, o) {
+			accodeIds.push(o['id']);
+		});
+
+		var o = {
+			cards : cards,
+			accodeIds : accodeIds
+		};
+		var options = {
+			url : cu('/menjin/save_shouquan'),
+			param : {
+				json : JSON.stringify(o)
+			},
+			callback : function(data) {
+				eualert(data.message);
+			}
+		};
+		commonAjax(options);
 	});
 }
 
@@ -62,28 +90,28 @@ function qxsq() {
 	});
 }
 
-var treeSetting = {
-	check : {
-		enable : true,
-		chkboxType : {
-			"Y" : "s",
-			"N" : "s"
-		}
-	},
-	data : {
-		key : {
-			name : 'descrp'
-		},
-		simpleData : {
-			enable : true,
-			idKey : "id",
-			pIdKey : "",
-			rootPId : null
-		}
-	}
-};
-
 function initTree() {
+	var treeSetting = {
+		check : {
+			enable : true,
+			chkboxType : {
+				"Y" : "s",
+				"N" : "s"
+			}
+		},
+		data : {
+			key : {
+				name : 'descrp'
+			},
+			simpleData : {
+				enable : true,
+				idKey : "id",
+				pIdKey : "",
+				rootPId : null
+			}
+		}
+	};
+
 	$("#tree").css('height', dgHeight + 'px');
 	$.fn.zTree.init($("#tree"), treeSetting, acccodeList);
 	treeObj = $.fn.zTree.getZTreeObj("tree");
@@ -168,10 +196,10 @@ function initDg() {
 }
 
 function selectAll() {
-	$('#quanxuan').on('click',function() {
+	$('#quanxuan').on('click', function() {
 		treeObj.checkAllNodes(true);
 	});
-	$('#quanbuxuan').on('click',function() {
+	$('#quanbuxuan').on('click', function() {
 		treeObj.checkAllNodes(false);
 	});
 }

@@ -37,6 +37,12 @@ public class MenjinController {
 		return menjinService.queryHwPersonEudg(page, rows, emp);
 	}
 
+	@ResponseBody
+	@RequestMapping("/save_shouquan")
+	public String saveShouquan(String json) throws Exception {
+		return menjinService.saveShouquan(json);
+	}
+
 	/**
 	 * 设置页面
 	 * 
@@ -59,10 +65,31 @@ public class MenjinController {
 	 */
 	@RequestMapping("/yckz")
 	public ModelAndView yckz() throws Exception {
-		ModelAndView model = new ModelAndView();
+		return menjinService.showYckz();
+	}
 
-		model.setViewName("menjin/menjin_yckz");
-		return model;
+	@ResponseBody
+	@RequestMapping("/raeder/qiyong")
+	public String qiyong(String readerid) throws Exception {
+		return menjinService.readerControl(readerid, 1);
+	}
+
+	@ResponseBody
+	@RequestMapping("/raeder/sjjs")
+	public String sjjs(String readerid) throws Exception {
+		return menjinService.readerControl(readerid, 2);
+	}
+
+	@ResponseBody
+	@RequestMapping("/raeder/jiesuo")
+	public String jiesuo(String readerid) throws Exception {
+		return menjinService.readerControl(readerid, 3);
+	}
+
+	@ResponseBody
+	@RequestMapping("/raeder/suo")
+	public String suo(String readerid) throws Exception {
+		return menjinService.readerControl(readerid, 4);
 	}
 
 	/**

@@ -1,78 +1,23 @@
-var dg = $('#dg');
+var treeObj;
 jQuery(document).ready(function() {
-	page_init("forms");
+	page_init("widgets_box");
 	initTree();
 });
 
 function initTree() {
-	$.fn.zTree.init($("#treeDemo"), treeSetting, zNodes);
-}
-
-var treeSetting = {
-	data : {
-		simpleData : {
-			enable : true
+	var treeSetting = {
+		data : {
+			key : {
+				name : 'descrp'
+			},
+			simpleData : {
+				enable : true,
+				idKey : "id",
+				pIdKey : "",
+				rootPId : ""
+			}
 		}
-	}
-};
-
-var zNodes = [ {
-	id : 1,
-	pId : 0,
-	name : "门禁 1",
-	open : true
-}, {
-	id : 11,
-	pId : 1,
-	name : "门禁 1-1",
-	open : true
-}, {
-	id : 111,
-	pId : 11,
-	name : "门禁 1-1-1"
-}, {
-	id : 112,
-	pId : 11,
-	name : "门禁 1-1-2"
-}, {
-	id : 12,
-	pId : 1,
-	name : "门禁 1-2",
-	open : true
-}, {
-	id : 121,
-	pId : 12,
-	name : "门禁 1-2-1"
-}, {
-	id : 122,
-	pId : 12,
-	name : "门禁 1-2-2"
-}, {
-	id : 2,
-	pId : 0,
-	name : "门禁 2",
-	checked : true,
-	open : true
-}, {
-	id : 21,
-	pId : 2,
-	name : "门禁 2-1"
-}, {
-	id : 22,
-	pId : 2,
-	name : "门禁 2-2",
-	open : true
-}, {
-	id : 221,
-	pId : 22,
-	name : "门禁 2-2-1",
-	checked : true
-}, {
-	id : 222,
-	pId : 22,
-	name : "门禁 2-2-2"
-}, {
-	id : 23,
-	pId : 2,
-	name : "门禁 2-3"
-} ];
+	};
+	$.fn.zTree.init($("#readerTree"), treeSetting, readers);
+	treeObj = $.fn.zTree.getZTreeObj("readerTree");
+}

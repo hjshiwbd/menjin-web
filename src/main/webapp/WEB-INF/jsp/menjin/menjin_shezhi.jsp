@@ -63,7 +63,7 @@
 										<div class="col-md-12">
 											<!-- BOX -->
 											<div class=" col-xs-4">
-												<ul id="treeDemo" class="ztree" style="height: 250px;"></ul>
+												<ul id="readerTree" class="ztree" style="height: 250px;"></ul>
 											</div>
 
 											<div class=" col-xs-8">

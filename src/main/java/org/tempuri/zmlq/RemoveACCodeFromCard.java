@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="in-strACCodeID" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="in-strCardNO" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -30,13 +31,16 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "inStrACCodeID"
+    "inStrACCodeID",
+    "inStrCardNO"
 })
 @XmlRootElement(name = "RemoveACCodeFromCard")
 public class RemoveACCodeFromCard {
 
     @XmlElementRef(name = "in-strACCodeID", type = JAXBElement.class, required = false)
     protected JAXBElement<String> inStrACCodeID;
+    @XmlElementRef(name = "in-strCardNO", type = JAXBElement.class, required = false)
+    protected JAXBElement<String> inStrCardNO;
 
     /**
      * 获取inStrACCodeID属性的值。
@@ -60,6 +64,30 @@ public class RemoveACCodeFromCard {
      */
     public void setInStrACCodeID(JAXBElement<String> value) {
         this.inStrACCodeID = value;
+    }
+
+    /**
+     * 获取inStrCardNO属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public JAXBElement<String> getInStrCardNO() {
+        return inStrCardNO;
+    }
+
+    /**
+     * 设置inStrCardNO属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public void setInStrCardNO(JAXBElement<String> value) {
+        this.inStrCardNO = value;
     }
 
 }

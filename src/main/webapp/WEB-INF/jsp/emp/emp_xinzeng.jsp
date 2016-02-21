@@ -64,16 +64,67 @@
 											<div class=" col-xs-8">
 												<form id="form1" method="post">
 													<div class="form-group">
-														<label class="">人员名称</label><input type="text" name="empname" id="empname" class="form-control" value="">
+														<label class="">姓名</label><input type="text" name="empname" id="empname" class="form-control" value="">
 													</div>
 													<div class="form-group">
-														<label class="">工号</label><input type="text" name="empno" id="empno" class="form-control" value="">
+														<label class="">人员编号</label><input type="text" name="empno" id="empno" class="form-control" value="">
 													</div>
 													<div class="form-group">
 														<label class="">卡号</label><input type="text" name="empcardno" id="empcardno" class="form-control" value="">
 													</div>
 													<div class="form-group">
+														<label class="">身份证</label><input type="text" name="empidno" id="empidno" class="form-control" value="">
+													</div>
+													<div class="form-group">
+														<label class="">性别</label><br> <select name="empsex">
+															<option value="男">男</option>
+															<option value="女">女</option>
+														</select>
+													</div>
+													<div class="form-group">
+														<label class="">人员状态</label><br> <select name="empstatusid">
+															<option value="1">在职</option>
+															<option value="2">准备离职</option>
+															<option value="3">离职</option>
+															<option value="4">退养</option>
+															<option value="5">退休</option>
+															<option value="6">冻结</option>
+															<option value="7">其他(非在职)</option>
+														</select>
+													</div>
+													<div class="form-group">
+														<label class="">所在部门</label><br>
+														<button type="button" class="btn btn-info" data-toggle="modal" data-target="#dptModal">选择</button>
+														<span id="dptname"></span> <input type="hidden" name="dptid" id="dptid">
+													</div>
+													<div class="form-group">
+														<label class="">职务</label><br> <select name="positionid">
+															<c:forEach items="${positionList}" var="p">
+																<option value="${p.positionid}">${p.positionname}</option>
+															</c:forEach>
+														</select>
+													</div>
+													<div class="form-group">
+														<label class="">持卡类别</label><br> <select name="empcardtid">
+															<c:forEach items="${cardtypeList}" var="cd">
+																<option value="${cd.cardtypeid}">${cd.cardtypename}</option>
+															</c:forEach>
+														</select>
+													</div>
+													<div class="form-group">
+														<label class="">门禁卡类型</label><br> <select name="badgeId">
+															<option value="0x002dfd0e7fb3088411d3aa910040051fce21">标准雇员</option>
+															<option value="0x002dfd0e7fb4088411d3aa910040051fce21">订约人</option>
+														</select>
+													</div>
+													<div class="form-group">
 														<label class="">银行卡</label><input type="text" name="empbankno" class="form-control" value="">
+													</div>
+													<div class="form-group">
+														<label class="">岗位</label><input type="text" name="" class="form-control" value="">
+													</div>
+													<div class="form-group">
+														<label class="">工种</label><input type="text" name="" class="form-control" value="">
 													</div>
 													<!-- 												<div class="form-group"> -->
 													<!-- 													<label class="">有效天数</label><input type="text" style="width:10%" class="form-control" value=""> -->
@@ -95,8 +146,32 @@
 			</div>
 		</div>
 	</section>
+
+	<div id="dptModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">请选择部门</h4>
+				</div>
+				<div class="modal-body">
+					<ul id="dptTree" class="ztree" style=""></ul>
+				</div>
+				<div class="modal-footer">
+					<!-- 					<button type="button" class="btn btn-primary" id="dptQingchu">清除</button> -->
+					<button type="button" class="btn btn-primary" id="dtpQueding">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!--/PAGE -->
 	<%@ include file="/WEB-INF/jsp/inc/inc_js.jsp"%>
+	<script type="text/javascript" src="<%=path%>/resources/js/zTree_v3/js/jquery.ztree.all-3.5.js"></script>
 	<script type="text/javascript" src="<%=path%>/resources/js/menjin/emp/emp_xinzeng.js"></script>
+	${json_script}
 </body>
 </html>

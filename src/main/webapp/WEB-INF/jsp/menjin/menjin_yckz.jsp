@@ -15,6 +15,12 @@
 <!-- SELECT2 -->
 <link rel="stylesheet" type="text/css" href="<%=path%>/resources/js/select2/select2.min.css" />
 <link rel="stylesheet" href="<%=path%>/resources/js/zTree_v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+<style type="text/css">
+.ztree-wrap {
+	height: 470px;
+	overflow: auto;
+}
+</style>
 </head>
 <body>
 	<!-- HEADER -->
@@ -62,18 +68,20 @@
 									<div class="row">
 										<div class="col-md-12">
 											<!-- BOX -->
-											<div class=" col-xs-4">
-												<ul id="treeDemo" class="ztree" style="height: 250px;"></ul>
+											<div class="col-xs-4 ztree-wrap">
+												<ul id="readerTree" class="ztree" style="height: 250px;"></ul>
 											</div>
 
 											<div class=" col-xs-8">
 												<div class="divide-40"></div>
 												<div class="form-group">
-													<label>选中：</label>门禁1-1-1
+													<label>选中：</label><span id="selectedName"></span>
 												</div>
 												<div class="form-group">
-													<button id="sq" class="btn btn-primary">开门</button>
-													<button id="sq" class="btn btn-primary">关门</button>
+													<button id="qiyong" class="btn btn-primary">启用</button>
+													<button id="sjjs" class="btn btn-primary">瞬间解锁</button>
+													<button id="jiesuo" class="btn btn-primary">解锁</button>
+													<button id="suo" class="btn btn-primary">锁</button>
 												</div>
 												<div class="form-group">
 												</div>
@@ -90,6 +98,7 @@
 			</div>
 		</div>
 	</section>
+	<input type="hidden" id="selectedId">
 	<!--/PAGE -->
 	<%@ include file="/WEB-INF/jsp/inc/inc_js.jsp"%>
 	<!-- SELECT2 -->
@@ -105,8 +114,6 @@
 	<script type="text/javascript" src="<%=path%>/resources/js/zTree_v3/js/jquery.ztree.core-3.5.js"></script>
 	<script type="text/javascript" src="<%=path%>/resources/js/zTree_v3/js/jquery.ztree.excheck-3.5.js"></script>
 	<script type="text/javascript" src="<%=path%>/resources/js/menjin/menjin/menjin_yckz.js"></script>
-	<SCRIPT type="text/javascript">
-		
-	</SCRIPT>
+	${json_script}
 </body>
 </html>

@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence&gt;
  *         &lt;element name="in-strACCodeID" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="in-strReaderID" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="in-strTimeZoneID" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -32,7 +33,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "inStrACCodeID",
-    "inStrReaderID"
+    "inStrReaderID",
+    "inStrTimeZoneID"
 })
 @XmlRootElement(name = "RemoveReaderFromACCode")
 public class RemoveReaderFromACCode {
@@ -41,6 +43,8 @@ public class RemoveReaderFromACCode {
     protected JAXBElement<String> inStrACCodeID;
     @XmlElementRef(name = "in-strReaderID", type = JAXBElement.class, required = false)
     protected JAXBElement<String> inStrReaderID;
+    @XmlElementRef(name = "in-strTimeZoneID", type = JAXBElement.class, required = false)
+    protected JAXBElement<String> inStrTimeZoneID;
 
     /**
      * 获取inStrACCodeID属性的值。
@@ -88,6 +92,30 @@ public class RemoveReaderFromACCode {
      */
     public void setInStrReaderID(JAXBElement<String> value) {
         this.inStrReaderID = value;
+    }
+
+    /**
+     * 获取inStrTimeZoneID属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public JAXBElement<String> getInStrTimeZoneID() {
+        return inStrTimeZoneID;
+    }
+
+    /**
+     * 设置inStrTimeZoneID属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public void setInStrTimeZoneID(JAXBElement<String> value) {
+        this.inStrTimeZoneID = value;
     }
 
 }

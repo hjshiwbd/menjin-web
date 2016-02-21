@@ -1,0 +1,917 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.shinomin.menjin.mapper.Empext">
+
+	<!-- resultMap -->
+	<resultMap id="EmpextMap" type="EmpextBean">
+		<result property="empid" column="empid" />
+		<result property="etworkday" column="etworkday" />
+		<result property="etstartday" column="etstartday" />
+		<result property="positionid" column="positionid" />
+		<result property="employeetypeid" column="employeetypeid" />
+		<result property="employmenttypeid" column="employmenttypeid" />
+		<result property="dutytypeid" column="dutytypeid" />
+		<result property="etduty" column="etduty" />
+		<result property="etleaveday" column="etleaveday" />
+		<result property="leavetypeid" column="leavetypeid" />
+		<result property="leavereasonid" column="leavereasonid" />
+		<result property="provinceid" column="provinceid" />
+		<result property="etcityorcounty" column="etcityorcounty" />
+		<result property="etarea" column="etarea" />
+		<result property="ethometown" column="ethometown" />
+		<result property="hometowntypeid" column="hometowntypeid" />
+		<result property="ethometownaddress" column="ethometownaddress" />
+		<result property="etpolicestation" column="etpolicestation" />
+		<result property="etaddress" column="etaddress" />
+		<result property="etpostcode" column="etpostcode" />
+		<result property="ettelephne" column="ettelephne" />
+		<result property="etlinkman" column="etlinkman" />
+		<result property="sourcetypeid" column="sourcetypeid" />
+		<result property="etintroducer" column="etintroducer" />
+		<result property="etintroducerno" column="etintroducerno" />
+		<result property="etintroducerremark" column="etintroducerremark" />
+		<result property="etcautioner" column="etcautioner" />
+		<result property="ettestgrade" column="ettestgrade" />
+		<result property="etisnotprobation" column="etisnotprobation" />
+		<result property="etisnotprobationday" column="etisnotprobationday" />
+		<result property="etjoinpay" column="etjoinpay" />
+		<result property="etaddpayday" column="etaddpayday" />
+		<result property="etcurrentday" column="etcurrentday" />
+		<result property="etdocno" column="etdocno" />
+		<result property="etdocaddress" column="etdocaddress" />
+		<result property="docpaylevelid" column="docpaylevelid" />
+		<result property="docpayaccountid" column="docpayaccountid" />
+		<result property="houseinfoid" column="houseinfoid" />
+		<result property="ethouseaddress" column="ethouseaddress" />
+		<result property="etroomno" column="etroomno" />
+		<result property="etroomtelephone" column="etroomtelephone" />
+		<result property="etgraduateschool" column="etgraduateschool" />
+		<result property="etgraduateday" column="etgraduateday" />
+		<result property="etage" column="etage" />
+		<result property="etservicelength" column="etservicelength" />
+		<result property="etworklength" column="etworklength" />
+		<result property="etishavebirthcontrolcard" column="etishavebirthcontrolcard" />
+		<result property="etmarryday" column="etmarryday" />
+		<result property="etspousename" column="etspousename" />
+		<result property="etspousecompany" column="etspousecompany" />
+		<result property="birthcontrolid" column="birthcontrolid" />
+		<result property="etboynum" column="etboynum" />
+		<result property="etgirlnum" column="etgirlnum" />
+		<result property="etissamecompany" column="etissamecompany" />
+		<result property="etspouseno" column="etspouseno" />
+		<result property="etisveteran" column="etisveteran" />
+		<result property="involvementid" column="involvementid" />
+		<result property="paylevelid" column="paylevelid" />
+		<result property="paylevelstepid" column="paylevelstepid" />
+		<result property="positionordno" column="positionordno" />
+		<result property="employeetypeordno" column="employeetypeordno" />
+		<result property="employmenttypeordno" column="employmenttypeordno" />
+		<result property="dutytypeordno" column="dutytypeordno" />
+		<result property="leavetypeordno" column="leavetypeordno" />
+		<result property="leavereasonordno" column="leavereasonordno" />
+		<result property="provinceordno" column="provinceordno" />
+		<result property="hometowntypeordno" column="hometowntypeordno" />
+		<result property="sourcetypeordno" column="sourcetypeordno" />
+		<result property="docpaylevelordno" column="docpaylevelordno" />
+		<result property="docpayaccountordno" column="docpayaccountordno" />
+		<result property="houseinfoordno" column="houseinfoordno" />
+		<result property="birthcontrolordno" column="birthcontrolordno" />
+		<result property="involvementordno" column="involvementordno" />
+		<result property="paylevelordno" column="paylevelordno" />
+		<result property="paylevelstepordno" column="paylevelstepordno" />
+		<result property="mngid" column="mngid" />
+		<result property="mngordno" column="mngordno" />
+		<result property="etgrpday" column="etgrpday" />
+		<result property="etworkaddr" column="etworkaddr" />
+		<result property="etundertaker" column="etundertaker" />
+		<result property="etmonths" column="etmonths" />
+		<result property="ettotalmonths" column="ettotalmonths" />
+		<result property="etgzstopflag" column="etgzstopflag" />
+		<result property="etcfflag" column="etcfflag" />
+		<result property="etpretransposeday" column="etpretransposeday" />
+		<result property="etpreleaveday" column="etpreleaveday" />
+		<result property="etdormid" column="etdormid" />
+		<result property="etdormisout" column="etdormisout" />
+		<result property="etdorminday" column="etdorminday" />
+		<result property="etdormoutday" column="etdormoutday" />
+		<result property="etdormremark" column="etdormremark" />
+		<result property="etdormbedid" column="etdormbedid" />
+		<result property="etdormcabid" column="etdormcabid" />
+		<result property="etdormbedno" column="etdormbedno" />
+		<result property="etdormcabno" column="etdormcabno" />
+		<result property="etjoinpartyday" column="etjoinpartyday" />
+		<result property="etjoingroupday" column="etjoingroupday" />
+		<result property="etjoinlabourday" column="etjoinlabourday" />
+		<result property="etbodystatus" column="etbodystatus" />
+		<result property="etbloodtype" column="etbloodtype" />
+		<result property="etpropertyani" column="etpropertyani" />
+		<result property="etenglishgrade" column="etenglishgrade" />
+		<result property="etstockno" column="etstockno" />
+		<result property="etstockmoney" column="etstockmoney" />
+		<result property="etriskmoney" column="etriskmoney" />
+	</resultMap>
+
+	<!-- select -->
+	<select id="select" parameterType="EmpextBean" resultType="EmpextBean">
+		select t.empid, t.etworkday, t.etstartday, t.positionid,
+		t.employeetypeid, t.employmenttypeid, t.dutytypeid, t.etduty,
+		t.etleaveday, t.leavetypeid, t.leavereasonid, t.provinceid,
+		t.etcityorcounty, t.etarea, t.ethometown, t.hometowntypeid,
+		t.ethometownaddress, t.etpolicestation, t.etaddress, t.etpostcode,
+		t.ettelephne, t.etlinkman, t.sourcetypeid, t.etintroducer,
+		t.etintroducerno, t.etintroducerremark, t.etcautioner, t.ettestgrade,
+		t.etisnotprobation, t.etisnotprobationday, t.etjoinpay, t.etaddpayday,
+		t.etcurrentday, t.etdocno, t.etdocaddress, t.docpaylevelid,
+		t.docpayaccountid, t.houseinfoid, t.ethouseaddress, t.etroomno,
+		t.etroomtelephone, t.etgraduateschool, t.etgraduateday, t.etage,
+		t.etservicelength, t.etworklength, t.etishavebirthcontrolcard,
+		t.etmarryday, t.etspousename, t.etspousecompany, t.birthcontrolid,
+		t.etboynum, t.etgirlnum, t.etissamecompany, t.etspouseno,
+		t.etisveteran, t.involvementid, t.paylevelid, t.paylevelstepid,
+		t.positionordno, t.employeetypeordno, t.employmenttypeordno,
+		t.dutytypeordno, t.leavetypeordno, t.leavereasonordno,
+		t.provinceordno, t.hometowntypeordno, t.sourcetypeordno,
+		t.docpaylevelordno, t.docpayaccountordno, t.houseinfoordno,
+		t.birthcontrolordno, t.involvementordno, t.paylevelordno,
+		t.paylevelstepordno, t.mngid, t.mngordno, t.etgrpday, t.etworkaddr,
+		t.etundertaker, t.etmonths, t.ettotalmonths, t.etgzstopflag,
+		t.etcfflag, t.etpretransposeday, t.etpreleaveday, t.etdormid,
+		t.etdormisout, t.etdorminday, t.etdormoutday, t.etdormremark,
+		t.etdormbedid, t.etdormcabid, t.etdormbedno, t.etdormcabno,
+		t.etjoinpartyday, t.etjoingroupday, t.etjoinlabourday, t.etbodystatus,
+		t.etbloodtype, t.etpropertyani, t.etenglishgrade, t.etstockno,
+		t.etstockmoney, t.etriskmoney from Hrms_EmpExt t
+		<where>
+			<if test="empid!=null">
+				and t.empid = #{empid,jdbcType=NUMERIC}
+			</if>
+			<if test="etworkday!=null">
+				and t.etworkday = #{etworkday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="etstartday!=null">
+				and t.etstartday = #{etstartday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="positionid!=null">
+				and t.positionid = #{positionid,jdbcType=NUMERIC}
+			</if>
+			<if test="employeetypeid!=null">
+				and t.employeetypeid = #{employeetypeid,jdbcType=NUMERIC}
+			</if>
+			<if test="employmenttypeid!=null">
+				and t.employmenttypeid =
+				#{employmenttypeid,jdbcType=NUMERIC}
+			</if>
+			<if test="dutytypeid!=null">
+				and t.dutytypeid = #{dutytypeid,jdbcType=NUMERIC}
+			</if>
+			<if test="etduty != null and etduty != ''">
+				and t.etduty = #{etduty,jdbcType=VARCHAR}
+			</if>
+			<if test="etleaveday!=null">
+				and t.etleaveday = #{etleaveday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="leavetypeid!=null">
+				and t.leavetypeid = #{leavetypeid,jdbcType=NUMERIC}
+			</if>
+			<if test="leavereasonid!=null">
+				and t.leavereasonid = #{leavereasonid,jdbcType=NUMERIC}
+			</if>
+			<if test="provinceid!=null">
+				and t.provinceid = #{provinceid,jdbcType=NUMERIC}
+			</if>
+			<if test="etcityorcounty != null and etcityorcounty != ''">
+				and t.etcityorcounty = #{etcityorcounty,jdbcType=VARCHAR}
+			</if>
+			<if test="etarea != null and etarea != ''">
+				and t.etarea = #{etarea,jdbcType=VARCHAR}
+			</if>
+			<if test="ethometown != null and ethometown != ''">
+				and t.ethometown = #{ethometown,jdbcType=VARCHAR}
+			</if>
+			<if test="hometowntypeid!=null">
+				and t.hometowntypeid = #{hometowntypeid,jdbcType=NUMERIC}
+			</if>
+			<if test="ethometownaddress != null and ethometownaddress != ''">
+				and t.ethometownaddress =
+				#{ethometownaddress,jdbcType=VARCHAR}
+			</if>
+			<if test="etpolicestation != null and etpolicestation != ''">
+				and t.etpolicestation =
+				#{etpolicestation,jdbcType=VARCHAR}
+			</if>
+			<if test="etaddress != null and etaddress != ''">
+				and t.etaddress = #{etaddress,jdbcType=VARCHAR}
+			</if>
+			<if test="etpostcode != null and etpostcode != ''">
+				and t.etpostcode = #{etpostcode,jdbcType=VARCHAR}
+			</if>
+			<if test="ettelephne != null and ettelephne != ''">
+				and t.ettelephne = #{ettelephne,jdbcType=VARCHAR}
+			</if>
+			<if test="etlinkman != null and etlinkman != ''">
+				and t.etlinkman = #{etlinkman,jdbcType=VARCHAR}
+			</if>
+			<if test="sourcetypeid!=null">
+				and t.sourcetypeid = #{sourcetypeid,jdbcType=NUMERIC}
+			</if>
+			<if test="etintroducer != null and etintroducer != ''">
+				and t.etintroducer = #{etintroducer,jdbcType=VARCHAR}
+			</if>
+			<if test="etintroducerno != null and etintroducerno != ''">
+				and t.etintroducerno = #{etintroducerno,jdbcType=VARCHAR}
+			</if>
+			<if test="etintroducerremark != null and etintroducerremark != ''">
+				and t.etintroducerremark =
+				#{etintroducerremark,jdbcType=VARCHAR}
+			</if>
+			<if test="etcautioner != null and etcautioner != ''">
+				and t.etcautioner = #{etcautioner,jdbcType=VARCHAR}
+			</if>
+			<if test="ettestgrade!=null">
+				and t.ettestgrade = #{ettestgrade,jdbcType=DECIMAL}
+			</if>
+			<if test="etisnotprobation!=null">
+				and t.etisnotprobation =
+				#{etisnotprobation,jdbcType=NUMERIC}
+			</if>
+			<if test="etisnotprobationday!=null">
+				and t.etisnotprobationday =
+				#{etisnotprobationday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="etjoinpay!=null">
+				and t.etjoinpay = #{etjoinpay,jdbcType=DECIMAL}
+			</if>
+			<if test="etaddpayday!=null">
+				and t.etaddpayday = #{etaddpayday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="etcurrentday!=null">
+				and t.etcurrentday = #{etcurrentday,jdbcType=DECIMAL}
+			</if>
+			<if test="etdocno != null and etdocno != ''">
+				and t.etdocno = #{etdocno,jdbcType=VARCHAR}
+			</if>
+			<if test="etdocaddress != null and etdocaddress != ''">
+				and t.etdocaddress = #{etdocaddress,jdbcType=VARCHAR}
+			</if>
+			<if test="docpaylevelid!=null">
+				and t.docpaylevelid = #{docpaylevelid,jdbcType=NUMERIC}
+			</if>
+			<if test="docpayaccountid!=null">
+				and t.docpayaccountid =
+				#{docpayaccountid,jdbcType=NUMERIC}
+			</if>
+			<if test="houseinfoid!=null">
+				and t.houseinfoid = #{houseinfoid,jdbcType=NUMERIC}
+			</if>
+			<if test="ethouseaddress != null and ethouseaddress != ''">
+				and t.ethouseaddress = #{ethouseaddress,jdbcType=VARCHAR}
+			</if>
+			<if test="etroomno != null and etroomno != ''">
+				and t.etroomno = #{etroomno,jdbcType=VARCHAR}
+			</if>
+			<if test="etroomtelephone != null and etroomtelephone != ''">
+				and t.etroomtelephone =
+				#{etroomtelephone,jdbcType=VARCHAR}
+			</if>
+			<if test="etgraduateschool != null and etgraduateschool != ''">
+				and t.etgraduateschool =
+				#{etgraduateschool,jdbcType=VARCHAR}
+			</if>
+			<if test="etgraduateday!=null">
+				and t.etgraduateday = #{etgraduateday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="etage!=null">
+				and t.etage = #{etage,jdbcType=DECIMAL}
+			</if>
+			<if test="etservicelength!=null">
+				and t.etservicelength =
+				#{etservicelength,jdbcType=DECIMAL}
+			</if>
+			<if test="etworklength!=null">
+				and t.etworklength = #{etworklength,jdbcType=DECIMAL}
+			</if>
+			<if test="etishavebirthcontrolcard!=null">
+				and t.etishavebirthcontrolcard =
+				#{etishavebirthcontrolcard,jdbcType=NUMERIC}
+			</if>
+			<if test="etmarryday!=null">
+				and t.etmarryday = #{etmarryday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="etspousename != null and etspousename != ''">
+				and t.etspousename = #{etspousename,jdbcType=VARCHAR}
+			</if>
+			<if test="etspousecompany != null and etspousecompany != ''">
+				and t.etspousecompany =
+				#{etspousecompany,jdbcType=VARCHAR}
+			</if>
+			<if test="birthcontrolid!=null">
+				and t.birthcontrolid = #{birthcontrolid,jdbcType=NUMERIC}
+			</if>
+			<if test="etboynum!=null">
+				and t.etboynum = #{etboynum,jdbcType=NUMERIC}
+			</if>
+			<if test="etgirlnum!=null">
+				and t.etgirlnum = #{etgirlnum,jdbcType=NUMERIC}
+			</if>
+			<if test="etissamecompany!=null">
+				and t.etissamecompany =
+				#{etissamecompany,jdbcType=NUMERIC}
+			</if>
+			<if test="etspouseno != null and etspouseno != ''">
+				and t.etspouseno = #{etspouseno,jdbcType=VARCHAR}
+			</if>
+			<if test="etisveteran!=null">
+				and t.etisveteran = #{etisveteran,jdbcType=NUMERIC}
+			</if>
+			<if test="involvementid!=null">
+				and t.involvementid = #{involvementid,jdbcType=NUMERIC}
+			</if>
+			<if test="paylevelid!=null">
+				and t.paylevelid = #{paylevelid,jdbcType=NUMERIC}
+			</if>
+			<if test="paylevelstepid!=null">
+				and t.paylevelstepid = #{paylevelstepid,jdbcType=NUMERIC}
+			</if>
+			<if test="positionordno!=null">
+				and t.positionordno = #{positionordno,jdbcType=NUMERIC}
+			</if>
+			<if test="employeetypeordno!=null">
+				and t.employeetypeordno =
+				#{employeetypeordno,jdbcType=NUMERIC}
+			</if>
+			<if test="employmenttypeordno!=null">
+				and t.employmenttypeordno =
+				#{employmenttypeordno,jdbcType=NUMERIC}
+			</if>
+			<if test="dutytypeordno!=null">
+				and t.dutytypeordno = #{dutytypeordno,jdbcType=NUMERIC}
+			</if>
+			<if test="leavetypeordno!=null">
+				and t.leavetypeordno = #{leavetypeordno,jdbcType=NUMERIC}
+			</if>
+			<if test="leavereasonordno!=null">
+				and t.leavereasonordno =
+				#{leavereasonordno,jdbcType=NUMERIC}
+			</if>
+			<if test="provinceordno!=null">
+				and t.provinceordno = #{provinceordno,jdbcType=NUMERIC}
+			</if>
+			<if test="hometowntypeordno!=null">
+				and t.hometowntypeordno =
+				#{hometowntypeordno,jdbcType=NUMERIC}
+			</if>
+			<if test="sourcetypeordno!=null">
+				and t.sourcetypeordno =
+				#{sourcetypeordno,jdbcType=NUMERIC}
+			</if>
+			<if test="docpaylevelordno!=null">
+				and t.docpaylevelordno =
+				#{docpaylevelordno,jdbcType=NUMERIC}
+			</if>
+			<if test="docpayaccountordno!=null">
+				and t.docpayaccountordno =
+				#{docpayaccountordno,jdbcType=NUMERIC}
+			</if>
+			<if test="houseinfoordno!=null">
+				and t.houseinfoordno = #{houseinfoordno,jdbcType=NUMERIC}
+			</if>
+			<if test="birthcontrolordno!=null">
+				and t.birthcontrolordno =
+				#{birthcontrolordno,jdbcType=NUMERIC}
+			</if>
+			<if test="involvementordno!=null">
+				and t.involvementordno =
+				#{involvementordno,jdbcType=NUMERIC}
+			</if>
+			<if test="paylevelordno!=null">
+				and t.paylevelordno = #{paylevelordno,jdbcType=NUMERIC}
+			</if>
+			<if test="paylevelstepordno!=null">
+				and t.paylevelstepordno =
+				#{paylevelstepordno,jdbcType=NUMERIC}
+			</if>
+			<if test="mngid!=null">
+				and t.mngid = #{mngid,jdbcType=NUMERIC}
+			</if>
+			<if test="mngordno!=null">
+				and t.mngordno = #{mngordno,jdbcType=NUMERIC}
+			</if>
+			<if test="etgrpday!=null">
+				and t.etgrpday = #{etgrpday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="etworkaddr != null and etworkaddr != ''">
+				and t.etworkaddr = #{etworkaddr,jdbcType=VARCHAR}
+			</if>
+			<if test="etundertaker != null and etundertaker != ''">
+				and t.etundertaker = #{etundertaker,jdbcType=VARCHAR}
+			</if>
+			<if test="etmonths!=null">
+				and t.etmonths = #{etmonths,jdbcType=NUMERIC}
+			</if>
+			<if test="ettotalmonths!=null">
+				and t.ettotalmonths = #{ettotalmonths,jdbcType=NUMERIC}
+			</if>
+			<if test="etgzstopflag != null and etgzstopflag != ''">
+				and t.etgzstopflag = #{etgzstopflag,jdbcType=VARCHAR}
+			</if>
+			<if test="etcfflag != null and etcfflag != ''">
+				and t.etcfflag = #{etcfflag,jdbcType=VARCHAR}
+			</if>
+			<if test="etpretransposeday!=null">
+				and t.etpretransposeday =
+				#{etpretransposeday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="etpreleaveday!=null">
+				and t.etpreleaveday = #{etpreleaveday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="etdormid!=null">
+				and t.etdormid = #{etdormid,jdbcType=NUMERIC}
+			</if>
+			<if test="etdormisout != null and etdormisout != ''">
+				and t.etdormisout = #{etdormisout,jdbcType=VARCHAR}
+			</if>
+			<if test="etdorminday!=null">
+				and t.etdorminday = #{etdorminday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="etdormoutday!=null">
+				and t.etdormoutday = #{etdormoutday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="etdormremark != null and etdormremark != ''">
+				and t.etdormremark = #{etdormremark,jdbcType=VARCHAR}
+			</if>
+			<if test="etdormbedid!=null">
+				and t.etdormbedid = #{etdormbedid,jdbcType=NUMERIC}
+			</if>
+			<if test="etdormcabid!=null">
+				and t.etdormcabid = #{etdormcabid,jdbcType=NUMERIC}
+			</if>
+			<if test="etdormbedno != null and etdormbedno != ''">
+				and t.etdormbedno = #{etdormbedno,jdbcType=VARCHAR}
+			</if>
+			<if test="etdormcabno != null and etdormcabno != ''">
+				and t.etdormcabno = #{etdormcabno,jdbcType=VARCHAR}
+			</if>
+			<if test="etjoinpartyday!=null">
+				and t.etjoinpartyday =
+				#{etjoinpartyday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="etjoingroupday!=null">
+				and t.etjoingroupday =
+				#{etjoingroupday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="etjoinlabourday!=null">
+				and t.etjoinlabourday =
+				#{etjoinlabourday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="etbodystatus != null and etbodystatus != ''">
+				and t.etbodystatus = #{etbodystatus,jdbcType=VARCHAR}
+			</if>
+			<if test="etbloodtype != null and etbloodtype != ''">
+				and t.etbloodtype = #{etbloodtype,jdbcType=VARCHAR}
+			</if>
+			<if test="etpropertyani != null and etpropertyani != ''">
+				and t.etpropertyani = #{etpropertyani,jdbcType=VARCHAR}
+			</if>
+			<if test="etenglishgrade != null and etenglishgrade != ''">
+				and t.etenglishgrade = #{etenglishgrade,jdbcType=VARCHAR}
+			</if>
+			<if test="etstockno != null and etstockno != ''">
+				and t.etstockno = #{etstockno,jdbcType=VARCHAR}
+			</if>
+			<if test="etstockmoney!=null">
+				and t.etstockmoney = #{etstockmoney,jdbcType=NUMERIC}
+			</if>
+			<if test="etriskmoney!=null">
+				and t.etriskmoney = #{etriskmoney,jdbcType=NUMERIC}
+			</if>
+		</where>
+	</select>
+
+	<!-- insert -->
+	<insert id="insert" parameterType="EmpextBean">
+		insert into Hrms_EmpExt
+		(empid, etworkday, etstartday, positionid, employeetypeid,
+		employmenttypeid, dutytypeid, etduty, etleaveday, leavetypeid,
+		leavereasonid, provinceid, etcityorcounty, etarea, ethometown,
+		hometowntypeid, ethometownaddress, etpolicestation, etaddress,
+		etpostcode, ettelephne, etlinkman, sourcetypeid, etintroducer,
+		etintroducerno, etintroducerremark, etcautioner, ettestgrade,
+		etisnotprobationday, etjoinpay, etaddpayday, etcurrentday, etdocno,
+		etdocaddress, docpaylevelid, docpayaccountid, houseinfoid,
+		ethouseaddress, etroomno, etroomtelephone, etgraduateschool,
+		etgraduateday, etage, etservicelength, etworklength, etmarryday,
+		etspousename, etspousecompany, birthcontrolid, etboynum, etgirlnum,
+		etspouseno, involvementid, paylevelid, paylevelstepid, positionordno,
+		employeetypeordno, employmenttypeordno, dutytypeordno, leavetypeordno,
+		leavereasonordno, provinceordno, hometowntypeordno, sourcetypeordno,
+		docpaylevelordno, docpayaccountordno, houseinfoordno,
+		birthcontrolordno, involvementordno, paylevelordno, paylevelstepordno,
+		mngid, mngordno, etgrpday, etworkaddr, etundertaker, etmonths,
+		ettotalmonths, etgzstopflag, etcfflag, etpretransposeday,
+		etpreleaveday, etdormid, etdormisout, etdorminday, etdormoutday,
+		etdormremark, etdormbedid, etdormcabid, etdormbedno, etdormcabno,
+		etjoinpartyday, etjoingroupday, etjoinlabourday, etbodystatus,
+		etbloodtype, etpropertyani, etenglishgrade, etstockno, etstockmoney,
+		etriskmoney) values (#{empid,jdbcType=NUMERIC},
+		#{etworkday,jdbcType=TIMESTAMP}, #{etstartday,jdbcType=TIMESTAMP},
+		#{positionid,jdbcType=NUMERIC}, #{employeetypeid,jdbcType=NUMERIC},
+		#{employmenttypeid,jdbcType=NUMERIC}, #{dutytypeid,jdbcType=NUMERIC},
+		#{etduty,jdbcType=VARCHAR}, #{etleaveday,jdbcType=TIMESTAMP},
+		#{leavetypeid,jdbcType=NUMERIC}, #{leavereasonid,jdbcType=NUMERIC},
+		#{provinceid,jdbcType=NUMERIC}, #{etcityorcounty,jdbcType=VARCHAR},
+		#{etarea,jdbcType=VARCHAR}, #{ethometown,jdbcType=VARCHAR},
+		#{hometowntypeid,jdbcType=NUMERIC},
+		#{ethometownaddress,jdbcType=VARCHAR},
+		#{etpolicestation,jdbcType=VARCHAR}, #{etaddress,jdbcType=VARCHAR},
+		#{etpostcode,jdbcType=VARCHAR}, #{ettelephne,jdbcType=VARCHAR},
+		#{etlinkman,jdbcType=VARCHAR}, #{sourcetypeid,jdbcType=NUMERIC},
+		#{etintroducer,jdbcType=VARCHAR}, #{etintroducerno,jdbcType=VARCHAR},
+		#{etintroducerremark,jdbcType=VARCHAR},
+		#{etcautioner,jdbcType=VARCHAR}, #{ettestgrade,jdbcType=DECIMAL},
+		#{etisnotprobationday,jdbcType=TIMESTAMP},
+		#{etjoinpay,jdbcType=DECIMAL}, #{etaddpayday,jdbcType=TIMESTAMP},
+		#{etcurrentday,jdbcType=DECIMAL}, #{etdocno,jdbcType=VARCHAR},
+		#{etdocaddress,jdbcType=VARCHAR}, #{docpaylevelid,jdbcType=NUMERIC},
+		#{docpayaccountid,jdbcType=NUMERIC}, #{houseinfoid,jdbcType=NUMERIC},
+		#{ethouseaddress,jdbcType=VARCHAR}, #{etroomno,jdbcType=VARCHAR},
+		#{etroomtelephone,jdbcType=VARCHAR},
+		#{etgraduateschool,jdbcType=VARCHAR},
+		#{etgraduateday,jdbcType=TIMESTAMP}, #{etage,jdbcType=DECIMAL},
+		#{etservicelength,jdbcType=DECIMAL}, #{etworklength,jdbcType=DECIMAL},
+		#{etmarryday,jdbcType=TIMESTAMP}, #{etspousename,jdbcType=VARCHAR},
+		#{etspousecompany,jdbcType=VARCHAR},
+		#{birthcontrolid,jdbcType=NUMERIC}, #{etboynum,jdbcType=NUMERIC},
+		#{etgirlnum,jdbcType=NUMERIC}, #{etspouseno,jdbcType=VARCHAR},
+		#{involvementid,jdbcType=NUMERIC}, #{paylevelid,jdbcType=NUMERIC},
+		#{paylevelstepid,jdbcType=NUMERIC}, #{positionordno,jdbcType=NUMERIC},
+		#{employeetypeordno,jdbcType=NUMERIC},
+		#{employmenttypeordno,jdbcType=NUMERIC},
+		#{dutytypeordno,jdbcType=NUMERIC}, #{leavetypeordno,jdbcType=NUMERIC},
+		#{leavereasonordno,jdbcType=NUMERIC},
+		#{provinceordno,jdbcType=NUMERIC},
+		#{hometowntypeordno,jdbcType=NUMERIC},
+		#{sourcetypeordno,jdbcType=NUMERIC},
+		#{docpaylevelordno,jdbcType=NUMERIC},
+		#{docpayaccountordno,jdbcType=NUMERIC},
+		#{houseinfoordno,jdbcType=NUMERIC},
+		#{birthcontrolordno,jdbcType=NUMERIC},
+		#{involvementordno,jdbcType=NUMERIC},
+		#{paylevelordno,jdbcType=NUMERIC},
+		#{paylevelstepordno,jdbcType=NUMERIC}, #{mngid,jdbcType=NUMERIC},
+		#{mngordno,jdbcType=NUMERIC}, #{etgrpday,jdbcType=TIMESTAMP},
+		#{etworkaddr,jdbcType=VARCHAR}, #{etundertaker,jdbcType=VARCHAR},
+		#{etmonths,jdbcType=NUMERIC}, #{ettotalmonths,jdbcType=NUMERIC},
+		#{etgzstopflag,jdbcType=VARCHAR}, #{etcfflag,jdbcType=VARCHAR},
+		#{etpretransposeday,jdbcType=TIMESTAMP},
+		#{etpreleaveday,jdbcType=TIMESTAMP}, #{etdormid,jdbcType=NUMERIC},
+		#{etdormisout,jdbcType=VARCHAR}, #{etdorminday,jdbcType=TIMESTAMP},
+		#{etdormoutday,jdbcType=TIMESTAMP}, #{etdormremark,jdbcType=VARCHAR},
+		#{etdormbedid,jdbcType=NUMERIC}, #{etdormcabid,jdbcType=NUMERIC},
+		#{etdormbedno,jdbcType=VARCHAR}, #{etdormcabno,jdbcType=VARCHAR},
+		#{etjoinpartyday,jdbcType=TIMESTAMP},
+		#{etjoingroupday,jdbcType=TIMESTAMP},
+		#{etjoinlabourday,jdbcType=TIMESTAMP},
+		#{etbodystatus,jdbcType=VARCHAR}, #{etbloodtype,jdbcType=VARCHAR},
+		#{etpropertyani,jdbcType=VARCHAR}, #{etenglishgrade,jdbcType=VARCHAR},
+		#{etstockno,jdbcType=VARCHAR}, #{etstockmoney,jdbcType=NUMERIC},
+		#{etriskmoney,jdbcType=NUMERIC})
+	</insert>
+
+	<!-- update -->
+	<update id="update" parameterType="EmpextBean">
+		update Hrms_EmpExt
+		<set>
+			<if test="etworkday != null">
+				etworkday = #{etworkday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="etstartday != null">
+				etstartday = #{etstartday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="positionid != null">
+				positionid = #{positionid,jdbcType=NUMERIC},
+			</if>
+			<if test="employeetypeid != null">
+				employeetypeid = #{employeetypeid,jdbcType=NUMERIC},
+			</if>
+			<if test="employmenttypeid != null">
+				employmenttypeid = #{employmenttypeid,jdbcType=NUMERIC},
+			</if>
+			<if test="dutytypeid != null">
+				dutytypeid = #{dutytypeid,jdbcType=NUMERIC},
+			</if>
+			<if test="etduty != null">
+				etduty = #{etduty,jdbcType=VARCHAR},
+			</if>
+			<if test="etleaveday != null">
+				etleaveday = #{etleaveday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="leavetypeid != null">
+				leavetypeid = #{leavetypeid,jdbcType=NUMERIC},
+			</if>
+			<if test="leavereasonid != null">
+				leavereasonid = #{leavereasonid,jdbcType=NUMERIC},
+			</if>
+			<if test="provinceid != null">
+				provinceid = #{provinceid,jdbcType=NUMERIC},
+			</if>
+			<if test="etcityorcounty != null">
+				etcityorcounty = #{etcityorcounty,jdbcType=VARCHAR},
+			</if>
+			<if test="etarea != null">
+				etarea = #{etarea,jdbcType=VARCHAR},
+			</if>
+			<if test="ethometown != null">
+				ethometown = #{ethometown,jdbcType=VARCHAR},
+			</if>
+			<if test="hometowntypeid != null">
+				hometowntypeid = #{hometowntypeid,jdbcType=NUMERIC},
+			</if>
+			<if test="ethometownaddress != null">
+				ethometownaddress =
+				#{ethometownaddress,jdbcType=VARCHAR},
+			</if>
+			<if test="etpolicestation != null">
+				etpolicestation = #{etpolicestation,jdbcType=VARCHAR},
+			</if>
+			<if test="etaddress != null">
+				etaddress = #{etaddress,jdbcType=VARCHAR},
+			</if>
+			<if test="etpostcode != null">
+				etpostcode = #{etpostcode,jdbcType=VARCHAR},
+			</if>
+			<if test="ettelephne != null">
+				ettelephne = #{ettelephne,jdbcType=VARCHAR},
+			</if>
+			<if test="etlinkman != null">
+				etlinkman = #{etlinkman,jdbcType=VARCHAR},
+			</if>
+			<if test="sourcetypeid != null">
+				sourcetypeid = #{sourcetypeid,jdbcType=NUMERIC},
+			</if>
+			<if test="etintroducer != null">
+				etintroducer = #{etintroducer,jdbcType=VARCHAR},
+			</if>
+			<if test="etintroducerno != null">
+				etintroducerno = #{etintroducerno,jdbcType=VARCHAR},
+			</if>
+			<if test="etintroducerremark != null">
+				etintroducerremark =
+				#{etintroducerremark,jdbcType=VARCHAR},
+			</if>
+			<if test="etcautioner != null">
+				etcautioner = #{etcautioner,jdbcType=VARCHAR},
+			</if>
+			<if test="ettestgrade != null">
+				ettestgrade = #{ettestgrade,jdbcType=DECIMAL},
+			</if>
+			<if test="etisnotprobation != null">
+				etisnotprobation = #{etisnotprobation,jdbcType=NUMERIC},
+			</if>
+			<if test="etisnotprobationday != null">
+				etisnotprobationday =
+				#{etisnotprobationday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="etjoinpay != null">
+				etjoinpay = #{etjoinpay,jdbcType=DECIMAL},
+			</if>
+			<if test="etaddpayday != null">
+				etaddpayday = #{etaddpayday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="etcurrentday != null">
+				etcurrentday = #{etcurrentday,jdbcType=DECIMAL},
+			</if>
+			<if test="etdocno != null">
+				etdocno = #{etdocno,jdbcType=VARCHAR},
+			</if>
+			<if test="etdocaddress != null">
+				etdocaddress = #{etdocaddress,jdbcType=VARCHAR},
+			</if>
+			<if test="docpaylevelid != null">
+				docpaylevelid = #{docpaylevelid,jdbcType=NUMERIC},
+			</if>
+			<if test="docpayaccountid != null">
+				docpayaccountid = #{docpayaccountid,jdbcType=NUMERIC},
+			</if>
+			<if test="houseinfoid != null">
+				houseinfoid = #{houseinfoid,jdbcType=NUMERIC},
+			</if>
+			<if test="ethouseaddress != null">
+				ethouseaddress = #{ethouseaddress,jdbcType=VARCHAR},
+			</if>
+			<if test="etroomno != null">
+				etroomno = #{etroomno,jdbcType=VARCHAR},
+			</if>
+			<if test="etroomtelephone != null">
+				etroomtelephone = #{etroomtelephone,jdbcType=VARCHAR},
+			</if>
+			<if test="etgraduateschool != null">
+				etgraduateschool = #{etgraduateschool,jdbcType=VARCHAR},
+			</if>
+			<if test="etgraduateday != null">
+				etgraduateday = #{etgraduateday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="etage != null">
+				etage = #{etage,jdbcType=DECIMAL},
+			</if>
+			<if test="etservicelength != null">
+				etservicelength = #{etservicelength,jdbcType=DECIMAL},
+			</if>
+			<if test="etworklength != null">
+				etworklength = #{etworklength,jdbcType=DECIMAL},
+			</if>
+			<if test="etishavebirthcontrolcard != null">
+				etishavebirthcontrolcard =
+				#{etishavebirthcontrolcard,jdbcType=NUMERIC},
+			</if>
+			<if test="etmarryday != null">
+				etmarryday = #{etmarryday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="etspousename != null">
+				etspousename = #{etspousename,jdbcType=VARCHAR},
+			</if>
+			<if test="etspousecompany != null">
+				etspousecompany = #{etspousecompany,jdbcType=VARCHAR},
+			</if>
+			<if test="birthcontrolid != null">
+				birthcontrolid = #{birthcontrolid,jdbcType=NUMERIC},
+			</if>
+			<if test="etboynum != null">
+				etboynum = #{etboynum,jdbcType=NUMERIC},
+			</if>
+			<if test="etgirlnum != null">
+				etgirlnum = #{etgirlnum,jdbcType=NUMERIC},
+			</if>
+			<if test="etissamecompany != null">
+				etissamecompany = #{etissamecompany,jdbcType=NUMERIC},
+			</if>
+			<if test="etspouseno != null">
+				etspouseno = #{etspouseno,jdbcType=VARCHAR},
+			</if>
+			<if test="etisveteran != null">
+				etisveteran = #{etisveteran,jdbcType=NUMERIC},
+			</if>
+			<if test="involvementid != null">
+				involvementid = #{involvementid,jdbcType=NUMERIC},
+			</if>
+			<if test="paylevelid != null">
+				paylevelid = #{paylevelid,jdbcType=NUMERIC},
+			</if>
+			<if test="paylevelstepid != null">
+				paylevelstepid = #{paylevelstepid,jdbcType=NUMERIC},
+			</if>
+			<if test="positionordno != null">
+				positionordno = #{positionordno,jdbcType=NUMERIC},
+			</if>
+			<if test="employeetypeordno != null">
+				employeetypeordno =
+				#{employeetypeordno,jdbcType=NUMERIC},
+			</if>
+			<if test="employmenttypeordno != null">
+				employmenttypeordno =
+				#{employmenttypeordno,jdbcType=NUMERIC},
+			</if>
+			<if test="dutytypeordno != null">
+				dutytypeordno = #{dutytypeordno,jdbcType=NUMERIC},
+			</if>
+			<if test="leavetypeordno != null">
+				leavetypeordno = #{leavetypeordno,jdbcType=NUMERIC},
+			</if>
+			<if test="leavereasonordno != null">
+				leavereasonordno = #{leavereasonordno,jdbcType=NUMERIC},
+			</if>
+			<if test="provinceordno != null">
+				provinceordno = #{provinceordno,jdbcType=NUMERIC},
+			</if>
+			<if test="hometowntypeordno != null">
+				hometowntypeordno =
+				#{hometowntypeordno,jdbcType=NUMERIC},
+			</if>
+			<if test="sourcetypeordno != null">
+				sourcetypeordno = #{sourcetypeordno,jdbcType=NUMERIC},
+			</if>
+			<if test="docpaylevelordno != null">
+				docpaylevelordno = #{docpaylevelordno,jdbcType=NUMERIC},
+			</if>
+			<if test="docpayaccountordno != null">
+				docpayaccountordno =
+				#{docpayaccountordno,jdbcType=NUMERIC},
+			</if>
+			<if test="houseinfoordno != null">
+				houseinfoordno = #{houseinfoordno,jdbcType=NUMERIC},
+			</if>
+			<if test="birthcontrolordno != null">
+				birthcontrolordno =
+				#{birthcontrolordno,jdbcType=NUMERIC},
+			</if>
+			<if test="involvementordno != null">
+				involvementordno = #{involvementordno,jdbcType=NUMERIC},
+			</if>
+			<if test="paylevelordno != null">
+				paylevelordno = #{paylevelordno,jdbcType=NUMERIC},
+			</if>
+			<if test="paylevelstepordno != null">
+				paylevelstepordno =
+				#{paylevelstepordno,jdbcType=NUMERIC},
+			</if>
+			<if test="mngid != null">
+				mngid = #{mngid,jdbcType=NUMERIC},
+			</if>
+			<if test="mngordno != null">
+				mngordno = #{mngordno,jdbcType=NUMERIC},
+			</if>
+			<if test="etgrpday != null">
+				etgrpday = #{etgrpday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="etworkaddr != null">
+				etworkaddr = #{etworkaddr,jdbcType=VARCHAR},
+			</if>
+			<if test="etundertaker != null">
+				etundertaker = #{etundertaker,jdbcType=VARCHAR},
+			</if>
+			<if test="etmonths != null">
+				etmonths = #{etmonths,jdbcType=NUMERIC},
+			</if>
+			<if test="ettotalmonths != null">
+				ettotalmonths = #{ettotalmonths,jdbcType=NUMERIC},
+			</if>
+			<if test="etgzstopflag != null">
+				etgzstopflag = #{etgzstopflag,jdbcType=VARCHAR},
+			</if>
+			<if test="etcfflag != null">
+				etcfflag = #{etcfflag,jdbcType=VARCHAR},
+			</if>
+			<if test="etpretransposeday != null">
+				etpretransposeday =
+				#{etpretransposeday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="etpreleaveday != null">
+				etpreleaveday = #{etpreleaveday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="etdormid != null">
+				etdormid = #{etdormid,jdbcType=NUMERIC},
+			</if>
+			<if test="etdormisout != null">
+				etdormisout = #{etdormisout,jdbcType=VARCHAR},
+			</if>
+			<if test="etdorminday != null">
+				etdorminday = #{etdorminday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="etdormoutday != null">
+				etdormoutday = #{etdormoutday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="etdormremark != null">
+				etdormremark = #{etdormremark,jdbcType=VARCHAR},
+			</if>
+			<if test="etdormbedid != null">
+				etdormbedid = #{etdormbedid,jdbcType=NUMERIC},
+			</if>
+			<if test="etdormcabid != null">
+				etdormcabid = #{etdormcabid,jdbcType=NUMERIC},
+			</if>
+			<if test="etdormbedno != null">
+				etdormbedno = #{etdormbedno,jdbcType=VARCHAR},
+			</if>
+			<if test="etdormcabno != null">
+				etdormcabno = #{etdormcabno,jdbcType=VARCHAR},
+			</if>
+			<if test="etjoinpartyday != null">
+				etjoinpartyday = #{etjoinpartyday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="etjoingroupday != null">
+				etjoingroupday = #{etjoingroupday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="etjoinlabourday != null">
+				etjoinlabourday = #{etjoinlabourday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="etbodystatus != null">
+				etbodystatus = #{etbodystatus,jdbcType=VARCHAR},
+			</if>
+			<if test="etbloodtype != null">
+				etbloodtype = #{etbloodtype,jdbcType=VARCHAR},
+			</if>
+			<if test="etpropertyani != null">
+				etpropertyani = #{etpropertyani,jdbcType=VARCHAR},
+			</if>
+			<if test="etenglishgrade != null">
+				etenglishgrade = #{etenglishgrade,jdbcType=VARCHAR},
+			</if>
+			<if test="etstockno != null">
+				etstockno = #{etstockno,jdbcType=VARCHAR},
+			</if>
+			<if test="etstockmoney != null">
+				etstockmoney = #{etstockmoney,jdbcType=NUMERIC},
+			</if>
+			<if test="etriskmoney != null">
+				etriskmoney = #{etriskmoney,jdbcType=NUMERIC},
+			</if>
+		</set>
+		where empid = #{empid}
+	</update>
+
+	<!-- delete -->
+	<delete id="delete" parameterType="EmpextBean">
+		delete from Hrms_EmpExt where
+		empid = #{empid,jdbcType=NUMERIC}
+	</delete>
+</mapper>

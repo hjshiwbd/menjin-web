@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.shinomin.menjin.mapper.Cardtype">
+
+	<!-- resultMap -->
+	<resultMap id="CardtypeMap" type="CardtypeBean">
+		<result property="cardtypeid" column="cardtypeid" />
+		<result property="cardtypecolor" column="cardtypecolor" />
+		<result property="cardtypename" column="cardtypename" />
+		<result property="cardtypeforegift" column="cardtypeforegift" />
+		<result property="cardtypedesp" column="cardtypedesp" />
+		<result property="defaulttype" column="defaulttype" />
+		<result property="cardtypestr" column="cardtypestr" />
+		<result property="cardtype01" column="cardtype01" />
+		<result property="cardtype02" column="cardtype02" />
+		<result property="cardtype03" column="cardtype03" />
+		<result property="cardtype04" column="cardtype04" />
+		<result property="cardtype05" column="cardtype05" />
+		<result property="cardtype06" column="cardtype06" />
+		<result property="cardtype07" column="cardtype07" />
+		<result property="cardtype08" column="cardtype08" />
+		<result property="cardtype09" column="cardtype09" />
+		<result property="cardtype10" column="cardtype10" />
+		<result property="cardtype11" column="cardtype11" />
+		<result property="cardtype12" column="cardtype12" />
+		<result property="cardtype13" column="cardtype13" />
+		<result property="cardtype14" column="cardtype14" />
+		<result property="cardtype15" column="cardtype15" />
+		<result property="cardtype16" column="cardtype16" />
+		<result property="cardtype17" column="cardtype17" />
+		<result property="cardtype18" column="cardtype18" />
+		<result property="cardtype19" column="cardtype19" />
+		<result property="cardtype20" column="cardtype20" />
+		<result property="cardtype21" column="cardtype21" />
+		<result property="cardtype22" column="cardtype22" />
+		<result property="cardtype23" column="cardtype23" />
+		<result property="cardtype24" column="cardtype24" />
+		<result property="cardtype25" column="cardtype25" />
+		<result property="cardtype26" column="cardtype26" />
+		<result property="cardtype27" column="cardtype27" />
+		<result property="cardtype28" column="cardtype28" />
+		<result property="cardtype29" column="cardtype29" />
+		<result property="cardtype30" column="cardtype30" />
+		<result property="cardtype31" column="cardtype31" />
+		<result property="cardtype32" column="cardtype32" />
+		<result property="remark" column="remark" />
+		<result property="cardtypecost" column="cardtypecost" />
+	</resultMap>
+
+	<!-- select -->
+	<select id="select" parameterType="CardtypeBean" resultType="CardtypeBean">
+		select t.cardtypeid, t.cardtypecolor, t.cardtypename,
+		t.cardtypeforegift, t.cardtypedesp, t.defaulttype, t.cardtypestr,
+		t.cardtype01, t.cardtype02, t.cardtype03, t.cardtype04, t.cardtype05,
+		t.cardtype06, t.cardtype07, t.cardtype08, t.cardtype09, t.cardtype10,
+		t.cardtype11, t.cardtype12, t.cardtype13, t.cardtype14, t.cardtype15,
+		t.cardtype16, t.cardtype17, t.cardtype18, t.cardtype19, t.cardtype20,
+		t.cardtype21, t.cardtype22, t.cardtype23, t.cardtype24, t.cardtype25,
+		t.cardtype26, t.cardtype27, t.cardtype28, t.cardtype29, t.cardtype30,
+		t.cardtype31, t.cardtype32, t.remark, t.cardtypecost from Com_CardType
+		t
+		<where>
+			<if test="cardtypeid!=null">
+				and t.cardtypeid = #{cardtypeid,jdbcType=NUMERIC}
+			</if>
+			<if test="cardtypecolor != null and cardtypecolor != ''">
+				and t.cardtypecolor = #{cardtypecolor,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtypename != null and cardtypename != ''">
+				and t.cardtypename = #{cardtypename,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtypeforegift!=null">
+				and t.cardtypeforegift = #{cardtypeforegift,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtypedesp != null and cardtypedesp != ''">
+				and t.cardtypedesp = #{cardtypedesp,jdbcType=VARCHAR}
+			</if>
+			<if test="defaulttype != null and defaulttype != ''">
+				and t.defaulttype = #{defaulttype,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtypestr != null and cardtypestr != ''">
+				and t.cardtypestr = #{cardtypestr,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype01 != null and cardtype01 != ''">
+				and t.cardtype01 = #{cardtype01,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype02 != null and cardtype02 != ''">
+				and t.cardtype02 = #{cardtype02,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype03 != null and cardtype03 != ''">
+				and t.cardtype03 = #{cardtype03,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype04 != null and cardtype04 != ''">
+				and t.cardtype04 = #{cardtype04,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype05 != null and cardtype05 != ''">
+				and t.cardtype05 = #{cardtype05,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype06 != null and cardtype06 != ''">
+				and t.cardtype06 = #{cardtype06,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype07 != null and cardtype07 != ''">
+				and t.cardtype07 = #{cardtype07,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype08 != null and cardtype08 != ''">
+				and t.cardtype08 = #{cardtype08,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype09 != null and cardtype09 != ''">
+				and t.cardtype09 = #{cardtype09,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype10 != null and cardtype10 != ''">
+				and t.cardtype10 = #{cardtype10,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype11 != null and cardtype11 != ''">
+				and t.cardtype11 = #{cardtype11,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype12 != null and cardtype12 != ''">
+				and t.cardtype12 = #{cardtype12,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype13 != null and cardtype13 != ''">
+				and t.cardtype13 = #{cardtype13,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype14 != null and cardtype14 != ''">
+				and t.cardtype14 = #{cardtype14,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype15 != null and cardtype15 != ''">
+				and t.cardtype15 = #{cardtype15,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype16 != null and cardtype16 != ''">
+				and t.cardtype16 = #{cardtype16,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype17 != null and cardtype17 != ''">
+				and t.cardtype17 = #{cardtype17,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype18 != null and cardtype18 != ''">
+				and t.cardtype18 = #{cardtype18,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype19 != null and cardtype19 != ''">
+				and t.cardtype19 = #{cardtype19,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype20 != null and cardtype20 != ''">
+				and t.cardtype20 = #{cardtype20,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype21 != null and cardtype21 != ''">
+				and t.cardtype21 = #{cardtype21,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype22 != null and cardtype22 != ''">
+				and t.cardtype22 = #{cardtype22,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype23 != null and cardtype23 != ''">
+				and t.cardtype23 = #{cardtype23,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype24 != null and cardtype24 != ''">
+				and t.cardtype24 = #{cardtype24,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype25 != null and cardtype25 != ''">
+				and t.cardtype25 = #{cardtype25,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype26 != null and cardtype26 != ''">
+				and t.cardtype26 = #{cardtype26,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype27 != null and cardtype27 != ''">
+				and t.cardtype27 = #{cardtype27,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype28 != null and cardtype28 != ''">
+				and t.cardtype28 = #{cardtype28,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype29 != null and cardtype29 != ''">
+				and t.cardtype29 = #{cardtype29,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype30 != null and cardtype30 != ''">
+				and t.cardtype30 = #{cardtype30,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype31 != null and cardtype31 != ''">
+				and t.cardtype31 = #{cardtype31,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtype32 != null and cardtype32 != ''">
+				and t.cardtype32 = #{cardtype32,jdbcType=VARCHAR}
+			</if>
+			<if test="remark != null and remark != ''">
+				and t.remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtypecost!=null">
+				and t.cardtypecost = #{cardtypecost,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<!-- insert -->
+	<insert id="insert" parameterType="CardtypeBean">
+		insert into Com_CardType (cardtypeid, cardtypecolor, cardtypename,
+		cardtypeforegift, cardtypedesp, defaulttype, cardtypestr, cardtype01,
+		cardtype02, cardtype03, cardtype04, cardtype05, cardtype06,
+		cardtype07, cardtype08, cardtype09, cardtype10, cardtype11,
+		cardtype12, cardtype13, cardtype14, cardtype15, cardtype16,
+		cardtype17, cardtype18, cardtype19, cardtype20, cardtype21,
+		cardtype22, cardtype23, cardtype24, cardtype25, cardtype26,
+		cardtype27, cardtype28, cardtype29, cardtype30, cardtype31,
+		cardtype32, remark, cardtypecost)
+		values (#{cardtypeid,jdbcType=NUMERIC}, #{cardtypecolor,jdbcType=VARCHAR},
+		#{cardtypename,jdbcType=VARCHAR},
+		#{cardtypeforegift,jdbcType=VARCHAR},
+		#{cardtypedesp,jdbcType=VARCHAR}, #{defaulttype,jdbcType=VARCHAR},
+		#{cardtypestr,jdbcType=VARCHAR}, #{cardtype01,jdbcType=VARCHAR},
+		#{cardtype02,jdbcType=VARCHAR}, #{cardtype03,jdbcType=VARCHAR},
+		#{cardtype04,jdbcType=VARCHAR}, #{cardtype05,jdbcType=VARCHAR},
+		#{cardtype06,jdbcType=VARCHAR}, #{cardtype07,jdbcType=VARCHAR},
+		#{cardtype08,jdbcType=VARCHAR}, #{cardtype09,jdbcType=VARCHAR},
+		#{cardtype10,jdbcType=VARCHAR}, #{cardtype11,jdbcType=VARCHAR},
+		#{cardtype12,jdbcType=VARCHAR}, #{cardtype13,jdbcType=VARCHAR},
+		#{cardtype14,jdbcType=VARCHAR}, #{cardtype15,jdbcType=VARCHAR},
+		#{cardtype16,jdbcType=VARCHAR}, #{cardtype17,jdbcType=VARCHAR},
+		#{cardtype18,jdbcType=VARCHAR}, #{cardtype19,jdbcType=VARCHAR},
+		#{cardtype20,jdbcType=VARCHAR}, #{cardtype21,jdbcType=VARCHAR},
+		#{cardtype22,jdbcType=VARCHAR}, #{cardtype23,jdbcType=VARCHAR},
+		#{cardtype24,jdbcType=VARCHAR}, #{cardtype25,jdbcType=VARCHAR},
+		#{cardtype26,jdbcType=VARCHAR}, #{cardtype27,jdbcType=VARCHAR},
+		#{cardtype28,jdbcType=VARCHAR}, #{cardtype29,jdbcType=VARCHAR},
+		#{cardtype30,jdbcType=VARCHAR}, #{cardtype31,jdbcType=VARCHAR},
+		#{cardtype32,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR},
+		#{cardtypecost,jdbcType=VARCHAR})
+	</insert>
+
+	<!-- update -->
+	<update id="update" parameterType="CardtypeBean">
+		update Com_CardType
+		<set>
+			<if test="cardtypecolor != null">
+				cardtypecolor = #{cardtypecolor,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtypename != null">
+				cardtypename = #{cardtypename,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtypeforegift != null">
+				cardtypeforegift = #{cardtypeforegift,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtypedesp != null">
+				cardtypedesp = #{cardtypedesp,jdbcType=VARCHAR},
+			</if>
+			<if test="defaulttype != null">
+				defaulttype = #{defaulttype,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtypestr != null">
+				cardtypestr = #{cardtypestr,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype01 != null">
+				cardtype01 = #{cardtype01,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype02 != null">
+				cardtype02 = #{cardtype02,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype03 != null">
+				cardtype03 = #{cardtype03,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype04 != null">
+				cardtype04 = #{cardtype04,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype05 != null">
+				cardtype05 = #{cardtype05,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype06 != null">
+				cardtype06 = #{cardtype06,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype07 != null">
+				cardtype07 = #{cardtype07,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype08 != null">
+				cardtype08 = #{cardtype08,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype09 != null">
+				cardtype09 = #{cardtype09,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype10 != null">
+				cardtype10 = #{cardtype10,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype11 != null">
+				cardtype11 = #{cardtype11,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype12 != null">
+				cardtype12 = #{cardtype12,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype13 != null">
+				cardtype13 = #{cardtype13,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype14 != null">
+				cardtype14 = #{cardtype14,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype15 != null">
+				cardtype15 = #{cardtype15,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype16 != null">
+				cardtype16 = #{cardtype16,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype17 != null">
+				cardtype17 = #{cardtype17,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype18 != null">
+				cardtype18 = #{cardtype18,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype19 != null">
+				cardtype19 = #{cardtype19,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype20 != null">
+				cardtype20 = #{cardtype20,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype21 != null">
+				cardtype21 = #{cardtype21,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype22 != null">
+				cardtype22 = #{cardtype22,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype23 != null">
+				cardtype23 = #{cardtype23,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype24 != null">
+				cardtype24 = #{cardtype24,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype25 != null">
+				cardtype25 = #{cardtype25,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype26 != null">
+				cardtype26 = #{cardtype26,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype27 != null">
+				cardtype27 = #{cardtype27,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype28 != null">
+				cardtype28 = #{cardtype28,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype29 != null">
+				cardtype29 = #{cardtype29,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype30 != null">
+				cardtype30 = #{cardtype30,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype31 != null">
+				cardtype31 = #{cardtype31,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtype32 != null">
+				cardtype32 = #{cardtype32,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtypecost != null">
+				cardtypecost = #{cardtypecost,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where cardtypeid = #{cardtypeid}
+	</update>
+
+	<!-- delete -->
+	<delete id="delete" parameterType="CardtypeBean">
+		delete from Com_CardType where cardtypeid = #{cardtypeid,jdbcType=NUMERIC}
+	</delete>
+</mapper>

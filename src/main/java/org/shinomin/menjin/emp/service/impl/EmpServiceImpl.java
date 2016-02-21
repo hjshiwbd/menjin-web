@@ -1,19 +1,33 @@
 package org.shinomin.menjin.emp.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.shinomin.commons.bean.ExecuteResult;
 import org.shinomin.commons.db.mybatis.Pager;
+import org.shinomin.commons.utils.DateUtil;
 import org.shinomin.commons.utils.JsonUtil;
+import org.shinomin.commons.web.util.PageUtil;
+import org.shinomin.menjin.bean.CardtypeBean;
+import org.shinomin.menjin.bean.DptBean;
 import org.shinomin.menjin.bean.EmpBean;
+import org.shinomin.menjin.bean.EmpextBean;
+import org.shinomin.menjin.bean.HwPersonBean;
+import org.shinomin.menjin.bean.PositionBean;
+import org.shinomin.menjin.card.service.ICardtypeService;
+import org.shinomin.menjin.dpt.service.IDptService;
 import org.shinomin.menjin.emp.dao.IEmpDAO;
 import org.shinomin.menjin.emp.service.IEmpService;
+import org.shinomin.menjin.emp.service.IEmpextService;
+import org.shinomin.menjin.position.service.IPositionService;
 import org.shinomin.menjin.spring.session.LoginSessionScope;
+import org.shinomin.menjin.webservice.WsQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 
@@ -29,6 +43,14 @@ public class EmpServiceImpl implements IEmpService {
 	private IEmpDAO empDAO;
 	@Autowired
 	private LoginSessionScope loginSessionScope;
+	@Autowired
+	private IDptService dptService;
+	@Autowired
+	private IPositionService positionService;
+	@Autowired
+	private ICardtypeService cardtypeService;
+	@Autowired
+	private IEmpextService empextService;
 
 	@Override
 	public EmpBean selectOne(EmpBean emp) {
@@ -61,8 +83,8 @@ public class EmpServiceImpl implements IEmpService {
 	}
 
 	@Override
-	public String doXinzeng(EmpBean emp) {
-		logger.info("emp:{}", JsonUtil.toJson(emp));
+	public String doXinzeng(EmpBean emp, EmpextBean empext) throws Exception {
+		logger.info("emp:{}, empext:{}", JsonUtil.toJson(emp), JsonUtil.toJson(empext));
 		ExecuteResult e = new ExecuteResult();
 		try {
 			checkAddParam(emp);
@@ -72,38 +94,121 @@ public class EmpServiceImpl implements IEmpService {
 			return JsonUtil.toJson(e);
 		}
 
-		try {
-			int maxid = empDAO.selectMaxID();
-			emp.setEmpid(maxid + "");
-			emp.setEmpcrtdby(loginSessionScope.getLoginUser().getUsername());
-			int n = empDAO.insert(emp);
-			if (n == 1) {
-				e.setResult("1");
-				e.setMessage("添加成功");
-			} else {
-				e.setResult("0");
-				e.setMessage("添加失败，请稍后重试");
-			}
-		} catch (Exception e1) {
-			logger.error(e1.getMessage(), e1);
+		int maxid = empDAO.selectMaxID();
+		logger.info("maxid:{}", maxid);
+		boolean flag = insertEmp(emp, empext, maxid);
+		if (flag) {
+			logger.info("add person to c3 finish");
+			// 调用hw接口新增人员
+			addToHw(emp);
+
+			e.setResult("1");
+			e.setMessage("添加成功");
+		} else {
 			e.setResult("0");
 			e.setMessage("添加失败，请稍后重试");
 		}
 		return JsonUtil.toJson(e);
 	}
 
+	/**
+	 * 记录c3的emp表
+	 * 
+	 * @param emp
+	 * @param empext
+	 * @param maxid
+	 * @return
+	 */
+	private boolean insertEmp(EmpBean emp, EmpextBean empext, int maxid) {
+		emp.setEmpid(maxid + "");
+		emp.setEmpcrtdby(loginSessionScope.getLoginUser().getUsername());
+		int n = insert(emp);
+		if (n == 1) {
+			logger.info("emp inserted");
+			empext.setEmpid(maxid + "");
+			n = empextService.insert(empext);
+			if (n == 1) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * 调用hw接口新增人员
+	 * 
+	 * @param emp
+	 * @throws Exception
+	 */
+	private void addToHw(EmpBean emp) throws Exception {
+		try {
+			Date today = new Date();
+			Date tenYearLater = new Date(today.getTime() + 10 * 365 * 24 * 60 * 60 * 1000);// 10年后
+
+			HwPersonBean person = new HwPersonBean();
+			person.setLname(emp.getEmpno());
+			person.setFname(emp.getEmpname());
+			person.setIssue_date(DateUtil.formatDate(today, "yyyy/MM/dd"));// 今天为生效时间
+			person.setExpire_date(DateUtil.formatDate(tenYearLater, "yyyy/MM/dd"));// 10年为失效时间
+			ExecuteResult e = WsQuery.addPerson(person, emp.getBadgeId());
+			if (e.getResult().equals("0")) {
+				logger.info("add person to hw finish");
+				// String personid = e.getObject().toString();
+			} else {
+				logger.info("add person to hw failed:{}", e.getMessage());
+				throw new Exception("add person to hw failed");
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			throw new Exception("门禁接口记录人员信息失败");
+		}
+	}
+
+	/**
+	 * 新增时的参数检查
+	 * 
+	 * @param emp
+	 * @throws Exception
+	 */
 	private void checkAddParam(EmpBean emp) throws Exception {
 		if (StringUtils.isEmpty(emp.getEmpno())) {
+			logger.info("empno is empty");
 			throw new Exception("empno is empty");
 		}
 		if (StringUtils.isEmpty(emp.getEmpname())) {
+			logger.info("empname is empty");
 			throw new Exception("empname is empty");
 		}
 
 		// 检查唯一性 LNAME/empno唯一
 		int n = empDAO.selectCount("hrms_emp", "where empno=?", emp.getEmpno());
 		if (n > 0) {
+			logger.info("empno already exists");
 			throw new Exception("此员工编号已存在");
 		}
+	}
+
+	@Override
+	public ModelAndView showXinzeng() {
+		ModelAndView model = new ModelAndView();
+
+		// 部门
+		DptBean dpt = new DptBean();
+		List<DptBean> dptList = dptService.selectList(dpt);
+		model.addObject("dptList", dptList);
+
+		// 职务
+		PositionBean position = new PositionBean();
+		List<PositionBean> positionList = positionService.selectList(position);
+		model.addObject("positionList", positionList);
+
+		// 卡类型
+		CardtypeBean cardtype = new CardtypeBean();
+		List<CardtypeBean> cardtypeList = cardtypeService.selectList(cardtype);
+		model.addObject("cardtypeList", cardtypeList);
+
+		model.addObject("json_script", PageUtil.create_SCRIPT_PARSE_JSON(model.getModelMap()));
+		model.setViewName("emp/emp_xinzeng");
+		return model;
 	}
 }

@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.shinomin.commons.db.mybatis.Pager;
 import org.shinomin.menjin.bean.EmpBean;
+import org.shinomin.menjin.bean.EmpextBean;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 
@@ -61,6 +63,8 @@ public interface IEmpService
 	 */
 	public int delete(EmpBean emp);
 
-	public String doXinzeng(EmpBean emp);
+	public String doXinzeng(EmpBean emp, EmpextBean empext) throws Exception;
+
+	public ModelAndView showXinzeng();
 
 }

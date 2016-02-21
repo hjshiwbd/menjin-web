@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.shinomin.menjin.mapper.Position">
+
+	<!-- resultMap -->
+	<resultMap id="PositionMap" type="PositionBean">
+		<result property="positionid" column="positionid" />
+		<result property="positionno" column="positionno" />
+		<result property="positionname" column="positionname" />
+		<result property="positionordno" column="positionordno" />
+		<result property="positionisselect" column="positionisselect" />
+		<result property="positionename" column="positionename" />
+	</resultMap>
+
+	<!-- select -->
+	<select id="select" parameterType="PositionBean" resultType="PositionBean">
+		select t.positionid, t.positionno, t.positionname, t.positionordno,
+		t.positionisselect, t.positionename from Hrms_Position t
+		<where>
+			<if test="positionid!=null">
+				and t.positionid = #{positionid,jdbcType=NUMERIC}
+			</if>
+			<if test="positionno != null and positionno != ''">
+				and t.positionno = #{positionno,jdbcType=VARCHAR}
+			</if>
+			<if test="positionname != null and positionname != ''">
+				and t.positionname = #{positionname,jdbcType=VARCHAR}
+			</if>
+			<if test="positionordno!=null">
+				and t.positionordno = #{positionordno,jdbcType=NUMERIC}
+			</if>
+			<if test="positionisselect!=null">
+				and t.positionisselect = #{positionisselect,jdbcType=NUMERIC}
+			</if>
+			<if test="positionename != null and positionename != ''">
+				and t.positionename = #{positionename,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<!-- insert -->
+	<insert id="insert" parameterType="PositionBean">
+		insert into Hrms_Position (positionid, positionno, positionname,
+		positionordno, positionisselect, positionename)
+		values (#{positionid,jdbcType=NUMERIC}, #{positionno,jdbcType=VARCHAR},
+		#{positionname,jdbcType=VARCHAR}, #{positionordno,jdbcType=NUMERIC},
+		#{positionisselect,jdbcType=NUMERIC}, #{positionename,jdbcType=VARCHAR})
+	</insert>
+
+	<!-- update -->
+	<update id="update" parameterType="PositionBean">
+		update Hrms_Position
+		<set>
+			<if test="positionno != null">
+				positionno = #{positionno,jdbcType=VARCHAR},
+			</if>
+			<if test="positionname != null">
+				positionname = #{positionname,jdbcType=VARCHAR},
+			</if>
+			<if test="positionordno != null">
+				positionordno = #{positionordno,jdbcType=NUMERIC},
+			</if>
+			<if test="positionisselect != null">
+				positionisselect = #{positionisselect,jdbcType=NUMERIC},
+			</if>
+			<if test="positionename != null">
+				positionename = #{positionename,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where positionid = #{positionid}
+	</update>
+
+	<!-- delete -->
+	<delete id="delete" parameterType="PositionBean">
+		delete from Hrms_Position where positionid = #{positionid,jdbcType=NUMERIC}
+	</delete>
+</mapper>

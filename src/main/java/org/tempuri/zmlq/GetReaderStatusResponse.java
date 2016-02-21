@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="in-strStatus" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="out-result" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -30,36 +30,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "inStrStatus"
+    "outResult"
 })
 @XmlRootElement(name = "GetReaderStatusResponse")
 public class GetReaderStatusResponse {
 
-    @XmlElementRef(name = "in-strStatus", type = JAXBElement.class, required = false)
-    protected JAXBElement<String> inStrStatus;
+    @XmlElementRef(name = "out-result", type = JAXBElement.class, required = false)
+    protected JAXBElement<String> outResult;
 
     /**
-     * 获取inStrStatus属性的值。
+     * 获取outResult属性的值。
      * 
      * @return
      *     possible object is
      *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public JAXBElement<String> getInStrStatus() {
-        return inStrStatus;
+    public JAXBElement<String> getOutResult() {
+        return outResult;
     }
 
     /**
-     * 设置inStrStatus属性的值。
+     * 设置outResult属性的值。
      * 
      * @param value
      *     allowed object is
      *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setInStrStatus(JAXBElement<String> value) {
-        this.inStrStatus = value;
+    public void setOutResult(JAXBElement<String> value) {
+        this.outResult = value;
     }
 
 }

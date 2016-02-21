@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="out-structACCodes" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="out-result" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -30,36 +30,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "outStructACCodes"
+    "outResult"
 })
 @XmlRootElement(name = "GetAllACCodesResponse")
 public class GetAllACCodesResponse {
 
-    @XmlElementRef(name = "out-structACCodes", type = JAXBElement.class, required = false)
-    protected JAXBElement<String> outStructACCodes;
+    @XmlElementRef(name = "out-result", type = JAXBElement.class, required = false)
+    protected JAXBElement<String> outResult;
 
     /**
-     * 获取outStructACCodes属性的值。
+     * 获取outResult属性的值。
      * 
      * @return
      *     possible object is
      *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public JAXBElement<String> getOutStructACCodes() {
-        return outStructACCodes;
+    public JAXBElement<String> getOutResult() {
+        return outResult;
     }
 
     /**
-     * 设置outStructACCodes属性的值。
+     * 设置outResult属性的值。
      * 
      * @param value
      *     allowed object is
      *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setOutStructACCodes(JAXBElement<String> value) {
-        this.outStructACCodes = value;
+    public void setOutResult(JAXBElement<String> value) {
+        this.outResult = value;
     }
 
 }

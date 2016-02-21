@@ -1,8 +1,10 @@
 
 package org.tempuri.zmlq;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -17,6 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
+ *         &lt;element name="in-strCARDNO" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -26,9 +29,37 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "")
+@XmlType(name = "", propOrder = {
+    "inStrCARDNO"
+})
 @XmlRootElement(name = "RemoveCard")
 public class RemoveCard {
 
+    @XmlElementRef(name = "in-strCARDNO", type = JAXBElement.class, required = false)
+    protected JAXBElement<String> inStrCARDNO;
+
+    /**
+     * 获取inStrCARDNO属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public JAXBElement<String> getInStrCARDNO() {
+        return inStrCARDNO;
+    }
+
+    /**
+     * 设置inStrCARDNO属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public void setInStrCARDNO(JAXBElement<String> value) {
+        this.inStrCARDNO = value;
+    }
 
 }

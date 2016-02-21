@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.shinomin.menjin.mapper.Dpt">
+
+	<!-- resultMap -->
+	<resultMap id="DptMap" type="DptBean">
+		<result property="dptid" column="dptid" />
+		<result property="dptparnt" column="dptparnt" />
+		<result property="dptprcno" column="dptprcno" />
+		<result property="dptno" column="dptno" />
+		<result property="dptname" column="dptname" />
+		<result property="dptisactive" column="dptisactive" />
+		<result property="dpttypeid" column="dpttypeid" />
+		<result property="dptadd" column="dptadd" />
+		<result property="dptphone" column="dptphone" />
+		<result property="dptmngr" column="dptmngr" />
+		<result property="dptcntct" column="dptcntct" />
+		<result property="dptcrtdby" column="dptcrtdby" />
+		<result property="dptcrtdday" column="dptcrtdday" />
+		<result property="dptisselect" column="dptisselect" />
+		<result property="dpthousetype" column="dpthousetype" />
+		<result property="dpthousearea" column="dpthousearea" />
+		<result property="dpthousecost" column="dpthousecost" />
+		<result property="dpthousewatervalue" column="dpthousewatervalue" />
+		<result property="dpthouseelectvalue" column="dpthouseelectvalue" />
+		<result property="dpthousegasvalue" column="dpthousegasvalue" />
+		<result property="dpthouseisbill" column="dpthouseisbill" />
+		<result property="pdptno" column="pdptno" />
+		<result property="cardtypeid" column="cardtypeid" />
+		<result property="dptname_spell" column="dptname_spell" />
+	</resultMap>
+
+	<!-- select -->
+	<select id="select" parameterType="DptBean" resultType="DptBean">
+		select t.dptid, t.dptparnt, t.dptprcno, t.dptno, t.dptname,
+		t.dptisactive, t.dpttypeid, t.dptadd, t.dptphone, t.dptmngr,
+		t.dptcntct, t.dptcrtdby, t.dptcrtdday, t.dptisselect, t.dpthousetype,
+		t.dpthousearea, t.dpthousecost, t.dpthousewatervalue,
+		t.dpthouseelectvalue, t.dpthousegasvalue, t.dpthouseisbill,
+		t.pdptno, t.cardtypeid, t.dptname_spell from Hrms_Dpt t
+		<where>
+			<if test="dptid!=null">
+				and t.dptid = #{dptid,jdbcType=NUMERIC}
+			</if>
+			<if test="dptparnt!=null">
+				and t.dptparnt = #{dptparnt,jdbcType=NUMERIC}
+			</if>
+			<if test="dptprcno != null and dptprcno != ''">
+				and t.dptprcno = #{dptprcno,jdbcType=VARCHAR}
+			</if>
+			<if test="dptno != null and dptno != ''">
+				and t.dptno = #{dptno,jdbcType=VARCHAR}
+			</if>
+			<if test="dptname != null and dptname != ''">
+				and t.dptname like '%'+#{dptname,jdbcType=VARCHAR}+'%'
+			</if>
+			<if test="dptisactive!=null">
+				and t.dptisactive = #{dptisactive,jdbcType=BIT}
+			</if>
+			<if test="dpttypeid!=null">
+				and t.dpttypeid = #{dpttypeid,jdbcType=NUMERIC}
+			</if>
+			<if test="dptadd != null and dptadd != ''">
+				and t.dptadd = #{dptadd,jdbcType=VARCHAR}
+			</if>
+			<if test="dptphone != null and dptphone != ''">
+				and t.dptphone = #{dptphone,jdbcType=VARCHAR}
+			</if>
+			<if test="dptmngr != null and dptmngr != ''">
+				and t.dptmngr = #{dptmngr,jdbcType=VARCHAR}
+			</if>
+			<if test="dptcntct != null and dptcntct != ''">
+				and t.dptcntct = #{dptcntct,jdbcType=VARCHAR}
+			</if>
+			<if test="dptcrtdby != null and dptcrtdby != ''">
+				and t.dptcrtdby = #{dptcrtdby,jdbcType=VARCHAR}
+			</if>
+			<if test="dptcrtdday!=null">
+				and t.dptcrtdday = #{dptcrtdday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="dptisselect!=null">
+				and t.dptisselect = #{dptisselect,jdbcType=BIT}
+			</if>
+			<if test="dpthousetype != null and dpthousetype != ''">
+				and t.dpthousetype = #{dpthousetype,jdbcType=VARCHAR}
+			</if>
+			<if test="dpthousearea!=null">
+				and t.dpthousearea = #{dpthousearea,jdbcType=DECIMAL}
+			</if>
+			<if test="dpthousecost!=null">
+				and t.dpthousecost = #{dpthousecost,jdbcType=DECIMAL}
+			</if>
+			<if test="dpthousewatervalue!=null">
+				and t.dpthousewatervalue = #{dpthousewatervalue,jdbcType=DECIMAL}
+			</if>
+			<if test="dpthouseelectvalue!=null">
+				and t.dpthouseelectvalue = #{dpthouseelectvalue,jdbcType=DECIMAL}
+			</if>
+			<if test="dpthousegasvalue!=null">
+				and t.dpthousegasvalue = #{dpthousegasvalue,jdbcType=DECIMAL}
+			</if>
+			<if test="dpthouseisbill!=null">
+				and t.dpthouseisbill = #{dpthouseisbill,jdbcType=BIT}
+			</if>
+			<if test="pdptno != null and pdptno != ''">
+				and t.pdptno = #{pdptno,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtypeid!=null">
+				and t.cardtypeid = #{cardtypeid,jdbcType=NUMERIC}
+			</if>
+			<if test="dptname_spell != null and dptname_spell != ''">
+				and t.dptname_spell = #{dptname_spell,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<!-- insert -->
+	<insert id="insert" parameterType="DptBean">
+		insert into Hrms_Dpt (dptid, dptparnt, dptprcno, dptno, dptname,
+		dptisactive, dpttypeid, dptadd, dptphone, dptmngr, dptcntct,
+		dptcrtdby, dptcrtdday, dptisselect, dpthousetype, dpthousearea,
+		dpthousecost, dpthousewatervalue, dpthouseelectvalue,
+		dpthousegasvalue, dpthouseisbill, pdptno, cardtypeid,
+		dptname_spell)
+		values (#{dptid,jdbcType=NUMERIC}, #{dptparnt,jdbcType=NUMERIC},
+		#{dptprcno,jdbcType=VARCHAR}, #{dptno,jdbcType=VARCHAR},
+		#{dptname,jdbcType=VARCHAR}, #{dptisactive,jdbcType=BIT},
+		#{dpttypeid,jdbcType=NUMERIC}, #{dptadd,jdbcType=VARCHAR},
+		#{dptphone,jdbcType=VARCHAR}, #{dptmngr,jdbcType=VARCHAR},
+		#{dptcntct,jdbcType=VARCHAR}, #{dptcrtdby,jdbcType=VARCHAR},
+		#{dptcrtdday,jdbcType=TIMESTAMP}, #{dptisselect,jdbcType=BIT},
+		#{dpthousetype,jdbcType=VARCHAR}, #{dpthousearea,jdbcType=DECIMAL},
+		#{dpthousecost,jdbcType=DECIMAL},
+		#{dpthousewatervalue,jdbcType=DECIMAL},
+		#{dpthouseelectvalue,jdbcType=DECIMAL},
+		#{dpthousegasvalue,jdbcType=DECIMAL}, #{dpthouseisbill,jdbcType=BIT},
+		#{pdptno,jdbcType=VARCHAR},
+		#{cardtypeid,jdbcType=NUMERIC}, #{dptname_spell,jdbcType=VARCHAR})
+	</insert>
+
+	<!-- update -->
+	<update id="update" parameterType="DptBean">
+		update Hrms_Dpt
+		<set>
+			<if test="dptparnt != null">
+				dptparnt = #{dptparnt,jdbcType=NUMERIC},
+			</if>
+			<if test="dptprcno != null">
+				dptprcno = #{dptprcno,jdbcType=VARCHAR},
+			</if>
+			<if test="dptno != null">
+				dptno = #{dptno,jdbcType=VARCHAR},
+			</if>
+			<if test="dptname != null">
+				dptname = #{dptname,jdbcType=VARCHAR},
+			</if>
+			<if test="dptisactive != null">
+				dptisactive = #{dptisactive,jdbcType=BIT},
+			</if>
+			<if test="dpttypeid != null">
+				dpttypeid = #{dpttypeid,jdbcType=NUMERIC},
+			</if>
+			<if test="dptadd != null">
+				dptadd = #{dptadd,jdbcType=VARCHAR},
+			</if>
+			<if test="dptphone != null">
+				dptphone = #{dptphone,jdbcType=VARCHAR},
+			</if>
+			<if test="dptmngr != null">
+				dptmngr = #{dptmngr,jdbcType=VARCHAR},
+			</if>
+			<if test="dptcntct != null">
+				dptcntct = #{dptcntct,jdbcType=VARCHAR},
+			</if>
+			<if test="dptcrtdby != null">
+				dptcrtdby = #{dptcrtdby,jdbcType=VARCHAR},
+			</if>
+			<if test="dptcrtdday != null">
+				dptcrtdday = #{dptcrtdday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dptisselect != null">
+				dptisselect = #{dptisselect,jdbcType=BIT},
+			</if>
+			<if test="dpthousetype != null">
+				dpthousetype = #{dpthousetype,jdbcType=VARCHAR},
+			</if>
+			<if test="dpthousearea != null">
+				dpthousearea = #{dpthousearea,jdbcType=DECIMAL},
+			</if>
+			<if test="dpthousecost != null">
+				dpthousecost = #{dpthousecost,jdbcType=DECIMAL},
+			</if>
+			<if test="dpthousewatervalue != null">
+				dpthousewatervalue = #{dpthousewatervalue,jdbcType=DECIMAL},
+			</if>
+			<if test="dpthouseelectvalue != null">
+				dpthouseelectvalue = #{dpthouseelectvalue,jdbcType=DECIMAL},
+			</if>
+			<if test="dpthousegasvalue != null">
+				dpthousegasvalue = #{dpthousegasvalue,jdbcType=DECIMAL},
+			</if>
+			<if test="dpthouseisbill != null">
+				dpthouseisbill = #{dpthouseisbill,jdbcType=BIT},
+			</if>
+			<if test="pdptno != null">
+				pdptno = #{pdptno,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtypeid != null">
+				cardtypeid = #{cardtypeid,jdbcType=NUMERIC},
+			</if>
+			<if test="dptname_spell != null">
+				dptname_spell = #{dptname_spell,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where dptid = #{dptid}
+	</update>
+
+	<!-- delete -->
+	<delete id="delete" parameterType="DptBean">
+		delete from Hrms_Dpt where dptid = #{dptid,jdbcType=NUMERIC}
+	</delete>
+</mapper>

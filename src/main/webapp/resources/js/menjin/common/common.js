@@ -24,11 +24,16 @@ function commonAjax(options) {
 	var _callback = options.callback;
 	var _async = options.async == undefined ? true : options.async;
 	var dataType = options.dataType == undefined ? 'json' : options.dataType;
+	var hideWait = options.hideWait == undefined ? true : options.hideWait;
 	var callback = function(msg) {
 		if (typeof (_callback) == "function") {
 			_callback(msg);
 		}
 	};
+
+	if (!hideWait) {
+		showWaitingDiv();
+	}
 
 	$.ajax({
 		type : "post",
@@ -39,7 +44,8 @@ function commonAjax(options) {
 		success : function(msg) {
 			if (msg.indexOf('REQUESTERROR') != -1) {
 				// 出错页面
-				$('body').html(msg);
+				// $('body').html(msg);
+				eualert('请求失败');
 			} else if (msg.indexOf('USERNOTLOGINYET') != -1) {
 				// session超时页面
 				// window.open(ctxpath, "_self");
@@ -47,7 +53,6 @@ function commonAjax(options) {
 			} else {
 				// clog(msg);
 				// 正常处理
-
 				// 返回类型是json格式
 				if (dataType == 'json') {
 					msg = $.parseJSON(msg);
@@ -60,6 +65,7 @@ function commonAjax(options) {
 				if (typeof (callback) == "function") {
 					callback(msg);
 				}
+				hideWaitingDiv();
 			}
 		},
 		error : function(resp1, resp2, resp3) {
@@ -74,8 +80,37 @@ function commonAjax(options) {
 					$('body').html(resp1.responseText);
 				}
 			}
+			hideWaitingDiv();
 		}
 	});
+}
+
+/**
+ * 显示等待提示信息
+ */
+function showWaitingDiv() {
+	var option = {
+		message : '数据处理中请稍候...',
+		draggable : false,
+		css : {
+			backgroundColor : '#eee',
+			border : '1px solid #aaa',
+			color : '#000'
+		},
+		overlayCSS : {
+			backgroundColor : '#000',
+			opacity : 0.3,
+			cursor : 'default'
+		}
+	};
+	$.blockUI(option);
+}
+
+/**
+ * 关闭loading层
+ */
+function hideWaitingDiv() {
+	$.unblockUI();
 }
 
 /**

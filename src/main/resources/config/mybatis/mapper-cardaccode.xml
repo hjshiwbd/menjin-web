@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.shinomin.menjin.mapper.CardAccode">
+
+	<!-- resultMap -->
+	<resultMap id="CardAccodeMap" type="CardAccodeBean">
+		<result property="id" column="id" />
+		<result property="cardno" column="cardno" />
+		<result property="accodeid" column="accodeid" />
+	</resultMap>
+
+	<!-- select -->
+	<select id="select" parameterType="CardAccodeBean" resultType="CardAccodeBean">
+		select t.id, t.cardno, t.accodeid from mjsq_card_accode t
+		<where>
+			<if test="id!=null">
+				and t.id = #{id,jdbcType=NUMERIC}
+			</if>
+			<if test="cardno!=null">
+				and t.cardno = #{cardno,jdbcType=NUMERIC}
+			</if>
+			<if test="accodeid!=null">
+				and t.accodeid = #{accodeid,jdbcType=NUMERIC}
+			</if>
+		</where>
+	</select>
+
+	<!-- insert -->
+	<insert id="insert" parameterType="CardAccodeBean">
+		insert into mjsq_card_accode
+		(cardno, accodeid)
+		values (#{cardno,jdbcType=NUMERIC},
+		#{accodeid,jdbcType=NUMERIC})
+	</insert>
+
+	<!-- update -->
+	<update id="update" parameterType="CardAccodeBean">
+		update mjsq_card_accode
+		<set>
+			<if test="cardno != null">
+				cardno = #{cardno,jdbcType=NUMERIC},
+			</if>
+			<if test="accodeid != null">
+				accodeid = #{accodeid,jdbcType=NUMERIC},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<!-- delete -->
+	<delete id="delete" parameterType="CardAccodeBean">
+		delete from mjsq_card_accode
+		where id = #{id,jdbcType=NUMERIC}
+	</delete>
+</mapper>

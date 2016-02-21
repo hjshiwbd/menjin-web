@@ -24,6 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="in-strTimeZoneID" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="in-strTEMPACCESS" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="in-strTEMPACCESS-START-TIME" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="in-strTEMPACCESS-END-TIME" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -38,7 +39,8 @@ import javax.xml.bind.annotation.XmlType;
     "inStrReaderID",
     "inStrTimeZoneID",
     "inStrTEMPACCESS",
-    "inStrTEMPACCESSSTARTTIME"
+    "inStrTEMPACCESSSTARTTIME",
+    "inStrTEMPACCESSENDTIME"
 })
 @XmlRootElement(name = "AddReaderToCard")
 public class AddReaderToCard {
@@ -53,6 +55,8 @@ public class AddReaderToCard {
     protected JAXBElement<String> inStrTEMPACCESS;
     @XmlElementRef(name = "in-strTEMPACCESS-START-TIME", type = JAXBElement.class, required = false)
     protected JAXBElement<String> inStrTEMPACCESSSTARTTIME;
+    @XmlElementRef(name = "in-strTEMPACCESS-END-TIME", type = JAXBElement.class, required = false)
+    protected JAXBElement<String> inStrTEMPACCESSENDTIME;
 
     /**
      * 获取inStrCardNO属性的值。
@@ -172,6 +176,30 @@ public class AddReaderToCard {
      */
     public void setInStrTEMPACCESSSTARTTIME(JAXBElement<String> value) {
         this.inStrTEMPACCESSSTARTTIME = value;
+    }
+
+    /**
+     * 获取inStrTEMPACCESSENDTIME属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public JAXBElement<String> getInStrTEMPACCESSENDTIME() {
+        return inStrTEMPACCESSENDTIME;
+    }
+
+    /**
+     * 设置inStrTEMPACCESSENDTIME属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public void setInStrTEMPACCESSENDTIME(JAXBElement<String> value) {
+        this.inStrTEMPACCESSENDTIME = value;
     }
 
 }

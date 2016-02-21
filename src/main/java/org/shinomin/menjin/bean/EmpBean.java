@@ -56,6 +56,9 @@ public class EmpBean implements Serializable {
 	private String empicid;//
 	private String empname_spell;//
 
+	// ////////////////////////////
+	private String badgeId;// hw的卡类型(员工卡,临时卡)
+
 	public String getEmpid() {
 		return empid;
 	}
@@ -464,4 +467,11 @@ public class EmpBean implements Serializable {
 		this.empname_spell = empname_spell;
 	}
 
+	public String getBadgeId() {
+		return badgeId;
+	}
+
+	public void setBadgeId(String badgeId) {
+		this.badgeId = badgeId;
+	}
 }

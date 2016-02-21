@@ -1,6 +1,7 @@
 package org.shinomin.menjin.emp.controller;
 
 import org.shinomin.menjin.bean.EmpBean;
+import org.shinomin.menjin.bean.EmpextBean;
 import org.shinomin.menjin.emp.service.IEmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,10 +30,7 @@ public class EmpController {
 	 */
 	@RequestMapping("/xinzeng")
 	public ModelAndView xinzeng() throws Exception {
-		ModelAndView model = new ModelAndView();
-
-		model.setViewName("emp/emp_xinzeng");
-		return model;
+		return empService.showXinzeng();
 	}
 
 	/**
@@ -43,8 +41,8 @@ public class EmpController {
 	 */
 	@ResponseBody
 	@RequestMapping("/do_xinzeng")
-	public String doXinzeng(EmpBean emp) throws Exception {
-		return empService.doXinzeng(emp);
+	public String doXinzeng(EmpBean emp, EmpextBean empext) throws Exception {
+		return empService.doXinzeng(emp, empext);
 	}
 
 	/**

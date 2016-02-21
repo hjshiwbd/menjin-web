@@ -31,35 +31,26 @@ public class ObjectFactory {
     private final static QName _InitInStrPCAddr_QNAME = new QName("", "in-strPCAddr");
     private final static QName _InitInStrPCUser_QNAME = new QName("", "in-strPCUser");
     private final static QName _InitInStrPCPassword_QNAME = new QName("", "in-strPCPassword");
-    private final static QName _InitResponseOutInitResult_QNAME = new QName("", "out-initResult");
-    private final static QName _GetAllPersonsResponseOutStructPersons_QNAME = new QName("", "out-structPersons");
+    private final static QName _InitResponseOutResult_QNAME = new QName("", "out-result");
     private final static QName _GetAllBadgeTypesInSPersonID_QNAME = new QName("", "in-sPersonID");
-    private final static QName _GetAllBadgeTypesResponseOutStructBadgeTypes_QNAME = new QName("", "out-structBadgeTypes");
-    private final static QName _GetAllCardsResponseOutStructCards_QNAME = new QName("", "out-structCards");
     private final static QName _GetAllCompanysInStrCARDNO_QNAME = new QName("", "in-strCARDNO");
-    private final static QName _GetAllCompanysResponseOutStructCompanys_QNAME = new QName("", "out-structCompanys");
     private final static QName _GetAllACCodesInStrPersonID_QNAME = new QName("", "in-strPersonID");
     private final static QName _GetAllACCodesInStrCardNO_QNAME = new QName("", "in-strCardNO");
-    private final static QName _GetAllACCodesResponseOutStructACCodes_QNAME = new QName("", "out-structACCodes");
     private final static QName _GetCompanyACCodesInStrCompanyID_QNAME = new QName("", "in-strCompanyID");
     private final static QName _GetACCodeAccessDurationInStrACCodeID_QNAME = new QName("", "in-strACCodeID");
-    private final static QName _GetACCodeAccessDurationResponseOutStructAccessDuration_QNAME = new QName("", "out-structAccessDuration");
-    private final static QName _GetAllReadersResponseOutStructReaders_QNAME = new QName("", "out-structReaders");
     private final static QName _GetAllTimeZonesInStrReaderID_QNAME = new QName("", "in-strReaderID");
-    private final static QName _GetAllTimeZonesResponseOutStructTimeZone_QNAME = new QName("", "out-structTimeZone");
     private final static QName _QueryPersonsInStrField_QNAME = new QName("", "in-strField");
     private final static QName _QueryPersonsInStrOper_QNAME = new QName("", "in-strOper");
     private final static QName _QueryPersonsInStrValue_QNAME = new QName("", "in-strValue");
     private final static QName _AddPersonInStructPerson_QNAME = new QName("", "in-structPerson");
     private final static QName _AddPersonInStrBadgeTypeID_QNAME = new QName("", "in-strBadgeTypeID");
-    private final static QName _AddPersonResponseOutResult_QNAME = new QName("", "out-result");
     private final static QName _AddCardInStructCard_QNAME = new QName("", "in-structCard");
-    private final static QName _AddReaderToACCodeResponseInStrTimeZoneID_QNAME = new QName("", "in-strTimeZoneID");
+    private final static QName _AddReaderToACCodeInStrTimeZoneID_QNAME = new QName("", "in-strTimeZoneID");
+    private final static QName _GetCardReaderTimeZonesOutStructTimeZone_QNAME = new QName("", "out-structTimeZone");
+    private final static QName _GetCardReaderTimeZonesResponseOutStructAccessDuration_QNAME = new QName("", "out-structAccessDuration");
     private final static QName _AddReaderToCardInStrTEMPACCESS_QNAME = new QName("", "in-strTEMPACCESS");
     private final static QName _AddReaderToCardInStrTEMPACCESSSTARTTIME_QNAME = new QName("", "in-strTEMPACCESS-START-TIME");
-    private final static QName _AddReaderToCardResponseInStrTEMPACCESSENDTIME_QNAME = new QName("", "in-strTEMPACCESS-END-TIME");
-    private final static QName _GetReaderStatusResponseInStrStatus_QNAME = new QName("", "in-strStatus");
-    private final static QName _GetHistoryEventResponseOutStructEvents_QNAME = new QName("", "out-structEvents");
+    private final static QName _AddReaderToCardInStrTEMPACCESSENDTIME_QNAME = new QName("", "in-strTEMPACCESS-END-TIME");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.tempuri.zmlq
@@ -90,6 +81,14 @@ public class ObjectFactory {
      */
     public Uninit createUninit() {
         return new Uninit();
+    }
+
+    /**
+     * Create an instance of {@link UninitResponse }
+     * 
+     */
+    public UninitResponse createUninitResponse() {
+        return new UninitResponse();
     }
 
     /**
@@ -533,6 +532,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ReaderControlResponse }
+     * 
+     */
+    public ReaderControlResponse createReaderControlResponse() {
+        return new ReaderControlResponse();
+    }
+
+    /**
      * Create an instance of {@link GetReaderStatus }
      * 
      */
@@ -557,11 +564,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link StartRecvRealEventResponse }
+     * 
+     */
+    public StartRecvRealEventResponse createStartRecvRealEventResponse() {
+        return new StartRecvRealEventResponse();
+    }
+
+    /**
      * Create an instance of {@link StopRecvRealEvent }
      * 
      */
     public StopRecvRealEvent createStopRecvRealEvent() {
         return new StopRecvRealEvent();
+    }
+
+    /**
+     * Create an instance of {@link StopRecvRealEventResponse }
+     * 
+     */
+    public StopRecvRealEventResponse createStopRecvRealEventResponse() {
+        return new StopRecvRealEventResponse();
     }
 
     /**
@@ -647,18 +670,27 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "out-initResult", scope = InitResponse.class)
-    public JAXBElement<String> createInitResponseOutInitResult(String value) {
-        return new JAXBElement<String>(_InitResponseOutInitResult_QNAME, String.class, InitResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "out-result", scope = InitResponse.class)
+    public JAXBElement<String> createInitResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, InitResponse.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "out-structPersons", scope = GetAllPersonsResponse.class)
-    public JAXBElement<String> createGetAllPersonsResponseOutStructPersons(String value) {
-        return new JAXBElement<String>(_GetAllPersonsResponseOutStructPersons_QNAME, String.class, GetAllPersonsResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "out-result", scope = UninitResponse.class)
+    public JAXBElement<String> createUninitResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, UninitResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "out-result", scope = GetAllPersonsResponse.class)
+    public JAXBElement<String> createGetAllPersonsResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, GetAllPersonsResponse.class, value);
     }
 
     /**
@@ -674,9 +706,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "out-structBadgeTypes", scope = GetAllBadgeTypesResponse.class)
-    public JAXBElement<String> createGetAllBadgeTypesResponseOutStructBadgeTypes(String value) {
-        return new JAXBElement<String>(_GetAllBadgeTypesResponseOutStructBadgeTypes_QNAME, String.class, GetAllBadgeTypesResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "out-result", scope = GetAllBadgeTypesResponse.class)
+    public JAXBElement<String> createGetAllBadgeTypesResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, GetAllBadgeTypesResponse.class, value);
     }
 
     /**
@@ -692,9 +724,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "out-structCards", scope = GetAllCardsResponse.class)
-    public JAXBElement<String> createGetAllCardsResponseOutStructCards(String value) {
-        return new JAXBElement<String>(_GetAllCardsResponseOutStructCards_QNAME, String.class, GetAllCardsResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "out-result", scope = GetAllCardsResponse.class)
+    public JAXBElement<String> createGetAllCardsResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, GetAllCardsResponse.class, value);
     }
 
     /**
@@ -710,9 +742,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "out-structCompanys", scope = GetAllCompanysResponse.class)
-    public JAXBElement<String> createGetAllCompanysResponseOutStructCompanys(String value) {
-        return new JAXBElement<String>(_GetAllCompanysResponseOutStructCompanys_QNAME, String.class, GetAllCompanysResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "out-result", scope = GetAllCompanysResponse.class)
+    public JAXBElement<String> createGetAllCompanysResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, GetAllCompanysResponse.class, value);
     }
 
     /**
@@ -737,9 +769,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "out-structACCodes", scope = GetAllACCodesResponse.class)
-    public JAXBElement<String> createGetAllACCodesResponseOutStructACCodes(String value) {
-        return new JAXBElement<String>(_GetAllACCodesResponseOutStructACCodes_QNAME, String.class, GetAllACCodesResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "out-result", scope = GetAllACCodesResponse.class)
+    public JAXBElement<String> createGetAllACCodesResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, GetAllACCodesResponse.class, value);
     }
 
     /**
@@ -755,9 +787,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "out-structACCodes", scope = GetCompanyACCodesResponse.class)
-    public JAXBElement<String> createGetCompanyACCodesResponseOutStructACCodes(String value) {
-        return new JAXBElement<String>(_GetAllACCodesResponseOutStructACCodes_QNAME, String.class, GetCompanyACCodesResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "out-result", scope = GetCompanyACCodesResponse.class)
+    public JAXBElement<String> createGetCompanyACCodesResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, GetCompanyACCodesResponse.class, value);
     }
 
     /**
@@ -773,9 +805,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "out-structAccessDuration", scope = GetACCodeAccessDurationResponse.class)
-    public JAXBElement<String> createGetACCodeAccessDurationResponseOutStructAccessDuration(String value) {
-        return new JAXBElement<String>(_GetACCodeAccessDurationResponseOutStructAccessDuration_QNAME, String.class, GetACCodeAccessDurationResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "out-result", scope = GetACCodeAccessDurationResponse.class)
+    public JAXBElement<String> createGetACCodeAccessDurationResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, GetACCodeAccessDurationResponse.class, value);
     }
 
     /**
@@ -791,9 +823,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "out-structReaders", scope = GetAllReadersResponse.class)
-    public JAXBElement<String> createGetAllReadersResponseOutStructReaders(String value) {
-        return new JAXBElement<String>(_GetAllReadersResponseOutStructReaders_QNAME, String.class, GetAllReadersResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "out-result", scope = GetAllReadersResponse.class)
+    public JAXBElement<String> createGetAllReadersResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, GetAllReadersResponse.class, value);
     }
 
     /**
@@ -818,9 +850,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "out-structTimeZone", scope = GetAllTimeZonesResponse.class)
-    public JAXBElement<String> createGetAllTimeZonesResponseOutStructTimeZone(String value) {
-        return new JAXBElement<String>(_GetAllTimeZonesResponseOutStructTimeZone_QNAME, String.class, GetAllTimeZonesResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "out-result", scope = GetAllTimeZonesResponse.class)
+    public JAXBElement<String> createGetAllTimeZonesResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, GetAllTimeZonesResponse.class, value);
     }
 
     /**
@@ -854,9 +886,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "out-structPersons", scope = QueryPersonsResponse.class)
-    public JAXBElement<String> createQueryPersonsResponseOutStructPersons(String value) {
-        return new JAXBElement<String>(_GetAllPersonsResponseOutStructPersons_QNAME, String.class, QueryPersonsResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "out-result", scope = QueryPersonsResponse.class)
+    public JAXBElement<String> createQueryPersonsResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, QueryPersonsResponse.class, value);
     }
 
     /**
@@ -890,9 +922,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "out-structCards", scope = QueryCardsResponse.class)
-    public JAXBElement<String> createQueryCardsResponseOutStructCards(String value) {
-        return new JAXBElement<String>(_GetAllCardsResponseOutStructCards_QNAME, String.class, QueryCardsResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "out-result", scope = QueryCardsResponse.class)
+    public JAXBElement<String> createQueryCardsResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, QueryCardsResponse.class, value);
     }
 
     /**
@@ -919,16 +951,25 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "out-result", scope = AddPersonResponse.class)
     public JAXBElement<String> createAddPersonResponseOutResult(String value) {
-        return new JAXBElement<String>(_AddPersonResponseOutResult_QNAME, String.class, AddPersonResponse.class, value);
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, AddPersonResponse.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "in-strPersonID", scope = RemovePersonResponse.class)
-    public JAXBElement<String> createRemovePersonResponseInStrPersonID(String value) {
-        return new JAXBElement<String>(_GetAllACCodesInStrPersonID_QNAME, String.class, RemovePersonResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "in-strPersonID", scope = RemovePerson.class)
+    public JAXBElement<String> createRemovePersonInStrPersonID(String value) {
+        return new JAXBElement<String>(_GetAllACCodesInStrPersonID_QNAME, String.class, RemovePerson.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "out-result", scope = RemovePersonResponse.class)
+    public JAXBElement<String> createRemovePersonResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, RemovePersonResponse.class, value);
     }
 
     /**
@@ -955,16 +996,25 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "out-result", scope = AddCardResponse.class)
     public JAXBElement<String> createAddCardResponseOutResult(String value) {
-        return new JAXBElement<String>(_AddPersonResponseOutResult_QNAME, String.class, AddCardResponse.class, value);
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, AddCardResponse.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "in-strCARDNO", scope = RemoveCardResponse.class)
-    public JAXBElement<String> createRemoveCardResponseInStrCARDNO(String value) {
-        return new JAXBElement<String>(_GetAllCompanysInStrCARDNO_QNAME, String.class, RemoveCardResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "in-strCARDNO", scope = RemoveCard.class)
+    public JAXBElement<String> createRemoveCardInStrCARDNO(String value) {
+        return new JAXBElement<String>(_GetAllCompanysInStrCARDNO_QNAME, String.class, RemoveCard.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "out-result", scope = RemoveCardResponse.class)
+    public JAXBElement<String> createRemoveCardResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, RemoveCardResponse.class, value);
     }
 
     /**
@@ -980,9 +1030,18 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "in-strCompanyID", scope = AddACCodeToCompanyResponse.class)
-    public JAXBElement<String> createAddACCodeToCompanyResponseInStrCompanyID(String value) {
-        return new JAXBElement<String>(_GetCompanyACCodesInStrCompanyID_QNAME, String.class, AddACCodeToCompanyResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "in-strCompanyID", scope = AddACCodeToCompany.class)
+    public JAXBElement<String> createAddACCodeToCompanyInStrCompanyID(String value) {
+        return new JAXBElement<String>(_GetCompanyACCodesInStrCompanyID_QNAME, String.class, AddACCodeToCompany.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "out-result", scope = AddACCodeToCompanyResponse.class)
+    public JAXBElement<String> createAddACCodeToCompanyResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, AddACCodeToCompanyResponse.class, value);
     }
 
     /**
@@ -998,9 +1057,18 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "in-strCompanyID", scope = RemoveACCodeFromCompanyResponse.class)
-    public JAXBElement<String> createRemoveACCodeFromCompanyResponseInStrCompanyID(String value) {
-        return new JAXBElement<String>(_GetCompanyACCodesInStrCompanyID_QNAME, String.class, RemoveACCodeFromCompanyResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "in-strCompanyID", scope = RemoveACCodeFromCompany.class)
+    public JAXBElement<String> createRemoveACCodeFromCompanyInStrCompanyID(String value) {
+        return new JAXBElement<String>(_GetCompanyACCodesInStrCompanyID_QNAME, String.class, RemoveACCodeFromCompany.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "out-result", scope = RemoveACCodeFromCompanyResponse.class)
+    public JAXBElement<String> createRemoveACCodeFromCompanyResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, RemoveACCodeFromCompanyResponse.class, value);
     }
 
     /**
@@ -1016,9 +1084,18 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "in-strCardNO", scope = AddACCodeToCardResponse.class)
-    public JAXBElement<String> createAddACCodeToCardResponseInStrCardNO(String value) {
-        return new JAXBElement<String>(_GetAllACCodesInStrCardNO_QNAME, String.class, AddACCodeToCardResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "in-strCardNO", scope = AddACCodeToCard.class)
+    public JAXBElement<String> createAddACCodeToCardInStrCardNO(String value) {
+        return new JAXBElement<String>(_GetAllACCodesInStrCardNO_QNAME, String.class, AddACCodeToCard.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "out-result", scope = AddACCodeToCardResponse.class)
+    public JAXBElement<String> createAddACCodeToCardResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, AddACCodeToCardResponse.class, value);
     }
 
     /**
@@ -1034,9 +1111,18 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "in-strCardNO", scope = RemoveACCodeFromCardResponse.class)
-    public JAXBElement<String> createRemoveACCodeFromCardResponseInStrCardNO(String value) {
-        return new JAXBElement<String>(_GetAllACCodesInStrCardNO_QNAME, String.class, RemoveACCodeFromCardResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "in-strCardNO", scope = RemoveACCodeFromCard.class)
+    public JAXBElement<String> createRemoveACCodeFromCardInStrCardNO(String value) {
+        return new JAXBElement<String>(_GetAllACCodesInStrCardNO_QNAME, String.class, RemoveACCodeFromCard.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "out-result", scope = RemoveACCodeFromCardResponse.class)
+    public JAXBElement<String> createRemoveACCodeFromCardResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, RemoveACCodeFromCardResponse.class, value);
     }
 
     /**
@@ -1052,9 +1138,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "out-structCards", scope = GetACCodeCardsResponse.class)
-    public JAXBElement<String> createGetACCodeCardsResponseOutStructCards(String value) {
-        return new JAXBElement<String>(_GetAllCardsResponseOutStructCards_QNAME, String.class, GetACCodeCardsResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "out-result", scope = GetACCodeCardsResponse.class)
+    public JAXBElement<String> createGetACCodeCardsResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, GetACCodeCardsResponse.class, value);
     }
 
     /**
@@ -1079,9 +1165,18 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "in-strTimeZoneID", scope = AddReaderToACCodeResponse.class)
-    public JAXBElement<String> createAddReaderToACCodeResponseInStrTimeZoneID(String value) {
-        return new JAXBElement<String>(_AddReaderToACCodeResponseInStrTimeZoneID_QNAME, String.class, AddReaderToACCodeResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "in-strTimeZoneID", scope = AddReaderToACCode.class)
+    public JAXBElement<String> createAddReaderToACCodeInStrTimeZoneID(String value) {
+        return new JAXBElement<String>(_AddReaderToACCodeInStrTimeZoneID_QNAME, String.class, AddReaderToACCode.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "out-result", scope = AddReaderToACCodeResponse.class)
+    public JAXBElement<String> createAddReaderToACCodeResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, AddReaderToACCodeResponse.class, value);
     }
 
     /**
@@ -1106,9 +1201,18 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "in-strTimeZoneID", scope = RemoveReaderFromACCodeResponse.class)
-    public JAXBElement<String> createRemoveReaderFromACCodeResponseInStrTimeZoneID(String value) {
-        return new JAXBElement<String>(_AddReaderToACCodeResponseInStrTimeZoneID_QNAME, String.class, RemoveReaderFromACCodeResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "in-strTimeZoneID", scope = RemoveReaderFromACCode.class)
+    public JAXBElement<String> createRemoveReaderFromACCodeInStrTimeZoneID(String value) {
+        return new JAXBElement<String>(_AddReaderToACCodeInStrTimeZoneID_QNAME, String.class, RemoveReaderFromACCode.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "out-result", scope = RemoveReaderFromACCodeResponse.class)
+    public JAXBElement<String> createRemoveReaderFromACCodeResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, RemoveReaderFromACCodeResponse.class, value);
     }
 
     /**
@@ -1124,9 +1228,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "out-structReaders", scope = GetCardReadersResponse.class)
-    public JAXBElement<String> createGetCardReadersResponseOutStructReaders(String value) {
-        return new JAXBElement<String>(_GetAllReadersResponseOutStructReaders_QNAME, String.class, GetCardReadersResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "out-result", scope = GetCardReadersResponse.class)
+    public JAXBElement<String> createGetCardReadersResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, GetCardReadersResponse.class, value);
     }
 
     /**
@@ -1153,7 +1257,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "out-structTimeZone", scope = GetCardReaderTimeZones.class)
     public JAXBElement<String> createGetCardReaderTimeZonesOutStructTimeZone(String value) {
-        return new JAXBElement<String>(_GetAllTimeZonesResponseOutStructTimeZone_QNAME, String.class, GetCardReaderTimeZones.class, value);
+        return new JAXBElement<String>(_GetCardReaderTimeZonesOutStructTimeZone_QNAME, String.class, GetCardReaderTimeZones.class, value);
     }
 
     /**
@@ -1162,7 +1266,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "out-structAccessDuration", scope = GetCardReaderTimeZonesResponse.class)
     public JAXBElement<String> createGetCardReaderTimeZonesResponseOutStructAccessDuration(String value) {
-        return new JAXBElement<String>(_GetACCodeAccessDurationResponseOutStructAccessDuration_QNAME, String.class, GetCardReaderTimeZonesResponse.class, value);
+        return new JAXBElement<String>(_GetCardReaderTimeZonesResponseOutStructAccessDuration_QNAME, String.class, GetCardReaderTimeZonesResponse.class, value);
     }
 
     /**
@@ -1189,7 +1293,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "in-strTimeZoneID", scope = AddReaderToCard.class)
     public JAXBElement<String> createAddReaderToCardInStrTimeZoneID(String value) {
-        return new JAXBElement<String>(_AddReaderToACCodeResponseInStrTimeZoneID_QNAME, String.class, AddReaderToCard.class, value);
+        return new JAXBElement<String>(_AddReaderToACCodeInStrTimeZoneID_QNAME, String.class, AddReaderToCard.class, value);
     }
 
     /**
@@ -1214,9 +1318,18 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "in-strTEMPACCESS-END-TIME", scope = AddReaderToCardResponse.class)
-    public JAXBElement<String> createAddReaderToCardResponseInStrTEMPACCESSENDTIME(String value) {
-        return new JAXBElement<String>(_AddReaderToCardResponseInStrTEMPACCESSENDTIME_QNAME, String.class, AddReaderToCardResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "in-strTEMPACCESS-END-TIME", scope = AddReaderToCard.class)
+    public JAXBElement<String> createAddReaderToCardInStrTEMPACCESSENDTIME(String value) {
+        return new JAXBElement<String>(_AddReaderToCardInStrTEMPACCESSENDTIME_QNAME, String.class, AddReaderToCard.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "out-result", scope = AddReaderToCardResponse.class)
+    public JAXBElement<String> createAddReaderToCardResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, AddReaderToCardResponse.class, value);
     }
 
     /**
@@ -1232,9 +1345,18 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "in-strReaderID", scope = RemoveReaderFromCardResponse.class)
-    public JAXBElement<String> createRemoveReaderFromCardResponseInStrReaderID(String value) {
-        return new JAXBElement<String>(_GetAllTimeZonesInStrReaderID_QNAME, String.class, RemoveReaderFromCardResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "in-strReaderID", scope = RemoveReaderFromCard.class)
+    public JAXBElement<String> createRemoveReaderFromCardInStrReaderID(String value) {
+        return new JAXBElement<String>(_GetAllTimeZonesInStrReaderID_QNAME, String.class, RemoveReaderFromCard.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "out-result", scope = RemoveReaderFromCardResponse.class)
+    public JAXBElement<String> createRemoveReaderFromCardResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, RemoveReaderFromCardResponse.class, value);
     }
 
     /**
@@ -1268,9 +1390,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "out-structReaders", scope = QueryReadersResponse.class)
-    public JAXBElement<String> createQueryReadersResponseOutStructReaders(String value) {
-        return new JAXBElement<String>(_GetAllReadersResponseOutStructReaders_QNAME, String.class, QueryReadersResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "out-result", scope = QueryReadersResponse.class)
+    public JAXBElement<String> createQueryReadersResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, QueryReadersResponse.class, value);
     }
 
     /**
@@ -1286,6 +1408,15 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
+    @XmlElementDecl(namespace = "", name = "out-result", scope = ReaderControlResponse.class)
+    public JAXBElement<String> createReaderControlResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, ReaderControlResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
     @XmlElementDecl(namespace = "", name = "in-strReaderID", scope = GetReaderStatus.class)
     public JAXBElement<String> createGetReaderStatusInStrReaderID(String value) {
         return new JAXBElement<String>(_GetAllTimeZonesInStrReaderID_QNAME, String.class, GetReaderStatus.class, value);
@@ -1295,18 +1426,36 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "in-strStatus", scope = GetReaderStatusResponse.class)
-    public JAXBElement<String> createGetReaderStatusResponseInStrStatus(String value) {
-        return new JAXBElement<String>(_GetReaderStatusResponseInStrStatus_QNAME, String.class, GetReaderStatusResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "out-result", scope = GetReaderStatusResponse.class)
+    public JAXBElement<String> createGetReaderStatusResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, GetReaderStatusResponse.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "out-structEvents", scope = GetHistoryEventResponse.class)
-    public JAXBElement<String> createGetHistoryEventResponseOutStructEvents(String value) {
-        return new JAXBElement<String>(_GetHistoryEventResponseOutStructEvents_QNAME, String.class, GetHistoryEventResponse.class, value);
+    @XmlElementDecl(namespace = "", name = "out-result", scope = StartRecvRealEventResponse.class)
+    public JAXBElement<String> createStartRecvRealEventResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, StartRecvRealEventResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "out-result", scope = StopRecvRealEventResponse.class)
+    public JAXBElement<String> createStopRecvRealEventResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, StopRecvRealEventResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "out-result", scope = GetHistoryEventResponse.class)
+    public JAXBElement<String> createGetHistoryEventResponseOutResult(String value) {
+        return new JAXBElement<String>(_InitResponseOutResult_QNAME, String.class, GetHistoryEventResponse.class, value);
     }
 
 }

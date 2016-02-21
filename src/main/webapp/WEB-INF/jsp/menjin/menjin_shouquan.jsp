@@ -117,7 +117,7 @@
 										</div>
 										<div class="row">
 											<div class="col-md-12">
-												<button id="sq" class="btn btn-danger">授权</button>
+												<button id="sq" class="btn btn-danger">授权</button> 不选择任何门禁，即删除此人的所有授权。
 											</div>
 										</div>
 									</div>

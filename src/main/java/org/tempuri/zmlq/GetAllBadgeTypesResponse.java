@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="out-structBadgeTypes" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="out-result" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -30,36 +30,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "outStructBadgeTypes"
+    "outResult"
 })
 @XmlRootElement(name = "GetAllBadgeTypesResponse")
 public class GetAllBadgeTypesResponse {
 
-    @XmlElementRef(name = "out-structBadgeTypes", type = JAXBElement.class, required = false)
-    protected JAXBElement<String> outStructBadgeTypes;
+    @XmlElementRef(name = "out-result", type = JAXBElement.class, required = false)
+    protected JAXBElement<String> outResult;
 
     /**
-     * 获取outStructBadgeTypes属性的值。
+     * 获取outResult属性的值。
      * 
      * @return
      *     possible object is
      *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public JAXBElement<String> getOutStructBadgeTypes() {
-        return outStructBadgeTypes;
+    public JAXBElement<String> getOutResult() {
+        return outResult;
     }
 
     /**
-     * 设置outStructBadgeTypes属性的值。
+     * 设置outResult属性的值。
      * 
      * @param value
      *     allowed object is
      *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setOutStructBadgeTypes(JAXBElement<String> value) {
-        this.outStructBadgeTypes = value;
+    public void setOutResult(JAXBElement<String> value) {
+        this.outResult = value;
     }
 
 }
