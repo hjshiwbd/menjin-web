@@ -63,4 +63,10 @@ public interface IDptService
 
 	public String listEu(Integer page, Integer rows, DptBean dpt);
 
+	public String doAdd(DptBean dpt);
+
+	public String doDelete(DptBean dpt);
+
+	public String doEdit(DptBean dpt);
+
 }

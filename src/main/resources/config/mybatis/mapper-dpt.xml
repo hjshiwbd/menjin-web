@@ -38,7 +38,8 @@
 		t.dptcntct, t.dptcrtdby, t.dptcrtdday, t.dptisselect, t.dpthousetype,
 		t.dpthousearea, t.dpthousecost, t.dpthousewatervalue,
 		t.dpthouseelectvalue, t.dpthousegasvalue, t.dpthouseisbill,
-		t.pdptno, t.cardtypeid, t.dptname_spell from Hrms_Dpt t
+		t.pdptno,
+		t.cardtypeid, t.dptname_spell from Hrms_Dpt t
 		<where>
 			<if test="dptid!=null">
 				and t.dptid = #{dptid,jdbcType=NUMERIC}
@@ -92,13 +93,16 @@
 				and t.dpthousecost = #{dpthousecost,jdbcType=DECIMAL}
 			</if>
 			<if test="dpthousewatervalue!=null">
-				and t.dpthousewatervalue = #{dpthousewatervalue,jdbcType=DECIMAL}
+				and t.dpthousewatervalue =
+				#{dpthousewatervalue,jdbcType=DECIMAL}
 			</if>
 			<if test="dpthouseelectvalue!=null">
-				and t.dpthouseelectvalue = #{dpthouseelectvalue,jdbcType=DECIMAL}
+				and t.dpthouseelectvalue =
+				#{dpthouseelectvalue,jdbcType=DECIMAL}
 			</if>
 			<if test="dpthousegasvalue!=null">
-				and t.dpthousegasvalue = #{dpthousegasvalue,jdbcType=DECIMAL}
+				and t.dpthousegasvalue =
+				#{dpthousegasvalue,jdbcType=DECIMAL}
 			</if>
 			<if test="dpthouseisbill!=null">
 				and t.dpthouseisbill = #{dpthouseisbill,jdbcType=BIT}
@@ -115,28 +119,40 @@
 		</where>
 	</select>
 
+	<select id="selectMaxPrcno" parameterType="DptBean" resultType="int">
+		select max(t.dptprcno) + 1 from hrms_dpt t where t.dptparnt =#{dptparnt,jdbcType=NUMERIC}
+	</select>
+
 	<!-- insert -->
 	<insert id="insert" parameterType="DptBean">
-		insert into Hrms_Dpt (dptid, dptparnt, dptprcno, dptno, dptname,
-		dptisactive, dpttypeid, dptadd, dptphone, dptmngr, dptcntct,
-		dptcrtdby, dptcrtdday, dptisselect, dpthousetype, dpthousearea,
-		dpthousecost, dpthousewatervalue, dpthouseelectvalue,
-		dpthousegasvalue, dpthouseisbill, pdptno, cardtypeid,
-		dptname_spell)
-		values (#{dptid,jdbcType=NUMERIC}, #{dptparnt,jdbcType=NUMERIC},
-		#{dptprcno,jdbcType=VARCHAR}, #{dptno,jdbcType=VARCHAR},
-		#{dptname,jdbcType=VARCHAR}, #{dptisactive,jdbcType=BIT},
-		#{dpttypeid,jdbcType=NUMERIC}, #{dptadd,jdbcType=VARCHAR},
-		#{dptphone,jdbcType=VARCHAR}, #{dptmngr,jdbcType=VARCHAR},
-		#{dptcntct,jdbcType=VARCHAR}, #{dptcrtdby,jdbcType=VARCHAR},
-		#{dptcrtdday,jdbcType=TIMESTAMP}, #{dptisselect,jdbcType=BIT},
-		#{dpthousetype,jdbcType=VARCHAR}, #{dpthousearea,jdbcType=DECIMAL},
+		insert into Hrms_Dpt (
+		dptparnt, dptprcno, dptno, dptname,
+		dptadd,
+		dptphone,
+		dptmngr, dptcntct,
+		dptcrtdby,
+		dpthousetype, dpthousearea,
+		dpthousecost, dpthousewatervalue,
+		dpthouseelectvalue,
+		dpthousegasvalue,
+		pdptno)
+		values (
+		#{dptparnt,jdbcType=NUMERIC},
+		#{dptprcno,jdbcType=VARCHAR},
+		#{dptno,jdbcType=VARCHAR},
+		#{dptname,jdbcType=VARCHAR},
+		#{dptadd,jdbcType=VARCHAR},
+		#{dptphone,jdbcType=VARCHAR},
+		#{dptmngr,jdbcType=VARCHAR},
+		#{dptcntct,jdbcType=VARCHAR},
+		#{dptcrtdby,jdbcType=VARCHAR},
+		#{dpthousetype,jdbcType=VARCHAR},
+		#{dpthousearea,jdbcType=DECIMAL},
 		#{dpthousecost,jdbcType=DECIMAL},
 		#{dpthousewatervalue,jdbcType=DECIMAL},
 		#{dpthouseelectvalue,jdbcType=DECIMAL},
-		#{dpthousegasvalue,jdbcType=DECIMAL}, #{dpthouseisbill,jdbcType=BIT},
-		#{pdptno,jdbcType=VARCHAR},
-		#{cardtypeid,jdbcType=NUMERIC}, #{dptname_spell,jdbcType=VARCHAR})
+		#{dpthousegasvalue,jdbcType=DECIMAL},
+		#{pdptno,jdbcType=VARCHAR})
 	</insert>
 
 	<!-- update -->
@@ -192,10 +208,12 @@
 				dpthousecost = #{dpthousecost,jdbcType=DECIMAL},
 			</if>
 			<if test="dpthousewatervalue != null">
-				dpthousewatervalue = #{dpthousewatervalue,jdbcType=DECIMAL},
+				dpthousewatervalue =
+				#{dpthousewatervalue,jdbcType=DECIMAL},
 			</if>
 			<if test="dpthouseelectvalue != null">
-				dpthouseelectvalue = #{dpthouseelectvalue,jdbcType=DECIMAL},
+				dpthouseelectvalue =
+				#{dpthouseelectvalue,jdbcType=DECIMAL},
 			</if>
 			<if test="dpthousegasvalue != null">
 				dpthousegasvalue = #{dpthousegasvalue,jdbcType=DECIMAL},
@@ -218,6 +236,7 @@
 
 	<!-- delete -->
 	<delete id="delete" parameterType="DptBean">
-		delete from Hrms_Dpt where dptid = #{dptid,jdbcType=NUMERIC}
+		delete from Hrms_Dpt where
+		dptid = #{dptid,jdbcType=NUMERIC}
 	</delete>
 </mapper>

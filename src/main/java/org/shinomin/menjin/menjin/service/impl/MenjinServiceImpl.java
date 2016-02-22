@@ -104,10 +104,11 @@ public class MenjinServiceImpl implements IMenjinService {
 		}
 
 		// 移除老的绑定
-		for (String cardid : cards) {
-			List<HwAcccodeBean> acccodeBeans = WsQuery.getAllACCodes("", cardid);
+		for (String cardno : cards) {
+			List<HwAcccodeBean> acccodeBeans = WsQuery.getAllACCodes("", cardno);
 			for (HwAcccodeBean hwAcccodeBean : acccodeBeans) {
-				WsQuery.removeACCodeFromCard(cardid, hwAcccodeBean.getId());
+				logger.debug("removeACCodeFromCard,cardid:{}, accodeid:{}", cardno, hwAcccodeBean.getId());
+				WsQuery.removeACCodeFromCard(cardno, hwAcccodeBean.getId());
 			}
 			e.setResult("1");
 			e.setMessage("设置成功");
@@ -119,11 +120,12 @@ public class MenjinServiceImpl implements IMenjinService {
 
 			int addCount = 0;
 			// 新的绑定
-			for (String cardid : cards) {
+			for (String cardno : cards) {
 				for (String accodeid : accodeIds) {
-					if (WsQuery.addACCodeToCard(cardid, accodeid)) {
+					logger.debug("new bind,cardid:{}, accodeid:{}", cardno, accodeid);
+					if (WsQuery.addACCodeToCard(cardno, accodeid)) {
 						CardaccodeBean ca = new CardaccodeBean();
-						ca.setCardno(cardid);
+						ca.setCardno(cardno);
 						ca.setAccodeid(accodeid);
 						addCount += cardaccodeService.insert(ca);
 					}

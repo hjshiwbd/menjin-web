@@ -13,6 +13,7 @@ import org.shinomin.menjin.bean.CardtypeBean;
 import org.shinomin.menjin.bean.DptBean;
 import org.shinomin.menjin.bean.EmpBean;
 import org.shinomin.menjin.bean.EmpextBean;
+import org.shinomin.menjin.bean.HwCardBean;
 import org.shinomin.menjin.bean.HwPersonBean;
 import org.shinomin.menjin.bean.PositionBean;
 import org.shinomin.menjin.card.service.ICardtypeService;
@@ -148,12 +149,18 @@ public class EmpServiceImpl implements IEmpService {
 			HwPersonBean person = new HwPersonBean();
 			person.setLname(emp.getEmpno());
 			person.setFname(emp.getEmpname());
-			person.setIssue_date(DateUtil.formatDate(today, "yyyy/MM/dd"));// 今天为生效时间
-			person.setExpire_date(DateUtil.formatDate(tenYearLater, "yyyy/MM/dd"));// 10年为失效时间
+			person.setIssue_date(DateUtil.formatDate(today, "yyyy-MM-dd"));// 今天为生效时间
+			person.setExpire_date(DateUtil.formatDate(tenYearLater, "yyyy-MM-dd"));// 10年为失效时间
 			ExecuteResult e = WsQuery.addPerson(person, emp.getBadgeId());
 			if (e.getResult().equals("0")) {
 				logger.info("add person to hw finish");
-				// String personid = e.getObject().toString();
+				String personid = e.getObject().toString();
+				HwCardBean card = new HwCardBean();
+				card.setPersonid(personid);
+				card.setCardno(emp.getEmpcardno());
+				card.setIssue_date(DateUtil.formatDate(today, "yyyy-MM-dd"));
+				card.setExpire_date(DateUtil.formatDate(tenYearLater, "yyyy-MM-dd"));
+				WsQuery.addCard(card, "0x00488a1872d040a54a3882e897327e7955a0");
 			} else {
 				logger.info("add person to hw failed:{}", e.getMessage());
 				throw new Exception("add person to hw failed");

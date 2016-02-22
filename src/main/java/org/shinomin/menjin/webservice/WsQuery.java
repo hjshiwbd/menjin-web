@@ -10,6 +10,7 @@ import org.shinomin.commons.bean.ExecuteResult;
 import org.shinomin.commons.utils.ConvertUtil;
 import org.shinomin.commons.utils.JsonUtil;
 import org.shinomin.menjin.bean.HwAcccodeBean;
+import org.shinomin.menjin.bean.HwCardBean;
 import org.shinomin.menjin.bean.HwPersonBean;
 import org.shinomin.menjin.bean.HwReaderBean;
 import org.slf4j.Logger;
@@ -78,6 +79,15 @@ public class WsQuery {
 			return null;
 		}
 	}
+	public static List<HwCardBean> queryCards(String field, String oper, String value) {
+		String json = WsUtil.queryCards(field, oper, value);
+		if (StringUtils.isNotBlank(json)) {
+			List<HwCardBean> list = convertList(getWsObject(json), HwCardBean.class);
+			return list;
+		} else {
+			return null;
+		}
+	}
 
 	public static List<HwReaderBean> getAllReaders(String acCodeID) {
 		String json = WsUtil.getAllReaders(acCodeID);
@@ -100,6 +110,16 @@ public class WsQuery {
 		String json = WsUtil.addPerson(person, badgeId);
 		if (StringUtils.isNotBlank(json)) {
 			logger.info("add person:{}", json);
+			return Json.fromJson(ExecuteResult.class, json);
+		} else {
+			return null;
+		}
+	}
+
+	public static ExecuteResult addCard(HwCardBean card, String companyid) {
+		String json = WsUtil.addCard(card, companyid);
+		if (StringUtils.isNotBlank(json)) {
+			logger.info("addCard:{}", json);
 			return Json.fromJson(ExecuteResult.class, json);
 		} else {
 			return null;

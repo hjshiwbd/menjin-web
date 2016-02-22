@@ -1,6 +1,7 @@
 package org.shinomin.menjin.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 @SuppressWarnings("serial")
 public class DptBean implements Serializable {
@@ -28,6 +29,9 @@ public class DptBean implements Serializable {
 	private String pdptno;//
 	private String cardtypeid;//
 	private String dptname_spell;//
+
+	//
+	private List<DptBean> children;
 
 	public String getDptid() {
 		return dptid;
@@ -221,4 +225,11 @@ public class DptBean implements Serializable {
 		this.dptname_spell = dptname_spell;
 	}
 
+	public List<DptBean> getChildren() {
+		return children;
+	}
+
+	public void setChildren(List<DptBean> children) {
+		this.children = children;
+	}
 }

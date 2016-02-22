@@ -1,0 +1,15 @@
+门:
+
+所有的门
+NDr2_Door
+
+新建一个门的组
+NDr2_Group
+
+将门和这个组进行关联
+NDr2_Group_Door
+
+将人和这个组进行关联
+NDr2_Group_Emp
+
+

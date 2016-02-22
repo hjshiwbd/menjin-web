@@ -33,4 +33,24 @@ public class DptController {
 	public String listEu(Integer page, Integer rows, DptBean dpt) throws Exception {
 		return dptService.listEu(page, rows, dpt);
 	}
+
+	@ResponseBody
+	@RequestMapping("/do_add")
+	public String doAdd(DptBean dpt) throws Exception {
+		return dptService.doAdd(dpt);
+	}
+	
+	@ResponseBody
+	@RequestMapping("/do_delete")
+	public String doDelete(DptBean dpt) throws Exception {
+		return dptService.doDelete(dpt);
+	}
+
+	@ResponseBody
+	@RequestMapping("/do_edit")
+	public String doEdit(DptBean dpt) throws Exception {
+		return dptService.doEdit(dpt);
+	}
+	
+	
 }

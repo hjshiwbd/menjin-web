@@ -62,7 +62,7 @@
 											<form id="searchForm" class="" action="<%=path%>/dpt/list_eu<%=suffix%>">
 												<input type="text" style="display: none" name="no_submit">
 												<div class="form-group col-xs-2">
-													<label class="col-xs-6">名称</label><input type="text" class="form-control" name="dptname">
+													<label class="col-xs-6">名称</label><input type="text" class="form-control" id="dptname" name="dptname">
 												</div>
 												<div class="clearfix"></div>
 												<div class="form-group col-xs-2">
@@ -101,6 +101,72 @@
 			</div>
 		</div>
 	</section>
+
+	<div id="addDptDiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">新增部门</h4>
+				</div>
+				<div class="modal-body">
+					<form id="form1" method="post">
+						<div class="form-group">
+							<label class="">编号</label><input type="text" name="dptno" id="dptno" class="form-control" value="">
+						</div>
+						<div class="form-group">
+							<label class="">名称</label><input type="text" name="dptname" id="dptname" class="form-control" value="">
+						</div>
+						<div class="form-group">
+							<label class="">上级部门编号</label><input type="text" name="dptparnt" id="dptparnt" class="form-control" value="">
+						</div>
+						<div class="form-group">
+							<button id="bcbm" type="button" class="btn btn-primary">保存</button>
+							<button class="btn btn-default" data-dismiss="modal">关闭</button>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="editDptDiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">请选择部门</h4>
+				</div>
+				<div class="modal-body">
+					<form id="form2" method="post">
+						<input type="hidden" id="dptid" name="dptid">
+						<div class="form-group">
+							<label class="">编号</label><input type="text" name="dptno" id="dptno" class="form-control" value="">
+						</div>
+						<div class="form-group">
+							<label class="">名称</label><input type="text" name="dptname" id="dptname" class="form-control" value="">
+						</div>
+						<div class="form-group">
+							<label class="">上级部门编号</label><input type="text" name="dptparnt" id="dptparnt" class="form-control" value="">
+						</div>
+						<div class="form-group">
+							<button id="xgbm" type="button" class="btn btn-primary">保存</button>
+							<button class="btn btn-default" data-dismiss="modal">关闭</button>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!--/PAGE -->
 	<%@ include file="/WEB-INF/jsp/inc/inc_js.jsp"%>
 	<!-- SELECT2 -->
