@@ -20,7 +20,7 @@
 	<!-- PAGE -->
 	<section REQUESTERROR="REQUESTERROR" id="page">
 		<!-- SIDEBAR -->
-		<div id="sidebar" class="sidebar"></div>
+<!-- 		<div id="sidebar" class="sidebar"></div> -->
 		<!-- /SIDEBAR -->
 		<div id="main-content">
 			<div class="container">
