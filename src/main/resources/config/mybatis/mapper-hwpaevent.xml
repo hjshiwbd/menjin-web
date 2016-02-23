@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.shinomin.menjin.mapper.Hwpaevent">
+
+	<!-- resultMap -->
+	<resultMap id="HwpaeventMap" type="HwpaeventBean">
+		<result property="id" column="id" />
+		<result property="logdevdescrp" column="logdevdescrp" />
+		<result property="logdevtypedesc" column="logdevtypedesc" />
+		<result property="rec_dat" column="rec_dat" />
+		<result property="evnt_dat" column="evnt_dat" />
+		<result property="evnt_descrp" column="evnt_descrp" />
+		<result property="descrp" column="descrp" />
+		<result property="location" column="location" />
+		<result property="cardno" column="cardno" />
+		<result property="lname" column="lname" />
+		<result property="fname" column="fname" />
+		<result property="stat_cod" column="stat_cod" />
+		<result property="comp_name" column="comp_name" />
+		<result property="threat_lev" column="threat_lev" />
+	</resultMap>
+
+	<!-- select -->
+	<select id="select" parameterType="HwpaeventBean" resultType="HwpaeventBean">
+		select t.id, t.logdevdescrp, t.logdevtypedesc, t.rec_dat, t.evnt_dat, t.evnt_descrp, t.descrp, t.location, t.cardno,
+		t.lname, t.fname, t.stat_cod, t.comp_name, t.threat_lev from mjsq_hw_eventlog t
+		<where>
+			<if test="id!=null">
+				and t.id = #{id,jdbcType=NUMERIC}
+			</if>
+			<if test="logdevdescrp != null and logdevdescrp != ''">
+				and t.logdevdescrp = #{logdevdescrp,jdbcType=VARCHAR}
+			</if>
+			<if test="logdevtypedesc != null and logdevtypedesc != ''">
+				and t.logdevtypedesc = #{logdevtypedesc,jdbcType=VARCHAR}
+			</if>
+			<if test="rec_dat != null and rec_dat != ''">
+				and t.rec_dat = #{rec_dat,jdbcType=VARCHAR}
+			</if>
+			<if test="evnt_dat != null and evnt_dat != ''">
+				and t.evnt_dat = #{evnt_dat,jdbcType=VARCHAR}
+			</if>
+			<if test="evnt_descrp != null and evnt_descrp != ''">
+				and t.evnt_descrp = #{evnt_descrp,jdbcType=VARCHAR}
+			</if>
+			<if test="descrp != null and descrp != ''">
+				and t.descrp = #{descrp,jdbcType=VARCHAR}
+			</if>
+			<if test="location != null and location != ''">
+				and t.location = #{location,jdbcType=VARCHAR}
+			</if>
+			<if test="cardno != null and cardno != ''">
+				and t.cardno = #{cardno,jdbcType=VARCHAR}
+			</if>
+			<if test="lname != null and lname != ''">
+				and t.lname = #{lname,jdbcType=VARCHAR}
+			</if>
+			<if test="fname != null and fname != ''">
+				and t.fname = #{fname,jdbcType=VARCHAR}
+			</if>
+			<if test="stat_cod != null and stat_cod != ''">
+				and t.stat_cod = #{stat_cod,jdbcType=VARCHAR}
+			</if>
+			<if test="comp_name != null and comp_name != ''">
+				and t.comp_name = #{comp_name,jdbcType=VARCHAR}
+			</if>
+			<if test="threat_lev != null and threat_lev != ''">
+				and t.threat_lev = #{threat_lev,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<!-- insert -->
+	<insert id="insert" parameterType="HwpaeventBean">
+		insert into mjsq_hw_eventlog (logdevdescrp, logdevtypedesc, rec_dat, evnt_dat,
+		evnt_descrp, descrp, location, cardno, lname, fname, stat_cod, comp_name, threat_lev) values
+		(#{logdevdescrp,jdbcType=VARCHAR}, #{logdevtypedesc,jdbcType=VARCHAR}, #{rec_dat,jdbcType=VARCHAR},
+		#{evnt_dat,jdbcType=VARCHAR}, #{evnt_descrp,jdbcType=VARCHAR}, #{descrp,jdbcType=VARCHAR},
+		#{location,jdbcType=VARCHAR}, #{cardno,jdbcType=VARCHAR}, #{lname,jdbcType=VARCHAR}, #{fname,jdbcType=VARCHAR},
+		#{stat_cod,jdbcType=VARCHAR}, #{comp_name,jdbcType=VARCHAR}, #{threat_lev,jdbcType=VARCHAR})
+	</insert>
+
+	<!-- update -->
+	<update id="update" parameterType="HwpaeventBean">
+		update mjsq_hw_eventlog
+		<set>
+			<if test="logdevdescrp != null">
+				logdevdescrp = #{logdevdescrp,jdbcType=VARCHAR},
+			</if>
+			<if test="logdevtypedesc != null">
+				logdevtypedesc = #{logdevtypedesc,jdbcType=VARCHAR},
+			</if>
+			<if test="rec_dat != null">
+				rec_dat = #{rec_dat,jdbcType=VARCHAR},
+			</if>
+			<if test="evnt_dat != null">
+				evnt_dat = #{evnt_dat,jdbcType=VARCHAR},
+			</if>
+			<if test="evnt_descrp != null">
+				evnt_descrp = #{evnt_descrp,jdbcType=VARCHAR},
+			</if>
+			<if test="descrp != null">
+				descrp = #{descrp,jdbcType=VARCHAR},
+			</if>
+			<if test="location != null">
+				location = #{location,jdbcType=VARCHAR},
+			</if>
+			<if test="cardno != null">
+				cardno = #{cardno,jdbcType=VARCHAR},
+			</if>
+			<if test="lname != null">
+				lname = #{lname,jdbcType=VARCHAR},
+			</if>
+			<if test="fname != null">
+				fname = #{fname,jdbcType=VARCHAR},
+			</if>
+			<if test="stat_cod != null">
+				stat_cod = #{stat_cod,jdbcType=VARCHAR},
+			</if>
+			<if test="comp_name != null">
+				comp_name = #{comp_name,jdbcType=VARCHAR},
+			</if>
+			<if test="threat_lev != null">
+				threat_lev = #{threat_lev,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<!-- delete -->
+	<delete id="delete" parameterType="HwpaeventBean">
+		delete from mjsq_hw_eventlog where id = #{id,jdbcType=NUMERIC}
+	</delete>
+</mapper>
