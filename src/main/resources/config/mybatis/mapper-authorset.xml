@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.shinomin.menjin.mapper.Authorset">
+
+	<!-- resultMap -->
+	<resultMap id="AuthorsetMap" type="AuthorsetBean">
+		<result property="cardid" column="cardid" />
+		<result property="doorid" column="doorid" />
+		<result property="password" column="password" />
+		<result property="duedate" column="duedate" />
+		<result property="authortype" column="authortype" />
+		<result property="authorstatus" column="authorstatus" />
+		<result property="usertimegrp" column="usertimegrp" />
+		<result property="downloaded" column="downloaded" />
+		<result property="firstdownloaded" column="firstdownloaded" />
+		<result property="preventcard" column="preventcard" />
+		<result property="isdelete" column="isdelete" />
+		<result property="lastdowntime" column="lastdowntime" />
+	</resultMap>
+
+	<!-- select -->
+	<select id="select" parameterType="AuthorsetBean" resultType="AuthorsetBean">
+		select t.cardid, t.doorid, t.password, t.duedate, t.authortype, t.authorstatus, t.usertimegrp, t.downloaded,
+		t.firstdownloaded, t.preventcard, t.isdelete, t.lastdowntime from NDr2_AuthorSet t
+		<where>
+			<if test="cardid!=null">
+				and t.cardid = #{cardid,jdbcType=NUMERIC}
+			</if>
+			<if test="doorid!=null">
+				and t.doorid = #{doorid,jdbcType=NUMERIC}
+			</if>
+			<if test="password != null and password != ''">
+				and t.password = #{password,jdbcType=VARCHAR}
+			</if>
+			<if test="duedate!=null">
+				and t.duedate = #{duedate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="authortype!=null">
+				and t.authortype = #{authortype,jdbcType=NUMERIC}
+			</if>
+			<if test="authorstatus!=null">
+				and t.authorstatus = #{authorstatus,jdbcType=NUMERIC}
+			</if>
+			<if test="usertimegrp!=null">
+				and t.usertimegrp = #{usertimegrp,jdbcType=NUMERIC}
+			</if>
+			<if test="downloaded!=null">
+				and t.downloaded = #{downloaded,jdbcType=NUMERIC}
+			</if>
+			<if test="firstdownloaded!=null">
+				and t.firstdownloaded = #{firstdownloaded,jdbcType=NUMERIC}
+			</if>
+			<if test="preventcard!=null">
+				and t.preventcard = #{preventcard,jdbcType=NUMERIC}
+			</if>
+			<if test="isdelete!=null">
+				and t.isdelete = #{isdelete,jdbcType=NUMERIC}
+			</if>
+			<if test="lastdowntime!=null">
+				and t.lastdowntime = #{lastdowntime,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+	</select>
+
+	<!-- insert -->
+	<insert id="insert" parameterType="AuthorsetBean">
+		insert into NDr2_AuthorSet (cardid, doorid, password, duedate, authortype,
+		authorstatus, usertimegrp, downloaded, firstdownloaded, lastdowntime) values (#{cardid,jdbcType=NUMERIC},
+		#{doorid,jdbcType=NUMERIC}, #{password,jdbcType=VARCHAR}, #{duedate,jdbcType=TIMESTAMP},
+		#{authortype,jdbcType=NUMERIC}, #{authorstatus,jdbcType=NUMERIC}, #{usertimegrp,jdbcType=NUMERIC},
+		#{downloaded,jdbcType=NUMERIC}, #{firstdownloaded,jdbcType=NUMERIC}, #{lastdowntime,jdbcType=TIMESTAMP})
+	</insert>
+	<!-- update -->
+	<update id="update" parameterType="AuthorsetBean">
+		update NDr2_AuthorSet
+		<set>
+			<if test="doorid != null">
+				doorid = #{doorid,jdbcType=NUMERIC},
+			</if>
+			<if test="password != null">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="duedate != null">
+				duedate = #{duedate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="authortype != null">
+				authortype = #{authortype,jdbcType=NUMERIC},
+			</if>
+			<if test="authorstatus != null">
+				authorstatus = #{authorstatus,jdbcType=NUMERIC},
+			</if>
+			<if test="usertimegrp != null">
+				usertimegrp = #{usertimegrp,jdbcType=NUMERIC},
+			</if>
+			<if test="downloaded != null">
+				downloaded = #{downloaded,jdbcType=NUMERIC},
+			</if>
+			<if test="firstdownloaded != null">
+				firstdownloaded = #{firstdownloaded,jdbcType=NUMERIC},
+			</if>
+			<if test="preventcard != null">
+				preventcard = #{preventcard,jdbcType=NUMERIC},
+			</if>
+			<if test="isdelete != null">
+				isdelete = #{isdelete,jdbcType=NUMERIC},
+			</if>
+			<if test="lastdowntime != null">
+				lastdowntime = #{lastdowntime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where cardid = #{cardid}
+	</update>
+
+	<!-- delete -->
+	<delete id="delete" parameterType="AuthorsetBean">
+		delete from NDr2_AuthorSet where cardid = #{cardid,jdbcType=NUMERIC}
+	</delete>
+</mapper>

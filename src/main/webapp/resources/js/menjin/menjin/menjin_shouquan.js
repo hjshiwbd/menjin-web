@@ -137,6 +137,48 @@ function initDg() {
 		field : 'empname',
 		title : '姓名/名称',
 		width : 100
+	}, {
+		field : 'empsex',
+		title : '性别',
+		width : 100
+	}, {
+		field : 'empcardno',
+		title : '卡号',
+		width : 100
+	}, {
+		field : 'empstatusid',
+		title : '状态',
+		width : 100,
+		formatter : function(value, row, index) {
+			var txt = '';
+			switch (value) {
+			case '1':
+				txt = '在职';
+				break;
+			case '2':
+				txt = '准备离职';
+				break;
+			case '3':
+				txt = '离职';
+				break;
+			case '4':
+				txt = '退养';
+				break;
+			case '5':
+				txt = '退休';
+				break;
+			case '6':
+				txt = '冻结';
+				break;
+			case '7':
+				txt = '其他(非在职)';
+				break;
+			default:
+				txt = '';
+				break;
+			}
+			return txt;
+		}
 	}
 	// ,{
 	// field : 'issue_date',

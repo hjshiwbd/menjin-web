@@ -9,6 +9,8 @@ import org.shinomin.commons.db.mybatis.Pager;
 import org.shinomin.commons.utils.JsonUtil;
 import org.shinomin.commons.utils.StringUtil;
 import org.shinomin.commons.web.util.PageUtil;
+import org.shinomin.menjin.author.service.IAuthorsetService;
+import org.shinomin.menjin.bean.AuthorsetBean;
 import org.shinomin.menjin.bean.CardaccodeBean;
 import org.shinomin.menjin.bean.EmpBean;
 import org.shinomin.menjin.bean.HwAcccodeBean;
@@ -34,6 +36,8 @@ public class MenjinServiceImpl implements IMenjinService {
 	private IEmpService empService;
 	@Autowired
 	private ICardaccodeService cardaccodeService;
+	@Autowired
+	private IAuthorsetService authorsetService;
 
 	@Override
 	public ModelAndView showShouquan() {
@@ -51,6 +55,7 @@ public class MenjinServiceImpl implements IMenjinService {
 	public String queryHwPersonEudg(Integer page, Integer rows, EmpBean emp) {
 		logger.info("emp:{}", JsonUtil.toJson(emp));
 
+		emp.setIsdeleted("N");
 		Pager<EmpBean> pager = new Pager<>();
 		pager.setCurtPage(page);
 		pager.setCountPerPage(rows);
@@ -66,7 +71,7 @@ public class MenjinServiceImpl implements IMenjinService {
 		List<HwPersonBean> personList = WsQuery.queryPersons("LNAME", "=", emp.getEmpno());
 		if (personList != null && personList.size() == 1) {
 			List<HwAcccodeBean> acccodeList = WsQuery.getAllACCodes(personList.get(0).getId(),
-					StringUtil.null2Empty(emp.getEmpcardno()));
+					StringUtil.null2Empty(emp.getEmpcardno().trim()));
 			if (acccodeList != null) {
 				e.setResult("1");
 				e.setMessage("ok");
@@ -124,10 +129,14 @@ public class MenjinServiceImpl implements IMenjinService {
 				for (String accodeid : accodeIds) {
 					logger.debug("new bind,cardid:{}, accodeid:{}", cardno, accodeid);
 					if (WsQuery.addACCodeToCard(cardno, accodeid)) {
+						// 记录c3数据库1
 						CardaccodeBean ca = new CardaccodeBean();
 						ca.setCardno(cardno);
 						ca.setAccodeid(accodeid);
 						addCount += cardaccodeService.insert(ca);
+
+						// 记录c3数据库2
+						saveToDb2(cardno, accodeid);
 					}
 				}
 			}
@@ -137,6 +146,21 @@ public class MenjinServiceImpl implements IMenjinService {
 			}
 		}
 		return JsonUtil.toJson(e);
+	}
+
+	private void saveToDb2(String cardno, String accodeid) {
+		AuthorsetBean authorset = new AuthorsetBean();
+		authorset.setCardid(cardno);
+		authorset.setDoorid(accodeid);
+		authorset.setPassword("0000");
+		authorset.setDuedate("2099-10-31 00:00:00.000");
+		authorset.setAuthortype("0");
+		authorset.setAuthorstatus("0");
+		authorset.setUsertimegrp("0");
+		authorset.setDownloaded("1");
+		authorset.setFirstdownloaded("1");
+		logger.debug("save authorset:{}", JsonUtil.toJson(authorset));
+		authorsetService.insert(authorset);
 	}
 
 	@Override

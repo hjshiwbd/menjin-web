@@ -9,6 +9,7 @@ import org.shinomin.commons.db.mybatis.Pager;
 import org.shinomin.commons.utils.DateUtil;
 import org.shinomin.commons.utils.JsonUtil;
 import org.shinomin.commons.web.util.PageUtil;
+import org.shinomin.menjin.bean.CardinfoBean;
 import org.shinomin.menjin.bean.CardtypeBean;
 import org.shinomin.menjin.bean.DptBean;
 import org.shinomin.menjin.bean.EmpBean;
@@ -16,6 +17,7 @@ import org.shinomin.menjin.bean.EmpextBean;
 import org.shinomin.menjin.bean.HwCardBean;
 import org.shinomin.menjin.bean.HwPersonBean;
 import org.shinomin.menjin.bean.PositionBean;
+import org.shinomin.menjin.card.service.ICardinfoService;
 import org.shinomin.menjin.card.service.ICardtypeService;
 import org.shinomin.menjin.dpt.service.IDptService;
 import org.shinomin.menjin.emp.dao.IEmpDAO;
@@ -52,6 +54,8 @@ public class EmpServiceImpl implements IEmpService {
 	private ICardtypeService cardtypeService;
 	@Autowired
 	private IEmpextService empextService;
+	@Autowired
+	private ICardinfoService cardinfoService;
 
 	@Override
 	public EmpBean selectOne(EmpBean emp) {
@@ -127,12 +131,27 @@ public class EmpServiceImpl implements IEmpService {
 		if (n == 1) {
 			logger.info("emp inserted");
 			empext.setEmpid(maxid + "");
+			// insert emp
 			n = empextService.insert(empext);
 			if (n == 1) {
+				// insert card
+				insertCard(emp);
 				return true;
 			}
 		}
 		return false;
+	}
+
+	private void insertCard(EmpBean emp) {
+		CardinfoBean card = new CardinfoBean();
+		card.setCardid(emp.getEmpid());
+		card.setCardfixno(emp.getEmpcardno().trim());
+		card.setCarddispno(emp.getEmpname());
+		card.setCardcrtdby(loginSessionScope.getLoginUser().getUsername());
+		card.setCardcrtdday(DateUtil.formatDate(new Date()));
+		card.setCardmodiby(loginSessionScope.getLoginUser().getUsername());
+		card.setCardmodiday(DateUtil.formatDate(new Date()));
+		cardinfoService.insert(card);
 	}
 
 	/**
@@ -157,7 +176,7 @@ public class EmpServiceImpl implements IEmpService {
 				String personid = e.getObject().toString();
 				HwCardBean card = new HwCardBean();
 				card.setPersonid(personid);
-				card.setCardno(emp.getEmpcardno());
+				card.setCardno(emp.getEmpcardno().trim());
 				card.setIssue_date(DateUtil.formatDate(today, "yyyy-MM-dd"));
 				card.setExpire_date(DateUtil.formatDate(tenYearLater, "yyyy-MM-dd"));
 				WsQuery.addCard(card, "0x00488a1872d040a54a3882e897327e7955a0");
