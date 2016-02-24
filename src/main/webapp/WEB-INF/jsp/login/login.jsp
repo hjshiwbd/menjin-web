@@ -58,9 +58,9 @@
 							<div class="divide-20"></div>
 
 							<!-- /SOCIAL LOGIN -->
-							<div class="login-helpers">
-								<a href="#" onclick_donothing="swapScreen('forgot');return false;">忘记密码?</a>
-							</div>
+<!-- 							<div class="login-helpers"> -->
+<!-- 								<a href="#" onclick_donothing="swapScreen('forgot');return false;">忘记密码?</a> -->
+<!-- 							</div> -->
 						</div>
 					</div>
 				</div>

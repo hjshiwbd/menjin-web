@@ -193,6 +193,7 @@ public class DptServiceImpl implements IDptService {
 
 	@Override
 	public String doDelete(DptBean dpt) {
+		logger.info("dpt:{}", JsonUtil.toJson(dpt));
 		ExecuteResult e = new ExecuteResult("0", "");
 		if (StringUtils.isBlank(dpt.getDptid())) {
 			e.setMessage("请求有误");
@@ -219,6 +220,11 @@ public class DptServiceImpl implements IDptService {
 		logger.info("dpt:{}", JsonUtil.toJson(dpt));
 		ExecuteResult e = new ExecuteResult("0", "");
 
+		if (StringUtils.isBlank(dpt.getDptid())) {
+			e.setMessage("请求有误");
+			return JsonUtil.toJson(e);
+		}
+
 		DptBean old = new DptBean();
 		old.setDptid(dpt.getDptid());
 		old = selectOne(old);
@@ -235,18 +241,19 @@ public class DptServiceImpl implements IDptService {
 			return JsonUtil.toJson(e);
 		}
 
+		DptBean update = new DptBean();
 		try {
 			// prcno
-			old.setDptno(dpt.getDptno());
-			old.setDptname(dpt.getDptname());
-			old.setDptprcno(generateDptPrcNo(dpt));
-			old.setDptparnt(dpt.getDptparnt());
+			update.setDptno(dpt.getDptno());
+			update.setDptname(dpt.getDptname());
+			update.setDptprcno(generateDptPrcNo(dpt));
+			update.setDptparnt(dpt.getDptparnt());
 		} catch (Exception e1) {
 			logger.info(e1.getMessage());
 			e.setMessage(e1.getMessage());
 			return JsonUtil.toJson(e);
 		}
-		int n = update(old);
+		int n = update(update);
 		if (n > 0) {
 			e.setResult("1");
 			e.setMessage("修改成功");

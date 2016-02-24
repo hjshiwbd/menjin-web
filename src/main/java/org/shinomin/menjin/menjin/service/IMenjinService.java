@@ -54,4 +54,6 @@ public interface IMenjinService {
 	 */
 	String readerControl(String readerid, int cmd);
 
+	ModelAndView showShezhi();
+
 }

@@ -51,10 +51,7 @@ public class MenjinController {
 	 */
 	@RequestMapping("/shezhi")
 	public ModelAndView shezhi() throws Exception {
-		ModelAndView model = new ModelAndView();
-
-		model.setViewName("menjin/menjin_shezhi");
-		return model;
+		return menjinService.showShezhi();
 	}
 
 	/**

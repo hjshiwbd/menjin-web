@@ -18,6 +18,7 @@ import org.shinomin.menjin.bean.HwPersonBean;
 import org.shinomin.menjin.bean.HwReaderBean;
 import org.shinomin.menjin.card.service.ICardaccodeService;
 import org.shinomin.menjin.constant.ErrorConstant;
+import org.shinomin.menjin.door.service.IDoorService;
 import org.shinomin.menjin.emp.service.IEmpService;
 import org.shinomin.menjin.menjin.service.IMenjinService;
 import org.shinomin.menjin.webservice.WsQuery;
@@ -38,6 +39,8 @@ public class MenjinServiceImpl implements IMenjinService {
 	private ICardaccodeService cardaccodeService;
 	@Autowired
 	private IAuthorsetService authorsetService;
+	@Autowired
+	private IDoorService doorService;
 
 	@Override
 	public ModelAndView showShouquan() {
@@ -177,4 +180,12 @@ public class MenjinServiceImpl implements IMenjinService {
 		}
 		return JsonUtil.toJson(e);
 	}
+
+	@Override
+	public ModelAndView showShezhi() {
+		ModelAndView model = new ModelAndView();
+		model.setViewName("menjin/menjin_shezhi");
+		return model;
+	}
+
 }

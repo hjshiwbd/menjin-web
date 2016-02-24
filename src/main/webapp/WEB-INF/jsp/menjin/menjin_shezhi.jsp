@@ -35,10 +35,10 @@
 									<!-- STYLER -->
 									<!-- /STYLER -->
 									<div class="clearfix">
-										<h3 class="content-title pull-left">门禁授权</h3>
+										<h3 class="content-title pull-left">门禁设置</h3>
 									</div>
 									<div class="divide-20"></div>
-									<div class="description">设置或者收回员工访问门禁的权限</div>
+									<div class="description">门禁设置</div>
 								</div>
 							</div>
 						</div>
@@ -51,35 +51,11 @@
 										<h4>
 											<i class="fa fa-bars"></i>门禁设置
 										</h4>
-										<div class="tools hidden-xs">
-											<a href="#box-config" data-toggle="modal" class="config"> <i class="fa fa-cog"></i>
-											</a> <a href="javascript:;" class="reload"> <i class="fa fa-refresh"></i>
-											</a> <a href="javascript:;" class="collapse"> <i class="fa fa-chevron-up"></i>
-											</a> <a href="javascript:;" class="remove"> <i class="fa fa-times"></i>
-											</a>
-										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-12">
 											<!-- BOX -->
-											<div class=" col-xs-4">
-												<ul id="readerTree" class="ztree" style="height: 250px;"></ul>
-											</div>
-
-											<div class=" col-xs-8">
-												<div class="form-group">
-													<label class="">名称</label><input type="text" class="form-control" value="门禁 1-1-1">
-												</div>
-												<div class="form-group">
-													<label class="">级别</label><input type="text" class="form-control" value="1级">
-												</div>
-												<div class="form-group">
-													<label class="">类型</label><input type="text" class="form-control" value="门禁">
-												</div>
-												<div class="form-group">
-													<button id="sq" class="btn btn-primary">保存</button>
-												</div>
-											</div>
+											<table id="dg"></table>
 										</div>
 									</div>
 								</div>
@@ -92,6 +68,70 @@
 			</div>
 		</div>
 	</section>
+
+	<div id="addDoorDiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">新增部门</h4>
+				</div>
+				<div class="modal-body">
+					<form id="form1" method="post">
+						<!-- 						<div class="form-group"> -->
+						<!-- 							<label class="">编号</label><input type="text" name="dptno" id="dptno" class="form-control" value=""> -->
+						<!-- 						</div> -->
+						<div class="form-group">
+							<label class="">名称</label><input type="text" name="doorname" id="doorname" class="form-control" value="">
+						</div>
+						<!-- 						<div class="form-group"> -->
+						<!-- 							<label class="">上级部门编号</label><input type="text" name="dptparnt" id="dptparnt" class="form-control" value=""> -->
+						<!-- 						</div> -->
+						<div class="form-group">
+							<button id="bcm" type="button" class="btn btn-primary">保存</button>
+							<button class="btn btn-default" data-dismiss="modal">关闭</button>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+		</div>
+	</div>
+
+	<div id="editDoorDiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">请选择部门</h4>
+				</div>
+				<div class="modal-body">
+					<form id="form2" method="post">
+						<input type="hidden" id="doorid" name="doorid">
+						<!-- 						<div class="form-group"> -->
+						<!-- 							<label class="">编号</label><input type="text" name="dptno" id="dptno" class="form-control" value=""> -->
+						<!-- 						</div> -->
+						<div class="form-group">
+							<label class="">名称</label><input type="text" name="doorname" id="doorname" class="form-control" value="">
+						</div>
+						<!-- 						<div class="form-group"> -->
+						<!-- 							<label class="">上级部门编号</label><input type="text" name="dptparnt" id="dptparnt" class="form-control" value=""> -->
+						<!-- 						</div> -->
+						<div class="form-group">
+							<button id="xgm" type="button" class="btn btn-primary">保存</button>
+							<button class="btn btn-default" data-dismiss="modal">关闭</button>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+		</div>
+	</div>
+
 	<!--/PAGE -->
 	<%@ include file="/WEB-INF/jsp/inc/inc_js.jsp"%>
 	<!-- SELECT2 -->

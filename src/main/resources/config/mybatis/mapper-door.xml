@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.shinomin.menjin.mapper.Door">
+
+	<!-- resultMap -->
+	<resultMap id="DoorMap" type="DoorBean">
+		<result property="doorid" column="doorid" />
+		<result property="devid" column="devid" />
+		<result property="regid" column="regid" />
+		<result property="readerno" column="readerno" />
+		<result property="doorname" column="doorname" />
+		<result property="devisused" column="devisused" />
+		<result property="iskquse" column="iskquse" />
+		<result property="blackcardver" column="blackcardver" />
+		<result property="dvrname" column="dvrname" />
+		<result property="dvrchannel" column="dvrchannel" />
+	</resultMap>
+
+	<!-- select -->
+	<select id="select" parameterType="DoorBean" resultType="DoorBean">
+		select t.doorid, t.devid, t.regid, t.readerno, t.doorname, t.devisused, t.iskquse, t.blackcardver, t.dvrname,
+		t.dvrchannel from NDr2_Door t
+		<where>
+			<if test="doorid!=null">
+				and t.doorid = #{doorid,jdbcType=NUMERIC}
+			</if>
+			<if test="devid!=null">
+				and t.devid = #{devid,jdbcType=NUMERIC}
+			</if>
+			<if test="regid!=null">
+				and t.regid = #{regid,jdbcType=NUMERIC}
+			</if>
+			<if test="readerno!=null">
+				and t.readerno = #{readerno,jdbcType=NUMERIC}
+			</if>
+			<if test="doorname != null and doorname != ''">
+				and t.doorname = #{doorname,jdbcType=VARCHAR}
+			</if>
+			<if test="devisused!=null">
+				and t.devisused = #{devisused,jdbcType=NUMERIC}
+			</if>
+			<if test="iskquse!=null">
+				and t.iskquse = #{iskquse,jdbcType=NUMERIC}
+			</if>
+			<if test="blackcardver!=null">
+				and t.blackcardver = #{blackcardver,jdbcType=NUMERIC}
+			</if>
+			<if test="dvrname != null and dvrname != ''">
+				and t.dvrname = #{dvrname,jdbcType=VARCHAR}
+			</if>
+			<if test="dvrchannel!=null">
+				and t.dvrchannel = #{dvrchannel,jdbcType=NUMERIC}
+			</if>
+		</where>
+	</select>
+
+	<!-- insert -->
+	<insert id="insert" parameterType="DoorBean">
+		insert into NDr2_Door (devid, regid, readerno, doorname, devisused, iskquse,
+		blackcardver, dvrname, dvrchannel)
+		values (#{devid,jdbcType=NUMERIC}, #{regid,jdbcType=NUMERIC},
+		#{readerno,jdbcType=NUMERIC}, #{doorname,jdbcType=VARCHAR}, #{devisused,jdbcType=NUMERIC},
+		#{iskquse,jdbcType=NUMERIC}, #{blackcardver,jdbcType=NUMERIC}, #{dvrname,jdbcType=VARCHAR},
+		#{dvrchannel,jdbcType=NUMERIC})
+	</insert>
+
+	<!-- update -->
+	<update id="update" parameterType="DoorBean">
+		update NDr2_Door
+		<set>
+			<if test="devid != null">
+				devid = #{devid,jdbcType=NUMERIC},
+			</if>
+			<if test="regid != null">
+				regid = #{regid,jdbcType=NUMERIC},
+			</if>
+			<if test="readerno != null">
+				readerno = #{readerno,jdbcType=NUMERIC},
+			</if>
+			<if test="doorname != null">
+				doorname = #{doorname,jdbcType=VARCHAR},
+			</if>
+			<if test="devisused != null">
+				devisused = #{devisused,jdbcType=NUMERIC},
+			</if>
+			<if test="iskquse != null">
+				iskquse = #{iskquse,jdbcType=NUMERIC},
+			</if>
+			<if test="blackcardver != null">
+				blackcardver = #{blackcardver,jdbcType=NUMERIC},
+			</if>
+			<if test="dvrname != null">
+				dvrname = #{dvrname,jdbcType=VARCHAR},
+			</if>
+			<if test="dvrchannel != null">
+				dvrchannel = #{dvrchannel,jdbcType=NUMERIC},
+			</if>
+		</set>
+		where doorid = #{doorid}
+	</update>
+
+	<!-- delete -->
+	<delete id="delete" parameterType="DoorBean">
+		delete from NDr2_Door where doorid = #{doorid,jdbcType=NUMERIC}
+	</delete>
+</mapper>
