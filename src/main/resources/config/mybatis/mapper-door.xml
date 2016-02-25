@@ -20,7 +20,7 @@
 	<!-- select -->
 	<select id="select" parameterType="DoorBean" resultType="DoorBean">
 		select t.doorid, t.devid, t.regid, t.readerno, t.doorname, t.devisused, t.iskquse, t.blackcardver, t.dvrname,
-		t.dvrchannel from NDr2_Door t
+		t.dvrchannel,t.hwacid from NDr2_Door t
 		<where>
 			<if test="doorid!=null">
 				and t.doorid = #{doorid,jdbcType=NUMERIC}
@@ -52,17 +52,20 @@
 			<if test="dvrchannel!=null">
 				and t.dvrchannel = #{dvrchannel,jdbcType=NUMERIC}
 			</if>
+			<if test="hwacid!=null">
+				and t.hwacid = #{hwacid,jdbcType=VARCHAR}
+			</if>
 		</where>
 	</select>
 
 	<!-- insert -->
 	<insert id="insert" parameterType="DoorBean">
 		insert into NDr2_Door (devid, regid, readerno, doorname, devisused, iskquse,
-		blackcardver, dvrname, dvrchannel)
+		blackcardver, dvrname, dvrchannel,hwacid)
 		values (#{devid,jdbcType=NUMERIC}, #{regid,jdbcType=NUMERIC},
 		#{readerno,jdbcType=NUMERIC}, #{doorname,jdbcType=VARCHAR}, #{devisused,jdbcType=NUMERIC},
 		#{iskquse,jdbcType=NUMERIC}, #{blackcardver,jdbcType=NUMERIC}, #{dvrname,jdbcType=VARCHAR},
-		#{dvrchannel,jdbcType=NUMERIC})
+		#{dvrchannel,jdbcType=NUMERIC},#{hwacid,jdbcType=VARCHAR})
 	</insert>
 
 	<!-- update -->
@@ -95,6 +98,9 @@
 			</if>
 			<if test="dvrchannel != null">
 				dvrchannel = #{dvrchannel,jdbcType=NUMERIC},
+			</if>
+			<if test="hwacid != null">
+				hwacid = #{hwacid,jdbcType=VARCHAR},
 			</if>
 		</set>
 		where doorid = #{doorid}

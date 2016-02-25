@@ -23,10 +23,11 @@ function bcm() {
 			var options = {
 				url : cu('/door/do_add'),
 				param : {
-					doorname : $('#form1 #doorname').val()
+					doorname : $('#form1 #doorname').val(),
+					hwacid : $('#form1 #hwacid').val()
 				},
 				callback : function(resp) {
-					clog(resp);
+					// clog(resp);
 					if (resp.result == '1') {
 						addDoorDiv.modal('hide');
 						dg.treegrid('reload');
@@ -75,11 +76,13 @@ function xgm() {
 		if ($('#form2').form('validate') == true) {
 			var doorid = $('#form2 #doorid').val();
 			var doorname = $('#form2 #doorname').val();
+			var hwacid = $('#form2 #hwacid').val();
 			var options = {
 				url : cu('/door/do_edit'),
 				param : {
 					doorid : doorid,
-					doorname : doorname
+					doorname : doorname,
+					hwacid : hwacid
 				},
 				callback : function(resp) {
 					if (resp.result == '1') {
@@ -119,13 +122,11 @@ function initDg() {
 		field : 'doorname',
 		title : '名称',
 		width : 100
-	}
-	// , {
-	// field : 'empname',
-	// title : '姓名/名称',
-	// width : 100
-	// }
-	];
+	}, {
+		field : 'hwacid',
+		title : 'hw访问码id',
+		width : 100
+	} ];
 	var cols = [ col ];
 	var set = dgSetting1(url, cols);
 	set['height'] = 650;

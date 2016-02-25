@@ -67,6 +67,7 @@ public class DoorServiceImpl implements IDoorService {
 		// selectPage(door, pager);
 
 		List<DoorBean> list = selectList(door);
+		System.out.println(JsonUtil.toJson(list));
 		return EasyuiUtil.parseDatagrid(list);
 	}
 
@@ -104,6 +105,14 @@ public class DoorServiceImpl implements IDoorService {
 	private void checkParamAdd(DoorBean door) throws Exception {
 		if (StringUtils.isBlank(door.getDoorname())) {
 			throw new Exception("名称不能为空");
+		}
+		if (StringUtils.isBlank(door.getHwacid())) {
+			throw new Exception("hwid不能为空");
+		}
+
+		int n = doorDAO.selectCount("ndr2_door", "where hwacid=?", door.getHwacid());
+		if (n > 0) {
+			throw new Exception("hw访问码id已存在");
 		}
 	}
 
@@ -155,6 +164,7 @@ public class DoorServiceImpl implements IDoorService {
 		DoorBean update = new DoorBean();
 		update.setDoorid(door.getDoorid());
 		update.setDoorname(door.getDoorname());
+		update.setHwacid(door.getHwacid());
 		int n = update(update);
 		if (n > 0) {
 			e.setResult("1");
@@ -170,6 +180,11 @@ public class DoorServiceImpl implements IDoorService {
 	private void checkParamEdit(DoorBean door, DoorBean old) throws Exception {
 		if (StringUtils.isBlank(door.getDoorname())) {
 			throw new Exception("名称不能为空");
+		}
+
+		int n = doorDAO.selectCount("ndr2_door", "where hwacid=? and doorid != ?", door.getHwacid(), door.getDoorid());
+		if (n > 0) {
+			throw new Exception("hw访问码id已存在");
 		}
 	}
 }

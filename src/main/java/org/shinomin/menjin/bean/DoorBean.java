@@ -14,6 +14,7 @@ public class DoorBean implements Serializable {
 	private String blackcardver;//
 	private String dvrname;//
 	private String dvrchannel;//
+	private String hwacid;
 
 	public String getDoorid() {
 		return doorid;
@@ -95,4 +96,12 @@ public class DoorBean implements Serializable {
 		this.dvrchannel = dvrchannel;
 	}
 
+	public String getHwacid() {
+		return hwacid;
+	}
+
+	public void setHwacid(String hwacid) {
+		this.hwacid = hwacid;
+	}
+	
 }

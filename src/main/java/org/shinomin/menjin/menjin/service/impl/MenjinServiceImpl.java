@@ -12,6 +12,7 @@ import org.shinomin.commons.web.util.PageUtil;
 import org.shinomin.menjin.author.service.IAuthorsetService;
 import org.shinomin.menjin.bean.AuthorsetBean;
 import org.shinomin.menjin.bean.CardaccodeBean;
+import org.shinomin.menjin.bean.DoorBean;
 import org.shinomin.menjin.bean.EmpBean;
 import org.shinomin.menjin.bean.HwAcccodeBean;
 import org.shinomin.menjin.bean.HwPersonBean;
@@ -98,7 +99,7 @@ public class MenjinServiceImpl implements IMenjinService {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public String saveShouquan(String json) {
+	public String saveShouquan(String json) throws Exception {
 		logger.info("json:{}", json);
 		ExecuteResult e = new ExecuteResult("0", "设置失败，请稍候再试");
 
@@ -117,7 +118,7 @@ public class MenjinServiceImpl implements IMenjinService {
 			if (acccodeBeans != null) {
 				for (HwAcccodeBean hwAcccodeBean : acccodeBeans) {
 					logger.debug("removeACCodeFromCard,cardid:{}, accodeid:{}", cardno, hwAcccodeBean.getId());
-//					WsQuery.removeACCodeFromCard(cardno, hwAcccodeBean.getId());
+					// WsQuery.removeACCodeFromCard(cardno, hwAcccodeBean.getId());
 				}
 				e.setResult("1");
 				e.setMessage("设置成功");
@@ -134,7 +135,7 @@ public class MenjinServiceImpl implements IMenjinService {
 				for (String accodeid : accodeIds) {
 					logger.debug("new bind,cardid:{}, accodeid:{}", cardno, accodeid);
 					boolean flag = true;
-//					boolean flag = WsQuery.addACCodeToCard(cardno, accodeid);
+					// boolean flag = WsQuery.addACCodeToCard(cardno, accodeid);
 					if (flag) {
 						// 记录c3数据库1
 						CardaccodeBean ca = new CardaccodeBean();
@@ -143,7 +144,7 @@ public class MenjinServiceImpl implements IMenjinService {
 						addCount += cardaccodeService.insert(ca);
 
 						// 记录c3数据库2
-//						saveToDb2(cardno, accodeid);
+						saveToDb2(cardno, accodeid);
 					}
 				}
 			}
@@ -155,10 +156,10 @@ public class MenjinServiceImpl implements IMenjinService {
 		return JsonUtil.toJson(e);
 	}
 
-	public void saveToDb2(String cardno, String accodeid) {
+	public void saveToDb2(String cardno, String accodeid) throws Exception {
 		AuthorsetBean authorset = new AuthorsetBean();
 		authorset.setCardid(cardno);
-		authorset.setDoorid(accodeid);
+		authorset.setDoorid(getDooridByAcid(accodeid));
 		authorset.setPassword("0000");
 		authorset.setDuedate("2099-10-31 00:00:00.000");
 		authorset.setAuthortype("0");
@@ -168,6 +169,17 @@ public class MenjinServiceImpl implements IMenjinService {
 		authorset.setFirstdownloaded("1");
 		logger.debug("save authorset:{}", JsonUtil.toJson(authorset));
 		authorsetService.insert(authorset);
+	}
+
+	private String getDooridByAcid(String accodeid) throws Exception {
+		DoorBean search = new DoorBean();
+		search.setHwacid(accodeid);
+		search = doorService.selectOne(search);
+		if (search != null) {
+			return search.getDoorid();
+		} else {
+			throw new Exception("hw访问码id不存在");
+		}
 	}
 
 	@Override

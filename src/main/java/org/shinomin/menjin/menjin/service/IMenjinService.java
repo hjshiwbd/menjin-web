@@ -42,7 +42,7 @@ public interface IMenjinService {
 	 * @param json
 	 * @return
 	 */
-	String saveShouquan(String json);
+	String saveShouquan(String json) throws Exception;
 
 	/**
 	 * 读卡器控制
