@@ -105,6 +105,13 @@
 														</select>
 													</div>
 													<div class="form-group">
+														<label class="">级别</label><br> <select name="grdid">
+															<c:forEach items="${grdList}" var="g">
+																<option value="${g.grdid}">${g.grdname}</option>
+															</c:forEach>
+														</select>
+													</div>
+													<div class="form-group">
 														<label class="">持卡类别</label><br> <select name="empcardtid">
 															<c:forEach items="${cardtypeList}" var="cd">
 																<option value="${cd.cardtypeid}">${cd.cardtypename}</option>

@@ -44,9 +44,9 @@ function dptTreeOpertion() {
 			var dptid = nodes[0]['dptid'];
 			$('#dptid').val(dptid);
 			$('#dptname').html(nodes[0]['dptname']);
-			$('#dptModal').modal('hide');	
+			$('#dptModal').modal('hide');
 		}
-		
+
 	});
 }
 
@@ -73,7 +73,7 @@ function formSubmit() {
 		},
 		success : function(data) {
 			hideWaitingDiv();
-			clog(data);
+			// clog(data);
 			if (data.indexOf('REQUESTERROR') != -1) {
 				// 出错页面
 				eualert(decodeURIComponent('系统响应异常，请稍候再试'));

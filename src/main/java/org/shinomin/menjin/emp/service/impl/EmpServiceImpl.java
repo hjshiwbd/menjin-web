@@ -14,6 +14,7 @@ import org.shinomin.menjin.bean.CardtypeBean;
 import org.shinomin.menjin.bean.DptBean;
 import org.shinomin.menjin.bean.EmpBean;
 import org.shinomin.menjin.bean.EmpextBean;
+import org.shinomin.menjin.bean.GrdBean;
 import org.shinomin.menjin.bean.HwCardBean;
 import org.shinomin.menjin.bean.HwPersonBean;
 import org.shinomin.menjin.bean.PositionBean;
@@ -23,6 +24,7 @@ import org.shinomin.menjin.dpt.service.IDptService;
 import org.shinomin.menjin.emp.dao.IEmpDAO;
 import org.shinomin.menjin.emp.service.IEmpService;
 import org.shinomin.menjin.emp.service.IEmpextService;
+import org.shinomin.menjin.grd.service.IGrdService;
 import org.shinomin.menjin.position.service.IPositionService;
 import org.shinomin.menjin.spring.session.LoginSessionScope;
 import org.shinomin.menjin.webservice.WsQuery;
@@ -56,6 +58,8 @@ public class EmpServiceImpl implements IEmpService {
 	private IEmpextService empextService;
 	@Autowired
 	private ICardinfoService cardinfoService;
+	@Autowired
+	private IGrdService grdService;
 
 	@Override
 	public EmpBean selectOne(EmpBean emp) {
@@ -105,7 +109,7 @@ public class EmpServiceImpl implements IEmpService {
 		if (flag) {
 			logger.info("add person to c3 finish");
 			// 调用hw接口新增人员
-			addToHw(emp);
+			// addToHw(emp);
 
 			e.setResult("1");
 			e.setMessage("添加成功");
@@ -232,6 +236,11 @@ public class EmpServiceImpl implements IEmpService {
 		CardtypeBean cardtype = new CardtypeBean();
 		List<CardtypeBean> cardtypeList = cardtypeService.selectList(cardtype);
 		model.addObject("cardtypeList", cardtypeList);
+
+		// 级别
+		GrdBean grd = new GrdBean();
+		List<GrdBean> grdList = grdService.selectList(grd);
+		model.addObject("grdList", grdList);
 
 		model.addObject("json_script", PageUtil.create_SCRIPT_PARSE_JSON(model.getModelMap()));
 		model.setViewName("emp/emp_xinzeng");

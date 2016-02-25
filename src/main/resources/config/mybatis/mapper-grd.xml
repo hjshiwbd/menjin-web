@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.shinomin.menjin.mapper.Grd">
+
+	<!-- resultMap -->
+	<resultMap id="GrdMap" type="GrdBean">
+		<result property="grdid" column="grdid" />
+		<result property="grdno" column="grdno" />
+		<result property="grdname" column="grdname" />
+		<result property="grdordno" column="grdordno" />
+		<result property="grdisselect" column="grdisselect" />
+	</resultMap>
+
+	<!-- select -->
+	<select id="select" parameterType="GrdBean" resultType="GrdBean">
+		select t.grdid, t.grdno, t.grdname, t.grdordno, t.grdisselect from Hrms_Grd t
+		<where>
+			<if test="grdid!=null">
+				and t.grdid = #{grdid,jdbcType=NUMERIC}
+			</if>
+			<if test="grdno != null and grdno != ''">
+				and t.grdno = #{grdno,jdbcType=VARCHAR}
+			</if>
+			<if test="grdname != null and grdname != ''">
+				and t.grdname = #{grdname,jdbcType=VARCHAR}
+			</if>
+			<if test="grdordno!=null">
+				and t.grdordno = #{grdordno,jdbcType=NUMERIC}
+			</if>
+			<if test="grdisselect!=null">
+				and t.grdisselect = #{grdisselect,jdbcType=BIT}
+			</if>
+		</where>
+	</select>
+
+	<!-- insert -->
+	<insert id="insert" parameterType="GrdBean">
+		insert into Hrms_Grd (grdid, grdno, grdname, grdordno, grdisselect)
+		values (#{grdid,jdbcType=NUMERIC}, #{grdno,jdbcType=VARCHAR}, #{grdname,jdbcType=VARCHAR}, #{grdordno,jdbcType=NUMERIC},
+		#{grdisselect,jdbcType=BIT})
+	</insert>
+
+	<!-- update -->
+	<update id="update" parameterType="GrdBean">
+		update Hrms_Grd
+		<set>
+			<if test="grdno != null">
+				grdno = #{grdno,jdbcType=VARCHAR},
+			</if>
+			<if test="grdname != null">
+				grdname = #{grdname,jdbcType=VARCHAR},
+			</if>
+			<if test="grdordno != null">
+				grdordno = #{grdordno,jdbcType=NUMERIC},
+			</if>
+			<if test="grdisselect != null">
+				grdisselect = #{grdisselect,jdbcType=BIT},
+			</if>
+		</set>
+		where grdid = #{grdid}
+	</update>
+
+	<!-- delete -->
+	<delete id="delete" parameterType="GrdBean">
+		delete from Hrms_Grd where grdid = #{grdid,jdbcType=NUMERIC}
+	</delete>
+</mapper>

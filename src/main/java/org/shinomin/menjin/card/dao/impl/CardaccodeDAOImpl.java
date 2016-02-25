@@ -17,6 +17,6 @@ public class CardaccodeDAOImpl extends CommonDAOImpl implements ICardaccodeDAO
 	@Override
 	public String getNamespace()
 	{
-		return "org.shinomin.menjin.mapper.Cardaccode.";
+		return "org.shinomin.menjin.mapper.CardAccode.";
 	}
 }

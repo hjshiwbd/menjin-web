@@ -50,24 +50,35 @@ function initRq() {
 function sq() {
 	$('#sq').on('click', function() {
 		var persons = dg.datagrid('getChecked');
-		clog(persons);
+//		clog(persons);
 
 		var cards = [];
 		$.each(persons, function(i, o) {
 			cards.push($.trim(o['empcardno']));
 		});
 
+		if (cards.length == 0) {
+			eualert('请选择选择人员');
+			return false;
+		}
+		
 		// clog(accodes);
 		var accodeIds = [];
 		var accodes = treeObj.getCheckedNodes(true);
 		$.each(accodes, function(i, o) {
 			accodeIds.push(o['id']);
 		});
-
+		
+		if (accodeIds.length == 0) {
+			eualert('请选择选择门禁');
+			return false;
+		}
+		
 		var o = {
 			cards : cards,
 			accodeIds : accodeIds
 		};
+//		clog(o);
 		var options = {
 			url : cu('/menjin/save_shouquan'),
 			param : {
@@ -220,7 +231,7 @@ function initDg() {
 						treeObj.checkNode(node, true, true);
 					}
 				} else {
-					eualert('此人尚无任何权限');
+					//eualert('此人尚无任何权限');
 				}
 			}
 		};

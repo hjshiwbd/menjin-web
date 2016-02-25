@@ -114,12 +114,14 @@ public class MenjinServiceImpl implements IMenjinService {
 		// 移除老的绑定
 		for (String cardno : cards) {
 			List<HwAcccodeBean> acccodeBeans = WsQuery.getAllACCodes("", cardno);
-			for (HwAcccodeBean hwAcccodeBean : acccodeBeans) {
-				logger.debug("removeACCodeFromCard,cardid:{}, accodeid:{}", cardno, hwAcccodeBean.getId());
-				WsQuery.removeACCodeFromCard(cardno, hwAcccodeBean.getId());
+			if (acccodeBeans != null) {
+				for (HwAcccodeBean hwAcccodeBean : acccodeBeans) {
+					logger.debug("removeACCodeFromCard,cardid:{}, accodeid:{}", cardno, hwAcccodeBean.getId());
+//					WsQuery.removeACCodeFromCard(cardno, hwAcccodeBean.getId());
+				}
+				e.setResult("1");
+				e.setMessage("设置成功");
 			}
-			e.setResult("1");
-			e.setMessage("设置成功");
 		}
 
 		if (accodeIds.size() > 0) {
@@ -131,7 +133,9 @@ public class MenjinServiceImpl implements IMenjinService {
 			for (String cardno : cards) {
 				for (String accodeid : accodeIds) {
 					logger.debug("new bind,cardid:{}, accodeid:{}", cardno, accodeid);
-					if (WsQuery.addACCodeToCard(cardno, accodeid)) {
+					boolean flag = true;
+//					boolean flag = WsQuery.addACCodeToCard(cardno, accodeid);
+					if (flag) {
 						// 记录c3数据库1
 						CardaccodeBean ca = new CardaccodeBean();
 						ca.setCardno(cardno);
@@ -139,7 +143,7 @@ public class MenjinServiceImpl implements IMenjinService {
 						addCount += cardaccodeService.insert(ca);
 
 						// 记录c3数据库2
-						saveToDb2(cardno, accodeid);
+//						saveToDb2(cardno, accodeid);
 					}
 				}
 			}
@@ -151,7 +155,7 @@ public class MenjinServiceImpl implements IMenjinService {
 		return JsonUtil.toJson(e);
 	}
 
-	private void saveToDb2(String cardno, String accodeid) {
+	public void saveToDb2(String cardno, String accodeid) {
 		AuthorsetBean authorset = new AuthorsetBean();
 		authorset.setCardid(cardno);
 		authorset.setDoorid(accodeid);
