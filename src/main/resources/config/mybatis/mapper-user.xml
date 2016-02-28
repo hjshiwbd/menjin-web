@@ -18,6 +18,24 @@
 				and t.id = #{id,jdbcType=NUMERIC}
 			</if>
 			<if test="username != null and username != ''">
+				and t.username like '%'+#{username,jdbcType=VARCHAR}+'%'
+			</if>
+			<if test="password != null and password != ''">
+				and t.password = #{password,jdbcType=VARCHAR}
+			</if>
+			<if test="sql != null and sql != ''">
+				${sql}
+			</if>
+		</where>
+	</select>
+
+	<select id="login" parameterType="UserBean" resultType="UserBean">
+		select t.id, t.username, t.password from mjsq_user t
+		<where>
+			<if test="id!=null">
+				and t.id = #{id,jdbcType=NUMERIC}
+			</if>
+			<if test="username != null and username != ''">
 				and t.username = #{username,jdbcType=VARCHAR}
 			</if>
 			<if test="password != null and password != ''">
@@ -28,9 +46,8 @@
 
 	<!-- insert -->
 	<insert id="insert" parameterType="UserBean">
-		insert into mjsq_user (id, username, password)
-		values (#{id,jdbcType=NUMERIC}, #{username,jdbcType=VARCHAR},
-		#{password,jdbcType=VARCHAR})
+		insert into mjsq_user (username, password) values
+		(#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
 	</insert>
 
 	<!-- update -->

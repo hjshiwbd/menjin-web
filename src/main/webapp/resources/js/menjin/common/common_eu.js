@@ -9,7 +9,7 @@ function dgSetting1(url, cols) {
 	var loadCount = 0;
 	var o = {
 		url : url,
-		height : 270,
+		height : 400,
 		fitColumns : true,
 		autoRowHeight : true,
 		striped : true,

@@ -1,5 +1,6 @@
 package org.shinomin.menjin.user.controller;
 
+import org.shinomin.menjin.bean.UserBean;
 import org.shinomin.menjin.user.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,14 +16,12 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 @RequestMapping("/user")
-public class UserController
-{
+public class UserController {
 	@Autowired
 	private IUserService userService;
 
 	@RequestMapping("/mima")
-	public ModelAndView mima() throws Exception
-	{
+	public ModelAndView mima() throws Exception {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("user/user_mima");
 		return model;
@@ -30,8 +29,37 @@ public class UserController
 
 	@ResponseBody
 	@RequestMapping("/change_mima")
-	public String changeMima(String oldPassword, String newPassword, String newPassword2) throws Exception
-	{
+	public String changeMima(String oldPassword, String newPassword, String newPassword2) throws Exception {
 		return userService.changeMima(oldPassword, newPassword, newPassword2);
 	}
+
+	@RequestMapping("/list")
+	public ModelAndView list() throws Exception {
+		return userService.showList();
+	}
+
+	@ResponseBody
+	@RequestMapping("/list_eu")
+	public String listEu(Integer page, Integer rows, UserBean user) throws Exception {
+		return userService.queryListEu(page, rows, user);
+	}
+
+	@ResponseBody
+	@RequestMapping("/do_add")
+	public String doAdd(UserBean user) throws Exception {
+		return userService.doAdd(user);
+	}
+
+	@ResponseBody
+	@RequestMapping("/reset_pass")
+	public String resetPass(UserBean user) throws Exception {
+		return userService.doResetPass(user);
+	}
+
+	@ResponseBody
+	@RequestMapping("/do_delete")
+	public String doDelete(UserBean user) throws Exception {
+		return userService.doDelete(user);
+	}
+
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.shinomin.commons.db.mybatis.Pager;
 import org.shinomin.menjin.bean.UserBean;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 
@@ -70,5 +71,15 @@ public interface IUserService
 	 * @return
 	 */
 	public String changeMima(String oldPassword, String newPassword, String newPassword2);
+
+	public String queryListEu(Integer page, Integer rows, UserBean user);
+
+	public String doAdd(UserBean user);
+
+	public String doResetPass(UserBean user);
+
+	public String doDelete(UserBean user);
+
+	public ModelAndView showList();
 
 }

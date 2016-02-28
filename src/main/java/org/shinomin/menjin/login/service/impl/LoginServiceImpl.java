@@ -15,6 +15,7 @@ import org.shinomin.menjin.exception.ValidationException;
 import org.shinomin.menjin.login.service.ILoginService;
 import org.shinomin.menjin.menu.service.IMenuService;
 import org.shinomin.menjin.spring.session.LoginSessionScope;
+import org.shinomin.menjin.user.dao.IUserDAO;
 import org.shinomin.menjin.user.service.IUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,6 +33,8 @@ public class LoginServiceImpl implements ILoginService {
 	private IMenuService menuService;
 	@Autowired
 	private IUserService userService;
+	@Autowired
+	private IUserDAO userDAO;
 
 	@Override
 	public boolean isLogined() {
@@ -98,7 +101,7 @@ public class LoginServiceImpl implements ILoginService {
 
 		UserBean search = new UserBean();
 		search.setUsername(user.getUsername());
-		List<UserBean> list = userService.selectList(search);
+		List<UserBean> list = userDAO.login(search);
 		if (list.size() == 1) {
 			UserBean dbuser = list.get(0);
 			String encryptedPass = CryptogramUtil.encryptHexStr(user.getPassword());
@@ -124,7 +127,7 @@ public class LoginServiceImpl implements ILoginService {
 		String errMsg = "";
 		try {
 			if (checkParam(user)) {
-				UserBean loginedUser = new UserBean(); //queryLoginUser(user);
+				UserBean loginedUser = queryLoginUser(user);
 				loginedUser.setUsername(user.getUsername());
 				afterLoginSuccess(request, loginedUser);
 				model.setViewName("redirect:/");
@@ -132,8 +135,8 @@ public class LoginServiceImpl implements ILoginService {
 			}
 		} catch (ValidationException e) {
 			errMsg = e.getMessage();
-//		} catch (UserNotFoundException e) {
-//			errMsg = e.getMessage();
+		} catch (UserNotFoundException e) {
+			errMsg = e.getMessage();
 		} catch (Exception e) {
 			errMsg = "系统异常，请稍候再试";
 		}
