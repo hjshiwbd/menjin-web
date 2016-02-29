@@ -51,6 +51,6 @@
 	<!-- delete -->
 	<delete id="delete" parameterType="CardAccodeBean">
 		delete from mjsq_card_accode
-		where id = #{id,jdbcType=NUMERIC}
+		where cardno = #{cardno,jdbcType=NUMERIC}
 	</delete>
 </mapper>

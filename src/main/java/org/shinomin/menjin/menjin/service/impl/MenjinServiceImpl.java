@@ -120,6 +120,9 @@ public class MenjinServiceImpl implements IMenjinService {
 				for (HwAcccodeBean hwAcccodeBean : acccodeBeans) {
 					WsQuery.removeACCodeFromCard(cardno, hwAcccodeBean.getId());
 					logger.info("removeACCodeFromCard finish,cardid:{}, accodeid:{}", cardno, hwAcccodeBean.getId());
+
+					deleteDb(cardno);
+					deleteDb2(cardno);
 				}
 				e.setResult("1");
 				e.setMessage("设置成功");
@@ -155,8 +158,24 @@ public class MenjinServiceImpl implements IMenjinService {
 				e.setResult("1");
 				e.setMessage("设置成功");
 			}
+		} else {
+			logger.info("no new_accodeid add for cardno:{}", JsonUtil.toJson(cards));
+			e.setResult("1");
+			e.setMessage("权限清除成功");
 		}
 		return JsonUtil.toJson(e);
+	}
+
+	private void deleteDb2(String cardno) {
+		AuthorsetBean author = new AuthorsetBean();
+		author.setCardid(cardno);
+		authorsetService.delete(author);
+	}
+
+	private void deleteDb(String cardno) {
+		CardaccodeBean ca = new CardaccodeBean();
+		ca.setCardno(cardno);
+		cardaccodeService.delete(ca);
 	}
 
 	public void saveToDb2(String cardno, String accodeid) throws Exception {

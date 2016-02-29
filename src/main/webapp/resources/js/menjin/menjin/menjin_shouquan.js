@@ -69,10 +69,10 @@ function sq() {
 			accodeIds.push(o['id']);
 		});
 		
-		if (accodeIds.length == 0) {
-			eualert('请选择选择门禁');
-			return false;
-		}
+//		if (accodeIds.length == 0) {
+//			eualert('请选择选择门禁');
+//			return false;
+//		}
 		
 		var o = {
 			cards : cards,
