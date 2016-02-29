@@ -116,12 +116,15 @@ public class MenjinServiceImpl implements IMenjinService {
 		for (String cardno : cards) {
 			List<HwAcccodeBean> acccodeBeans = WsQuery.getAllACCodes("", cardno);
 			if (acccodeBeans != null) {
+				logger.info("exists acccodeBeans size:{}", acccodeBeans.size());
 				for (HwAcccodeBean hwAcccodeBean : acccodeBeans) {
-					logger.debug("removeACCodeFromCard,cardid:{}, accodeid:{}", cardno, hwAcccodeBean.getId());
-					// WsQuery.removeACCodeFromCard(cardno, hwAcccodeBean.getId());
+					WsQuery.removeACCodeFromCard(cardno, hwAcccodeBean.getId());
+					logger.info("removeACCodeFromCard finish,cardid:{}, accodeid:{}", cardno, hwAcccodeBean.getId());
 				}
 				e.setResult("1");
 				e.setMessage("设置成功");
+			} else {
+				logger.info("no acccodeBeans found for cardno:{}", cardno);
 			}
 		}
 
@@ -134,8 +137,8 @@ public class MenjinServiceImpl implements IMenjinService {
 			for (String cardno : cards) {
 				for (String accodeid : accodeIds) {
 					logger.debug("new bind,cardid:{}, accodeid:{}", cardno, accodeid);
-					boolean flag = true;
-					// boolean flag = WsQuery.addACCodeToCard(cardno, accodeid);
+					// boolean flag = true;
+					boolean flag = WsQuery.addACCodeToCard(cardno, accodeid);
 					if (flag) {
 						// 记录c3数据库1
 						CardaccodeBean ca = new CardaccodeBean();

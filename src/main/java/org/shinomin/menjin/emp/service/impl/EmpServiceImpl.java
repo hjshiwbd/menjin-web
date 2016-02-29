@@ -109,7 +109,7 @@ public class EmpServiceImpl implements IEmpService {
 		if (flag) {
 			logger.info("add person to c3 finish");
 			// 调用hw接口新增人员
-			// addToHw(emp);
+			addToHw(emp);
 
 			e.setResult("1");
 			e.setMessage("添加成功");
