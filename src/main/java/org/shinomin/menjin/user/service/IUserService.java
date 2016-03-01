@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.shinomin.commons.db.mybatis.Pager;
 import org.shinomin.menjin.bean.UserBean;
+import org.shinomin.menjin.bean.UserresourceBean;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -81,5 +82,9 @@ public interface IUserService
 	public String doDelete(UserBean user);
 
 	public ModelAndView showList();
+
+	public String saveQx(String json);
+
+	public String queryUserQx(UserresourceBean ur);
 
 }

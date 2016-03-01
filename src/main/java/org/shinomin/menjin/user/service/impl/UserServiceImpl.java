@@ -1,6 +1,7 @@
 package org.shinomin.menjin.user.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.shinomin.commons.bean.ExecuteResult;
@@ -10,12 +11,14 @@ import org.shinomin.commons.utils.JsonUtil;
 import org.shinomin.commons.web.util.PageUtil;
 import org.shinomin.menjin.bean.MenuBean;
 import org.shinomin.menjin.bean.UserBean;
+import org.shinomin.menjin.bean.UserresourceBean;
 import org.shinomin.menjin.constant.MenjinConstant;
 import org.shinomin.menjin.exception.ValidationException;
 import org.shinomin.menjin.menu.service.IMenuService;
 import org.shinomin.menjin.spring.session.LoginSessionScope;
 import org.shinomin.menjin.user.dao.IUserDAO;
 import org.shinomin.menjin.user.service.IUserService;
+import org.shinomin.menjin.user.service.IUserresourceService;
 import org.shinomin.menjin.xtkz.controller.EasyuiUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,6 +45,8 @@ public class UserServiceImpl implements IUserService {
 	private LoginSessionScope loginSessionScope;
 	@Autowired
 	private IMenuService menuService;
+	@Autowired
+	private IUserresourceService userresourceService;
 
 	@Override
 	public UserBean selectOne(UserBean user) {
@@ -263,5 +268,45 @@ public class UserServiceImpl implements IUserService {
 
 		model.setViewName("user/user_list");
 		return model;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public String saveQx(String json) {
+		logger.info("json:{}", json);
+
+		ExecuteResult e = new ExecuteResult("0", "请求失败，请刷新后重试");
+
+		if (StringUtils.isBlank(json)) {
+		} else {
+			Map<String, Object> map = (Map<String, Object>) JsonUtil.toObj(json);
+			String userid = (String) map.get("user_id");
+			// 删除此用户的已有menu资源
+			UserresourceBean delUr = new UserresourceBean();
+			delUr.setUser_id(userid);
+			userresourceService.delete(delUr);
+
+			// 新增用户-资源
+			List<String> rids = (List<String>) map.get("resource_ids");
+			for (String resourceId : rids) {
+				UserresourceBean ur = new UserresourceBean();
+				ur.setUser_id(userid);
+				ur.setResource_id(resourceId);
+				ur.setResource_type("menu");
+				userresourceService.insert(ur);
+			}
+
+			e.setResult("1");
+			e.setMessage("设置成功");
+		}
+
+		return JsonUtil.toJson(e);
+	}
+
+	@Override
+	public String queryUserQx(UserresourceBean ur) {
+		logger.info("ur:{}", JsonUtil.toJson(ur));
+		List<UserresourceBean> list = userresourceService.selectList(ur);
+		return JsonUtil.toJson(list);
 	}
 }

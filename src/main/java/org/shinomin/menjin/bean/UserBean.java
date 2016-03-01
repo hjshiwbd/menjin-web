@@ -9,6 +9,7 @@ public class UserBean implements Serializable {
 	private String password;//
 
 	// ///////////
+	// 自定义查询sql
 	private String sql;
 
 	public String getId() {

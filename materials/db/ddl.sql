@@ -51,9 +51,55 @@ password varchar(150) not null
 ------------------------------------------------------------
 alter table ndr2_door add hwacid nvarchar(100)
 ------------------------------------------------------------
+CREATE TABLE [dbo].[mjsq_user_resource] (
+[id] int NOT NULL identity(1,1) ,
+[user_id] nvarchar(10) COLLATE Chinese_PRC_CI_AS NULL ,
+[resource_id] nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL ,
+[resource_type] nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL ,
+CONSTRAINT [PK__mjsq_use__3213E83F50C790AF] PRIMARY KEY ([id])
+)
+ON [PRIMARY]
+GO
 ------------------------------------------------------------
+CREATE TABLE [dbo].[mjsq_emp_card] (
+[id] int NOT NULL IDENTITY(1,1) ,
+[empno] varchar(80) COLLATE Chinese_PRC_CI_AS NULL ,
+[cardno] varchar(80) COLLATE Chinese_PRC_CI_AS NULL ,
+CONSTRAINT [PK__mjsq_emp__3213E83F2C8A3039] PRIMARY KEY ([id])
+)
+ON [PRIMARY]
+GO
 ------------------------------------------------------------
+CREATE TABLE [dbo].[mjsq_card_accode] (
+[id] int NOT NULL IDENTITY(1,1) ,
+[cardno] varchar(80) COLLATE Chinese_PRC_CI_AS NULL ,
+[accodeid] varchar(80) COLLATE Chinese_PRC_CI_AS NULL ,
+CONSTRAINT [PK__mjsq_car__3213E83F28B99F55] PRIMARY KEY ([id])
+)
+ON [PRIMARY]
+GO
+
 ------------------------------------------------------------
+CREATE TABLE [dbo].[mjsq_hw_eventlog] (
+[id] int NOT NULL IDENTITY(1,1) ,
+[logdevdescrp] varchar(255) COLLATE Chinese_PRC_CI_AS NULL ,
+[logdevtypedesc] varchar(255) COLLATE Chinese_PRC_CI_AS NULL ,
+[rec_dat] varchar(255) COLLATE Chinese_PRC_CI_AS NULL ,
+[evnt_dat] varchar(255) COLLATE Chinese_PRC_CI_AS NULL ,
+[evnt_descrp] varchar(255) COLLATE Chinese_PRC_CI_AS NULL ,
+[descrp] varchar(255) COLLATE Chinese_PRC_CI_AS NULL ,
+[location] varchar(255) COLLATE Chinese_PRC_CI_AS NULL ,
+[cardno] varchar(255) COLLATE Chinese_PRC_CI_AS NULL ,
+[lname] varchar(255) COLLATE Chinese_PRC_CI_AS NULL ,
+[fname] varchar(255) COLLATE Chinese_PRC_CI_AS NULL ,
+[stat_cod] varchar(255) COLLATE Chinese_PRC_CI_AS NULL ,
+[comp_name] varchar(255) COLLATE Chinese_PRC_CI_AS NULL ,
+[threat_lev] varchar(255) COLLATE Chinese_PRC_CI_AS NULL ,
+CONSTRAINT [PK__mjsq_hw___3213E83F305AC11D] PRIMARY KEY ([id])
+)
+ON [PRIMARY]
+GO
+
 ------------------------------------------------------------
 ------------------------------------------------------------
 ------------------------------------------------------------

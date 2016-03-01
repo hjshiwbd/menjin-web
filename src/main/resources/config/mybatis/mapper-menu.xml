@@ -41,10 +41,17 @@
 		order by t.sortorder
 	</select>
 
+	<!-- 带权限查询 -->
+	<select id="selectQx" parameterType="map" resultType="MenuBean">
+		SELECT t.* FROM mjsq_menu t LEFT JOIN mjsq_user_resource t1 ON t.id = t1.resource_id where t1.user_id = #{user_id} and
+		t1.resource_type=#{resource_type}
+	</select>
+
 	<!-- insert -->
 	<insert id="insert" parameterType="MenuBean">
 		insert into mjsq_menu (id, name, url, opentype, pid)
-		values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+		values
+		(#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
 		#{url,jdbcType=VARCHAR}, #{opentype,jdbcType=VARCHAR},
 		#{pid,jdbcType=VARCHAR})
 	</insert>

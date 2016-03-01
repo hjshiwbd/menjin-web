@@ -2,6 +2,7 @@ var dg = $('#dg');
 var addUserDiv = $('#addUserDiv');
 var editDptDiv = $('#editDptDiv');
 var clickRow;
+var treeObj;
 
 $(function() {
 	//
@@ -12,15 +13,61 @@ $(function() {
 	bc();
 	// 授权菜单树
 	initMenutree();
+	// 授权保存
+	sqbc();
 });
+
+/**
+ * 授权保存
+ * 
+ * @returns
+ */
+function sqbc() {
+	$('#sqbc').on('click', function() {
+		var nodes = treeObj.getCheckedNodes(true);
+		var msg = '您确定要收回此人的全部权限吗';
+		if (nodes.length > 0) {
+			msg = '您确定要授权吗';
+		}
+		euconfirm(msg, function(r) {
+			if (r) {
+				var userId = clickRow['username'];
+				var resource_ids = [];
+				$.each(nodes, function(i, o) {
+					// clog(o);
+					resource_ids.push(o['id']);
+				});
+				var param = {
+					user_id : userId,
+					resource_ids : resource_ids
+				};
+				// clog(JSON.stringify(param));
+				var options = {
+					url : cu('/user/save_qx'),
+					param : {
+						json : JSON.stringify(param)
+					},
+					callback : function(resp) {
+						eualert(resp.message);
+						if (resp.result == '1') {
+							dg.datagrid('reload');
+						}
+						$('#shouquanDiv').modal('hide');
+					}
+				};
+				commonAjax(options);
+			}
+		});
+	});
+}
 
 function initMenutree() {
 	var treeSetting = {
 		check : {
 			enable : true,
 			chkboxType : {
-				"Y" : "s",
-				"N" : "s"
+				"Y" : "p",
+				"N" : "p"
 			}
 		},
 		data : {
@@ -91,16 +138,14 @@ function initDg() {
 		field : 'username',
 		title : '用户名',
 		width : 300
-	},
-	// {
-	// field : 'shouquan',
-	// title : '授权',
-	// width : 100,
-	// formatter : function(value, row, index) {
-	// return '<a href="javascript:shouquan(' + index + ')">授权</a>';
-	// }
-	// },
-	{
+	}, {
+		field : 'shouquan',
+		title : '授权',
+		width : 100,
+		formatter : function(value, row, index) {
+			return '<a href="javascript:shouquan(' + index + ')">授权</a>';
+		}
+	}, {
 		field : 'reset',
 		title : '重置密码',
 		width : 100,
@@ -185,6 +230,35 @@ function del(index) {
 }
 
 function shouquan(index) {
+	// 弹出框显示username
 	$('#showquanDiv #shouquan_username').text(clickRow.username);
+	// 显示此用户的权限
+	reshowUserQx();
+	// 打开弹出
 	$('#shouquanDiv').modal('show');
+}
+
+function reshowUserQx() {
+	// 清除勾选
+	treeObj.checkAllNodes(false);
+	// 查询
+	var user_id = clickRow['username'];
+	var options = {
+		url : cu('/user/query_user_qx'),
+		param : {
+			user_id : user_id
+		},
+		callback : function(list) {
+			// clog(list);
+			for (var i = 0; i < list.length; i++) {
+				var ur = list[i];
+				var resource_id = ur['resource_id'];
+				var node = treeObj.getNodeByParam("id", resource_id, null);
+				if (node) {
+					treeObj.checkNode(node, true, true);
+				}
+			}
+		}
+	};
+	commonAjax(options);
 }

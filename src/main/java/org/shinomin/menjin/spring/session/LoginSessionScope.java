@@ -11,8 +11,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 @Component
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class LoginSessionScope
-{
+public class LoginSessionScope {
 	private UserBean loginUser;
 	private List<MenuBean> treeMenuList;
 	private List<MenuBean> flatMenuList;
@@ -25,53 +24,56 @@ public class LoginSessionScope
 	 */
 	private String menuid2;
 
-	public UserBean getLoginUser()
-	{
+	/**
+	 * is admin
+	 * 
+	 * @return
+	 */
+	public boolean isAdminUser() {
+		if (loginUser == null) {
+			return false;
+		} else {
+			return "admin".equals(loginUser.getUsername());
+		}
+	}
+
+	public UserBean getLoginUser() {
 		return loginUser;
 	}
 
-	public void setLoginUser(UserBean loginUser)
-	{
+	public void setLoginUser(UserBean loginUser) {
 		this.loginUser = loginUser;
 	}
 
-	public List<MenuBean> getTreeMenuList()
-	{
+	public List<MenuBean> getTreeMenuList() {
 		return treeMenuList;
 	}
 
-	public void setTreeMenuList(List<MenuBean> treeMenuList)
-	{
+	public void setTreeMenuList(List<MenuBean> treeMenuList) {
 		this.treeMenuList = treeMenuList;
 	}
 
-	public List<MenuBean> getFlatMenuList()
-	{
+	public List<MenuBean> getFlatMenuList() {
 		return flatMenuList;
 	}
 
-	public void setFlatMenuList(List<MenuBean> flatMenuList)
-	{
+	public void setFlatMenuList(List<MenuBean> flatMenuList) {
 		this.flatMenuList = flatMenuList;
 	}
 
-	public String getMenuid1()
-	{
+	public String getMenuid1() {
 		return menuid1;
 	}
 
-	public void setMenuid1(String menuid1)
-	{
+	public void setMenuid1(String menuid1) {
 		this.menuid1 = menuid1;
 	}
 
-	public String getMenuid2()
-	{
+	public String getMenuid2() {
 		return menuid2;
 	}
 
-	public void setMenuid2(String menuid2)
-	{
+	public void setMenuid2(String menuid2) {
 		this.menuid2 = menuid2;
 	}
 

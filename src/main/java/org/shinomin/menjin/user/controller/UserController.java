@@ -1,6 +1,7 @@
 package org.shinomin.menjin.user.controller;
 
 import org.shinomin.menjin.bean.UserBean;
+import org.shinomin.menjin.bean.UserresourceBean;
 import org.shinomin.menjin.user.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -62,4 +63,21 @@ public class UserController {
 		return userService.doDelete(user);
 	}
 
+	@ResponseBody
+	@RequestMapping("/query_user_qx")
+	public String queryUserQx(UserresourceBean ur) throws Exception {
+		return userService.queryUserQx(ur);
+	}
+	
+	/**
+	 * 设置权限
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	@ResponseBody
+	@RequestMapping("/save_qx")
+	public String saveQx(String json) throws Exception {
+		return userService.saveQx(json);
+	}
 }

@@ -1,7 +1,9 @@
 package org.shinomin.menjin.login.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,6 +15,7 @@ import org.shinomin.menjin.constant.MenjinSessionConstant;
 import org.shinomin.menjin.exception.UserNotFoundException;
 import org.shinomin.menjin.exception.ValidationException;
 import org.shinomin.menjin.login.service.ILoginService;
+import org.shinomin.menjin.menu.dao.IMenuDAO;
 import org.shinomin.menjin.menu.service.IMenuService;
 import org.shinomin.menjin.spring.session.LoginSessionScope;
 import org.shinomin.menjin.user.dao.IUserDAO;
@@ -35,6 +38,8 @@ public class LoginServiceImpl implements ILoginService {
 	private IUserService userService;
 	@Autowired
 	private IUserDAO userDAO;
+	@Autowired
+	private IMenuDAO menuDAO;
 
 	@Override
 	public boolean isLogined() {
@@ -47,10 +52,20 @@ public class LoginServiceImpl implements ILoginService {
 
 		request.getSession().setAttribute(MenjinSessionConstant.SESSION_USER, user);
 
-		MenuBean search = new MenuBean();
-		search.setStatus("1");
-		List<MenuBean> list = menuService.selectList(search);
-		loginSession.setFlatMenuList(list);
+		List<MenuBean> list = new ArrayList<>();
+		if (loginSession.isAdminUser()) {
+			// admin用户,显示全部菜单
+			MenuBean search = new MenuBean();
+			search.setStatus("1");
+			list = menuService.selectList(search);
+			loginSession.setFlatMenuList(list);
+		} else {
+			// 其他用户,根据资源联查
+			Map<String, Object> param = new HashMap<String, Object>();
+			param.put("user_id", loginSession.getLoginUser().getUsername());
+			param.put("resource_type", "menu");
+			list = menuDAO.selectQx(param);
+		}
 
 		List<MenuBean> lv1List = treeFormat(list);
 		loginSession.setTreeMenuList(lv1List);
@@ -138,6 +153,7 @@ public class LoginServiceImpl implements ILoginService {
 		} catch (UserNotFoundException e) {
 			errMsg = e.getMessage();
 		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
 			errMsg = "系统异常，请稍候再试";
 		}
 		model.addObject("errMsg", errMsg);
