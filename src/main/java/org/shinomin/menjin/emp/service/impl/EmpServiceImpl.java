@@ -1,5 +1,7 @@
 package org.shinomin.menjin.emp.service.impl;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Date;
 import java.util.List;
 
@@ -171,7 +173,7 @@ public class EmpServiceImpl implements IEmpService {
 
 			HwPersonBean person = new HwPersonBean();
 			person.setLname(emp.getEmpno());
-			person.setFname(emp.getEmpname());
+			person.setFname(encode(emp.getEmpname()));
 			person.setIssue_date(DateUtil.formatDate(today, "yyyy-MM-dd"));// 今天为生效时间
 			person.setExpire_date(DateUtil.formatDate(tenYearLater, "yyyy-MM-dd"));// 10年为失效时间
 			ExecuteResult e = WsQuery.addPerson(person, emp.getBadgeId());
@@ -191,6 +193,14 @@ public class EmpServiceImpl implements IEmpService {
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 			throw new Exception("门禁接口记录人员信息失败");
+		}
+	}
+
+	private String encode(String empname) {
+		try {
+			return URLEncoder.encode(empname,"utf-8");
+		} catch (UnsupportedEncodingException e) {
+			return null;
 		}
 	}
 
