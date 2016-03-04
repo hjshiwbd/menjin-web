@@ -89,6 +89,9 @@
 						<div class="form-group">
 							<label class="">hw访问码id</label><input type="text" name="hwacid" id="hwacid" class="form-control" value="">
 						</div>
+						<div class="form-group">
+							<label class="">是否作为考勤用途</label><input type="text" name="hwacid" id="hwacid" class="form-control" value="">
+						</div>
 						<!-- 						<div class="form-group"> -->
 						<!-- 							<label class="">上级部门编号</label><input type="text" name="dptparnt" id="dptparnt" class="form-control" value=""> -->
 						<!-- 						</div> -->

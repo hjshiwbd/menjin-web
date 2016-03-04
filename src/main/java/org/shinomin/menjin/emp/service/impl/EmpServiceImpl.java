@@ -2,6 +2,7 @@ package org.shinomin.menjin.emp.service.impl;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import org.shinomin.commons.db.mybatis.Pager;
 import org.shinomin.commons.utils.DateUtil;
 import org.shinomin.commons.utils.JsonUtil;
 import org.shinomin.commons.web.util.PageUtil;
+import org.shinomin.menjin.author.service.IAuthorsetService;
 import org.shinomin.menjin.bean.CardinfoBean;
 import org.shinomin.menjin.bean.CardtypeBean;
 import org.shinomin.menjin.bean.DptBean;
@@ -20,6 +22,7 @@ import org.shinomin.menjin.bean.GrdBean;
 import org.shinomin.menjin.bean.HwCardBean;
 import org.shinomin.menjin.bean.HwPersonBean;
 import org.shinomin.menjin.bean.PositionBean;
+import org.shinomin.menjin.card.service.ICardaccodeService;
 import org.shinomin.menjin.card.service.ICardinfoService;
 import org.shinomin.menjin.card.service.ICardtypeService;
 import org.shinomin.menjin.dpt.service.IDptService;
@@ -27,6 +30,7 @@ import org.shinomin.menjin.emp.dao.IEmpDAO;
 import org.shinomin.menjin.emp.service.IEmpService;
 import org.shinomin.menjin.emp.service.IEmpextService;
 import org.shinomin.menjin.grd.service.IGrdService;
+import org.shinomin.menjin.menjin.service.IMenjinService;
 import org.shinomin.menjin.position.service.IPositionService;
 import org.shinomin.menjin.spring.session.LoginSessionScope;
 import org.shinomin.menjin.webservice.WsQuery;
@@ -62,6 +66,12 @@ public class EmpServiceImpl implements IEmpService {
 	private ICardinfoService cardinfoService;
 	@Autowired
 	private IGrdService grdService;
+	@Autowired
+	private IMenjinService menjinService;
+	@Autowired
+	private ICardaccodeService cardaccodeService;
+	@Autowired
+	private IAuthorsetService authorsetService;
 
 	@Override
 	public EmpBean selectOne(EmpBean emp) {
@@ -202,7 +212,7 @@ public class EmpServiceImpl implements IEmpService {
 
 	private String encode(String empname) {
 		try {
-			return URLEncoder.encode(empname,"utf-8");
+			return URLEncoder.encode(empname, "utf-8");
 		} catch (UnsupportedEncodingException e) {
 			return null;
 		}
@@ -259,5 +269,88 @@ public class EmpServiceImpl implements IEmpService {
 		model.addObject("json_script", PageUtil.create_SCRIPT_PARSE_JSON(model.getModelMap()));
 		model.setViewName("emp/emp_xinzeng");
 		return model;
+	}
+
+	@Override
+	public String doDelete(EmpBean emp) {
+		logger.info("emp:{}", JsonUtil.toJson(emp));
+
+		ExecuteResult e = new ExecuteResult("0", "请求有误，请刷新后重试");
+		try {
+			checkParamDelete(emp);
+		} catch (Exception e1) {
+			e.setMessage(e1.getMessage());
+			return JsonUtil.toJson(e);
+		}
+
+		String cardno = StringUtils.trim(emp.getEmpcardno());
+
+		// hw移除卡-访问吗绑定
+		List<String> cards = new ArrayList<>();
+		cards.add(cardno);
+		e = menjinService.removeAccodeFromCard(cards);
+
+		// c3 删除
+		if (deleteFromC3(emp)) {
+			// hw删卡
+			if (WsQuery.removeCard(cardno)) {
+				logger.info("hw removeCard done:{}", cardno);
+				// hw删人
+				List<HwPersonBean> personList = WsQuery.queryPersons("LNAME", "=", emp.getEmpno());
+				if (personList != null) {
+					for (HwPersonBean person : personList) {
+						if (WsQuery.removePerson(person.getId())) {
+							logger.info("hw removePerson done:{}", person.getId());
+							e.setResult("1");
+							e.setMessage("删除成功");
+						}
+					}
+				}
+			}
+		}
+
+		return JsonUtil.toJson(e);
+	}
+
+	/**
+	 * 从c3删除人员
+	 * 
+	 * @param emp
+	 * @return
+	 * @throws Exception
+	 */
+	private boolean deleteFromC3(EmpBean emp) throws RuntimeException {
+		try {
+			// 1.emp/empext
+			EmpextBean empext = new EmpextBean();
+			empext.setEmpid(emp.getEmpid());
+			empextService.delete(empext);
+
+			EmpBean delemp = new EmpBean();
+			delemp.setEmpid(emp.getEmpid());
+			delete(delemp);
+
+			// 2.cardno
+			CardinfoBean card = new CardinfoBean();
+			card.setCardid(emp.getEmpid());
+			cardinfoService.delete(card);
+
+			logger.info("delete person from c3 done");
+			return true;
+		} catch (RuntimeException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	private void checkParamDelete(EmpBean emp) throws Exception {
+		if (StringUtils.isBlank(emp.getEmpid())) {
+			throw new Exception("人员编号为空");
+		}
+		if (StringUtils.isBlank(emp.getEmpno())) {
+			throw new Exception("人员编号为空");
+		}
+		if (StringUtils.isBlank(emp.getEmpcardno())) {
+			throw new Exception("卡号为空");
+		}
 	}
 }

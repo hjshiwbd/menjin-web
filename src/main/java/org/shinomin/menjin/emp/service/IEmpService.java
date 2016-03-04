@@ -67,4 +67,6 @@ public interface IEmpService
 
 	public ModelAndView showXinzeng();
 
+	public String doDelete(EmpBean emp);
+
 }

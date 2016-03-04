@@ -140,4 +140,16 @@ public class WsUtil {
 		return result;
 	}
 
+	public static String removeCard(String cardno) {
+		logger.info("cardno:{}", cardno);
+		String result = getWsType().removeCard(cardno);
+		return result;
+	}
+
+	public static String removePerson(String personid) {
+		logger.info("personid:{}", personid);
+		String result = getWsType().removePerson(personid);
+		return result;
+	}
+
 }

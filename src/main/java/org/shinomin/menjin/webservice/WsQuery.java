@@ -79,6 +79,7 @@ public class WsQuery {
 			return null;
 		}
 	}
+
 	public static List<HwCardBean> queryCards(String field, String oper, String value) {
 		String json = WsUtil.queryCards(field, oper, value);
 		if (StringUtils.isNotBlank(json)) {
@@ -99,7 +100,7 @@ public class WsQuery {
 		String json = WsUtil.getAllACCodes(personid, cardno);
 		if (StringUtils.isNotBlank(json)) {
 			List<HwAcccodeBean> list = convertList(getWsObject(json), HwAcccodeBean.class);
-			logger.info("person size:{}", list.size());
+			logger.info("getAllACCodes size:{}", list.size());
 			return list;
 		} else {
 			return null;
@@ -140,7 +141,29 @@ public class WsQuery {
 	public static boolean removeACCodeFromCard(String cardid, String accodeid) {
 		String json = WsUtil.removeACCodeFromCard(cardid, accodeid);
 		if (StringUtils.isNotBlank(json)) {
-			logger.info("addACCodeToCard:{}", json);
+			logger.info("removeACCodeFromCard:{}", json);
+			ExecuteResult e = Json.fromJson(ExecuteResult.class, json);
+			return "0".equals(e.getResult());
+		} else {
+			return false;
+		}
+	}
+
+	public static boolean removeCard(String cardno) {
+		String json = WsUtil.removeCard(cardno);
+		if (StringUtils.isNotBlank(json)) {
+			logger.info("removeCard:{}", json);
+			ExecuteResult e = Json.fromJson(ExecuteResult.class, json);
+			return "0".equals(e.getResult());
+		} else {
+			return false;
+		}
+	}
+
+	public static boolean removePerson(String personid) {
+		String json = WsUtil.removePerson(personid);
+		if (StringUtils.isNotBlank(json)) {
+			logger.info("removePerson:{}", json);
 			ExecuteResult e = Json.fromJson(ExecuteResult.class, json);
 			return "0".equals(e.getResult());
 		} else {

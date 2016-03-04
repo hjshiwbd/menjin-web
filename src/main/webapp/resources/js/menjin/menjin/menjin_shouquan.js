@@ -1,6 +1,7 @@
 var dg = $('#dg');
 var dgHeight = 450;
 var treeObj;
+var clickRow;// dg当前点击的row
 
 jQuery(document).ready(function() {
 	page_init("forms");
@@ -50,7 +51,7 @@ function initRq() {
 function sq() {
 	$('#sq').on('click', function() {
 		var persons = dg.datagrid('getChecked');
-//		clog(persons);
+		// clog(persons);
 
 		var cards = [];
 		$.each(persons, function(i, o) {
@@ -61,24 +62,24 @@ function sq() {
 			eualert('请选择选择人员');
 			return false;
 		}
-		
+
 		// clog(accodes);
 		var accodeIds = [];
 		var accodes = treeObj.getCheckedNodes(true);
 		$.each(accodes, function(i, o) {
 			accodeIds.push(o['id']);
 		});
-		
-//		if (accodeIds.length == 0) {
-//			eualert('请选择选择门禁');
-//			return false;
-//		}
-		
+
+		// if (accodeIds.length == 0) {
+		// eualert('请选择选择门禁');
+		// return false;
+		// }
+
 		var o = {
 			cards : cards,
 			accodeIds : accodeIds
 		};
-//		clog(o);
+		// clog(o);
 		var options = {
 			url : cu('/menjin/save_shouquan'),
 			param : {
@@ -231,21 +232,54 @@ function initDg() {
 						treeObj.checkNode(node, true, true);
 					}
 				} else {
-					//eualert('此人尚无任何权限');
+					// eualert('此人尚无任何权限');
 				}
 			}
 		};
 		commonAjax(options);
 	};
-	// set['toolbar'] = [ {
-	// text : '添加人员到列表',
-	// handler : function() {
-	// alert('add')
-	// }
-	// } ];
+	set['toolbar'] = [ {
+		text : '删除人员',
+		handler : function() {
+			deletePerson();
+		}
+	} ];
 
 	dg.datagrid(set);
 
+}
+
+function deletePerson() {
+	var row = dg.datagrid('getSelections');
+	// clog(row);
+	if (row.length > 0) {
+		euconfirm('您确定要删除吗？', function(r) {
+			if (r) {
+				var empid = row[0]['empid'];
+				var empno = row[0]['empno'];
+				var empcardno = row[0]['empcardno'];
+				var options = {
+					hideWait : false,
+					url : cu('/emp/delete'),
+					param : {
+						empid : empid,
+						empno : empno,
+						empcardno : empcardno
+					},
+					callback : function(resp) {
+						eualert(resp.message);
+						if (resp.result == 1) {
+							dg.datagrid('reload');
+							treeObj.checkAllNodes(false);
+						}
+					}
+				};
+				commonAjax(options);
+			}
+		});
+	} else {
+		eualert('请先选择人员');
+	}
 }
 
 function selectAll() {

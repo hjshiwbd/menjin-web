@@ -3,422 +3,450 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.shinomin.menjin.mapper.Cardinfo">
 
-<!-- resultMap -->
-<resultMap id="CardinfoMap" type="CardinfoBean">
-<result property="cardid" column="cardid" />
-<result property="carddispno" column="carddispno" />
-<result property="cardfixno" column="cardfixno" />
-<result property="cardtypeid" column="cardtypeid" />
-<result property="cardcrtdby" column="cardcrtdby" />
-<result property="cardcrtdday" column="cardcrtdday" />
-<result property="cardmodiby" column="cardmodiby" />
-<result property="cardmodiday" column="cardmodiday" />
-<result property="isusesec0" column="isusesec0" />
-<result property="isusesec1" column="isusesec1" />
-<result property="isusesec2" column="isusesec2" />
-<result property="isusesec3" column="isusesec3" />
-<result property="isusesec4" column="isusesec4" />
-<result property="isusesec5" column="isusesec5" />
-<result property="isusesec6" column="isusesec6" />
-<result property="isusesec7" column="isusesec7" />
-<result property="isusesec8" column="isusesec8" />
-<result property="isusesec9" column="isusesec9" />
-<result property="isusesec10" column="isusesec10" />
-<result property="isusesec11" column="isusesec11" />
-<result property="isusesec12" column="isusesec12" />
-<result property="isusesec13" column="isusesec13" />
-<result property="isusesec14" column="isusesec14" />
-<result property="isusesec15" column="isusesec15" />
-<result property="mnysec0" column="mnysec0" />
-<result property="mnysec1" column="mnysec1" />
-<result property="mnysec2" column="mnysec2" />
-<result property="mnysec3" column="mnysec3" />
-<result property="mnysec4" column="mnysec4" />
-<result property="mnysec5" column="mnysec5" />
-<result property="mnysec6" column="mnysec6" />
-<result property="mnysec7" column="mnysec7" />
-<result property="mnysec8" column="mnysec8" />
-<result property="mnysec9" column="mnysec9" />
-<result property="mnysec10" column="mnysec10" />
-<result property="mnysec11" column="mnysec11" />
-<result property="mnysec12" column="mnysec12" />
-<result property="mnysec13" column="mnysec13" />
-<result property="mnysec14" column="mnysec14" />
-<result property="mnysec15" column="mnysec15" />
-<result property="timessec0" column="timessec0" />
-<result property="timessec1" column="timessec1" />
-<result property="timessec2" column="timessec2" />
-<result property="timessec3" column="timessec3" />
-<result property="timessec4" column="timessec4" />
-<result property="timessec5" column="timessec5" />
-<result property="timessec6" column="timessec6" />
-<result property="timessec7" column="timessec7" />
-<result property="timessec8" column="timessec8" />
-<result property="timessec9" column="timessec9" />
-<result property="timessec10" column="timessec10" />
-<result property="timessec11" column="timessec11" />
-<result property="timessec12" column="timessec12" />
-<result property="timessec13" column="timessec13" />
-<result property="timessec14" column="timessec14" />
-<result property="timessec15" column="timessec15" />
-</resultMap>
+	<!-- resultMap -->
+	<resultMap id="CardinfoMap" type="CardinfoBean">
+		<result property="cardid" column="cardid" />
+		<result property="carddispno" column="carddispno" />
+		<result property="cardfixno" column="cardfixno" />
+		<result property="cardtypeid" column="cardtypeid" />
+		<result property="cardcrtdby" column="cardcrtdby" />
+		<result property="cardcrtdday" column="cardcrtdday" />
+		<result property="cardmodiby" column="cardmodiby" />
+		<result property="cardmodiday" column="cardmodiday" />
+		<result property="isusesec0" column="isusesec0" />
+		<result property="isusesec1" column="isusesec1" />
+		<result property="isusesec2" column="isusesec2" />
+		<result property="isusesec3" column="isusesec3" />
+		<result property="isusesec4" column="isusesec4" />
+		<result property="isusesec5" column="isusesec5" />
+		<result property="isusesec6" column="isusesec6" />
+		<result property="isusesec7" column="isusesec7" />
+		<result property="isusesec8" column="isusesec8" />
+		<result property="isusesec9" column="isusesec9" />
+		<result property="isusesec10" column="isusesec10" />
+		<result property="isusesec11" column="isusesec11" />
+		<result property="isusesec12" column="isusesec12" />
+		<result property="isusesec13" column="isusesec13" />
+		<result property="isusesec14" column="isusesec14" />
+		<result property="isusesec15" column="isusesec15" />
+		<result property="mnysec0" column="mnysec0" />
+		<result property="mnysec1" column="mnysec1" />
+		<result property="mnysec2" column="mnysec2" />
+		<result property="mnysec3" column="mnysec3" />
+		<result property="mnysec4" column="mnysec4" />
+		<result property="mnysec5" column="mnysec5" />
+		<result property="mnysec6" column="mnysec6" />
+		<result property="mnysec7" column="mnysec7" />
+		<result property="mnysec8" column="mnysec8" />
+		<result property="mnysec9" column="mnysec9" />
+		<result property="mnysec10" column="mnysec10" />
+		<result property="mnysec11" column="mnysec11" />
+		<result property="mnysec12" column="mnysec12" />
+		<result property="mnysec13" column="mnysec13" />
+		<result property="mnysec14" column="mnysec14" />
+		<result property="mnysec15" column="mnysec15" />
+		<result property="timessec0" column="timessec0" />
+		<result property="timessec1" column="timessec1" />
+		<result property="timessec2" column="timessec2" />
+		<result property="timessec3" column="timessec3" />
+		<result property="timessec4" column="timessec4" />
+		<result property="timessec5" column="timessec5" />
+		<result property="timessec6" column="timessec6" />
+		<result property="timessec7" column="timessec7" />
+		<result property="timessec8" column="timessec8" />
+		<result property="timessec9" column="timessec9" />
+		<result property="timessec10" column="timessec10" />
+		<result property="timessec11" column="timessec11" />
+		<result property="timessec12" column="timessec12" />
+		<result property="timessec13" column="timessec13" />
+		<result property="timessec14" column="timessec14" />
+		<result property="timessec15" column="timessec15" />
+	</resultMap>
 
-<!-- select -->
-<select id="select" parameterType="CardinfoBean" resultType="CardinfoBean">
-select t.cardid, t.carddispno, t.cardfixno, t.cardtypeid, t.cardcrtdby, t.cardcrtdday, t.cardmodiby, t.cardmodiday, t.isusesec0, t.isusesec1, t.isusesec2, t.isusesec3, t.isusesec4, t.isusesec5, t.isusesec6, t.isusesec7, t.isusesec8, t.isusesec9, t.isusesec10, t.isusesec11, t.isusesec12, t.isusesec13, t.isusesec14, t.isusesec15, t.mnysec0, t.mnysec1, t.mnysec2, t.mnysec3, t.mnysec4, t.mnysec5, t.mnysec6, t.mnysec7, t.mnysec8, t.mnysec9, t.mnysec10, t.mnysec11, t.mnysec12, t.mnysec13, t.mnysec14, t.mnysec15, t.timessec0, t.timessec1, t.timessec2, t.timessec3, t.timessec4, t.timessec5, t.timessec6, t.timessec7, t.timessec8, t.timessec9, t.timessec10, t.timessec11, t.timessec12, t.timessec13, t.timessec14, t.timessec15 from Com_CardInfo t
-<where>
-<if test="cardid!=null">
-and t.cardid = #{cardid,jdbcType=NUMERIC}
-</if>
-<if test="carddispno != null and carddispno != ''">
-and t.carddispno = #{carddispno,jdbcType=VARCHAR}
-</if>
-<if test="cardfixno != null and cardfixno != ''">
-and t.cardfixno = #{cardfixno,jdbcType=VARCHAR}
-</if>
-<if test="cardtypeid!=null">
-and t.cardtypeid = #{cardtypeid,jdbcType=NUMERIC}
-</if>
-<if test="cardcrtdby != null and cardcrtdby != ''">
-and t.cardcrtdby = #{cardcrtdby,jdbcType=VARCHAR}
-</if>
-<if test="cardcrtdday!=null">
-and t.cardcrtdday = #{cardcrtdday,jdbcType=TIMESTAMP}
-</if>
-<if test="cardmodiby != null and cardmodiby != ''">
-and t.cardmodiby = #{cardmodiby,jdbcType=VARCHAR}
-</if>
-<if test="cardmodiday!=null">
-and t.cardmodiday = #{cardmodiday,jdbcType=TIMESTAMP}
-</if>
-<if test="isusesec0 != null and isusesec0 != ''">
-and t.isusesec0 = #{isusesec0,jdbcType=VARCHAR}
-</if>
-<if test="isusesec1 != null and isusesec1 != ''">
-and t.isusesec1 = #{isusesec1,jdbcType=VARCHAR}
-</if>
-<if test="isusesec2 != null and isusesec2 != ''">
-and t.isusesec2 = #{isusesec2,jdbcType=VARCHAR}
-</if>
-<if test="isusesec3 != null and isusesec3 != ''">
-and t.isusesec3 = #{isusesec3,jdbcType=VARCHAR}
-</if>
-<if test="isusesec4 != null and isusesec4 != ''">
-and t.isusesec4 = #{isusesec4,jdbcType=VARCHAR}
-</if>
-<if test="isusesec5 != null and isusesec5 != ''">
-and t.isusesec5 = #{isusesec5,jdbcType=VARCHAR}
-</if>
-<if test="isusesec6 != null and isusesec6 != ''">
-and t.isusesec6 = #{isusesec6,jdbcType=VARCHAR}
-</if>
-<if test="isusesec7 != null and isusesec7 != ''">
-and t.isusesec7 = #{isusesec7,jdbcType=VARCHAR}
-</if>
-<if test="isusesec8 != null and isusesec8 != ''">
-and t.isusesec8 = #{isusesec8,jdbcType=VARCHAR}
-</if>
-<if test="isusesec9 != null and isusesec9 != ''">
-and t.isusesec9 = #{isusesec9,jdbcType=VARCHAR}
-</if>
-<if test="isusesec10 != null and isusesec10 != ''">
-and t.isusesec10 = #{isusesec10,jdbcType=VARCHAR}
-</if>
-<if test="isusesec11 != null and isusesec11 != ''">
-and t.isusesec11 = #{isusesec11,jdbcType=VARCHAR}
-</if>
-<if test="isusesec12 != null and isusesec12 != ''">
-and t.isusesec12 = #{isusesec12,jdbcType=VARCHAR}
-</if>
-<if test="isusesec13 != null and isusesec13 != ''">
-and t.isusesec13 = #{isusesec13,jdbcType=VARCHAR}
-</if>
-<if test="isusesec14 != null and isusesec14 != ''">
-and t.isusesec14 = #{isusesec14,jdbcType=VARCHAR}
-</if>
-<if test="isusesec15 != null and isusesec15 != ''">
-and t.isusesec15 = #{isusesec15,jdbcType=VARCHAR}
-</if>
-<if test="mnysec0!=null">
-and t.mnysec0 = #{mnysec0,jdbcType=NUMERIC}
-</if>
-<if test="mnysec1!=null">
-and t.mnysec1 = #{mnysec1,jdbcType=NUMERIC}
-</if>
-<if test="mnysec2!=null">
-and t.mnysec2 = #{mnysec2,jdbcType=NUMERIC}
-</if>
-<if test="mnysec3!=null">
-and t.mnysec3 = #{mnysec3,jdbcType=NUMERIC}
-</if>
-<if test="mnysec4!=null">
-and t.mnysec4 = #{mnysec4,jdbcType=NUMERIC}
-</if>
-<if test="mnysec5!=null">
-and t.mnysec5 = #{mnysec5,jdbcType=NUMERIC}
-</if>
-<if test="mnysec6!=null">
-and t.mnysec6 = #{mnysec6,jdbcType=NUMERIC}
-</if>
-<if test="mnysec7!=null">
-and t.mnysec7 = #{mnysec7,jdbcType=NUMERIC}
-</if>
-<if test="mnysec8!=null">
-and t.mnysec8 = #{mnysec8,jdbcType=NUMERIC}
-</if>
-<if test="mnysec9!=null">
-and t.mnysec9 = #{mnysec9,jdbcType=NUMERIC}
-</if>
-<if test="mnysec10!=null">
-and t.mnysec10 = #{mnysec10,jdbcType=NUMERIC}
-</if>
-<if test="mnysec11!=null">
-and t.mnysec11 = #{mnysec11,jdbcType=NUMERIC}
-</if>
-<if test="mnysec12!=null">
-and t.mnysec12 = #{mnysec12,jdbcType=NUMERIC}
-</if>
-<if test="mnysec13!=null">
-and t.mnysec13 = #{mnysec13,jdbcType=NUMERIC}
-</if>
-<if test="mnysec14!=null">
-and t.mnysec14 = #{mnysec14,jdbcType=NUMERIC}
-</if>
-<if test="mnysec15!=null">
-and t.mnysec15 = #{mnysec15,jdbcType=NUMERIC}
-</if>
-<if test="timessec0!=null">
-and t.timessec0 = #{timessec0,jdbcType=NUMERIC}
-</if>
-<if test="timessec1!=null">
-and t.timessec1 = #{timessec1,jdbcType=NUMERIC}
-</if>
-<if test="timessec2!=null">
-and t.timessec2 = #{timessec2,jdbcType=NUMERIC}
-</if>
-<if test="timessec3!=null">
-and t.timessec3 = #{timessec3,jdbcType=NUMERIC}
-</if>
-<if test="timessec4!=null">
-and t.timessec4 = #{timessec4,jdbcType=NUMERIC}
-</if>
-<if test="timessec5!=null">
-and t.timessec5 = #{timessec5,jdbcType=NUMERIC}
-</if>
-<if test="timessec6!=null">
-and t.timessec6 = #{timessec6,jdbcType=NUMERIC}
-</if>
-<if test="timessec7!=null">
-and t.timessec7 = #{timessec7,jdbcType=NUMERIC}
-</if>
-<if test="timessec8!=null">
-and t.timessec8 = #{timessec8,jdbcType=NUMERIC}
-</if>
-<if test="timessec9!=null">
-and t.timessec9 = #{timessec9,jdbcType=NUMERIC}
-</if>
-<if test="timessec10!=null">
-and t.timessec10 = #{timessec10,jdbcType=NUMERIC}
-</if>
-<if test="timessec11!=null">
-and t.timessec11 = #{timessec11,jdbcType=NUMERIC}
-</if>
-<if test="timessec12!=null">
-and t.timessec12 = #{timessec12,jdbcType=NUMERIC}
-</if>
-<if test="timessec13!=null">
-and t.timessec13 = #{timessec13,jdbcType=NUMERIC}
-</if>
-<if test="timessec14!=null">
-and t.timessec14 = #{timessec14,jdbcType=NUMERIC}
-</if>
-<if test="timessec15!=null">
-and t.timessec15 = #{timessec15,jdbcType=NUMERIC}
-</if>
-</where>
-</select>
+	<!-- select -->
+	<select id="select" parameterType="CardinfoBean" resultType="CardinfoBean">
+		select t.cardid, t.carddispno, t.cardfixno, t.cardtypeid, t.cardcrtdby, t.cardcrtdday, t.cardmodiby, t.cardmodiday,
+		t.isusesec0, t.isusesec1, t.isusesec2, t.isusesec3, t.isusesec4, t.isusesec5, t.isusesec6, t.isusesec7, t.isusesec8,
+		t.isusesec9, t.isusesec10, t.isusesec11, t.isusesec12, t.isusesec13, t.isusesec14, t.isusesec15, t.mnysec0, t.mnysec1,
+		t.mnysec2, t.mnysec3, t.mnysec4, t.mnysec5, t.mnysec6, t.mnysec7, t.mnysec8, t.mnysec9, t.mnysec10, t.mnysec11,
+		t.mnysec12, t.mnysec13, t.mnysec14, t.mnysec15, t.timessec0, t.timessec1, t.timessec2, t.timessec3, t.timessec4,
+		t.timessec5, t.timessec6, t.timessec7, t.timessec8, t.timessec9, t.timessec10, t.timessec11, t.timessec12,
+		t.timessec13, t.timessec14, t.timessec15 from Com_CardInfo t
+		<where>
+			<if test="cardid!=null">
+				and t.cardid = #{cardid,jdbcType=NUMERIC}
+			</if>
+			<if test="carddispno != null and carddispno != ''">
+				and t.carddispno = #{carddispno,jdbcType=VARCHAR}
+			</if>
+			<if test="cardfixno != null and cardfixno != ''">
+				and t.cardfixno = #{cardfixno,jdbcType=VARCHAR}
+			</if>
+			<if test="cardtypeid!=null">
+				and t.cardtypeid = #{cardtypeid,jdbcType=NUMERIC}
+			</if>
+			<if test="cardcrtdby != null and cardcrtdby != ''">
+				and t.cardcrtdby = #{cardcrtdby,jdbcType=VARCHAR}
+			</if>
+			<if test="cardcrtdday!=null">
+				and t.cardcrtdday = #{cardcrtdday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="cardmodiby != null and cardmodiby != ''">
+				and t.cardmodiby = #{cardmodiby,jdbcType=VARCHAR}
+			</if>
+			<if test="cardmodiday!=null">
+				and t.cardmodiday = #{cardmodiday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="isusesec0 != null and isusesec0 != ''">
+				and t.isusesec0 = #{isusesec0,jdbcType=VARCHAR}
+			</if>
+			<if test="isusesec1 != null and isusesec1 != ''">
+				and t.isusesec1 = #{isusesec1,jdbcType=VARCHAR}
+			</if>
+			<if test="isusesec2 != null and isusesec2 != ''">
+				and t.isusesec2 = #{isusesec2,jdbcType=VARCHAR}
+			</if>
+			<if test="isusesec3 != null and isusesec3 != ''">
+				and t.isusesec3 = #{isusesec3,jdbcType=VARCHAR}
+			</if>
+			<if test="isusesec4 != null and isusesec4 != ''">
+				and t.isusesec4 = #{isusesec4,jdbcType=VARCHAR}
+			</if>
+			<if test="isusesec5 != null and isusesec5 != ''">
+				and t.isusesec5 = #{isusesec5,jdbcType=VARCHAR}
+			</if>
+			<if test="isusesec6 != null and isusesec6 != ''">
+				and t.isusesec6 = #{isusesec6,jdbcType=VARCHAR}
+			</if>
+			<if test="isusesec7 != null and isusesec7 != ''">
+				and t.isusesec7 = #{isusesec7,jdbcType=VARCHAR}
+			</if>
+			<if test="isusesec8 != null and isusesec8 != ''">
+				and t.isusesec8 = #{isusesec8,jdbcType=VARCHAR}
+			</if>
+			<if test="isusesec9 != null and isusesec9 != ''">
+				and t.isusesec9 = #{isusesec9,jdbcType=VARCHAR}
+			</if>
+			<if test="isusesec10 != null and isusesec10 != ''">
+				and t.isusesec10 = #{isusesec10,jdbcType=VARCHAR}
+			</if>
+			<if test="isusesec11 != null and isusesec11 != ''">
+				and t.isusesec11 = #{isusesec11,jdbcType=VARCHAR}
+			</if>
+			<if test="isusesec12 != null and isusesec12 != ''">
+				and t.isusesec12 = #{isusesec12,jdbcType=VARCHAR}
+			</if>
+			<if test="isusesec13 != null and isusesec13 != ''">
+				and t.isusesec13 = #{isusesec13,jdbcType=VARCHAR}
+			</if>
+			<if test="isusesec14 != null and isusesec14 != ''">
+				and t.isusesec14 = #{isusesec14,jdbcType=VARCHAR}
+			</if>
+			<if test="isusesec15 != null and isusesec15 != ''">
+				and t.isusesec15 = #{isusesec15,jdbcType=VARCHAR}
+			</if>
+			<if test="mnysec0!=null">
+				and t.mnysec0 = #{mnysec0,jdbcType=NUMERIC}
+			</if>
+			<if test="mnysec1!=null">
+				and t.mnysec1 = #{mnysec1,jdbcType=NUMERIC}
+			</if>
+			<if test="mnysec2!=null">
+				and t.mnysec2 = #{mnysec2,jdbcType=NUMERIC}
+			</if>
+			<if test="mnysec3!=null">
+				and t.mnysec3 = #{mnysec3,jdbcType=NUMERIC}
+			</if>
+			<if test="mnysec4!=null">
+				and t.mnysec4 = #{mnysec4,jdbcType=NUMERIC}
+			</if>
+			<if test="mnysec5!=null">
+				and t.mnysec5 = #{mnysec5,jdbcType=NUMERIC}
+			</if>
+			<if test="mnysec6!=null">
+				and t.mnysec6 = #{mnysec6,jdbcType=NUMERIC}
+			</if>
+			<if test="mnysec7!=null">
+				and t.mnysec7 = #{mnysec7,jdbcType=NUMERIC}
+			</if>
+			<if test="mnysec8!=null">
+				and t.mnysec8 = #{mnysec8,jdbcType=NUMERIC}
+			</if>
+			<if test="mnysec9!=null">
+				and t.mnysec9 = #{mnysec9,jdbcType=NUMERIC}
+			</if>
+			<if test="mnysec10!=null">
+				and t.mnysec10 = #{mnysec10,jdbcType=NUMERIC}
+			</if>
+			<if test="mnysec11!=null">
+				and t.mnysec11 = #{mnysec11,jdbcType=NUMERIC}
+			</if>
+			<if test="mnysec12!=null">
+				and t.mnysec12 = #{mnysec12,jdbcType=NUMERIC}
+			</if>
+			<if test="mnysec13!=null">
+				and t.mnysec13 = #{mnysec13,jdbcType=NUMERIC}
+			</if>
+			<if test="mnysec14!=null">
+				and t.mnysec14 = #{mnysec14,jdbcType=NUMERIC}
+			</if>
+			<if test="mnysec15!=null">
+				and t.mnysec15 = #{mnysec15,jdbcType=NUMERIC}
+			</if>
+			<if test="timessec0!=null">
+				and t.timessec0 = #{timessec0,jdbcType=NUMERIC}
+			</if>
+			<if test="timessec1!=null">
+				and t.timessec1 = #{timessec1,jdbcType=NUMERIC}
+			</if>
+			<if test="timessec2!=null">
+				and t.timessec2 = #{timessec2,jdbcType=NUMERIC}
+			</if>
+			<if test="timessec3!=null">
+				and t.timessec3 = #{timessec3,jdbcType=NUMERIC}
+			</if>
+			<if test="timessec4!=null">
+				and t.timessec4 = #{timessec4,jdbcType=NUMERIC}
+			</if>
+			<if test="timessec5!=null">
+				and t.timessec5 = #{timessec5,jdbcType=NUMERIC}
+			</if>
+			<if test="timessec6!=null">
+				and t.timessec6 = #{timessec6,jdbcType=NUMERIC}
+			</if>
+			<if test="timessec7!=null">
+				and t.timessec7 = #{timessec7,jdbcType=NUMERIC}
+			</if>
+			<if test="timessec8!=null">
+				and t.timessec8 = #{timessec8,jdbcType=NUMERIC}
+			</if>
+			<if test="timessec9!=null">
+				and t.timessec9 = #{timessec9,jdbcType=NUMERIC}
+			</if>
+			<if test="timessec10!=null">
+				and t.timessec10 = #{timessec10,jdbcType=NUMERIC}
+			</if>
+			<if test="timessec11!=null">
+				and t.timessec11 = #{timessec11,jdbcType=NUMERIC}
+			</if>
+			<if test="timessec12!=null">
+				and t.timessec12 = #{timessec12,jdbcType=NUMERIC}
+			</if>
+			<if test="timessec13!=null">
+				and t.timessec13 = #{timessec13,jdbcType=NUMERIC}
+			</if>
+			<if test="timessec14!=null">
+				and t.timessec14 = #{timessec14,jdbcType=NUMERIC}
+			</if>
+			<if test="timessec15!=null">
+				and t.timessec15 = #{timessec15,jdbcType=NUMERIC}
+			</if>
+		</where>
+	</select>
 
-<!-- insert -->
-<insert id="insert" parameterType="CardinfoBean">
-insert into Com_CardInfo (cardid, carddispno, cardfixno, cardtypeid, cardcrtdby, cardcrtdday, cardmodiby, cardmodiday, isusesec0, isusesec1, isusesec2, isusesec3, isusesec4, isusesec5, isusesec6, isusesec7, isusesec8, isusesec9, isusesec10, isusesec11, isusesec12, isusesec13, isusesec14, isusesec15, mnysec0, mnysec1, mnysec2, mnysec3, mnysec4, mnysec5, mnysec6, mnysec7, mnysec8, mnysec9, mnysec10, mnysec11, mnysec12, mnysec13, mnysec14, mnysec15, timessec0, timessec1, timessec2, timessec3, timessec4, timessec5, timessec6, timessec7, timessec8, timessec9, timessec10, timessec11, timessec12, timessec13, timessec14, timessec15) 
-values (#{cardid,jdbcType=NUMERIC}, #{carddispno,jdbcType=VARCHAR}, #{cardfixno,jdbcType=VARCHAR}, #{cardtypeid,jdbcType=NUMERIC}, #{cardcrtdby,jdbcType=VARCHAR}, #{cardcrtdday,jdbcType=TIMESTAMP}, #{cardmodiby,jdbcType=VARCHAR}, #{cardmodiday,jdbcType=TIMESTAMP}, #{isusesec0,jdbcType=VARCHAR}, #{isusesec1,jdbcType=VARCHAR}, #{isusesec2,jdbcType=VARCHAR}, #{isusesec3,jdbcType=VARCHAR}, #{isusesec4,jdbcType=VARCHAR}, #{isusesec5,jdbcType=VARCHAR}, #{isusesec6,jdbcType=VARCHAR}, #{isusesec7,jdbcType=VARCHAR}, #{isusesec8,jdbcType=VARCHAR}, #{isusesec9,jdbcType=VARCHAR}, #{isusesec10,jdbcType=VARCHAR}, #{isusesec11,jdbcType=VARCHAR}, #{isusesec12,jdbcType=VARCHAR}, #{isusesec13,jdbcType=VARCHAR}, #{isusesec14,jdbcType=VARCHAR}, #{isusesec15,jdbcType=VARCHAR}, #{mnysec0,jdbcType=NUMERIC}, #{mnysec1,jdbcType=NUMERIC}, #{mnysec2,jdbcType=NUMERIC}, #{mnysec3,jdbcType=NUMERIC}, #{mnysec4,jdbcType=NUMERIC}, #{mnysec5,jdbcType=NUMERIC}, #{mnysec6,jdbcType=NUMERIC}, #{mnysec7,jdbcType=NUMERIC}, #{mnysec8,jdbcType=NUMERIC}, #{mnysec9,jdbcType=NUMERIC}, #{mnysec10,jdbcType=NUMERIC}, #{mnysec11,jdbcType=NUMERIC}, #{mnysec12,jdbcType=NUMERIC}, #{mnysec13,jdbcType=NUMERIC}, #{mnysec14,jdbcType=NUMERIC}, #{mnysec15,jdbcType=NUMERIC}, #{timessec0,jdbcType=NUMERIC}, #{timessec1,jdbcType=NUMERIC}, #{timessec2,jdbcType=NUMERIC}, #{timessec3,jdbcType=NUMERIC}, #{timessec4,jdbcType=NUMERIC}, #{timessec5,jdbcType=NUMERIC}, #{timessec6,jdbcType=NUMERIC}, #{timessec7,jdbcType=NUMERIC}, #{timessec8,jdbcType=NUMERIC}, #{timessec9,jdbcType=NUMERIC}, #{timessec10,jdbcType=NUMERIC}, #{timessec11,jdbcType=NUMERIC}, #{timessec12,jdbcType=NUMERIC}, #{timessec13,jdbcType=NUMERIC}, #{timessec14,jdbcType=NUMERIC}, #{timessec15,jdbcType=NUMERIC})
-</insert>
+	<!-- insert -->
+	<insert id="insert" parameterType="CardinfoBean">
+		insert into Com_CardInfo (cardid, carddispno, cardfixno, cardtypeid, cardcrtdby, cardcrtdday, cardmodiby, cardmodiday,
+		isusesec0, isusesec1, isusesec2, isusesec3, isusesec4, isusesec5, isusesec6, isusesec7, isusesec8, isusesec9,
+		isusesec10, isusesec11, isusesec12, isusesec13, isusesec14, isusesec15, mnysec0, mnysec1, mnysec2, mnysec3, mnysec4,
+		mnysec5, mnysec6, mnysec7, mnysec8, mnysec9, mnysec10, mnysec11, mnysec12, mnysec13, mnysec14, mnysec15, timessec0,
+		timessec1, timessec2, timessec3, timessec4, timessec5, timessec6, timessec7, timessec8, timessec9, timessec10,
+		timessec11, timessec12, timessec13, timessec14, timessec15)
+		values (#{cardid,jdbcType=NUMERIC}, #{carddispno,jdbcType=VARCHAR}, #{cardfixno,jdbcType=VARCHAR},
+		#{cardtypeid,jdbcType=NUMERIC}, #{cardcrtdby,jdbcType=VARCHAR}, #{cardcrtdday,jdbcType=TIMESTAMP},
+		#{cardmodiby,jdbcType=VARCHAR}, #{cardmodiday,jdbcType=TIMESTAMP}, #{isusesec0,jdbcType=VARCHAR},
+		#{isusesec1,jdbcType=VARCHAR}, #{isusesec2,jdbcType=VARCHAR}, #{isusesec3,jdbcType=VARCHAR},
+		#{isusesec4,jdbcType=VARCHAR}, #{isusesec5,jdbcType=VARCHAR}, #{isusesec6,jdbcType=VARCHAR},
+		#{isusesec7,jdbcType=VARCHAR}, #{isusesec8,jdbcType=VARCHAR}, #{isusesec9,jdbcType=VARCHAR},
+		#{isusesec10,jdbcType=VARCHAR}, #{isusesec11,jdbcType=VARCHAR}, #{isusesec12,jdbcType=VARCHAR},
+		#{isusesec13,jdbcType=VARCHAR}, #{isusesec14,jdbcType=VARCHAR}, #{isusesec15,jdbcType=VARCHAR},
+		#{mnysec0,jdbcType=NUMERIC}, #{mnysec1,jdbcType=NUMERIC}, #{mnysec2,jdbcType=NUMERIC}, #{mnysec3,jdbcType=NUMERIC},
+		#{mnysec4,jdbcType=NUMERIC}, #{mnysec5,jdbcType=NUMERIC}, #{mnysec6,jdbcType=NUMERIC}, #{mnysec7,jdbcType=NUMERIC},
+		#{mnysec8,jdbcType=NUMERIC}, #{mnysec9,jdbcType=NUMERIC}, #{mnysec10,jdbcType=NUMERIC}, #{mnysec11,jdbcType=NUMERIC},
+		#{mnysec12,jdbcType=NUMERIC}, #{mnysec13,jdbcType=NUMERIC}, #{mnysec14,jdbcType=NUMERIC},
+		#{mnysec15,jdbcType=NUMERIC}, #{timessec0,jdbcType=NUMERIC}, #{timessec1,jdbcType=NUMERIC},
+		#{timessec2,jdbcType=NUMERIC}, #{timessec3,jdbcType=NUMERIC}, #{timessec4,jdbcType=NUMERIC},
+		#{timessec5,jdbcType=NUMERIC}, #{timessec6,jdbcType=NUMERIC}, #{timessec7,jdbcType=NUMERIC},
+		#{timessec8,jdbcType=NUMERIC}, #{timessec9,jdbcType=NUMERIC}, #{timessec10,jdbcType=NUMERIC},
+		#{timessec11,jdbcType=NUMERIC}, #{timessec12,jdbcType=NUMERIC}, #{timessec13,jdbcType=NUMERIC},
+		#{timessec14,jdbcType=NUMERIC}, #{timessec15,jdbcType=NUMERIC})
+	</insert>
 
-<!-- update -->
-<update id="update" parameterType="CardinfoBean">
-update Com_CardInfo
-<set>
-<if test="carddispno != null">
-carddispno = #{carddispno,jdbcType=VARCHAR},
-</if>
-<if test="cardfixno != null">
-cardfixno = #{cardfixno,jdbcType=VARCHAR},
-</if>
-<if test="cardtypeid != null">
-cardtypeid = #{cardtypeid,jdbcType=NUMERIC},
-</if>
-<if test="cardcrtdby != null">
-cardcrtdby = #{cardcrtdby,jdbcType=VARCHAR},
-</if>
-<if test="cardcrtdday != null">
-cardcrtdday = #{cardcrtdday,jdbcType=TIMESTAMP},
-</if>
-<if test="cardmodiby != null">
-cardmodiby = #{cardmodiby,jdbcType=VARCHAR},
-</if>
-<if test="cardmodiday != null">
-cardmodiday = #{cardmodiday,jdbcType=TIMESTAMP},
-</if>
-<if test="isusesec0 != null">
-isusesec0 = #{isusesec0,jdbcType=VARCHAR},
-</if>
-<if test="isusesec1 != null">
-isusesec1 = #{isusesec1,jdbcType=VARCHAR},
-</if>
-<if test="isusesec2 != null">
-isusesec2 = #{isusesec2,jdbcType=VARCHAR},
-</if>
-<if test="isusesec3 != null">
-isusesec3 = #{isusesec3,jdbcType=VARCHAR},
-</if>
-<if test="isusesec4 != null">
-isusesec4 = #{isusesec4,jdbcType=VARCHAR},
-</if>
-<if test="isusesec5 != null">
-isusesec5 = #{isusesec5,jdbcType=VARCHAR},
-</if>
-<if test="isusesec6 != null">
-isusesec6 = #{isusesec6,jdbcType=VARCHAR},
-</if>
-<if test="isusesec7 != null">
-isusesec7 = #{isusesec7,jdbcType=VARCHAR},
-</if>
-<if test="isusesec8 != null">
-isusesec8 = #{isusesec8,jdbcType=VARCHAR},
-</if>
-<if test="isusesec9 != null">
-isusesec9 = #{isusesec9,jdbcType=VARCHAR},
-</if>
-<if test="isusesec10 != null">
-isusesec10 = #{isusesec10,jdbcType=VARCHAR},
-</if>
-<if test="isusesec11 != null">
-isusesec11 = #{isusesec11,jdbcType=VARCHAR},
-</if>
-<if test="isusesec12 != null">
-isusesec12 = #{isusesec12,jdbcType=VARCHAR},
-</if>
-<if test="isusesec13 != null">
-isusesec13 = #{isusesec13,jdbcType=VARCHAR},
-</if>
-<if test="isusesec14 != null">
-isusesec14 = #{isusesec14,jdbcType=VARCHAR},
-</if>
-<if test="isusesec15 != null">
-isusesec15 = #{isusesec15,jdbcType=VARCHAR},
-</if>
-<if test="mnysec0 != null">
-mnysec0 = #{mnysec0,jdbcType=NUMERIC},
-</if>
-<if test="mnysec1 != null">
-mnysec1 = #{mnysec1,jdbcType=NUMERIC},
-</if>
-<if test="mnysec2 != null">
-mnysec2 = #{mnysec2,jdbcType=NUMERIC},
-</if>
-<if test="mnysec3 != null">
-mnysec3 = #{mnysec3,jdbcType=NUMERIC},
-</if>
-<if test="mnysec4 != null">
-mnysec4 = #{mnysec4,jdbcType=NUMERIC},
-</if>
-<if test="mnysec5 != null">
-mnysec5 = #{mnysec5,jdbcType=NUMERIC},
-</if>
-<if test="mnysec6 != null">
-mnysec6 = #{mnysec6,jdbcType=NUMERIC},
-</if>
-<if test="mnysec7 != null">
-mnysec7 = #{mnysec7,jdbcType=NUMERIC},
-</if>
-<if test="mnysec8 != null">
-mnysec8 = #{mnysec8,jdbcType=NUMERIC},
-</if>
-<if test="mnysec9 != null">
-mnysec9 = #{mnysec9,jdbcType=NUMERIC},
-</if>
-<if test="mnysec10 != null">
-mnysec10 = #{mnysec10,jdbcType=NUMERIC},
-</if>
-<if test="mnysec11 != null">
-mnysec11 = #{mnysec11,jdbcType=NUMERIC},
-</if>
-<if test="mnysec12 != null">
-mnysec12 = #{mnysec12,jdbcType=NUMERIC},
-</if>
-<if test="mnysec13 != null">
-mnysec13 = #{mnysec13,jdbcType=NUMERIC},
-</if>
-<if test="mnysec14 != null">
-mnysec14 = #{mnysec14,jdbcType=NUMERIC},
-</if>
-<if test="mnysec15 != null">
-mnysec15 = #{mnysec15,jdbcType=NUMERIC},
-</if>
-<if test="timessec0 != null">
-timessec0 = #{timessec0,jdbcType=NUMERIC},
-</if>
-<if test="timessec1 != null">
-timessec1 = #{timessec1,jdbcType=NUMERIC},
-</if>
-<if test="timessec2 != null">
-timessec2 = #{timessec2,jdbcType=NUMERIC},
-</if>
-<if test="timessec3 != null">
-timessec3 = #{timessec3,jdbcType=NUMERIC},
-</if>
-<if test="timessec4 != null">
-timessec4 = #{timessec4,jdbcType=NUMERIC},
-</if>
-<if test="timessec5 != null">
-timessec5 = #{timessec5,jdbcType=NUMERIC},
-</if>
-<if test="timessec6 != null">
-timessec6 = #{timessec6,jdbcType=NUMERIC},
-</if>
-<if test="timessec7 != null">
-timessec7 = #{timessec7,jdbcType=NUMERIC},
-</if>
-<if test="timessec8 != null">
-timessec8 = #{timessec8,jdbcType=NUMERIC},
-</if>
-<if test="timessec9 != null">
-timessec9 = #{timessec9,jdbcType=NUMERIC},
-</if>
-<if test="timessec10 != null">
-timessec10 = #{timessec10,jdbcType=NUMERIC},
-</if>
-<if test="timessec11 != null">
-timessec11 = #{timessec11,jdbcType=NUMERIC},
-</if>
-<if test="timessec12 != null">
-timessec12 = #{timessec12,jdbcType=NUMERIC},
-</if>
-<if test="timessec13 != null">
-timessec13 = #{timessec13,jdbcType=NUMERIC},
-</if>
-<if test="timessec14 != null">
-timessec14 = #{timessec14,jdbcType=NUMERIC},
-</if>
-<if test="timessec15 != null">
-timessec15 = #{timessec15,jdbcType=NUMERIC},
-</if>
-</set>
- where cardid = #{cardid}
-</update>
+	<!-- update -->
+	<update id="update" parameterType="CardinfoBean">
+		update Com_CardInfo
+		<set>
+			<if test="carddispno != null">
+				carddispno = #{carddispno,jdbcType=VARCHAR},
+			</if>
+			<if test="cardfixno != null">
+				cardfixno = #{cardfixno,jdbcType=VARCHAR},
+			</if>
+			<if test="cardtypeid != null">
+				cardtypeid = #{cardtypeid,jdbcType=NUMERIC},
+			</if>
+			<if test="cardcrtdby != null">
+				cardcrtdby = #{cardcrtdby,jdbcType=VARCHAR},
+			</if>
+			<if test="cardcrtdday != null">
+				cardcrtdday = #{cardcrtdday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="cardmodiby != null">
+				cardmodiby = #{cardmodiby,jdbcType=VARCHAR},
+			</if>
+			<if test="cardmodiday != null">
+				cardmodiday = #{cardmodiday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isusesec0 != null">
+				isusesec0 = #{isusesec0,jdbcType=VARCHAR},
+			</if>
+			<if test="isusesec1 != null">
+				isusesec1 = #{isusesec1,jdbcType=VARCHAR},
+			</if>
+			<if test="isusesec2 != null">
+				isusesec2 = #{isusesec2,jdbcType=VARCHAR},
+			</if>
+			<if test="isusesec3 != null">
+				isusesec3 = #{isusesec3,jdbcType=VARCHAR},
+			</if>
+			<if test="isusesec4 != null">
+				isusesec4 = #{isusesec4,jdbcType=VARCHAR},
+			</if>
+			<if test="isusesec5 != null">
+				isusesec5 = #{isusesec5,jdbcType=VARCHAR},
+			</if>
+			<if test="isusesec6 != null">
+				isusesec6 = #{isusesec6,jdbcType=VARCHAR},
+			</if>
+			<if test="isusesec7 != null">
+				isusesec7 = #{isusesec7,jdbcType=VARCHAR},
+			</if>
+			<if test="isusesec8 != null">
+				isusesec8 = #{isusesec8,jdbcType=VARCHAR},
+			</if>
+			<if test="isusesec9 != null">
+				isusesec9 = #{isusesec9,jdbcType=VARCHAR},
+			</if>
+			<if test="isusesec10 != null">
+				isusesec10 = #{isusesec10,jdbcType=VARCHAR},
+			</if>
+			<if test="isusesec11 != null">
+				isusesec11 = #{isusesec11,jdbcType=VARCHAR},
+			</if>
+			<if test="isusesec12 != null">
+				isusesec12 = #{isusesec12,jdbcType=VARCHAR},
+			</if>
+			<if test="isusesec13 != null">
+				isusesec13 = #{isusesec13,jdbcType=VARCHAR},
+			</if>
+			<if test="isusesec14 != null">
+				isusesec14 = #{isusesec14,jdbcType=VARCHAR},
+			</if>
+			<if test="isusesec15 != null">
+				isusesec15 = #{isusesec15,jdbcType=VARCHAR},
+			</if>
+			<if test="mnysec0 != null">
+				mnysec0 = #{mnysec0,jdbcType=NUMERIC},
+			</if>
+			<if test="mnysec1 != null">
+				mnysec1 = #{mnysec1,jdbcType=NUMERIC},
+			</if>
+			<if test="mnysec2 != null">
+				mnysec2 = #{mnysec2,jdbcType=NUMERIC},
+			</if>
+			<if test="mnysec3 != null">
+				mnysec3 = #{mnysec3,jdbcType=NUMERIC},
+			</if>
+			<if test="mnysec4 != null">
+				mnysec4 = #{mnysec4,jdbcType=NUMERIC},
+			</if>
+			<if test="mnysec5 != null">
+				mnysec5 = #{mnysec5,jdbcType=NUMERIC},
+			</if>
+			<if test="mnysec6 != null">
+				mnysec6 = #{mnysec6,jdbcType=NUMERIC},
+			</if>
+			<if test="mnysec7 != null">
+				mnysec7 = #{mnysec7,jdbcType=NUMERIC},
+			</if>
+			<if test="mnysec8 != null">
+				mnysec8 = #{mnysec8,jdbcType=NUMERIC},
+			</if>
+			<if test="mnysec9 != null">
+				mnysec9 = #{mnysec9,jdbcType=NUMERIC},
+			</if>
+			<if test="mnysec10 != null">
+				mnysec10 = #{mnysec10,jdbcType=NUMERIC},
+			</if>
+			<if test="mnysec11 != null">
+				mnysec11 = #{mnysec11,jdbcType=NUMERIC},
+			</if>
+			<if test="mnysec12 != null">
+				mnysec12 = #{mnysec12,jdbcType=NUMERIC},
+			</if>
+			<if test="mnysec13 != null">
+				mnysec13 = #{mnysec13,jdbcType=NUMERIC},
+			</if>
+			<if test="mnysec14 != null">
+				mnysec14 = #{mnysec14,jdbcType=NUMERIC},
+			</if>
+			<if test="mnysec15 != null">
+				mnysec15 = #{mnysec15,jdbcType=NUMERIC},
+			</if>
+			<if test="timessec0 != null">
+				timessec0 = #{timessec0,jdbcType=NUMERIC},
+			</if>
+			<if test="timessec1 != null">
+				timessec1 = #{timessec1,jdbcType=NUMERIC},
+			</if>
+			<if test="timessec2 != null">
+				timessec2 = #{timessec2,jdbcType=NUMERIC},
+			</if>
+			<if test="timessec3 != null">
+				timessec3 = #{timessec3,jdbcType=NUMERIC},
+			</if>
+			<if test="timessec4 != null">
+				timessec4 = #{timessec4,jdbcType=NUMERIC},
+			</if>
+			<if test="timessec5 != null">
+				timessec5 = #{timessec5,jdbcType=NUMERIC},
+			</if>
+			<if test="timessec6 != null">
+				timessec6 = #{timessec6,jdbcType=NUMERIC},
+			</if>
+			<if test="timessec7 != null">
+				timessec7 = #{timessec7,jdbcType=NUMERIC},
+			</if>
+			<if test="timessec8 != null">
+				timessec8 = #{timessec8,jdbcType=NUMERIC},
+			</if>
+			<if test="timessec9 != null">
+				timessec9 = #{timessec9,jdbcType=NUMERIC},
+			</if>
+			<if test="timessec10 != null">
+				timessec10 = #{timessec10,jdbcType=NUMERIC},
+			</if>
+			<if test="timessec11 != null">
+				timessec11 = #{timessec11,jdbcType=NUMERIC},
+			</if>
+			<if test="timessec12 != null">
+				timessec12 = #{timessec12,jdbcType=NUMERIC},
+			</if>
+			<if test="timessec13 != null">
+				timessec13 = #{timessec13,jdbcType=NUMERIC},
+			</if>
+			<if test="timessec14 != null">
+				timessec14 = #{timessec14,jdbcType=NUMERIC},
+			</if>
+			<if test="timessec15 != null">
+				timessec15 = #{timessec15,jdbcType=NUMERIC},
+			</if>
+		</set>
+		where cardid = #{cardid}
+	</update>
 
-<!-- delete -->
-<delete id="delete" parameterType="CardinfoBean">
-delete from Com_CardInfo where cardid = #{cardid,jdbcType=NUMERIC}
-</delete>
+	<!-- delete -->
+	<delete id="delete" parameterType="CardinfoBean">
+		delete from Com_CardInfo where cardid = #{cardid,jdbcType=NUMERIC}
+	</delete>
 </mapper>

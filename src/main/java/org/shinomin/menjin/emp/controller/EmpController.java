@@ -59,4 +59,17 @@ public class EmpController {
 		return model;
 	}
 
+
+	/**
+	 * 人员修改
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	@ResponseBody
+	@RequestMapping("/delete")
+	public String delete(EmpBean emp) throws Exception {
+		return empService.doDelete(emp);
+	}
+
 }

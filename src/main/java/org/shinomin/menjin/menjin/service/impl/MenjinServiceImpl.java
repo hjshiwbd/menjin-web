@@ -112,24 +112,7 @@ public class MenjinServiceImpl implements IMenjinService {
 			return JsonUtil.toJson(e);
 		}
 
-		// 移除老的绑定
-		for (String cardno : cards) {
-			List<HwAcccodeBean> acccodeBeans = WsQuery.getAllACCodes("", cardno);
-			if (acccodeBeans != null) {
-				logger.info("exists acccodeBeans size:{}", acccodeBeans.size());
-				for (HwAcccodeBean hwAcccodeBean : acccodeBeans) {
-					WsQuery.removeACCodeFromCard(cardno, hwAcccodeBean.getId());
-					logger.info("removeACCodeFromCard finish,cardid:{}, accodeid:{}", cardno, hwAcccodeBean.getId());
-
-					deleteDb(cardno);
-					deleteDb2(cardno);
-				}
-				e.setResult("1");
-				e.setMessage("设置成功");
-			} else {
-				logger.info("no acccodeBeans found for cardno:{}", cardno);
-			}
-		}
+		e = removeAccodeFromCard(cards);
 
 		if (accodeIds.size() > 0) {
 			e.setResult("0");
@@ -164,6 +147,30 @@ public class MenjinServiceImpl implements IMenjinService {
 			e.setMessage("权限清除成功");
 		}
 		return JsonUtil.toJson(e);
+	}
+
+	@Override
+	public ExecuteResult removeAccodeFromCard(List<String> cards) {
+		ExecuteResult e = new ExecuteResult("0", "设置失败，请稍候再试");
+		// 移除老的绑定
+		for (String cardno : cards) {
+			List<HwAcccodeBean> acccodeBeans = WsQuery.getAllACCodes("", cardno);
+			if (acccodeBeans != null) {
+				logger.info("exists acccodeBeans size:{}", acccodeBeans.size());
+				for (HwAcccodeBean hwAcccodeBean : acccodeBeans) {
+					WsQuery.removeACCodeFromCard(cardno, hwAcccodeBean.getId());
+					logger.info("removeACCodeFromCard finish,cardid:{}, accodeid:{}", cardno, hwAcccodeBean.getId());
+				}
+				deleteDb(cardno);
+				deleteDb2(cardno);
+			} else {
+				logger.info("no acccodeBeans found for cardno:{}", cardno);
+			}
+			e.setResult("1");
+			e.setMessage("设置成功");
+		}
+
+		return e;
 	}
 
 	private void deleteDb2(String cardno) {

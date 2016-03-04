@@ -1,5 +1,8 @@
 package org.shinomin.menjin.menjin.service;
 
+import java.util.List;
+
+import org.shinomin.commons.bean.ExecuteResult;
 import org.shinomin.menjin.bean.EmpBean;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -55,5 +58,6 @@ public interface IMenjinService {
 	String readerControl(String readerid, int cmd);
 
 	ModelAndView showShezhi();
-
+	
+	public ExecuteResult removeAccodeFromCard(List<String> cards);
 }
