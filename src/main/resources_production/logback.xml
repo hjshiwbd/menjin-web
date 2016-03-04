@@ -26,64 +26,53 @@
 	<logger name="com.alibaba.druid" additivity="false">
 		<level value="error" />
 		<appender-ref ref="file" />
-		<appender-ref ref="stdout" />
 	</logger>
 	<!-- spring && spring plugin -->
 	<logger name="org.springframework" additivity="false">
 		<level value="info" />
 		<appender-ref ref="file" />
-		<appender-ref ref="stdout" />
 	</logger>
 	<logger name="org.springframework.web.context.support.XmlWebApplicationContext" additivity="false">
 		<level value="debug" />
 		<appender-ref ref="file" />
-		<appender-ref ref="stdout" />
 	</logger>
 
 	<!-- mybatis -->
 	<logger name="org.apache.ibatis" additivity="false">
 		<level value="ERROR" />
 		<appender-ref ref="file" />
-		<appender-ref ref="stdout" />
 	</logger>
 	<!-- mybatis plugin for spring integration -->
 	<logger name="org.mybatis.spring" additivity="false">
 		<level value="ERROR" />
 		<appender-ref ref="file" />
-		<appender-ref ref="stdout" />
 	</logger>
 	<!-- mybatis plugin for pagination query -->
 	<logger name="com.github.miemiedev" additivity="false">
 		<level value="ERROR" />
 		<appender-ref ref="file" />
-		<appender-ref ref="stdout" />
 	</logger>
 	<!-- org.apache.http -->
 	<logger name="org.apache" additivity="false">
 		<level value="ERROR" />
 		<appender-ref ref="file" />
-		<appender-ref ref="stdout" />
 	</logger>
 	<logger name="org.nutz" additivity="false">
 		<level value="error" />
 		<appender-ref ref="file" />
-		<appender-ref ref="stdout" />
 	</logger>
 	<logger name="com.juanpi.bis.servicemonitor.mapper" additivity="false">
 		<level value="error" />
 		<appender-ref ref="file" />
-		<appender-ref ref="stdout" />
 	</logger>
 	<logger name="org.shinomin.commons" additivity="false">
 		<level value="error" />
 		<appender-ref ref="file" />
-		<appender-ref ref="stdout" />
 	</logger>
 
 	<root>
 		<level value="debug" />
 		<appender-ref ref="file" />
-		<appender-ref ref="stdout" />
 	</root>
 </configuration>
 
