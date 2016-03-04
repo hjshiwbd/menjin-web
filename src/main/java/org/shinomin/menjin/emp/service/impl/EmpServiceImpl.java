@@ -185,7 +185,11 @@ public class EmpServiceImpl implements IEmpService {
 				card.setCardno(emp.getEmpcardno().trim());
 				card.setIssue_date(DateUtil.formatDate(today, "yyyy-MM-dd"));
 				card.setExpire_date(DateUtil.formatDate(tenYearLater, "yyyy-MM-dd"));
-				WsQuery.addCard(card, "0x00488a1872d040a54a3882e897327e7955a0");
+				ExecuteResult cardex = WsQuery.addCard(card, "0x00488a1872d040a54a3882e897327e7955a0");
+				if (!"0".equals(cardex.getResult())) {
+					logger.error("hw卡号添加失败.请检查卡号是否重复");
+					throw new Exception("hw卡号添加失败.请检查卡号是否重复");
+				}
 			} else {
 				logger.info("add person to hw failed:{}", e.getMessage());
 				throw new Exception("add person to hw failed");
