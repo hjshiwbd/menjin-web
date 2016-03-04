@@ -80,6 +80,7 @@
 				<property name="doNotIntercept">
 					<list>
 						<value><![CDATA[MiscpageController.left]]></value>
+						<value><![CDATA[NotifyController.*]]></value>
 					</list>
 				</property>
 			</bean>
@@ -91,6 +92,7 @@
 				<property name="notWriteLogCutpoint">
 					<list>
 						<value><![CDATA[MiscpageController.*]]></value>
+						<value><![CDATA[NotifyController.*]]></value>
 					</list>
 				</property>
 			</bean>

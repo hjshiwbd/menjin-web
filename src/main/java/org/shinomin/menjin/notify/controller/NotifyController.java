@@ -35,6 +35,7 @@ public class NotifyController {
 				e.setResult("1");
 				e.setMessage("ok");
 			} catch (Exception e1) {
+				logger.info(e1.getMessage(), e1);
 				e.setMessage("proccess_failed");
 			}
 		} else {
