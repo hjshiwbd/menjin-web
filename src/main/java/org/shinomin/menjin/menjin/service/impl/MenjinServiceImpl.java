@@ -17,10 +17,12 @@ import org.shinomin.menjin.bean.EmpBean;
 import org.shinomin.menjin.bean.HwAcccodeBean;
 import org.shinomin.menjin.bean.HwPersonBean;
 import org.shinomin.menjin.bean.HwReaderBean;
+import org.shinomin.menjin.bean.HwpaeventBean;
 import org.shinomin.menjin.card.service.ICardaccodeService;
 import org.shinomin.menjin.constant.ErrorConstant;
 import org.shinomin.menjin.door.service.IDoorService;
 import org.shinomin.menjin.emp.service.IEmpService;
+import org.shinomin.menjin.log.service.IHwpaeventService;
 import org.shinomin.menjin.menjin.service.IMenjinService;
 import org.shinomin.menjin.webservice.WsQuery;
 import org.shinomin.menjin.xtkz.controller.EasyuiUtil;
@@ -42,6 +44,8 @@ public class MenjinServiceImpl implements IMenjinService {
 	private IAuthorsetService authorsetService;
 	@Autowired
 	private IDoorService doorService;
+	@Autowired
+	private IHwpaeventService eventService;
 
 	@Override
 	public ModelAndView showShouquan() {
@@ -231,6 +235,17 @@ public class MenjinServiceImpl implements IMenjinService {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("menjin/menjin_shezhi");
 		return model;
+	}
+
+	@Override
+	public String eventListEu(Integer page, Integer rows, HwpaeventBean event) {
+		logger.info("event:{}", JsonUtil.toJson(event));
+		Pager<HwpaeventBean> pager = new Pager<>();
+		pager.setCurtPage(page);
+		pager.setCountPerPage(rows);
+		eventService.selectPage(event, pager);
+
+		return EasyuiUtil.parseDatagrid(pager);
 	}
 
 }

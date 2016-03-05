@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.shinomin.commons.bean.ExecuteResult;
 import org.shinomin.menjin.bean.EmpBean;
+import org.shinomin.menjin.bean.HwpaeventBean;
 import org.springframework.web.servlet.ModelAndView;
 
 public interface IMenjinService {
@@ -60,4 +61,6 @@ public interface IMenjinService {
 	ModelAndView showShezhi();
 	
 	public ExecuteResult removeAccodeFromCard(List<String> cards);
+
+	String eventListEu(Integer page, Integer rows, HwpaeventBean event);
 }

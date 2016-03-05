@@ -14,14 +14,6 @@ CREATE TABLE system_config (
 	confstatus VARCHAR (5)
 );
 ------------------------------------------------------------
-drop table mjsq_menu;
-create table mjsq_menu (
-	id varchar(20) primary key,
-	name varchar(50),
-	url varchar(50),
-	opentype varchar(50),
-	pid varchar(50)
-);
 ------------------------------------------------------------
 CREATE TABLE [dbo].[mjsq_qqrz] (
 [id] int NOT NULL IDENTITY(1,1) ,
@@ -37,10 +29,26 @@ CREATE TABLE [dbo].[mjsq_qqrz] (
 [qqsj] varchar(50) COLLATE Chinese_PRC_CI_AS NULL ,
 [sessionid] varchar(50) COLLATE Chinese_PRC_CI_AS NULL ,
 [header] text COLLATE Chinese_PRC_CI_AS NULL ,
-CONSTRAINT [PK__mjsq_qqr__3213E83F25869641] PRIMARY KEY ([id])
+CONSTRAINT [PK__mjsq_qqr__3213E83F0A351835] PRIMARY KEY ([id])
 )
 ON [PRIMARY]
 TEXTIMAGE_ON [PRIMARY]
+GO
+
+CREATE UNIQUE INDEX [idx_mjsq_qqrz_id] ON [dbo].[mjsq_qqrz]
+([id] ASC) 
+WITH (IGNORE_DUP_KEY = ON)
+ON [PRIMARY]
+GO
+
+CREATE INDEX [idx_mjsq_qqrz_qqsj] ON [dbo].[mjsq_qqrz]
+([qqsj] ASC) 
+ON [PRIMARY]
+GO
+
+CREATE INDEX [idx_mjsq_qqrz_rybh] ON [dbo].[mjsq_qqrz]
+([rybh] ASC) 
+ON [PRIMARY]
 GO
 ------------------------------------------------------------
 create table mjsq_user (

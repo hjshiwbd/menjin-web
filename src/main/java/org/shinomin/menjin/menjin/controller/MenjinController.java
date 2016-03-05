@@ -1,6 +1,7 @@
 package org.shinomin.menjin.menjin.controller;
 
 import org.shinomin.menjin.bean.EmpBean;
+import org.shinomin.menjin.bean.HwpaeventBean;
 import org.shinomin.menjin.menjin.service.IMenjinService;
 import org.shinomin.menjin.qqrz.service.IQqrzService;
 import org.shinomin.menjin.spring.request.RequestScope;
@@ -99,5 +100,18 @@ public class MenjinController {
 	@RequestMapping("/person_acccode")
 	public String personAcccode(EmpBean emp) throws Exception {
 		return menjinService.queryPersonAcccode(emp);
+	}
+
+	@RequestMapping("/event")
+	public ModelAndView event() throws Exception {
+		ModelAndView model = new ModelAndView();
+		model.setViewName("menjin/menjin_event");
+		return model;
+	}
+
+	@ResponseBody
+	@RequestMapping("/event_list_eu")
+	public String eventListEu(Integer page, Integer rows, HwpaeventBean event) throws Exception {
+		return menjinService.eventListEu(page, rows, event);
 	}
 }

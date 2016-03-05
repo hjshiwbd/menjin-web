@@ -41,10 +41,10 @@
 									<!-- STYLER -->
 									<!-- /STYLER -->
 									<div class="clearfix">
-										<h3 class="content-title pull-left">门禁授权</h3>
+										<h3 class="content-title pull-left">门禁控制</h3>
 									</div>
 									<div class="divide-20"></div>
-									<div class="description">设置或者收回员工访问门禁的权限</div>
+									<div class="description">门禁远程控制</div>
 								</div>
 							</div>
 						</div>
@@ -55,7 +55,7 @@
 								<div class="box border primary">
 									<div class="box-title">
 										<h4>
-											<i class="fa fa-bars"></i>门禁设置
+											<i class="fa fa-bars"></i>门禁控制
 										</h4>
 										<div class="tools hidden-xs">
 											<a href="#box-config" data-toggle="modal" class="config"> <i class="fa fa-cog"></i>

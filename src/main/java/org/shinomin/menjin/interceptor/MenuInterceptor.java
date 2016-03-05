@@ -69,7 +69,6 @@ public class MenuInterceptor extends HandlerInterceptorAdapter
 			{
 				if (StringUtils.isNotBlank(menu.getUrl()) && menu.getUrl().equals(url))
 				{
-					logger.debug(menu.getUrl() + "-" + url);
 					current = menu;
 				}
 			}
