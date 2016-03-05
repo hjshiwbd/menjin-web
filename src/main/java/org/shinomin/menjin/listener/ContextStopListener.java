@@ -3,6 +3,7 @@ package org.shinomin.menjin.listener;
 import org.shinomin.menjin.webservice.WsQuery;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.context.event.ContextStoppedEvent;
 import org.springframework.stereotype.Component;
 
@@ -13,10 +14,10 @@ import org.springframework.stereotype.Component;
  * 
  */
 @Component
-public class ContextStopListener implements ApplicationListener<ContextStoppedEvent> {
+public class ContextStopListener implements ApplicationListener<ContextClosedEvent> {
 
 	@Override
-	public void onApplicationEvent(ContextStoppedEvent event) {
+	public void onApplicationEvent(ContextClosedEvent event) {
 		WsQuery.stopRecvRealEvent();
 		ApplicationContext app = event.getApplicationContext();
 		if (isCache(app)) {
