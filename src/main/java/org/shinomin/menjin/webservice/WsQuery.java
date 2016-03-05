@@ -13,6 +13,7 @@ import org.shinomin.menjin.bean.HwAcccodeBean;
 import org.shinomin.menjin.bean.HwCardBean;
 import org.shinomin.menjin.bean.HwPersonBean;
 import org.shinomin.menjin.bean.HwReaderBean;
+import org.shinomin.menjin.bean.HwpaeventBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -46,7 +47,7 @@ public class WsQuery {
 	@SuppressWarnings("unchecked")
 	private static Object getWsObject(String json) {
 		if (logger.isDebugEnabled()) {
-			logger.debug("json:{}", json);
+//			logger.debug("json:{}", json);
 		}
 		Map<String, Object> map = (Map<String, Object>) JsonUtil.toObj(json);
 		String result = map.get(RESULT).toString();
@@ -179,6 +180,39 @@ public class WsQuery {
 			return "0".equals(e.getResult());
 		} else {
 			return false;
+		}
+	}
+
+	public static boolean startRecvRealEvent() {
+		String json = WsUtil.startRecvRealEvent();
+		if (StringUtils.isNotBlank(json)) {
+			logger.info("startRecvRealEvent:{}", json);
+			ExecuteResult e = Json.fromJson(ExecuteResult.class, json);
+			return "0".equals(e.getResult());
+		} else {
+			return false;
+		}
+	}
+
+	public static boolean stopRecvRealEvent() {
+		String json = WsUtil.stopRecvRealEvent();
+		if (StringUtils.isNotBlank(json)) {
+			logger.info("stopRecvRealEvent:{}", json);
+			ExecuteResult e = Json.fromJson(ExecuteResult.class, json);
+			return "0".equals(e.getResult());
+		} else {
+			return false;
+		}
+	}
+
+	public static List<HwpaeventBean> getHistoryEvent(String beginDate, String endDate, boolean isTrigger) {
+		String json = WsUtil.getHistoryEvent(beginDate, endDate,isTrigger);
+		if (StringUtils.isNotBlank(json)) {
+			List<HwpaeventBean> list = convertList(getWsObject(json), HwpaeventBean.class);
+			logger.info("eventlist size:{}", list.size());
+			return list;
+		} else {
+			return null;
 		}
 	}
 

@@ -3,6 +3,7 @@ package org.shinomin.menjin.webservice;
 import java.io.UnsupportedEncodingException;
 
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
+import org.shinomin.commons.utils.DateUtil;
 import org.shinomin.commons.utils.JsonUtil;
 import org.shinomin.menjin.bean.HwCardBean;
 import org.shinomin.menjin.bean.HwPersonBean;
@@ -149,6 +150,30 @@ public class WsUtil {
 	public static String removePerson(String personid) {
 		logger.info("personid:{}", personid);
 		String result = getWsType().removePerson(personid);
+		return result;
+	}
+
+	public static String startRecvRealEvent() {
+		String result = getWsType().startRecvRealEvent();
+		logger.info("startRecvRealEvent done");
+		return result;
+	}
+
+	public static String stopRecvRealEvent() {
+		String result = getWsType().stopRecvRealEvent();
+		logger.info("stopRecvRealEvent done");
+		return result;
+	}
+
+	public static String getHistoryEvent(String beginDate, String endDate, boolean isTrigger) {
+		logger.info("getHistoryEvent:{}-{}", beginDate, endDate);
+		long begin = DateUtil.parseDate(beginDate).getTime() / 1000;
+		long end = DateUtil.parseDate(endDate).getTime() / 1000;
+		String result = getWsType().getHistoryEvent(begin, end, isTrigger);
+		try {
+			result = new String(result.getBytes("iso-8859-1"), "gbk");
+		} catch (UnsupportedEncodingException e) {
+		}
 		return result;
 	}
 

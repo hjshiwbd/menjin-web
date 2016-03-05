@@ -1,5 +1,6 @@
 package org.shinomin.menjin.menjin.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -246,6 +247,17 @@ public class MenjinServiceImpl implements IMenjinService {
 		eventService.selectPage(event, pager);
 
 		return EasyuiUtil.parseDatagrid(pager);
+	}
+
+	@Override
+	public String historyEventListEu(String beginDate, String endDate, boolean isTrigger) {
+		logger.info("begin:{},end:{},isTrigger:{}", beginDate, endDate, isTrigger);
+		if (StringUtils.isBlank(beginDate) || StringUtils.isBlank(endDate)) {
+			List<HwpaeventBean> list = new ArrayList<>();
+			return EasyuiUtil.parseDatagrid(list);
+		}
+		List<HwpaeventBean> list = WsQuery.getHistoryEvent(beginDate, endDate, isTrigger);
+		return EasyuiUtil.parseDatagrid(list);
 	}
 
 }

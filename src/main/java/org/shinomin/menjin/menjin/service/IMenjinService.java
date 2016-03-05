@@ -63,4 +63,6 @@ public interface IMenjinService {
 	public ExecuteResult removeAccodeFromCard(List<String> cards);
 
 	String eventListEu(Integer page, Integer rows, HwpaeventBean event);
+
+	String historyEventListEu(String beginDate, String endDate, boolean isTrigger);
 }

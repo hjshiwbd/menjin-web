@@ -102,6 +102,12 @@ public class MenjinController {
 		return menjinService.queryPersonAcccode(emp);
 	}
 
+	/**
+	 * 事件显示
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping("/event")
 	public ModelAndView event() throws Exception {
 		ModelAndView model = new ModelAndView();
@@ -109,9 +115,48 @@ public class MenjinController {
 		return model;
 	}
 
+	/**
+	 * 事件dg
+	 * 
+	 * @param page
+	 * @param rows
+	 * @param event
+	 * @return
+	 * @throws Exception
+	 */
 	@ResponseBody
 	@RequestMapping("/event_list_eu")
 	public String eventListEu(Integer page, Integer rows, HwpaeventBean event) throws Exception {
 		return menjinService.eventListEu(page, rows, event);
 	}
+
+	/**
+	 * 显示历史事件
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/history_event")
+	public ModelAndView historyEvent() throws Exception {
+		ModelAndView model = new ModelAndView();
+		model.setViewName("menjin/menjin_history_event");
+		return model;
+	}
+
+	/**
+	 * 历史事件dg
+	 * 
+	 * @param beginDate
+	 * @param endDate
+	 * @param isTrigger
+	 *            true为事件发生时间, false为事件接收时间
+	 * @return
+	 * @throws Exception
+	 */
+	@ResponseBody
+	@RequestMapping("/history_event_list_eu")
+	public String historyEventListEu(String beginDate, String endDate, boolean isTrigger) throws Exception {
+		return menjinService.historyEventListEu(beginDate, endDate, isTrigger);
+	}
+
 }
