@@ -56,6 +56,10 @@ function commonAjax(options) {
 				// 返回类型是json格式
 				if (dataType == 'json') {
 					msg = $.parseJSON(msg);
+					if (msg.result == '-999') {
+						eualert(decodeURIComponent(msg.message));
+						return;
+					}
 				}
 				// 页面返回区域
 				if (options.target) {

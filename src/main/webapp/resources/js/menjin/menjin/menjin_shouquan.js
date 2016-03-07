@@ -138,10 +138,12 @@ function initDg() {
 
 	// var url = '/menjin/data/datagrid_data1.json';
 	var url = cu('/menjin/query_hw_person_dg');
-	var col = [ {
-		field : '',
-		checkbox : true
-	}, {
+	var col = [
+	// {
+	// field : '',
+	// checkbox : true
+	// },
+	{
 		field : 'empno',
 		title : '编号',
 		width : 100

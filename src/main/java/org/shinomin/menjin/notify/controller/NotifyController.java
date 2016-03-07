@@ -24,6 +24,7 @@ public class NotifyController {
 	@ResponseBody
 	@RequestMapping(value = "/event")
 	public String event(String message) throws Exception {
+		message = new String(message.getBytes("iso-8859-1"), "gbk");
 		logger.info("message:{}", message);
 		ExecuteResult e = new ExecuteResult("0", "");
 

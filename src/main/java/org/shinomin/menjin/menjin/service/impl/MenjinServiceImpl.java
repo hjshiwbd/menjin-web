@@ -16,6 +16,7 @@ import org.shinomin.menjin.bean.CardaccodeBean;
 import org.shinomin.menjin.bean.DoorBean;
 import org.shinomin.menjin.bean.EmpBean;
 import org.shinomin.menjin.bean.HwAcccodeBean;
+import org.shinomin.menjin.bean.HwCardBean;
 import org.shinomin.menjin.bean.HwPersonBean;
 import org.shinomin.menjin.bean.HwReaderBean;
 import org.shinomin.menjin.bean.HwpaeventBean;
@@ -31,6 +32,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.servlet.ModelAndView;
 
 @Service
@@ -112,10 +114,7 @@ public class MenjinServiceImpl implements IMenjinService {
 		List<String> cards = (List<String>) map.get("cards");// 卡
 		List<String> accodeIds = (List<String>) map.get("accodeIds");// 访问码
 
-		if (cards.size() == 0) {
-			e.setMessage("请求参数有误");
-			return JsonUtil.toJson(e);
-		}
+		checkParamSaveshouquan(cards);
 
 		e = removeAccodeFromCard(cards);
 
@@ -152,6 +151,18 @@ public class MenjinServiceImpl implements IMenjinService {
 			e.setMessage("权限清除成功");
 		}
 		return JsonUtil.toJson(e);
+	}
+
+	private void checkParamSaveshouquan(List<String> cards) throws Exception {
+		if (cards.size() == 0) {
+			throw new Exception("请求参数有误");
+		}
+		for (String card : cards) {
+			List<HwCardBean> list = WsQuery.queryCards("cardno", "=", card);
+			if (CollectionUtils.isEmpty(list) || list.size() != 1) {
+				throw new Exception("此人卡号错误，暂无法设置权限");
+			}
+		}
 	}
 
 	@Override
