@@ -5,6 +5,7 @@ var clickRow;
 var treeObj;
 
 $(function() {
+	page_init("widgets_box");
 	//
 	initDg();
 	// 查询
