@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/cloud-admin.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/themes/default.css" id="skin-switcher">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/themes/default.css?<%=Math.random()%>" id="skin-switcher">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/responsive.css">
 <!-- STYLESHEETS -->
 <!--[if lt IE 9]><script src="${pageContext.request.contextPath}/resources/js/flot/excanvas.min.js"></script><script src="${pageContext.request.contextPath}/resources/external/html5.js"></script><script src="${pageContext.request.contextPath}/resources/external/css3-mediaqueries.js"></script><![endif]-->

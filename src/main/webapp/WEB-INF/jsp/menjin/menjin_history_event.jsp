@@ -182,6 +182,6 @@
 	<script type="text/javascript" src="<%=path%>/resources/js/uniform/jquery.uniform.min.js"></script>
 	<script type="text/javascript" src="<%=path%>/resources/js/zTree_v3/js/jquery.ztree.core-3.5.js"></script>
 	<script type="text/javascript" src="<%=path%>/resources/js/zTree_v3/js/jquery.ztree.excheck-3.5.js"></script>
-	<script type="text/javascript" src="<%=path%>/resources/js/menjin/menjin/menjin_history_event.js"></script>
+	<script type="text/javascript" src="<%=path%>/resources/js/menjin/menjin/menjin_history_event.js?<%=Math.random()%>"></script>
 </body>
 </html>
