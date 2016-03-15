@@ -54,6 +54,11 @@ function validate() {
 	$('#empname,#empno').validatebox({
 		required : true
 	});
+	$('#issue_date,#expire_date').datebox({
+		height : 32,
+		width : 300,
+		required : true
+	});
 }
 
 function formSubmit() {

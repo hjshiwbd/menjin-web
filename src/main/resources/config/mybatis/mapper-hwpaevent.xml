@@ -30,7 +30,7 @@
 				and t.id = #{id,jdbcType=NUMERIC}
 			</if>
 			<if test="logdevdescrp != null and logdevdescrp != ''">
-				and t.logdevdescrp = #{logdevdescrp,jdbcType=VARCHAR}
+				and t.logdevdescrp like '%'+#{logdevdescrp,jdbcType=VARCHAR}+'%'
 			</if>
 			<if test="logdevtypedesc != null and logdevtypedesc != ''">
 				and t.logdevtypedesc = #{logdevtypedesc,jdbcType=VARCHAR}

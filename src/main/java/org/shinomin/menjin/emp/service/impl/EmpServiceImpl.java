@@ -178,14 +178,11 @@ public class EmpServiceImpl implements IEmpService {
 	 */
 	private void addToHw(EmpBean emp) throws Exception {
 		try {
-			Date today = new Date();
-			Date tenYearLater = new Date(today.getTime() + 10 * 365 * 24 * 60 * 60 * 1000);// 10年后
-
 			HwPersonBean person = new HwPersonBean();
 			person.setLname(emp.getEmpno());
 			person.setFname(encode(emp.getEmpname()));
-			person.setIssue_date(DateUtil.formatDate(today, "yyyy-MM-dd"));// 今天为生效时间
-			person.setExpire_date(DateUtil.formatDate(tenYearLater, "yyyy-MM-dd"));// 10年为失效时间
+			person.setIssue_date(emp.getIssue_date());// 今天为生效时间
+			person.setExpire_date(emp.getExpire_date());// 10年为失效时间
 			ExecuteResult e = WsQuery.addPerson(person, emp.getBadgeId());
 			if (e.getResult().equals("0")) {
 				logger.info("add person to hw finish");
@@ -193,8 +190,8 @@ public class EmpServiceImpl implements IEmpService {
 				HwCardBean card = new HwCardBean();
 				card.setPersonid(personid);
 				card.setCardno(emp.getEmpcardno().trim());
-				card.setIssue_date(DateUtil.formatDate(today, "yyyy-MM-dd"));
-				card.setExpire_date(DateUtil.formatDate(tenYearLater, "yyyy-MM-dd"));
+				card.setIssue_date(emp.getIssue_date());
+				card.setExpire_date(emp.getExpire_date());
 				ExecuteResult cardex = WsQuery.addCard(card, "0x00488a1872d040a54a3882e897327e7955a0");
 				if (!"0".equals(cardex.getResult())) {
 					logger.error("hw卡号添加失败.请检查卡号是否重复");

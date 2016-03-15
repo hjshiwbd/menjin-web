@@ -125,6 +125,18 @@
 														</select>
 													</div>
 													<div class="form-group">
+														<div>
+															<label class="">生效时间</label>
+														</div>
+														<input type="text" id="issue_date" name="issue_date" class="form-control" value="">
+													</div>
+													<div class="form-group">
+														<div>
+															<label class="">失效时间</label>
+														</div>
+														<input type="text" id="expire_date" name="expire_date" class="form-control" value="">
+													</div>
+													<div class="form-group">
 														<label class="">银行卡</label><input type="text" name="empbankno" class="form-control" value="">
 													</div>
 													<div class="form-group">
