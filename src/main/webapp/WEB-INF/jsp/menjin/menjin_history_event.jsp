@@ -62,15 +62,15 @@
 										<div class="row">
 											<form id="searchForm" class="" action="<%=path%>/menjin/event_list_eu<%=suffix%>">
 												<input type="text" style="display: none" name="no_submit">
-												<div class="form-group col-xs-2">
-													<label class="col-xs-6">起始时间</label><input type="text" class="form-control" id="beginDate" name="beginDate">
+												<div class="form-group col-xs-4">
+													<label class="col-xs-12">起始时间</label><input type="text" class="form-control" id="beginDate" name="beginDate">
 												</div>
-												<div class="form-group col-xs-2">
-													<label class="col-xs-6">结束时间</label><input type="text" class="form-control" id="endDate" name="endDate">
+												<div class="form-group col-xs-4">
+													<label class="col-xs-12">结束时间</label><input type="text" class="form-control" id="endDate" name="endDate">
 												</div>
-												<div class="form-group col-xs-2">
+												<div class="form-group col-xs-4">
 													<label class="col-xs-12">查询时间类型</label>
-													<select name="isTrigger" style="width:200px;height:32px;"><option value="1">事件发生时间</option>
+													<select name="isTrigger" style="width:105px;height:32px;"><option value="1">事件发生时间</option>
 														<option value="0">事件接收时间</option></select>
 												</div>
 												<div class="clearfix"></div>
