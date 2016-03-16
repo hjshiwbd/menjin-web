@@ -1,6 +1,7 @@
 package org.shinomin.menjin.listener;
 
 import org.shinomin.menjin.webservice.WsQuery;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextClosedEvent;
@@ -17,11 +18,13 @@ public class ContextStopListener implements ApplicationListener<ContextClosedEve
 
 	@Value("${hw.notify.turnon}")
 	private String hw_notify_turnon;
+	@Autowired
+	private WsQuery wsQuery;
 
 	@Override
 	public void onApplicationEvent(ContextClosedEvent event) {
 		if ("1".equals(hw_notify_turnon)) {
-			WsQuery.stopRecvRealEvent();
+			wsQuery.stopRecvRealEvent();
 		}
 	}
 

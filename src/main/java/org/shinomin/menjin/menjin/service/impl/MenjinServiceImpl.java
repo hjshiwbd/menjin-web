@@ -49,12 +49,14 @@ public class MenjinServiceImpl implements IMenjinService {
 	private IDoorService doorService;
 	@Autowired
 	private IHwpaeventService eventService;
+	@Autowired
+	private WsQuery wsQuery;
 
 	@Override
 	public ModelAndView showShouquan() {
 		ModelAndView model = new ModelAndView();
 
-		List<HwAcccodeBean> acccodeBeans = WsQuery.getAllACCodes("", "");
+		List<HwAcccodeBean> acccodeBeans = wsQuery.getAllACCodes("", "");
 		model.addObject("acccodeList", acccodeBeans);
 		model.addObject("json_script", PageUtil.create_SCRIPT_PARSE_JSON(model.getModelMap()));
 
@@ -79,9 +81,9 @@ public class MenjinServiceImpl implements IMenjinService {
 	public String queryPersonAcccode(EmpBean emp) {
 		logger.info("emp:{}", JsonUtil.toJson(emp));
 		ExecuteResult e = new ExecuteResult("0", ErrorConstant.WS_NO_RESULT_FOUND);
-		List<HwPersonBean> personList = WsQuery.queryPersons("LNAME", "=", emp.getEmpno());
+		List<HwPersonBean> personList = wsQuery.queryPersons("LNAME", "=", emp.getEmpno());
 		if (personList != null && personList.size() == 1) {
-			List<HwAcccodeBean> acccodeList = WsQuery.getAllACCodes(personList.get(0).getId(),
+			List<HwAcccodeBean> acccodeList = wsQuery.getAllACCodes(personList.get(0).getId(),
 					StringUtil.null2Empty(emp.getEmpcardno().trim()));
 			if (acccodeList != null) {
 				e.setResult("1");
@@ -96,7 +98,7 @@ public class MenjinServiceImpl implements IMenjinService {
 	public ModelAndView showYckz() {
 		ModelAndView model = new ModelAndView();
 
-		List<HwReaderBean> readers = WsQuery.getAllReaders("");
+		List<HwReaderBean> readers = wsQuery.getAllReaders("");
 		model.addObject("readers", readers);
 		model.addObject("json_script", PageUtil.create_SCRIPT_PARSE_JSON(model.getModelMap()));
 
@@ -128,7 +130,7 @@ public class MenjinServiceImpl implements IMenjinService {
 				for (String accodeid : accodeIds) {
 					logger.debug("new bind,cardid:{}, accodeid:{}", cardno, accodeid);
 					// boolean flag = true;
-					boolean flag = WsQuery.addACCodeToCard(cardno, accodeid);
+					boolean flag = wsQuery.addACCodeToCard(cardno, accodeid);
 					if (flag) {
 						// 记录c3数据库1
 						CardaccodeBean ca = new CardaccodeBean();
@@ -158,7 +160,7 @@ public class MenjinServiceImpl implements IMenjinService {
 			throw new Exception("请求参数有误");
 		}
 		for (String card : cards) {
-			List<HwCardBean> list = WsQuery.queryCards("cardno", "=", card);
+			List<HwCardBean> list = wsQuery.queryCards("cardno", "=", card);
 			if (CollectionUtils.isEmpty(list) || list.size() != 1) {
 				throw new Exception("此人卡号错误，暂无法设置权限");
 			}
@@ -170,11 +172,11 @@ public class MenjinServiceImpl implements IMenjinService {
 		ExecuteResult e = new ExecuteResult("0", "设置失败，请稍候再试");
 		// 移除老的绑定
 		for (String cardno : cards) {
-			List<HwAcccodeBean> acccodeBeans = WsQuery.getAllACCodes("", cardno);
+			List<HwAcccodeBean> acccodeBeans = wsQuery.getAllACCodes("", cardno);
 			if (acccodeBeans != null) {
 				logger.info("exists acccodeBeans size:{}", acccodeBeans.size());
 				for (HwAcccodeBean hwAcccodeBean : acccodeBeans) {
-					WsQuery.removeACCodeFromCard(cardno, hwAcccodeBean.getId());
+					wsQuery.removeACCodeFromCard(cardno, hwAcccodeBean.getId());
 					logger.info("removeACCodeFromCard finish,cardid:{}, accodeid:{}", cardno, hwAcccodeBean.getId());
 				}
 				deleteDb(cardno);
@@ -232,7 +234,7 @@ public class MenjinServiceImpl implements IMenjinService {
 		logger.info("reader:{}, cmd:{}", readerid, cmd);
 		ExecuteResult e = new ExecuteResult("0", "请求有误");
 		if (StringUtils.isNotBlank(readerid) && cmd >= 1 && cmd <= 4) {
-			if (WsQuery.readerControl(readerid, cmd)) {
+			if (wsQuery.readerControl(readerid, cmd)) {
 				e.setResult("1");
 				e.setMessage("操作成功");
 			} else {
@@ -267,7 +269,7 @@ public class MenjinServiceImpl implements IMenjinService {
 			List<HwpaeventBean> list = new ArrayList<>();
 			return EasyuiUtil.parseDatagrid(list);
 		}
-		List<HwpaeventBean> list = WsQuery.getHistoryEvent(beginDate, endDate, isTrigger);
+		List<HwpaeventBean> list = wsQuery.getHistoryEvent(beginDate, endDate, isTrigger);
 		if (CollectionUtils.isEmpty(list)) {
 			list = new ArrayList<>();
 		}

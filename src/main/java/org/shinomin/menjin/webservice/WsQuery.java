@@ -16,6 +16,8 @@ import org.shinomin.menjin.bean.HwReaderBean;
 import org.shinomin.menjin.bean.HwpaeventBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * web service查询
@@ -23,15 +25,19 @@ import org.slf4j.LoggerFactory;
  * @author hjin
  * 
  */
+@Component
 public class WsQuery {
-	private static Logger logger = LoggerFactory.getLogger(WsQuery.class);
+	private Logger logger = LoggerFactory.getLogger(WsQuery.class);
 
-	private static String RESULT = "result";
-	private static String MESSAGE = "message";
-	private static String OBJECT = "object";
+	@Autowired
+	private WsUtil wsUtil;
+	
+	private String RESULT = "result";
+	private String MESSAGE = "message";
+	private String OBJECT = "object";
 
 	@SuppressWarnings("unchecked")
-	private static <T> List<T> convertList(Object wsObject, Class<T> clz) {
+	private <T> List<T> convertList(Object wsObject, Class<T> clz) {
 		if (wsObject instanceof List<?>) {
 			List<T> list = new ArrayList<>();
 			List<Map<String, Object>> src = (List<Map<String, Object>>) wsObject;
@@ -45,9 +51,9 @@ public class WsQuery {
 	}
 
 	@SuppressWarnings("unchecked")
-	private static Object getWsObject(String json) {
+	private Object getWsObject(String json) {
 		if (logger.isDebugEnabled()) {
-//			logger.debug("json:{}", json);
+			// logger.debug("json:{}", json);
 		}
 		Map<String, Object> map = (Map<String, Object>) JsonUtil.toObj(json);
 		String result = map.get(RESULT).toString();
@@ -64,15 +70,15 @@ public class WsQuery {
 		}
 	}
 
-	public static List<HwPersonBean> getAllPersons() {
-		String json = WsUtil.getAllPersons();
+	public List<HwPersonBean> getAllPersons() {
+		String json = wsUtil.getAllPersons();
 		List<HwPersonBean> list = convertList(getWsObject(json), HwPersonBean.class);
 		logger.info("person size:{}", list.size());
 		return list;
 	}
 
-	public static List<HwPersonBean> queryPersons(String field, String oper, String value) {
-		String json = WsUtil.queryPersons(field, oper, value);
+	public List<HwPersonBean> queryPersons(String field, String oper, String value) {
+		String json = wsUtil.queryPersons(field, oper, value);
 		if (StringUtils.isNotBlank(json)) {
 			List<HwPersonBean> list = convertList(getWsObject(json), HwPersonBean.class);
 			return list;
@@ -81,8 +87,8 @@ public class WsQuery {
 		}
 	}
 
-	public static List<HwCardBean> queryCards(String field, String oper, String value) {
-		String json = WsUtil.queryCards(field, oper, value);
+	public List<HwCardBean> queryCards(String field, String oper, String value) {
+		String json = wsUtil.queryCards(field, oper, value);
 		if (StringUtils.isNotBlank(json)) {
 			List<HwCardBean> list = convertList(getWsObject(json), HwCardBean.class);
 			return list;
@@ -91,14 +97,14 @@ public class WsQuery {
 		}
 	}
 
-	public static List<HwReaderBean> getAllReaders(String acCodeID) {
-		String json = WsUtil.getAllReaders(acCodeID);
+	public List<HwReaderBean> getAllReaders(String acCodeID) {
+		String json = wsUtil.getAllReaders(acCodeID);
 		List<HwReaderBean> list = convertList(getWsObject(json), HwReaderBean.class);
 		return list;
 	}
 
-	public static List<HwAcccodeBean> getAllACCodes(String personid, String cardno) {
-		String json = WsUtil.getAllACCodes(personid, cardno);
+	public List<HwAcccodeBean> getAllACCodes(String personid, String cardno) {
+		String json = wsUtil.getAllACCodes(personid, cardno);
 		if (StringUtils.isNotBlank(json)) {
 			List<HwAcccodeBean> list = convertList(getWsObject(json), HwAcccodeBean.class);
 			logger.info("getAllACCodes size:{}", list.size());
@@ -108,8 +114,8 @@ public class WsQuery {
 		}
 	}
 
-	public static ExecuteResult addPerson(HwPersonBean person, String badgeId) {
-		String json = WsUtil.addPerson(person, badgeId);
+	public ExecuteResult addPerson(HwPersonBean person, String badgeId) {
+		String json = wsUtil.addPerson(person, badgeId);
 		if (StringUtils.isNotBlank(json)) {
 			logger.info("add person:{}", json);
 			return Json.fromJson(ExecuteResult.class, json);
@@ -118,8 +124,8 @@ public class WsQuery {
 		}
 	}
 
-	public static ExecuteResult addCard(HwCardBean card, String companyid) {
-		String json = WsUtil.addCard(card, companyid);
+	public ExecuteResult addCard(HwCardBean card, String companyid) {
+		String json = wsUtil.addCard(card, companyid);
 		if (StringUtils.isNotBlank(json)) {
 			logger.info("addCard:{}", json);
 			return Json.fromJson(ExecuteResult.class, json);
@@ -128,8 +134,8 @@ public class WsQuery {
 		}
 	}
 
-	public static boolean addACCodeToCard(String cardid, String accodeid) {
-		String json = WsUtil.addACCodeToCard(cardid, accodeid);
+	public boolean addACCodeToCard(String cardid, String accodeid) {
+		String json = wsUtil.addACCodeToCard(cardid, accodeid);
 		if (StringUtils.isNotBlank(json)) {
 			logger.info("addACCodeToCard:{}", json);
 			ExecuteResult e = Json.fromJson(ExecuteResult.class, json);
@@ -139,8 +145,8 @@ public class WsQuery {
 		}
 	}
 
-	public static boolean removeACCodeFromCard(String cardid, String accodeid) {
-		String json = WsUtil.removeACCodeFromCard(cardid, accodeid);
+	public boolean removeACCodeFromCard(String cardid, String accodeid) {
+		String json = wsUtil.removeACCodeFromCard(cardid, accodeid);
 		if (StringUtils.isNotBlank(json)) {
 			logger.info("removeACCodeFromCard:{}", json);
 			ExecuteResult e = Json.fromJson(ExecuteResult.class, json);
@@ -150,8 +156,8 @@ public class WsQuery {
 		}
 	}
 
-	public static boolean removeCard(String cardno) {
-		String json = WsUtil.removeCard(cardno);
+	public boolean removeCard(String cardno) {
+		String json = wsUtil.removeCard(cardno);
 		if (StringUtils.isNotBlank(json)) {
 			logger.info("removeCard:{}", json);
 			ExecuteResult e = Json.fromJson(ExecuteResult.class, json);
@@ -161,8 +167,8 @@ public class WsQuery {
 		}
 	}
 
-	public static boolean removePerson(String personid) {
-		String json = WsUtil.removePerson(personid);
+	public boolean removePerson(String personid) {
+		String json = wsUtil.removePerson(personid);
 		if (StringUtils.isNotBlank(json)) {
 			logger.info("removePerson:{}", json);
 			ExecuteResult e = Json.fromJson(ExecuteResult.class, json);
@@ -172,8 +178,8 @@ public class WsQuery {
 		}
 	}
 
-	public static boolean readerControl(String readerid, int cmd) {
-		String json = WsUtil.readerControl(readerid, cmd);
+	public boolean readerControl(String readerid, int cmd) {
+		String json = wsUtil.readerControl(readerid, cmd);
 		if (StringUtils.isNotBlank(json)) {
 			logger.info("readerControl:{}", json);
 			ExecuteResult e = Json.fromJson(ExecuteResult.class, json);
@@ -183,8 +189,8 @@ public class WsQuery {
 		}
 	}
 
-	public static boolean startRecvRealEvent() {
-		String json = WsUtil.startRecvRealEvent();
+	public boolean startRecvRealEvent() {
+		String json = wsUtil.startRecvRealEvent();
 		if (StringUtils.isNotBlank(json)) {
 			logger.info("startRecvRealEvent:{}", json);
 			ExecuteResult e = Json.fromJson(ExecuteResult.class, json);
@@ -194,8 +200,8 @@ public class WsQuery {
 		}
 	}
 
-	public static boolean stopRecvRealEvent() {
-		String json = WsUtil.stopRecvRealEvent();
+	public boolean stopRecvRealEvent() {
+		String json = wsUtil.stopRecvRealEvent();
 		if (StringUtils.isNotBlank(json)) {
 			logger.info("stopRecvRealEvent:{}", json);
 			ExecuteResult e = Json.fromJson(ExecuteResult.class, json);
@@ -205,8 +211,8 @@ public class WsQuery {
 		}
 	}
 
-	public static List<HwpaeventBean> getHistoryEvent(String beginDate, String endDate, boolean isTrigger) {
-		String json = WsUtil.getHistoryEvent(beginDate, endDate,isTrigger);
+	public List<HwpaeventBean> getHistoryEvent(String beginDate, String endDate, boolean isTrigger) {
+		String json = wsUtil.getHistoryEvent(beginDate, endDate, isTrigger);
 		if (StringUtils.isNotBlank(json)) {
 			List<HwpaeventBean> list = convertList(getWsObject(json), HwpaeventBean.class);
 			logger.info("eventlist size:{}", list.size());

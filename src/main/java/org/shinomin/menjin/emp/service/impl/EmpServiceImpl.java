@@ -72,6 +72,8 @@ public class EmpServiceImpl implements IEmpService {
 	private ICardaccodeService cardaccodeService;
 	@Autowired
 	private IAuthorsetService authorsetService;
+	@Autowired
+	private WsQuery wsQuery;
 
 	@Override
 	public EmpBean selectOne(EmpBean emp) {
@@ -183,7 +185,7 @@ public class EmpServiceImpl implements IEmpService {
 			person.setFname(encode(emp.getEmpname()));
 			person.setIssue_date(emp.getIssue_date());// 今天为生效时间
 			person.setExpire_date(emp.getExpire_date());// 10年为失效时间
-			ExecuteResult e = WsQuery.addPerson(person, emp.getBadgeId());
+			ExecuteResult e = wsQuery.addPerson(person, emp.getBadgeId());
 			if (e.getResult().equals("0")) {
 				logger.info("add person to hw finish");
 				String personid = e.getObject().toString();
@@ -192,7 +194,7 @@ public class EmpServiceImpl implements IEmpService {
 				card.setCardno(emp.getEmpcardno().trim());
 				card.setIssue_date(emp.getIssue_date());
 				card.setExpire_date(emp.getExpire_date());
-				ExecuteResult cardex = WsQuery.addCard(card, "0x00488a1872d040a54a3882e897327e7955a0");
+				ExecuteResult cardex = wsQuery.addCard(card, "0x00488a1872d040a54a3882e897327e7955a0");
 				if (!"0".equals(cardex.getResult())) {
 					logger.error("hw卡号添加失败.请检查卡号是否重复");
 					throw new Exception("hw卡号添加失败.请检查卡号是否重复");
@@ -290,13 +292,13 @@ public class EmpServiceImpl implements IEmpService {
 		// c3 删除
 		if (deleteFromC3(emp)) {
 			// hw删卡
-			if (WsQuery.removeCard(cardno)) {
+			if (wsQuery.removeCard(cardno)) {
 				logger.info("hw removeCard done:{}", cardno);
 				// hw删人
-				List<HwPersonBean> personList = WsQuery.queryPersons("LNAME", "=", emp.getEmpno());
+				List<HwPersonBean> personList = wsQuery.queryPersons("LNAME", "=", emp.getEmpno());
 				if (personList != null) {
 					for (HwPersonBean person : personList) {
-						if (WsQuery.removePerson(person.getId())) {
+						if (wsQuery.removePerson(person.getId())) {
 							logger.info("hw removePerson done:{}", person.getId());
 							e.setResult("1");
 							e.setMessage("删除成功");

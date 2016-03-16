@@ -1,6 +1,7 @@
 package org.shinomin.menjin.listener;
 
 import org.shinomin.menjin.webservice.WsQuery;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
@@ -18,12 +19,14 @@ public class ContextLoadListener implements ApplicationListener<ContextRefreshed
 
 	@Value("${hw.notify.turnon}")
 	private String hw_notify_turnon;
+	@Autowired
+	private WsQuery wsQuery;
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		ApplicationContext app = event.getApplicationContext();
 		if (isCache(app) && "1".equals(hw_notify_turnon)) {
-			WsQuery.startRecvRealEvent();
+			wsQuery.startRecvRealEvent();
 		}
 	}
 

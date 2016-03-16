@@ -67,7 +67,6 @@ public class DoorServiceImpl implements IDoorService {
 		// selectPage(door, pager);
 
 		List<DoorBean> list = selectList(door);
-		System.out.println(JsonUtil.toJson(list));
 		return EasyuiUtil.parseDatagrid(list);
 	}
 

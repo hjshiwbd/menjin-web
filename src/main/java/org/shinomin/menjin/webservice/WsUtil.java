@@ -9,16 +9,23 @@ import org.shinomin.menjin.bean.HwCardBean;
 import org.shinomin.menjin.bean.HwPersonBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.tempuri.zmlq_xsd.service_wsdl.ServicePortType;
 
+@Component
 public class WsUtil {
-	private static Logger logger = LoggerFactory.getLogger(WsUtil.class);
-	private static int initCount = 0;
+	private Logger logger = LoggerFactory.getLogger(WsUtil.class);
 
-	private static ServicePortType getWsType() {
+	@Value("${hw.webservice.url}")
+	private String hw_webservice_url;
+
+	private int initCount = 0;
+
+	private ServicePortType getWsType() {
 		JaxWsProxyFactoryBean factoryBean = new JaxWsProxyFactoryBean();
 		factoryBean.setServiceClass(ServicePortType.class);
-		factoryBean.setAddress("http://10.157.12.40:9977/");
+		factoryBean.setAddress(hw_webservice_url);
 		ServicePortType type = (ServicePortType) factoryBean.create();
 		if (initCount++ == 0) {
 			init(type);
@@ -26,7 +33,7 @@ public class WsUtil {
 		return type;
 	}
 
-	private static void init(ServicePortType type) {
+	private void init(ServicePortType type) {
 		boolean bAutoLogin = true;
 		String inStrDBAddr = "";
 		String inStrDBName = "";
@@ -40,7 +47,7 @@ public class WsUtil {
 		logger.info("web service init finish");
 	}
 
-	public static String getAllPersons() {
+	public String getAllPersons() {
 		String result = getWsType().getAllPersons();
 		try {
 			result = new String(result.getBytes("iso-8859-1"), "gbk");
@@ -49,7 +56,7 @@ public class WsUtil {
 		return result;
 	}
 
-	public static String queryPersons(String field, String oper, String value) {
+	public String queryPersons(String field, String oper, String value) {
 		logger.info("field:{}, oper:{}, value:{}", field, oper, value);
 		String result = getWsType().queryPersons(field, oper, value);
 		try {
@@ -59,7 +66,7 @@ public class WsUtil {
 		return result;
 	}
 
-	public static String queryCards(String field, String oper, String value) {
+	public String queryCards(String field, String oper, String value) {
 		logger.info("field:{}, oper:{}, value:{}", field, oper, value);
 		String result = getWsType().queryCards(field, oper, value);
 		try {
@@ -69,7 +76,7 @@ public class WsUtil {
 		return result;
 	}
 
-	public static String getAllReaders(String acCodeID) {
+	public String getAllReaders(String acCodeID) {
 		logger.info("accode:{}", acCodeID);
 		String result = getWsType().getAllReaders(acCodeID);
 		try {
@@ -79,7 +86,7 @@ public class WsUtil {
 		return result;
 	}
 
-	public static String getAllACCodes(String personid, String cardno) {
+	public String getAllACCodes(String personid, String cardno) {
 		logger.info("person:{}, cardno:{}", personid, cardno);
 		String result = getWsType().getAllACCodes(personid, cardno);
 		try {
@@ -89,7 +96,7 @@ public class WsUtil {
 		return result;
 	}
 
-	public static String addPerson(HwPersonBean person, String badgeId) {
+	public String addPerson(HwPersonBean person, String badgeId) {
 		HwPersonBean _person = new HwPersonBean();
 		_person.setId("");
 		_person.setLname(person.getLname());
@@ -104,7 +111,7 @@ public class WsUtil {
 		return result;
 	}
 
-	public static String addCard(HwCardBean card, String companyid) {
+	public String addCard(HwCardBean card, String companyid) {
 		// {"id":"0x00481576267975bf4c9cb7a2d3a8c0d46df4","nam":"外包职工公共权限"}
 		// {"id":"0x004842343236434238382d443536302d3433","nam":"No Access"}
 		// {"id":"0x0048729e6eb48d9311d4a45600508bc86902","nam":"NexWatch"}
@@ -123,49 +130,49 @@ public class WsUtil {
 		return result;
 	}
 
-	public static String addACCodeToCard(String cardno, String accodeid) {
+	public String addACCodeToCard(String cardno, String accodeid) {
 		logger.info("cardno:{}, accodeid:{}", cardno, accodeid);
 		String result = getWsType().addACCodeToCard(accodeid, cardno);
 		return result;
 	}
 
-	public static String removeACCodeFromCard(String cardno, String accodeid) {
+	public String removeACCodeFromCard(String cardno, String accodeid) {
 		logger.info("cardno:{}, accodeid:{}", cardno, accodeid);
 		String result = getWsType().removeACCodeFromCard(accodeid, cardno);
 		return result;
 	}
 
-	public static String readerControl(String readerid, int cmd) {
+	public String readerControl(String readerid, int cmd) {
 		logger.info("readerid:{}, cmd:{}", readerid, cmd);
 		String result = getWsType().readerControl(readerid, cmd);
 		return result;
 	}
 
-	public static String removeCard(String cardno) {
+	public String removeCard(String cardno) {
 		logger.info("cardno:{}", cardno);
 		String result = getWsType().removeCard(cardno);
 		return result;
 	}
 
-	public static String removePerson(String personid) {
+	public String removePerson(String personid) {
 		logger.info("personid:{}", personid);
 		String result = getWsType().removePerson(personid);
 		return result;
 	}
 
-	public static String startRecvRealEvent() {
+	public String startRecvRealEvent() {
 		String result = getWsType().startRecvRealEvent();
 		logger.info("startRecvRealEvent done");
 		return result;
 	}
 
-	public static String stopRecvRealEvent() {
+	public String stopRecvRealEvent() {
 		String result = getWsType().stopRecvRealEvent();
 		logger.info("stopRecvRealEvent done");
 		return result;
 	}
 
-	public static String getHistoryEvent(String beginDate, String endDate, boolean isTrigger) {
+	public String getHistoryEvent(String beginDate, String endDate, boolean isTrigger) {
 		logger.info("getHistoryEvent:{}-{}", beginDate, endDate);
 		long begin = DateUtil.parseDate(beginDate).getTime() / 1000;
 		long end = DateUtil.parseDate(endDate).getTime() / 1000;
