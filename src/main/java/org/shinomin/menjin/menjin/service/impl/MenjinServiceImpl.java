@@ -268,6 +268,9 @@ public class MenjinServiceImpl implements IMenjinService {
 			return EasyuiUtil.parseDatagrid(list);
 		}
 		List<HwpaeventBean> list = WsQuery.getHistoryEvent(beginDate, endDate, isTrigger);
+		if (CollectionUtils.isEmpty(list)) {
+			list = new ArrayList<>();
+		}
 		return EasyuiUtil.parseDatagrid(list);
 	}
 

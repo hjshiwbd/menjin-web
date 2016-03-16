@@ -58,6 +58,8 @@ public class EmpBean implements Serializable {
 
 	// ////////////////////////////
 	private String badgeId;// hw的卡类型(员工卡,临时卡)
+	private String issue_date;// 生效日期
+	private String expire_date;// 失效日期
 
 	public String getEmpid() {
 		return empid;
@@ -473,5 +475,21 @@ public class EmpBean implements Serializable {
 
 	public void setBadgeId(String badgeId) {
 		this.badgeId = badgeId;
+	}
+
+	public String getIssue_date() {
+		return issue_date;
+	}
+
+	public void setIssue_date(String issue_date) {
+		this.issue_date = issue_date;
+	}
+
+	public String getExpire_date() {
+		return expire_date;
+	}
+
+	public void setExpire_date(String expire_date) {
+		this.expire_date = expire_date;
 	}
 }

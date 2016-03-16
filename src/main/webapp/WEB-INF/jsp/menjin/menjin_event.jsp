@@ -63,7 +63,7 @@
 											<form id="searchForm" class="" action="<%=path%>/menjin/event_list_eu<%=suffix%>">
 												<input type="text" style="display: none" name="no_submit">
 												<div class="form-group col-xs-2">
-													<label class="col-xs-6">设备</label><input type="text" class="form-control" id="logdevdescrp" name="logdevdescrp">
+													<label class="col-xs-12">设备</label><input type="text" class="form-control" id="logdevdescrp" name="logdevdescrp">
 												</div>
 												<div class="clearfix"></div>
 												<div class="form-group col-xs-2">

@@ -17,7 +17,7 @@ $(function() {
 function initEasyuiDatetime() {
 	$('#beginDate,#endDate').datetimebox({
 		height : 32,
-		width : 220,
+		width : 144,
 		required : true
 	});
 }

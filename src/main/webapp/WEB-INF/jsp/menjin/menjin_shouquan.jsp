@@ -62,10 +62,10 @@
 										<div class="row">
 											<form id="searchForm" class="" action="<%=path%>/menjin/query_hw_person_dg<%=suffix%>">
 												<div class="form-group col-xs-2">
-													<label class="col-xs-6">编号</label><input type="text" class="form-control" name="empno">
+													<label class="col-xs-12">编号</label><input type="text" class="form-control" name="empno">
 												</div>
 												<div class="form-group col-xs-2">
-													<label class="col-xs-6">姓名</label><input type="text" class="form-control" name="empname">
+													<label class="col-xs-12">姓名</label><input type="text" class="form-control" name="empname">
 												</div>
 <!-- 												<div class="form-group col-xs-2"> -->
 <!-- 													<label class="col-xs-6">生效日期</label><input type="text" name="issue_date1" class="issue_date form-control"> 到 <input type="text" -->
