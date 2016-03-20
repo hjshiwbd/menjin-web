@@ -257,6 +257,7 @@ public class MenjinServiceImpl implements IMenjinService {
 		Pager<HwpaeventBean> pager = new Pager<>();
 		pager.setCurtPage(page);
 		pager.setCountPerPage(rows);
+		pager.setOrderby("evnt_dat.desc");
 		eventService.selectPage(event, pager);
 
 		return EasyuiUtil.parseDatagrid(pager);
