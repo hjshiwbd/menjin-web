@@ -164,7 +164,7 @@ public class EmpServiceImpl implements IEmpService {
 		CardinfoBean card = new CardinfoBean();
 		card.setCardid(emp.getEmpid());
 		card.setCardfixno(emp.getEmpcardno().trim());
-		card.setCarddispno(emp.getEmpname());
+		card.setCarddispno(emp.getEmpno());
 		card.setCardcrtdby(loginSessionScope.getLoginUser().getUsername());
 		card.setCardcrtdday(DateUtil.formatDate(new Date()));
 		card.setCardmodiby(loginSessionScope.getLoginUser().getUsername());
