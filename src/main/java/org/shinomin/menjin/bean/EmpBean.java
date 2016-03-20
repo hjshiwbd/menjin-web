@@ -61,6 +61,9 @@ public class EmpBean implements Serializable {
 	private String issue_date;// 生效日期
 	private String expire_date;// 失效日期
 
+	//
+	private EmpcardBean empcard;
+
 	public String getEmpid() {
 		return empid;
 	}
@@ -491,5 +494,13 @@ public class EmpBean implements Serializable {
 
 	public void setExpire_date(String expire_date) {
 		this.expire_date = expire_date;
+	}
+
+	public EmpcardBean getEmpcard() {
+		return empcard;
+	}
+
+	public void setEmpcard(EmpcardBean empcard) {
+		this.empcard = empcard;
 	}
 }

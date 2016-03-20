@@ -17,6 +17,7 @@ import org.shinomin.menjin.bean.CardinfoBean;
 import org.shinomin.menjin.bean.CardtypeBean;
 import org.shinomin.menjin.bean.DptBean;
 import org.shinomin.menjin.bean.EmpBean;
+import org.shinomin.menjin.bean.EmpcardBean;
 import org.shinomin.menjin.bean.EmpextBean;
 import org.shinomin.menjin.bean.GrdBean;
 import org.shinomin.menjin.bean.HwCardBean;
@@ -28,6 +29,7 @@ import org.shinomin.menjin.card.service.ICardtypeService;
 import org.shinomin.menjin.dpt.service.IDptService;
 import org.shinomin.menjin.emp.dao.IEmpDAO;
 import org.shinomin.menjin.emp.service.IEmpService;
+import org.shinomin.menjin.emp.service.IEmpcardService;
 import org.shinomin.menjin.emp.service.IEmpextService;
 import org.shinomin.menjin.grd.service.IGrdService;
 import org.shinomin.menjin.menjin.service.IMenjinService;
@@ -64,6 +66,8 @@ public class EmpServiceImpl implements IEmpService {
 	private IEmpextService empextService;
 	@Autowired
 	private ICardinfoService cardinfoService;
+	@Autowired
+	private IEmpcardService empcardService;
 	@Autowired
 	private IGrdService grdService;
 	@Autowired
@@ -119,11 +123,11 @@ public class EmpServiceImpl implements IEmpService {
 
 		int maxid = empDAO.selectMaxID();
 		logger.info("maxid:{}", maxid);
-		boolean flag = insertEmp(emp, empext, maxid);
+		boolean flag = insertC3Emp(emp, empext, maxid);
 		if (flag) {
 			logger.info("add person to c3 finish");
 			// 调用hw接口新增人员
-			addToHw(emp);
+//			addToHw(emp);
 
 			e.setResult("1");
 			e.setMessage("添加成功");
@@ -142,7 +146,7 @@ public class EmpServiceImpl implements IEmpService {
 	 * @param maxid
 	 * @return
 	 */
-	private boolean insertEmp(EmpBean emp, EmpextBean empext, int maxid) {
+	private boolean insertC3Emp(EmpBean emp, EmpextBean empext, int maxid) {
 		emp.setEmpid(maxid + "");
 		emp.setEmpcrtdby(loginSessionScope.getLoginUser().getUsername());
 		int n = insert(emp);
@@ -170,6 +174,16 @@ public class EmpServiceImpl implements IEmpService {
 		card.setCardmodiby(loginSessionScope.getLoginUser().getUsername());
 		card.setCardmodiday(DateUtil.formatDate(new Date()));
 		cardinfoService.insert(card);
+
+		EmpcardBean empcard = new EmpcardBean();
+		empcard.setEmpid(emp.getEmpid());
+		empcard.setCardid(card.getCardid());
+		empcard.setCarddispno(card.getCarddispno());
+		empcard.setCardsegid("1");
+		empcard.setCardstatusid("20");
+		empcard.setCardstatuschgday(DateUtil.formatDate(new Date()));
+		empcard.setCarddueday(emp.getExpire_date() + " 00:00:00");
+		empcardService.insert(empcard);
 	}
 
 	/**
@@ -238,6 +252,12 @@ public class EmpServiceImpl implements IEmpService {
 		if (n > 0) {
 			logger.info("empno already exists");
 			throw new Exception("此员工编号已存在");
+		}
+		// 检查唯一性 cardno唯一
+		n = empDAO.selectCount("hrms_emp", "where empcardno=?", emp.getEmpcardno());
+		if (n > 0) {
+			logger.info("empno already exists");
+			throw new Exception("此卡号已存在");
 		}
 	}
 

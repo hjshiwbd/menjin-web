@@ -55,7 +55,7 @@ function sq() {
 
 		var cards = [];
 		$.each(persons, function(i, o) {
-			cards.push($.trim(o['empcardno']));
+			cards.push($.trim(o['empcard']['cardinfo']['cardfixno']));
 		});
 
 		if (cards.length == 0) {
@@ -63,7 +63,6 @@ function sq() {
 			return false;
 		}
 
-		// clog(accodes);
 		var accodeIds = [];
 		var accodes = treeObj.getCheckedNodes(true);
 		$.each(accodes, function(i, o) {
@@ -156,9 +155,15 @@ function initDg() {
 		title : '性别',
 		width : 100
 	}, {
-		field : 'empcardno',
+		field : 'empcard_cardinfo_cardfixno',
 		title : '卡号',
-		width : 100
+		width : 100,
+		formatter : function(value, row, index) {
+			if (row['empcard'] && row['empcard']['cardinfo']) {
+				return row['empcard']['cardinfo']['cardfixno'];
+			}
+			return '';
+		}
 	}, {
 		field : 'empstatusid',
 		title : '状态',

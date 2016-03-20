@@ -57,9 +57,13 @@
 		<result property="empicid" column="empicid" />
 		<result property="empname_spell" column="empname_spell" />
 	</resultMap>
+	
+	<resultMap type="EmpBean" id="map1" extends="EmpMap">
+		<association property="empcard" javaType="EmpcardBean" columnPrefix="ec_" resultMap="org.shinomin.menjin.mapper.Empcard.map1" ></association>
+	</resultMap>
 
 	<!-- select -->
-	<select id="select" parameterType="EmpBean" resultType="EmpBean">
+	<select id="select" parameterType="EmpBean" resultMap="map1">
 		select t.empid, t.dptid, t.tdptid, t.empno, t.empcardno, t.empsex,
 		t.empname, t.empbirthday, t.nationid, t.empidno, t.empstatusid,
 		t.emptypeid, t.empcardtid, t.emppwd, t.empbankno, t.grdid, t.eduid,
@@ -69,7 +73,12 @@
 		t.nationordno, t.grdordno, t.eduordno, t.prfordno, t.titordno,
 		t.dptno, t.tdptno, t.empmarrystatus, t.empmemo, t.emplname,
 		t.empename, t.isdeleted, t.deletedday, t.carcode, t.runcardcode,
-		t.empicid, t.empname_spell from Hrms_Emp t
+		t.empicid, t.empname_spell,
+		t1.empid ec_empid,t1.cardid ec_cardid,t1.carddispno ec_carddispno,t1.cardsegid ec_cardsegid,t1.cardstatusid ec_cardstatusid,t1.cardstatuschgday ec_cardstatuschgday,t1.actforegift ec_actforegift,t1.disforegift ec_disforegift,t1.rtnforegift ec_rtnforegift,t1.remark ec_remark,t1.carddueday ec_carddueday,t1.cardpwd ec_cardpwd,t1.cardapplyid ec_cardapplyid,t1.actcost ec_actcost,
+		t2.cardid ec_c_cardid,t2.carddispno ec_c_carddispno,t2.cardfixno ec_c_cardfixno,t2.cardtypeid ec_c_cardtypeid,t2.cardcrtdby ec_c_cardcrtdby,t2.cardcrtdday ec_c_cardcrtdday,t2.cardmodiby ec_c_cardmodiby,t2.cardmodiday ec_c_cardmodiday,t2.isusesec0 ec_c_isusesec0,t2.isusesec1 ec_c_isusesec1,t2.isusesec2 ec_c_isusesec2,t2.isusesec3 ec_c_isusesec3,t2.isusesec4 ec_c_isusesec4,t2.isusesec5 ec_c_isusesec5,t2.isusesec6 ec_c_isusesec6,t2.isusesec7 ec_c_isusesec7,t2.isusesec8 ec_c_isusesec8,t2.isusesec9 ec_c_isusesec9,t2.isusesec10 ec_c_isusesec10,t2.isusesec11 ec_c_isusesec11,t2.isusesec12 ec_c_isusesec12,t2.isusesec13 ec_c_isusesec13,t2.isusesec14 ec_c_isusesec14,t2.isusesec15 ec_c_isusesec15,t2.mnysec0 ec_c_mnysec0,t2.mnysec1 ec_c_mnysec1,t2.mnysec2 ec_c_mnysec2,t2.mnysec3 ec_c_mnysec3,t2.mnysec4 ec_c_mnysec4,t2.mnysec5 ec_c_mnysec5,t2.mnysec6 ec_c_mnysec6,t2.mnysec7 ec_c_mnysec7,t2.mnysec8 ec_c_mnysec8,t2.mnysec9 ec_c_mnysec9,t2.mnysec10 ec_c_mnysec10,t2.mnysec11 ec_c_mnysec11,t2.mnysec12 ec_c_mnysec12,t2.mnysec13 ec_c_mnysec13,t2.mnysec14 ec_c_mnysec14,t2.mnysec15 ec_c_mnysec15,t2.timessec0 ec_c_timessec0,t2.timessec1 ec_c_timessec1,t2.timessec2 ec_c_timessec2,t2.timessec3 ec_c_timessec3,t2.timessec4 ec_c_timessec4,t2.timessec5 ec_c_timessec5,t2.timessec6 ec_c_timessec6,t2.timessec7 ec_c_timessec7,t2.timessec8 ec_c_timessec8,t2.timessec9 ec_c_timessec9,t2.timessec10 ec_c_timessec10,t2.timessec11 ec_c_timessec11,t2.timessec12 ec_c_timessec12,t2.timessec13 ec_c_timessec13,t2.timessec14 ec_c_timessec14,t2.timessec15 ec_c_timessec15
+		from Hrms_Emp t
+		left join Com_EmpCard t1 on t.EmpID = t1.EmpID
+		left join Com_CardInfo t2 on t1.CardID=t2.CardID
 		<where>
 			<if test="empid!=null">
 				and t.empid = #{empid,jdbcType=NUMERIC}

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.shinomin.menjin.mapper.Empcard">
+
+	<!-- resultMap -->
+	<resultMap id="EmpcardMap" type="EmpcardBean">
+		<result property="empid" column="empid" />
+		<result property="cardid" column="cardid" />
+		<result property="carddispno" column="carddispno" />
+		<result property="cardsegid" column="cardsegid" />
+		<result property="cardstatusid" column="cardstatusid" />
+		<result property="cardstatuschgday" column="cardstatuschgday" />
+		<result property="actforegift" column="actforegift" />
+		<result property="disforegift" column="disforegift" />
+		<result property="rtnforegift" column="rtnforegift" />
+		<result property="remark" column="remark" />
+		<result property="carddueday" column="carddueday" />
+		<result property="cardpwd" column="cardpwd" />
+		<result property="cardapplyid" column="cardapplyid" />
+		<result property="actcost" column="actcost" />
+	</resultMap>
+
+	<resultMap type="EmpcardBean" id="map1" extends="EmpcardMap">
+		<association property="cardinfo" javaType="CardinfoBean" columnPrefix="c_" resultMap="org.shinomin.menjin.mapper.Cardinfo.CardinfoMap"></association>
+	</resultMap>
+
+	<!-- select -->
+	<select id="select" parameterType="EmpcardBean" resultType="EmpcardBean">
+		select t.empid, t.cardid, t.carddispno, t.cardsegid, t.cardstatusid, t.cardstatuschgday, t.actforegift, t.disforegift,
+		t.rtnforegift, t.remark, t.carddueday, t.cardpwd, t.cardapplyid, t.actcost from Com_EmpCard t
+		<where>
+			<if test="empid!=null">
+				and t.empid = #{empid,jdbcType=NUMERIC}
+			</if>
+			<if test="cardid!=null">
+				and t.cardid = #{cardid,jdbcType=NUMERIC}
+			</if>
+			<if test="carddispno != null and carddispno != ''">
+				and t.carddispno = #{carddispno,jdbcType=VARCHAR}
+			</if>
+			<if test="cardsegid!=null">
+				and t.cardsegid = #{cardsegid,jdbcType=NUMERIC}
+			</if>
+			<if test="cardstatusid!=null">
+				and t.cardstatusid = #{cardstatusid,jdbcType=NUMERIC}
+			</if>
+			<if test="cardstatuschgday!=null">
+				and t.cardstatuschgday = #{cardstatuschgday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="actforegift!=null">
+				and t.actforegift = #{actforegift,jdbcType=VARCHAR}
+			</if>
+			<if test="disforegift!=null">
+				and t.disforegift = #{disforegift,jdbcType=VARCHAR}
+			</if>
+			<if test="rtnforegift!=null">
+				and t.rtnforegift = #{rtnforegift,jdbcType=VARCHAR}
+			</if>
+			<if test="remark != null and remark != ''">
+				and t.remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="carddueday!=null">
+				and t.carddueday = #{carddueday,jdbcType=TIMESTAMP}
+			</if>
+			<if test="cardpwd != null and cardpwd != ''">
+				and t.cardpwd = #{cardpwd,jdbcType=VARCHAR}
+			</if>
+			<if test="cardapplyid != null and cardapplyid != ''">
+				and t.cardapplyid = #{cardapplyid,jdbcType=VARCHAR}
+			</if>
+			<if test="actcost!=null">
+				and t.actcost = #{actcost,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<!-- insert -->
+	<insert id="insert" parameterType="EmpcardBean">
+		insert into Com_EmpCard (empid, cardid, carddispno, cardsegid, cardstatusid, cardstatuschgday, actforegift, disforegift,
+		rtnforegift, remark, carddueday, cardpwd, cardapplyid, actcost)
+		values (#{empid,jdbcType=NUMERIC}, #{cardid,jdbcType=NUMERIC}, #{carddispno,jdbcType=VARCHAR},
+		#{cardsegid,jdbcType=NUMERIC}, #{cardstatusid,jdbcType=NUMERIC}, #{cardstatuschgday,jdbcType=TIMESTAMP},
+		#{actforegift,jdbcType=VARCHAR}, #{disforegift,jdbcType=VARCHAR}, #{rtnforegift,jdbcType=VARCHAR},
+		#{remark,jdbcType=VARCHAR}, #{carddueday,jdbcType=TIMESTAMP}, #{cardpwd,jdbcType=VARCHAR},
+		#{cardapplyid,jdbcType=VARCHAR}, #{actcost,jdbcType=VARCHAR})
+	</insert>
+
+	<!-- update -->
+	<update id="update" parameterType="EmpcardBean">
+		update Com_EmpCard
+		<set>
+			<if test="cardid != null">
+				cardid = #{cardid,jdbcType=NUMERIC},
+			</if>
+			<if test="carddispno != null">
+				carddispno = #{carddispno,jdbcType=VARCHAR},
+			</if>
+			<if test="cardsegid != null">
+				cardsegid = #{cardsegid,jdbcType=NUMERIC},
+			</if>
+			<if test="cardstatusid != null">
+				cardstatusid = #{cardstatusid,jdbcType=NUMERIC},
+			</if>
+			<if test="cardstatuschgday != null">
+				cardstatuschgday = #{cardstatuschgday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="actforegift != null">
+				actforegift = #{actforegift,jdbcType=VARCHAR},
+			</if>
+			<if test="disforegift != null">
+				disforegift = #{disforegift,jdbcType=VARCHAR},
+			</if>
+			<if test="rtnforegift != null">
+				rtnforegift = #{rtnforegift,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="carddueday != null">
+				carddueday = #{carddueday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="cardpwd != null">
+				cardpwd = #{cardpwd,jdbcType=VARCHAR},
+			</if>
+			<if test="cardapplyid != null">
+				cardapplyid = #{cardapplyid,jdbcType=VARCHAR},
+			</if>
+			<if test="actcost != null">
+				actcost = #{actcost,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where empid = #{empid}
+	</update>
+
+	<!-- delete -->
+	<delete id="delete" parameterType="EmpcardBean">
+		delete from Com_EmpCard where empid = #{empid,jdbcType=NUMERIC}
+	</delete>
+</mapper>
