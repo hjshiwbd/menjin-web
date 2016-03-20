@@ -127,7 +127,7 @@ public class EmpServiceImpl implements IEmpService {
 		if (flag) {
 			logger.info("add person to c3 finish");
 			// 调用hw接口新增人员
-//			addToHw(emp);
+			addToHw(emp);
 
 			e.setResult("1");
 			e.setMessage("添加成功");
@@ -353,6 +353,11 @@ public class EmpServiceImpl implements IEmpService {
 			CardinfoBean card = new CardinfoBean();
 			card.setCardid(emp.getEmpid());
 			cardinfoService.delete(card);
+			
+			// 3.empcard
+			EmpcardBean empcard = new EmpcardBean();
+			empcard.setEmpid(emp.getEmpid());
+			empcardService.delete(empcard);
 
 			logger.info("delete person from c3 done");
 			return true;
