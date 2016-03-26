@@ -223,9 +223,15 @@ public class EmpServiceImpl implements IEmpService {
 		}
 	}
 
-	private String encode(String empname) {
+	/**
+	 * 编码
+	 * 
+	 * @param str
+	 * @return
+	 */
+	private String encode(String str) {
 		try {
-			return URLEncoder.encode(empname, "utf-8");
+			return URLEncoder.encode(str, "utf-8");
 		} catch (UnsupportedEncodingException e) {
 			return null;
 		}
@@ -353,7 +359,7 @@ public class EmpServiceImpl implements IEmpService {
 			CardinfoBean card = new CardinfoBean();
 			card.setCardid(emp.getEmpid());
 			cardinfoService.delete(card);
-			
+
 			// 3.empcard
 			EmpcardBean empcard = new EmpcardBean();
 			empcard.setEmpid(emp.getEmpid());
