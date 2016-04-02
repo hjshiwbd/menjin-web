@@ -239,7 +239,7 @@ function initDg() {
 						treeObj.checkNode(node, true, true);
 					}
 				} else {
-					// eualert('此人尚无任何权限');
+					eualert(resp.result);
 				}
 			}
 		};

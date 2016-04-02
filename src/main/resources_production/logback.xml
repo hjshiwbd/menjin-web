@@ -69,6 +69,18 @@
 		<level value="error" />
 		<appender-ref ref="file" />
 	</logger>
+	<logger name="org.shinomin.menjin.mapper.Qqrz" additivity="false">
+		<level value="error" />
+		<appender-ref ref="file" />
+	</logger>
+	<logger name="org.shinomin.menjin.accesslog.service.impl" additivity="false">
+		<level value="error" />
+		<appender-ref ref="file" />
+	</logger>
+	<logger name="org.shinomin.menjin.thread" additivity="false">
+		<level value="error" />
+		<appender-ref ref="file" />
+	</logger>
 
 	<root>
 		<level value="debug" />
