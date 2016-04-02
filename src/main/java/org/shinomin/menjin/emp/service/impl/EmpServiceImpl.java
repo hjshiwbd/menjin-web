@@ -40,6 +40,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -121,9 +122,7 @@ public class EmpServiceImpl implements IEmpService {
 			return JsonUtil.toJson(e);
 		}
 
-		int maxid = empDAO.selectMaxID();
-		logger.info("maxid:{}", maxid);
-		boolean flag = insertC3Emp(emp, empext, maxid);
+		boolean flag = insertC3Emp(emp, empext);
 		if (flag) {
 			logger.info("add person to c3 finish");
 			// 调用hw接口新增人员
@@ -143,10 +142,11 @@ public class EmpServiceImpl implements IEmpService {
 	 * 
 	 * @param emp
 	 * @param empext
-	 * @param maxid
 	 * @return
 	 */
-	private boolean insertC3Emp(EmpBean emp, EmpextBean empext, int maxid) {
+	private boolean insertC3Emp(EmpBean emp, EmpextBean empext) {
+		int maxid = empDAO.selectMaxID();
+		logger.info("maxid:{}", maxid);
 		emp.setEmpid(maxid + "");
 		emp.setEmpcrtdby(loginSessionScope.getLoginUser().getUsername());
 		int n = insert(emp);
@@ -193,12 +193,13 @@ public class EmpServiceImpl implements IEmpService {
 	 * @throws Exception
 	 */
 	private void addToHw(EmpBean emp) throws Exception {
-		try {
-			HwPersonBean person = new HwPersonBean();
-			person.setLname(emp.getEmpno());
-			person.setFname(encode(emp.getEmpname()));
-			person.setIssue_date(emp.getIssue_date());// 今天为生效时间
-			person.setExpire_date(emp.getExpire_date());// 10年为失效时间
+		HwPersonBean person = new HwPersonBean();
+		person.setLname(emp.getEmpno());
+		person.setFname(encode(emp.getEmpname()));
+		person.setIssue_date(emp.getIssue_date());// 今天为生效时间
+		person.setExpire_date(emp.getExpire_date());// 10年为失效时间
+
+		if (isHWPersonExists(person)) {// hw用户是否存在
 			ExecuteResult e = wsQuery.addPerson(person, emp.getBadgeId());
 			if (e.getResult().equals("0")) {
 				logger.info("add person to hw finish");
@@ -208,18 +209,35 @@ public class EmpServiceImpl implements IEmpService {
 				card.setCardno(emp.getEmpcardno().trim());
 				card.setIssue_date(emp.getIssue_date());
 				card.setExpire_date(emp.getExpire_date());
-				ExecuteResult cardex = wsQuery.addCard(card, "0x00488a1872d040a54a3882e897327e7955a0");
-				if (!"0".equals(cardex.getResult())) {
-					logger.error("hw卡号添加失败.请检查卡号是否重复");
-					throw new Exception("hw卡号添加失败.请检查卡号是否重复");
+				if (isHWCardExists(card)) {
+					ExecuteResult cardex = wsQuery.addCard(card, "0x00488a1872d040a54a3882e897327e7955a0");
+					if (!"0".equals(cardex.getResult())) {
+						logger.error("hw卡号添加失败.请检查卡号是否重复");
+						throw new Exception("hw卡号添加失败.请检查卡号是否重复");
+					}
 				}
 			} else {
 				logger.info("add person to hw failed:{}", e.getMessage());
-				throw new Exception("add person to hw failed");
+				throw new Exception("HW添加用户失败");
 			}
-		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
-			throw new Exception("门禁接口记录人员信息失败");
+		}
+	}
+
+	private boolean isHWCardExists(HwCardBean card) throws Exception {
+		List<HwCardBean> list = wsQuery.queryCards("cardno", "=", card.getCardno());
+		if (CollectionUtils.isEmpty(list)) {
+			return true;
+		} else {
+			throw new Exception("HW中卡号已存在");
+		}
+	}
+
+	private boolean isHWPersonExists(HwPersonBean person) throws Exception {
+		List<HwPersonBean> list = wsQuery.queryPersons("LNAME", "=", person.getLname());
+		if (CollectionUtils.isEmpty(list)) {
+			return true;
+		} else {
+			throw new Exception("hw中用户编号已存在");
 		}
 	}
 
