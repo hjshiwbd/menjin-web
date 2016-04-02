@@ -213,12 +213,12 @@ public class EmpServiceImpl implements IEmpService {
 					ExecuteResult cardex = wsQuery.addCard(card, "0x00488a1872d040a54a3882e897327e7955a0");
 					if (!"0".equals(cardex.getResult())) {
 						logger.error("hw卡号添加失败.请检查卡号是否重复");
-						throw new Exception("hw卡号添加失败.请检查卡号是否重复");
+						throw new Exception("hw卡号添加失败.请检查hw sdk是否工作正常");
 					}
 				}
 			} else {
 				logger.info("add person to hw failed:{}", e.getMessage());
-				throw new Exception("HW添加用户失败");
+				throw new Exception("HW添加用户失败.请检查hw sdk是否工作正常");
 			}
 		}
 	}
