@@ -224,11 +224,15 @@ function initDg() {
 	set['onClickRow'] = function(index, row) {
 		treeObj.checkAllNodes(false);// 取消所有已勾选
 		var url = cu('/menjin/person_acccode');
+		var empCardno = '';
+		if (row['empcard'] && row['empcard']['cardinfo']) {
+			empCardno= row['empcard']['cardinfo']['cardfixno'];
+		}
 		var options = {
 			url : url,
 			param : {
 				empno : row.empno,
-				empcardno : row.empcardno
+				empcardno : empCardno
 			},
 			callback : function(resp) {
 				if (resp.result == '1') {

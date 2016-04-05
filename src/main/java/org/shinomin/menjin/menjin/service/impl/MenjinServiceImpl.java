@@ -17,7 +17,6 @@ import org.shinomin.menjin.bean.DoorBean;
 import org.shinomin.menjin.bean.EmpBean;
 import org.shinomin.menjin.bean.HwAcccodeBean;
 import org.shinomin.menjin.bean.HwCardBean;
-import org.shinomin.menjin.bean.HwPersonBean;
 import org.shinomin.menjin.bean.HwReaderBean;
 import org.shinomin.menjin.bean.HwpaeventBean;
 import org.shinomin.menjin.card.service.ICardaccodeService;
@@ -81,17 +80,26 @@ public class MenjinServiceImpl implements IMenjinService {
 	public String queryPersonAcccode(EmpBean emp) {
 		logger.info("emp:{}", JsonUtil.toJson(emp));
 		ExecuteResult e = new ExecuteResult("0", ErrorConstant.WS_NO_RESULT_FOUND);
-		List<HwPersonBean> personList = wsQuery.queryPersons("LNAME", "=", emp.getEmpno());
-		if (personList != null && personList.size() == 1) {
-			List<HwAcccodeBean> acccodeList = wsQuery.getAllACCodes(personList.get(0).getId(),
-					StringUtil.null2Empty(emp.getEmpcardno().trim()));
-			if (acccodeList != null) {
-				e.setResult("1");
-				e.setMessage("ok");
-				e.setObject(acccodeList);
-			}
+		try {
+			checkParam(emp);
+		} catch (Exception e1) {
+			logger.info(e1.getMessage());
+			e.setMessage(e1.getMessage());
+			return JsonUtil.toJson(e);
+		}
+		List<HwAcccodeBean> acccodeList = wsQuery.getAllACCodes("", StringUtil.null2Empty(emp.getEmpcardno().trim()));
+		if (acccodeList != null) {
+			e.setResult("1");
+			e.setMessage("ok");
+			e.setObject(acccodeList);
 		}
 		return JsonUtil.toJson(e);
+	}
+
+	private void checkParam(EmpBean emp) throws Exception {
+		if (StringUtils.isBlank(emp.getEmpcardno())) {
+			throw new Exception("此人卡号为空，查询失败");
+		}
 	}
 
 	@Override

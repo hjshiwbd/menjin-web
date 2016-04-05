@@ -278,7 +278,7 @@ public class EmpServiceImpl implements IEmpService {
 			throw new Exception("此员工编号已存在");
 		}
 		// 检查唯一性 cardno唯一
-		n = empDAO.selectCount("hrms_emp", "where empcardno=?", emp.getEmpcardno());
+		n = empDAO.selectCount("com_cardinfo", "where cardfixno=?", emp.getEmpcardno());
 		if (n > 0) {
 			logger.info("empno already exists");
 			throw new Exception("此卡号已存在");
