@@ -269,8 +269,8 @@ function deletePerson() {
 				var empid = row[0]['empid'];
 				var empno = row[0]['empno'];
 				var empcardno = '';
-				if (row['empcard'] && row['empcard']['cardinfo']) {
-					empcardno= row['empcard']['cardinfo']['cardfixno'];
+				if (row[0]['empcard'] && row[0]['empcard']['cardinfo']) {
+					empcardno= row[0]['empcard']['cardinfo']['cardfixno'];
 				}
 				var options = {
 					hideWait : false,
