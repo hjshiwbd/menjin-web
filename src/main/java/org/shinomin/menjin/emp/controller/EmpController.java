@@ -61,7 +61,7 @@ public class EmpController {
 
 
 	/**
-	 * 人员修改
+	 * 人员删除
 	 * 
 	 * @return
 	 * @throws Exception

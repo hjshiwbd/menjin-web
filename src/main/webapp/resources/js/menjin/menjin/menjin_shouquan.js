@@ -268,7 +268,10 @@ function deletePerson() {
 			if (r) {
 				var empid = row[0]['empid'];
 				var empno = row[0]['empno'];
-				var empcardno = row[0]['empcardno'];
+				var empcardno = '';
+				if (row['empcard'] && row['empcard']['cardinfo']) {
+					empcardno= row['empcard']['cardinfo']['cardfixno'];
+				}
 				var options = {
 					hideWait : false,
 					url : cu('/emp/delete'),
